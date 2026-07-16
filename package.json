@@ -16,5 +16,8 @@
     "globals": "latest",
     "typescript": "latest",
     "vite": "latest"
+  },
+  "dependencies": {
+    "lucide": "^1.24.0"
   }
 }

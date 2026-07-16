@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Learn about Techinance, a 501(c)(3) nonprofit providing free technology, neuroscience, and finance education worldwide."
+      content="Contact Techinance with questions about our courses, certifications, and programs."
     />
-    <title>About Us | Techinance</title>
+    <title>Contact | Techinance</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -16,6 +16,7 @@
     />
     <link rel="stylesheet" href="/styles.css" />
     <script type="module" src="/nav.js"></script>
+    <script type="module" src="/contact.js"></script>
   </head>
   <body>
     <header class="site-header" data-header>
@@ -53,9 +54,9 @@
               </svg>
             </button>
             <div class="more-menu__dropdown" id="more-dropdown">
-              <a href="/contact.html">Contact Us</a>
+              <a href="/contact.html" aria-current="page">Contact Us</a>
               <a href="/#join">Join Us</a>
-              <a href="/about.html" aria-current="page">About Us</a>
+              <a href="/about.html">About Us</a>
             </div>
           </div>
           <a class="donate-link" href="/#donate">Donate</a>
@@ -65,62 +66,69 @@
           <a href="/courses.html">Courses</a>
           <a href="/faqs.html">FAQs</a>
           <span class="mobile-nav__label">More</span>
-          <a href="/contact.html">Contact Us</a>
+          <a href="/contact.html" aria-current="page">Contact Us</a>
           <a href="/#join">Join Us</a>
-          <a href="/about.html" aria-current="page">About Us</a>
+          <a href="/about.html">About Us</a>
           <a href="/#donate">Donate</a>
         </div>
       </nav>
     </header>
 
     <main class="page">
-      <section class="about" id="about" aria-labelledby="about-title">
-        <div class="about__inner">
-          <header class="about__header">
-            <h1 id="about-title">About Techinance</h1>
+      <section class="contact" id="contact" aria-labelledby="contact-title">
+        <div class="contact__inner">
+          <header class="contact__header">
+            <h1 id="contact-title">Contact</h1>
+            <p>
+              If you have any questions or concerns that weren’t addressed in the
+              <a href="/faqs.html">FAQ page</a>, or would like additional information about one of our
+              courses, feel free to reach out to us here or email us at
+              <a href="mailto:thetechinance@gmail.com">thetechinance@gmail.com</a>! We will try to
+              answer back ASAP!
+            </p>
           </header>
 
-          <div class="about__layout">
-            <figure class="about__founder">
-              <img
-                src="/founder.jpg"
-                alt="Krish Sav, Founder of Techinance"
-                width="320"
-                height="400"
-              />
-              <figcaption>Krish Sav, Founder of Techinance</figcaption>
-              <blockquote>
-                “With a keen passion for Computer Science, Krish developed Techinance in order to give
-                back to his community and empower the youth through certified courses, enabling them to
-                be better equipped in real world scenarios.”
-              </blockquote>
-            </figure>
-
-            <div class="about__text">
-              <p>
-                Techinance is a registered 501(c)(3) nonprofit organization with a bold vision to empower
-                the next generation through comprehensive, free education in technology, neuroscience, and
-                finance. Techinance is dedicated to equipping young learners, including those who are
-                underserved, from all across the world with the essential skills they need to navigate and
-                succeed in the modern landscape.
-              </p>
-              <p>
-                Our mission is to introduce youth to critical real-world concepts, including online safety,
-                smart investing, and an exploration of the remarkable world of neuroscience. By offering
-                high-quality, accessible courses, we aim to bridge the gap in education and provide students
-                with the knowledge and confidence to make informed decisions.
-              </p>
-              <p>
-                At Techinance, we believe that every young person deserves the opportunity to understand and
-                master the tools that shape our world. Our curriculum is designed to be engaging and
-                practical, ensuring that students not only learn theoretical concepts but also how to apply
-                them in their daily lives. Through our programs, we aspire to foster a generation of savvy,
-                responsible digital citizens who are prepared to face the challenges and seize the
-                opportunities of the future. No matter what background our students come from, we want to
-                provide them with the richest information possible.
-              </p>
+          <form class="contact__form" data-contact-form novalidate>
+            <div class="contact__row">
+              <label class="contact__field">
+                <span>First name <em>(required)</em></span>
+                <input
+                  type="text"
+                  name="firstName"
+                  autocomplete="given-name"
+                  required
+                />
+              </label>
+              <label class="contact__field">
+                <span>Last name <em>(required)</em></span>
+                <input
+                  type="text"
+                  name="lastName"
+                  autocomplete="family-name"
+                  required
+                />
+              </label>
             </div>
-          </div>
+
+            <label class="contact__field">
+              <span>Email <em>(required)</em></span>
+              <input
+                type="email"
+                name="email"
+                autocomplete="email"
+                required
+              />
+            </label>
+
+            <label class="contact__field">
+              <span>Message <em>(required)</em></span>
+              <textarea name="message" rows="6" required></textarea>
+            </label>
+
+            <p class="contact__status" data-contact-status hidden></p>
+
+            <button class="button button--primary" type="submit">Submit</button>
+          </form>
         </div>
       </section>
     </main>
