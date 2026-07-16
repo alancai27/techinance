@@ -16,10 +16,9 @@
     />
     <link rel="stylesheet" href="styles.css" />
     <script type="module" src="nav.js"></script>
-    <script type="module" src="icons.js"></script>
     <script type="module" src="script.js"></script>
   </head>
-  <body class="is-loading">
+  <body class="home-page is-loading">
     <header class="site-header" data-header>
       <nav class="navbar" aria-label="Primary navigation">
         <a class="brand" href="./" aria-label="Techinance home">
@@ -41,35 +40,18 @@
         <div class="desktop-nav">
           <a class="nav-link" href="courses.html">Courses</a>
           <a class="nav-link" href="faqs.html">FAQs</a>
-          <div class="more-menu" data-more-menu>
-            <button
-              class="nav-link more-menu__trigger"
-              type="button"
-              aria-expanded="false"
-              aria-controls="more-dropdown"
-              data-more-trigger
-            >
-              More
-              <svg viewBox="0 0 12 8" aria-hidden="true">
-                <path d="m1 1.25 5 5 5-5" />
-              </svg>
-            </button>
-            <div class="more-menu__dropdown" id="more-dropdown">
-              <a href="contact.html">Contact Us</a>
-              <a href="#join">Join Us</a>
-              <a href="about.html">About Us</a>
-            </div>
-          </div>
+          <a class="nav-link" href="about.html">About</a>
+          <a class="nav-link" href="#join">Get Involved</a>
+          <a class="nav-link" href="contact.html">Contact Us</a>
           <a class="donate-link" href="#donate">Donate</a>
         </div>
 
         <div class="mobile-nav" id="mobile-menu" data-mobile-menu>
           <a href="courses.html">Courses</a>
           <a href="faqs.html">FAQs</a>
-          <span class="mobile-nav__label">More</span>
+          <a href="about.html">About</a>
+          <a href="#join">Get Involved</a>
           <a href="contact.html">Contact Us</a>
-          <a href="#join">Join Us</a>
-          <a href="about.html">About Us</a>
           <a href="#donate">Donate</a>
         </div>
       </nav>
@@ -110,28 +92,19 @@
         </div>
       </section>
 
-      <section class="stats" aria-label="Techinance reach" id="impact">
+      <section class="stats" aria-label="Techinance reach" id="impact" data-stats>
         <div class="stats__inner">
           <article class="stats__item">
-            <div class="stats__icon" aria-hidden="true">
-              <i data-lucide="graduation-cap"></i>
-            </div>
             <p class="stats__value">1050+</p>
             <p class="stats__label">Students</p>
           </article>
 
           <article class="stats__item">
-            <div class="stats__icon" aria-hidden="true">
-              <i data-lucide="globe"></i>
-            </div>
             <p class="stats__value">21</p>
             <p class="stats__label">Countries</p>
           </article>
 
           <article class="stats__item">
-            <div class="stats__icon" aria-hidden="true">
-              <i data-lucide="map-pin"></i>
-            </div>
             <p class="stats__value">25+</p>
             <p class="stats__label">Provinces</p>
           </article>
@@ -158,8 +131,8 @@
 
         <div class="site-footer__column">
           <h2>Get Involved</h2>
-          <a href="about.html">About Us</a>
-          <a href="#join">Join Us</a>
+          <a href="about.html">About</a>
+          <a href="#join">Get Involved</a>
           <a href="contact.html">Contact Us</a>
           <a href="#donate">Donate</a>
         </div>

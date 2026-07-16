@@ -115,7 +115,7 @@ a:focus-visible {
 
 .nav-link:hover::after,
 .nav-link:focus-visible::after,
-.more-menu.is-open .more-menu__trigger::after {
+.nav-link[aria-current="page"]::after {
   transform: scaleX(1);
 }
 
@@ -136,79 +136,6 @@ a:focus-visible {
   transform: translateY(-1px);
 }
 
-.more-menu {
-  position: relative;
-}
-
-.more-menu__trigger {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-
-.more-menu__trigger svg {
-  width: 10px;
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 1.7;
-  transition: transform 180ms ease;
-}
-
-.more-menu__dropdown {
-  position: absolute;
-  top: calc(100% + 12px);
-  right: -16px;
-  width: 168px;
-  border: 1px solid rgba(11, 36, 71, 0.1);
-  border-radius: 14px;
-  padding: 7px;
-  visibility: hidden;
-  opacity: 0;
-  background: var(--white);
-  box-shadow: 0 12px 32px rgba(11, 36, 71, 0.1);
-  transform: translateY(-7px);
-  transition: opacity 160ms ease, transform 160ms ease, visibility 160ms;
-}
-
-.more-menu__dropdown::before {
-  position: absolute;
-  right: 0;
-  bottom: 100%;
-  left: 0;
-  height: 14px;
-  content: "";
-}
-
-.more-menu__dropdown a {
-  display: block;
-  border-radius: 9px;
-  padding: 10px 12px;
-  font-size: 14px;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.more-menu__dropdown a:hover,
-.more-menu__dropdown a:focus-visible {
-  background: var(--ice);
-}
-
-.more-menu:hover .more-menu__dropdown,
-.more-menu:focus-within .more-menu__dropdown,
-.more-menu.is-open .more-menu__dropdown {
-  visibility: visible;
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.more-menu:hover .more-menu__trigger svg,
-.more-menu:focus-within .more-menu__trigger svg,
-.more-menu.is-open .more-menu__trigger svg {
-  transform: rotate(180deg);
-}
-
 .menu-toggle,
 .mobile-nav {
   display: none;
@@ -216,8 +143,8 @@ a:focus-visible {
 
 .hero {
   display: flex;
-  min-height: 100svh;
-  padding: 112px 24px 56px;
+  min-height: auto;
+  padding: 24px 24px 20px;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -326,11 +253,12 @@ a:focus-visible {
 }
 
 .hero__content {
-  margin-top: 14px;
+  margin-top: -8px;
   text-align: center;
 }
 
-.is-loading .hero__content {
+.is-loading .hero__content,
+.is-loading .stats {
   visibility: hidden;
   opacity: 0;
   transform: translateY(18px);
@@ -380,6 +308,12 @@ a:focus-visible {
   background: var(--steel);
 }
 
+.button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
 .button--secondary {
   border-color: var(--slate);
   color: var(--navy);
@@ -393,9 +327,16 @@ a:focus-visible {
 }
 
 .stats {
-  border-top: 1px solid rgba(11, 36, 71, 0.1);
-  padding: 72px 24px 88px;
+  padding: 28px 24px 56px;
   background: var(--white);
+}
+
+.home-page main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100svh;
+  padding-top: 72px;
 }
 
 .stats__inner {
@@ -411,24 +352,6 @@ a:focus-visible {
   flex-direction: column;
   align-items: center;
   text-align: center;
-}
-
-.stats__icon {
-  display: grid;
-  width: 72px;
-  height: 72px;
-  margin-bottom: 20px;
-  place-items: center;
-  border: 1px solid rgba(11, 36, 71, 0.1);
-  border-radius: 20px;
-  color: var(--navy);
-  background: var(--ice);
-  box-shadow: 0 12px 32px rgba(11, 36, 71, 0.08);
-}
-
-.stats__icon svg {
-  width: 38px;
-  height: 38px;
 }
 
 .stats__value {
@@ -645,7 +568,6 @@ a:focus-visible {
 }
 
 .site-footer {
-  border-top: 1px solid rgba(11, 36, 71, 0.1);
   padding: 64px 24px 28px 72px;
   background: color-mix(in srgb, var(--ice) 32%, var(--white));
   color: var(--slate);
@@ -766,7 +688,6 @@ a:focus-visible {
 .site-footer__bottom {
   width: min(1100px, 100%);
   margin: 40px auto 0;
-  border-top: 1px solid rgba(11, 36, 71, 0.1);
   padding-top: 20px;
   text-align: center;
 }
@@ -1125,18 +1046,8 @@ a:focus-visible {
     background: var(--ice);
   }
 
-  .mobile-nav__label {
-    padding: 13px 12px 5px;
-    color: var(--slate);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-
   .hero {
-    padding-right: 16px;
-    padding-left: 16px;
+    padding: 96px 16px 16px;
   }
 
   .hero__actions {
@@ -1148,12 +1059,20 @@ a:focus-visible {
   }
 
   .stats {
-    padding: 56px 16px 72px;
+    padding: 20px 16px 48px;
   }
 
   .stats__inner {
-    grid-template-columns: 1fr;
-    gap: 36px;
+    gap: 12px;
+  }
+
+  .stats__value {
+    font-size: clamp(26px, 7vw, 34px);
+  }
+
+  .stats__label {
+    margin-top: 6px;
+    font-size: 12px;
   }
 
   .courses {

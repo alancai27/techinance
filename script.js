@@ -174,6 +174,7 @@ const flyerDot = getHtmlElement("[data-flyer-dot]");
 const flyerLogo = getHtmlElement("[data-flyer-logo]");
 const heroLogo = getButtonElement("[data-hero-logo]");
 const heroContent = getHtmlElement("[data-hero-content]");
+const stats = getHtmlElement("[data-stats]");
 const header = getHtmlElement("[data-header]");
 
 /** @typedef {{fontSize: number, logoSize: number, gap: number, dotScale: number, startX: number, startY: number, targetX: number, targetY: number, wordLeft: number, wordTop: number, finalLeft: number}} HeroGeometry */
@@ -305,6 +306,7 @@ function setIntroState(geometry) {
   heroLogo.disabled = true;
   header.style.visibility = "hidden";
   heroContent.style.visibility = "hidden";
+  stats.style.visibility = "hidden";
 }
 
 /**
@@ -329,6 +331,9 @@ function setFinalState(geometry) {
   heroContent.style.removeProperty("visibility");
   heroContent.style.removeProperty("opacity");
   heroContent.style.removeProperty("transform");
+  stats.style.removeProperty("visibility");
+  stats.style.removeProperty("opacity");
+  stats.style.removeProperty("transform");
   document.body.classList.remove("is-loading");
 }
 
@@ -491,6 +496,9 @@ async function revealPage() {
   heroContent.style.visibility = "visible";
   heroContent.style.opacity = "0";
   heroContent.style.transform = "translateY(18px)";
+  stats.style.visibility = "visible";
+  stats.style.opacity = "0";
+  stats.style.transform = "translateY(18px)";
   document.body.classList.remove("is-loading");
 
   await Promise.all([
@@ -508,6 +516,18 @@ async function revealPage() {
       {
         duration: HERO_TIMING.reveal,
         delay: 90,
+        easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+      },
+    ),
+    animate(
+      stats,
+      [
+        { opacity: 0, transform: "translateY(18px)" },
+        { opacity: 1, transform: "translateY(0)" },
+      ],
+      {
+        duration: HERO_TIMING.reveal,
+        delay: 160,
         easing: "cubic-bezier(0.22, 1, 0.36, 1)",
       },
     ),
