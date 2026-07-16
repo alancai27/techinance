@@ -1,6 +1,8 @@
 import { defineConfig } from "vite";
 
 export default defineConfig({
+  // Project site: https://alancai27.github.io/techinance/
+  base: "/techinance/",
   build: {
     rollupOptions: {
       input: {
