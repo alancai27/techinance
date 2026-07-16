@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Learn about Techinance, a 501(c)(3) nonprofit providing free technology, neuroscience, and finance education worldwide."
+    />
+    <title>About Us | Techinance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="module" src="/nav.js"></script>
+  </head>
+  <body>
+    <header class="site-header" data-header>
+      <nav class="navbar" aria-label="Primary navigation">
+        <a class="brand" href="/" aria-label="Techinance home">
+          <img class="brand__logo" src="/logo.png" alt="" width="32" height="32" />
+          <span>Techinance</span>
+        </a>
+
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          data-menu-toggle
+        >
+          <span>Menu</span>
+          <span class="menu-toggle__lines" aria-hidden="true"></span>
+        </button>
+
+        <div class="desktop-nav">
+          <a class="nav-link" href="/courses.html">Courses</a>
+          <a class="nav-link" href="/faqs.html">FAQs</a>
+          <div class="more-menu" data-more-menu>
+            <button
+              class="nav-link more-menu__trigger"
+              type="button"
+              aria-expanded="false"
+              aria-controls="more-dropdown"
+              data-more-trigger
+            >
+              More
+              <svg viewBox="0 0 12 8" aria-hidden="true">
+                <path d="m1 1.25 5 5 5-5" />
+              </svg>
+            </button>
+            <div class="more-menu__dropdown" id="more-dropdown">
+              <a href="/#contact">Contact Us</a>
+              <a href="/#join">Join Us</a>
+              <a href="/about.html" aria-current="page">About Us</a>
+            </div>
+          </div>
+          <a class="donate-link" href="/#donate">Donate</a>
+        </div>
+
+        <div class="mobile-nav" id="mobile-menu" data-mobile-menu>
+          <a href="/courses.html">Courses</a>
+          <a href="/faqs.html">FAQs</a>
+          <span class="mobile-nav__label">More</span>
+          <a href="/#contact">Contact Us</a>
+          <a href="/#join">Join Us</a>
+          <a href="/about.html" aria-current="page">About Us</a>
+          <a href="/#donate">Donate</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="page">
+      <section class="about" id="about" aria-labelledby="about-title">
+        <div class="about__inner">
+          <header class="about__header">
+            <h1 id="about-title">About Techinance</h1>
+          </header>
+
+          <div class="about__layout">
+            <div class="about__text">
+              <p>
+                Techinance is a registered 501(c)(3) nonprofit organization with a bold vision to empower
+                the next generation through comprehensive, free education in technology, neuroscience, and
+                finance. Techinance is dedicated to equipping young learners, including those who are
+                underserved, from all across the world with the essential skills they need to navigate and
+                succeed in the modern landscape.
+              </p>
+              <p>
+                Our mission is to introduce youth to critical real-world concepts, including online safety,
+                smart investing, and an exploration of the remarkable world of neuroscience. By offering
+                high-quality, accessible courses, we aim to bridge the gap in education and provide students
+                with the knowledge and confidence to make informed decisions.
+              </p>
+              <p>
+                At Techinance, we believe that every young person deserves the opportunity to understand and
+                master the tools that shape our world. Our curriculum is designed to be engaging and
+                practical, ensuring that students not only learn theoretical concepts but also how to apply
+                them in their daily lives. Through our programs, we aspire to foster a generation of savvy,
+                responsible digital citizens who are prepared to face the challenges and seize the
+                opportunities of the future. No matter what background our students come from, we want to
+                provide them with the richest information possible.
+              </p>
+            </div>
+
+            <figure class="about__founder">
+              <img
+                src="/founder.jpg"
+                alt="Krish Sav, Founder of Techinance"
+                width="320"
+                height="400"
+              />
+              <figcaption>Krish Sav, Founder of Techinance</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <div class="site-footer__brand">
+          <a class="site-footer__logo" href="/" aria-label="Techinance home">
+            <img src="/logo.png" alt="" width="32" height="32" />
+            <span>Techinance</span>
+          </a>
+          <p>Providing STEM education to students around the world.</p>
+        </div>
+
+        <div class="site-footer__column">
+          <h2>Quick Links</h2>
+          <a href="/courses.html">Courses</a>
+          <a href="/faqs.html">FAQs</a>
+        </div>
+
+        <div class="site-footer__column">
+          <h2>Get Involved</h2>
+          <a href="/about.html">About Us</a>
+          <a href="/#join">Join Us</a>
+          <a href="/#contact">Contact Us</a>
+          <a href="/#donate">Donate</a>
+        </div>
+
+        <div class="site-footer__column">
+          <h2>Legal</h2>
+          <a href="/#privacy">Privacy Policy</a>
+          <a href="/#terms">Terms of Service</a>
+        </div>
+
+        <div class="site-footer__column">
+          <h2>Connect</h2>
+          <div class="site-footer__social">
+            <a
+              href="https://www.instagram.com/techinance/"
+              aria-label="Techinance on Instagram"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M12 7.4A4.6 4.6 0 1 0 16.6 12 4.6 4.6 0 0 0 12 7.4Zm0 7.6A3 3 0 1 1 15 12a3 3 0 0 1-3 3Zm5.8-7.9a1.1 1.1 0 1 1-1.1-1.1 1.1 1.1 0 0 1 1.1 1.1ZM21 7.2a6.3 6.3 0 0 0-1.7-4.5A6.3 6.3 0 0 0 14.8 1H9.2A6.3 6.3 0 0 0 4.7 2.7 6.3 6.3 0 0 0 3 7.2v5.6a6.3 6.3 0 0 0 1.7 4.5A6.3 6.3 0 0 0 9.2 21h5.6a6.3 6.3 0 0 0 4.5-1.7A6.3 6.3 0 0 0 21 12.8ZM19.4 12.8a4.7 4.7 0 0 1-1.3 3.4 4.7 4.7 0 0 1-3.3 1.2H9.2a4.7 4.7 0 0 1-3.3-1.2 4.7 4.7 0 0 1-1.3-3.4V7.2A4.7 4.7 0 0 1 5.9 3.9 4.7 4.7 0 0 1 9.2 2.6h5.6a4.7 4.7 0 0 1 3.3 1.3 4.7 4.7 0 0 1 1.3 3.3Z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="site-footer__bottom">
+        <p>© 2026 Techinance. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Explore free online STEM courses with certification from Techinance." />
+    <title>Courses | Techinance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="module" src="/nav.js"></script>
+  </head>
+  <body>
+<header class="site-header" data-header>
+      <nav class="navbar" aria-label="Primary navigation">
+        <a class="brand" href="/" aria-label="Techinance home">
+          <img class="brand__logo" src="/logo.png" alt="" width="32" height="32" />
+          <span>Techinance</span>
+        </a>
+
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          data-menu-toggle
+        >
+          <span>Menu</span>
+          <span class="menu-toggle__lines" aria-hidden="true"></span>
+        </button>
+
+        <div class="desktop-nav">
+          <a class="nav-link" href="/courses.html" aria-current="page">Courses</a>
+          <a class="nav-link" href="/faqs.html">FAQs</a>
+          <div class="more-menu" data-more-menu>
+            <button
+              class="nav-link more-menu__trigger"
+              type="button"
+              aria-expanded="false"
+              aria-controls="more-dropdown"
+              data-more-trigger
+            >
+              More
+              <svg viewBox="0 0 12 8" aria-hidden="true">
+                <path d="m1 1.25 5 5 5-5" />
+              </svg>
+            </button>
+            <div class="more-menu__dropdown" id="more-dropdown">
+              <a href="/#contact">Contact Us</a>
+              <a href="/#join">Join Us</a>
+              <a href="/about.html" >About Us</a>
+            </div>
+          </div>
+          <a class="donate-link" href="/#donate">Donate</a>
+        </div>
+
+        <div class="mobile-nav" id="mobile-menu" data-mobile-menu>
+          <a href="/courses.html" aria-current="page">Courses</a>
+          <a href="/faqs.html">FAQs</a>
+          <span class="mobile-nav__label">More</span>
+          <a href="/#contact">Contact Us</a>
+          <a href="/#join">Join Us</a>
+          <a href="/about.html" >About Us</a>
+          <a href="/#donate">Donate</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="page">
+      <section class="courses" id="courses" aria-labelledby="courses-title">
+        <div class="courses__inner">
+          <header class="courses__header">
+            <h1 id="courses-title">Courses</h1>
+            <p>Free online enrichment courses with certification for students everywhere.</p>
+          </header>
+
+          <div class="courses__list">
+            <article class="course">
+              <div class="course__icon" aria-hidden="true">
+                <svg viewBox="0 0 48 48" fill="none">
+                  <path
+                    d="M24 8.5 12 13.2v10.4c0 8.1 5.1 15.4 12 17.9 6.9-2.5 12-9.8 12-17.9V13.2L24 8.5Z"
+                    fill="var(--ice)"
+                    stroke="var(--navy)"
+                    stroke-width="2"
+                    stroke-linejoin="round"
+                  />
+                  <rect
+                    x="19"
+                    y="20"
+                    width="10"
+                    height="9"
+                    rx="2"
+                    fill="var(--white)"
+                    stroke="var(--steel)"
+                    stroke-width="1.8"
+                  />
+                  <path
+                    d="M21.2 20v-2.1a2.8 2.8 0 0 1 5.6 0V20"
+                    stroke="var(--navy)"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                  <circle cx="24" cy="24.6" r="1.2" fill="var(--navy)" />
+                </svg>
+              </div>
+              <div class="course__body">
+                <p class="course__tag">Technology · Ages 12–16</p>
+                <h3>Technology (Cybersecurity) Course with Certification</h3>
+                <p>
+                  We are offering a free, online, technology enrichment course for everyone who is interested!
+                  The recommended age group for this course is 12-16, however, anyone with a passion for
+                  technology can join the course. Additionally, we provide a certificate upon the successful
+                  completion of the course!
+                </p>
+                <a
+                  class="button button--primary"
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSfQDGQ-tPxP9L2Ph5loCoDUEy2Ugc_xCcHaiz-57ppEAS0RAw/viewform?usp=send_form"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >Enroll Here!</a>
+              </div>
+            </article>
+
+            <article class="course">
+              <div class="course__icon" aria-hidden="true">
+                <svg viewBox="0 0 48 48" fill="none">
+                  <rect
+                    x="11"
+                    y="14"
+                    width="26"
+                    height="20"
+                    rx="4"
+                    fill="var(--ice)"
+                    stroke="var(--navy)"
+                    stroke-width="2"
+                  />
+                  <path d="M11 21.5h26" stroke="var(--steel)" stroke-width="2" />
+                  <circle cx="17.5" cy="28.5" r="2.3" fill="var(--white)" stroke="var(--navy)" stroke-width="1.7" />
+                  <path
+                    d="M24 26.5h9.5M24 30.5h6"
+                    stroke="var(--steel)"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M30.5 14v-1.8c0-1.2-.9-2.2-2.1-2.2H19.6c-1.2 0-2.1 1-2.1 2.2V14"
+                    stroke="var(--navy)"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+              <div class="course__body">
+                <p class="course__tag">Finance · Ages 10–16</p>
+                <h3>Financial Literacy (Finance) Course with Certification</h3>
+                <p>
+                  We are offering a free, online, financial education course for everyone who is interested!
+                  Although this opportunity is primarily geared towards the youth, ages 10-16, anyone can
+                  register and complete the course. Additionally, we provide a certificate upon the successful
+                  completion of the course!
+                </p>
+                <a
+                  class="button button--primary"
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSfujwXkUuY5iIivLC0OdQriYGnavC7LS8CYOhBGYHF7V5L3xA/viewform?usp=send_form"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >Enroll Here!</a>
+              </div>
+            </article>
+
+            <article class="course">
+              <div class="course__icon" aria-hidden="true">
+                <svg viewBox="0 0 48 48" fill="none">
+                  <path
+                    d="M24 10c-3.2 0-5.8 2.2-6.8 5.2-1.8-.7-3.9-.3-5.2 1.2-1.6 1.8-1.5 4.5.2 6.2-1.4 1.3-1.8 3.5-.8 5.2 1 1.7 3.1 2.4 5 1.8.4 2.8 2.7 5 5.6 5.4v3.5h4V35c2.9-.4 5.2-2.6 5.6-5.4 1.9.6 4-.1 5-1.8 1-1.7.6-3.9-.8-5.2 1.7-1.7 1.8-4.4.2-6.2-1.3-1.5-3.4-1.9-5.2-1.2C29.8 12.2 27.2 10 24 10Z"
+                    fill="var(--ice)"
+                    stroke="var(--navy)"
+                    stroke-width="2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M20.5 22.5c1.1-2 2.3-3 3.5-3s2.4 1 3.5 3M21.5 27.2h5"
+                    stroke="var(--steel)"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                  <circle cx="20.8" cy="24.8" r="1.2" fill="var(--navy)" />
+                  <circle cx="27.2" cy="24.8" r="1.2" fill="var(--navy)" />
+                </svg>
+              </div>
+              <div class="course__body">
+                <p class="course__tag">Neuroscience · Ages 12–16</p>
+                <h3>Neuroscience Course with Certification</h3>
+                <p>
+                  We are offering a free, online, neuroscience course for everyone who is interested! The
+                  recommended age group for this course is 12-16, however, anyone with a passion for learning
+                  about how our brain works and functions can join the course. Additionally, we provide a
+                  certificate upon the successful completion of the course!
+                </p>
+                <a
+                  class="button button--primary"
+                  href="https://docs.google.com/forms/d/e/1FAIpQLScct6I9miKhr9_75V2RbxUK4zG-_R8PyFmRiIJEHEpHmH3WmA/viewform"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >Enroll Here!</a>
+              </div>
+            </article>
+
+            <article class="course">
+              <div class="course__icon" aria-hidden="true">
+                <svg viewBox="0 0 48 48" fill="none">
+                  <path
+                    d="M24 6.5c4.8 4.2 7.8 9.8 8.5 15.8.3 2.6-.1 5-.9 7.2L24 38.5l-7.6-9c-.8-2.2-1.2-4.6-.9-7.2C16.2 16.3 19.2 10.7 24 6.5Z"
+                    fill="var(--ice)"
+                    stroke="var(--navy)"
+                    stroke-width="2"
+                    stroke-linejoin="round"
+                  />
+                  <circle cx="24" cy="18.5" r="3" fill="var(--white)" stroke="var(--steel)" stroke-width="1.8" />
+                  <path
+                    d="M16.8 27.5c-2.8 1.3-4.7 3.7-5.3 6.6 2.8-.2 5.1.6 7 2.2M31.2 27.5c2.8 1.3 4.7 3.7 5.3 6.6-2.8-.2-5.1.6-7 2.2"
+                    stroke="var(--steel)"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M21 36.5v4M24 37.5v5M27 36.5v4"
+                    stroke="var(--navy)"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+              <div class="course__body">
+                <p class="course__tag">Entrepreneurship · Ages 12–16</p>
+                <h3>How 2 Build a Start Up Course with Certification</h3>
+                <p>
+                  We are offering a free, online, entrepreneurship course for everyone who is interested!
+                  The recommended age group for this course is 12-16, however, anyone with a passion for
+                  building ideas into real startups can join the course. Additionally, we provide a certificate
+                  upon the successful completion of the course!
+                </p>
+                <a class="button button--primary" href="#enroll-startup">Enroll Here!</a>
+              </div>
+            </article>
+          </div>
+        </div>
+
+    </main>
+
+<footer class="site-footer">
+      <div class="site-footer__inner">
+        <div class="site-footer__brand">
+          <a class="site-footer__logo" href="/" aria-label="Techinance home">
+            <img src="/logo.png" alt="" width="32" height="32" />
+            <span>Techinance</span>
+          </a>
+          <p>Providing STEM education to students around the world.</p>
+        </div>
+
+        <div class="site-footer__column">
+          <h2>Quick Links</h2>
+          <a href="/courses.html">Courses</a>
+          <a href="/faqs.html">FAQs</a>
+        </div>
+
+        <div class="site-footer__column">
+          <h2>Get Involved</h2>
+          <a href="/about.html">About Us</a>
+          <a href="/#join">Join Us</a>
+          <a href="/#contact">Contact Us</a>
+          <a href="/#donate">Donate</a>
+        </div>
+
+        <div class="site-footer__column">
+          <h2>Legal</h2>
+          <a href="/#privacy">Privacy Policy</a>
+          <a href="/#terms">Terms of Service</a>
+        </div>
+
+        <div class="site-footer__column">
+          <h2>Connect</h2>
+          <div class="site-footer__social">
+            <a
+              href="https://www.instagram.com/techinance/"
+              aria-label="Techinance on Instagram"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M12 7.4A4.6 4.6 0 1 0 16.6 12 4.6 4.6 0 0 0 12 7.4Zm0 7.6A3 3 0 1 1 15 12a3 3 0 0 1-3 3Zm5.8-7.9a1.1 1.1 0 1 1-1.1-1.1 1.1 1.1 0 0 1 1.1 1.1ZM21 7.2a6.3 6.3 0 0 0-1.7-4.5A6.3 6.3 0 0 0 14.8 1H9.2A6.3 6.3 0 0 0 4.7 2.7 6.3 6.3 0 0 0 3 7.2v5.6a6.3 6.3 0 0 0 1.7 4.5A6.3 6.3 0 0 0 9.2 21h5.6a6.3 6.3 0 0 0 4.5-1.7A6.3 6.3 0 0 0 21 12.8ZM19.4 12.8a4.7 4.7 0 0 1-1.3 3.4 4.7 4.7 0 0 1-3.3 1.2H9.2a4.7 4.7 0 0 1-3.3-1.2 4.7 4.7 0 0 1-1.3-3.4V7.2A4.7 4.7 0 0 1 5.9 3.9 4.7 4.7 0 0 1 9.2 2.6h5.6a4.7 4.7 0 0 1 3.3 1.3 4.7 4.7 0 0 1 1.3 3.3Z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="site-footer__bottom">
+        <p>© 2026 Techinance. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+  </body>
+</html>
