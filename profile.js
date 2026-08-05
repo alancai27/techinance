@@ -38,9 +38,9 @@ const CYBER_UNITS = [
   { unit: 1, title: "The Cost of Cybercrime", episodeId: "cyber-u1", playable: true },
   {
     unit: 2,
-    title: "Passwords and Multi-Factor Authentication",
+    title: "Digital Footprint & Defense",
     episodeId: "cyber-u2",
-    playable: false,
+    playable: true,
   },
   { unit: 3, title: "How Networks Work", episodeId: "cyber-u3", playable: false },
   { unit: 4, title: "Social Engineering", episodeId: "cyber-u4", playable: false },
@@ -242,17 +242,34 @@ function readBadges(episode) {
  */
 async function loadEpisodeMeta() {
   try {
-    const module = /** @type {{ episode?: unknown }} */ (
-      await import("./content/cyber-unit1.js")
-    );
-    const episode = module.episode;
-    badgeOrder = readBadges(episode);
-    const max = maxEpisodeXp(episode);
-    if (max > 0) {
-      totalEpisodeXp = max;
+    const modules = await Promise.all([
+      import("./content/cyber-unit1.js"),
+      import("./content/cyber-unit2.js"),
+    ]);
+    badgeOrder = [];
+    let grandXp = 0;
+    let grandScenes = 0;
+
+    for (const mod of modules) {
+      const episode = mod.episode;
+      if (episode) {
+        const badges = readBadges(episode);
+        for (const b of badges) {
+          if (!badgeOrder.includes(b)) {
+            badgeOrder.push(b);
+          }
+        }
+        grandXp += maxEpisodeXp(episode);
+        if (isObject(episode) && isObject(episode.scenes)) {
+          grandScenes += Object.keys(episode.scenes).length;
+        }
+      }
     }
-    if (isObject(episode) && isObject(episode.scenes)) {
-      totalScenes = Object.keys(episode.scenes).length;
+    if (grandXp > 0) {
+      totalEpisodeXp = grandXp;
+    }
+    if (grandScenes > 0) {
+      totalScenes = grandScenes;
     }
   } catch {
     // Content not ready. The page still renders totals and raw badge ids.

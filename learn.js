@@ -154,14 +154,20 @@ function readBadges(episode) {
  */
 async function loadEpisodeMeta() {
   try {
-    const module = /** @type {{ episode?: unknown }} */ (
-      await import("./content/cyber-unit1.js")
-    );
-    const episode = module.episode;
-    readBadges(episode);
-    const max = maxEpisodeXp(episode);
-    if (max > 0) {
-      totalEpisodeXp = max;
+    const modules = await Promise.all([
+      import("./content/cyber-unit1.js"),
+      import("./content/cyber-unit2.js"),
+    ]);
+    let grandMax = 0;
+    for (const mod of modules) {
+      const episode = mod.episode;
+      if (episode) {
+        readBadges(episode);
+        grandMax += maxEpisodeXp(episode);
+      }
+    }
+    if (grandMax > 0) {
+      totalEpisodeXp = grandMax;
     }
   } catch {
     // Content not ready: the fallback total and raw badge ids are enough.
@@ -443,56 +449,60 @@ function renderBadges(badges) {
  * @returns {void}
  */
 function renderEpisode(user) {
-  const wrap = pick("[data-progress]");
-  const bar = pick("[data-progress-bar]");
-  const fill = pick("[data-progress-fill]");
-  const text = pick("[data-progress-text]");
-  const xpLabel = pick("[data-progress-xp]");
-  const cta = pick("[data-episode-cta]");
+  const episodes = document.querySelectorAll(".learn-episode[data-episode]");
+  episodes.forEach((card) => {
+    const episodeId = card.getAttribute("data-episode") || EPISODE_ID;
+    const wrap = card.querySelector("[data-progress]");
+    const bar = card.querySelector("[data-progress-bar]");
+    const fill = card.querySelector("[data-progress-fill]");
+    const text = card.querySelector("[data-progress-text]");
+    const xpLabel = card.querySelector("[data-progress-xp]");
+    const cta = card.querySelector("[data-episode-cta]");
 
-  if (!user) {
+    if (!user) {
+      if (wrap) {
+        wrap.hidden = true;
+      }
+      if (cta) {
+        cta.textContent = "Start episode";
+      }
+      return;
+    }
+
+    const episodeState = getProgress(user.id).episodes[episodeId];
+    const started = episodeState ? episodeState.started : false;
+    const completed = episodeState ? episodeState.completed : false;
+    const xp = episodeState ? episodeState.xp : 0;
+    const raw = totalEpisodeXp > 0 ? Math.round((xp / totalEpisodeXp) * 100) : 0;
+    const percent = completed ? 100 : Math.max(0, Math.min(MAX_INCOMPLETE_PERCENT, raw));
+
     if (wrap) {
-      wrap.hidden = true;
+      wrap.hidden = false;
+    }
+    if (bar) {
+      bar.setAttribute("aria-valuenow", String(percent));
+    }
+    if (fill) {
+      fill.style.width = `${percent}%`;
+    }
+    if (text) {
+      text.textContent = completed
+        ? "Completed"
+        : started
+          ? `In progress · ${percent}%`
+          : "Not started";
+    }
+    if (xpLabel) {
+      xpLabel.textContent = `${formatNumber(xp)} XP`;
     }
     if (cta) {
-      cta.textContent = "Start episode";
+      cta.textContent = completed
+        ? "Play again"
+        : started
+          ? "Resume episode"
+          : "Start episode";
     }
-    return;
-  }
-
-  const episodeState = getProgress(user.id).episodes[EPISODE_ID];
-  const started = episodeState ? episodeState.started : false;
-  const completed = episodeState ? episodeState.completed : false;
-  const xp = episodeState ? episodeState.xp : 0;
-  const raw = totalEpisodeXp > 0 ? Math.round((xp / totalEpisodeXp) * 100) : 0;
-  const percent = completed ? 100 : Math.max(0, Math.min(MAX_INCOMPLETE_PERCENT, raw));
-
-  if (wrap) {
-    wrap.hidden = false;
-  }
-  if (bar) {
-    bar.setAttribute("aria-valuenow", String(percent));
-  }
-  if (fill) {
-    fill.style.width = `${percent}%`;
-  }
-  if (text) {
-    text.textContent = completed
-      ? "Completed"
-      : started
-        ? `In progress · ${percent}%`
-        : "Not started";
-  }
-  if (xpLabel) {
-    xpLabel.textContent = `${formatNumber(xp)} XP`;
-  }
-  if (cta) {
-    cta.textContent = completed
-      ? "Play again"
-      : started
-        ? "Resume episode"
-        : "Start episode";
-  }
+  });
 }
 
 /**
