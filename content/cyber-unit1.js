@@ -137,7 +137,7 @@ export const episode = {
   subtitle:
     "Your first shift as a junior analyst in a Security Operations Centre: what cybercrime costs, how real breaches happened, and how to tell attack types apart.",
   role: "Junior Security Analyst",
-  estMinutes: 35,
+  estMinutes: 40,
   startScene: act1.entry,
   acts: [
     { id: "act1", title: "What Cybercrime Costs", entry: act1.entry },

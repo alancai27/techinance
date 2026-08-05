@@ -157,6 +157,7 @@ async function loadEpisodeMeta() {
     const modules = await Promise.all([
       import("./content/cyber-unit1.js"),
       import("./content/cyber-unit2.js"),
+      import("./content/cyber-unit4.js"),
     ]);
     let grandMax = 0;
     for (const mod of modules) {
@@ -452,12 +453,14 @@ function renderEpisode(user) {
   const episodes = document.querySelectorAll(".learn-episode[data-episode]");
   episodes.forEach((card) => {
     const episodeId = card.getAttribute("data-episode") || EPISODE_ID;
-    const wrap = card.querySelector("[data-progress]");
-    const bar = card.querySelector("[data-progress-bar]");
-    const fill = card.querySelector("[data-progress-fill]");
-    const text = card.querySelector("[data-progress-text]");
-    const xpLabel = card.querySelector("[data-progress-xp]");
-    const cta = card.querySelector("[data-episode-cta]");
+    // pick() narrows to HTMLElement, which `.hidden` and `.style` below need.
+    // Raw querySelector returns Element and fails the typecheck.
+    const wrap = pick("[data-progress]", card);
+    const bar = pick("[data-progress-bar]", card);
+    const fill = pick("[data-progress-fill]", card);
+    const text = pick("[data-progress-text]", card);
+    const xpLabel = pick("[data-progress-xp]", card);
+    const cta = pick("[data-episode-cta]", card);
 
     if (!user) {
       if (wrap) {

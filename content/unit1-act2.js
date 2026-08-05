@@ -14,6 +14,14 @@
  *   90% of companies have experienced a phishing attack ·
  *   20% increase in supply chain attacks between 2020 and 2021.
  *
+ * Four scenes here carry official Unit 1 quiz questions, worded and optioned
+ * exactly as content/sources/unit1-quiz-questions.md has them:
+ *   a2-supply-quiz · a2-colonial-quiz · a2-ransom-amount-quiz · a2-facebook-quiz.
+ * Their wrong answers quote figures from elsewhere in the course ($4.35 million
+ * average breach cost, $575 million Equifax settlement, 147 million Equifax
+ * records, 3 billion Yahoo accounts, 1.35 Tbps GitHub DDoS) so learners can tell
+ * the incidents apart. Those figures must stay exact too.
+ *
  * Scene ids are namespaced `a2-*`. The last scene hands off to `a3-start`.
  */
 
@@ -30,6 +38,10 @@ const SOURCES = {
   exchange: {
     label: "Microsoft Security Blog: HAFNIUM targeting Exchange Servers",
     url: "https://www.microsoft.com/en-us/security/blog/2021/03/02/hafnium-targeting-exchange-servers/",
+  },
+  colonial: {
+    label: "The attack on Colonial Pipeline: what we've learned (CISA)",
+    url: "https://www.cisa.gov/news-events/news/attack-colonial-pipeline-what-weve-learned-what-weve-done-over-past-two-years",
   },
   jbs: {
     label: "BBC News: JBS ransomware attack",
@@ -229,40 +241,39 @@ export const act2 = {
     "a2-supply-quiz": {
       id: "a2-supply-quiz",
       type: "quiz",
-      title: "Knowledge check: how the SolarWinds attack worked",
+      title: "Knowledge check: identifying a supply chain attack",
       speaker: "Dana Okoye",
       avatar: "radar",
       location: "Security Operations Centre",
       text: [
-        'Dana brings the SolarWinds file back up. "Before we go further, be clear about what made this attack different from an ordinary break-in."',
-        '"Supply chain attacks rose 20% between 2020 and 2021, so this is a method that\'s becoming more common."',
+        'Dana lines up four well-known incidents next to the SolarWinds file. "All four are real. Only one of them is a supply chain attack."',
+        '"Supply chain attacks rose 20% between 2020 and 2021, so learning to recognise the shape of one matters."',
       ],
-      question: "What makes SolarWinds Orion the textbook example of a supply chain attack?",
+      question: "Which of the following is an example of a supply chain attack?",
       options: [
         {
-          label: "Thousands of employees were tricked into giving away their passwords.",
+          label: "2016 Democratic National Committee email leak",
           correct: false,
           feedback:
-            "That describes phishing, which is a real problem but not this one. Nobody had to be fooled here. The malicious code arrived inside a legitimate software update that IT teams installed on purpose.",
+            "That one started with phishing. Staff were tricked into handing over their email passwords, and the stolen messages were published. Nobody's software supplier was touched, so the attackers only reached the one organisation they fooled.",
         },
         {
-          label:
-            "Attackers compromised a trusted third-party product, then rode it into every organisation that installed it.",
+          label: "SolarWinds Orion breach",
           correct: true,
           feedback:
-            "Correct. Orion is network monitoring software. Compromising the supplier once gave the attackers access to that supplier's customers: thousands of organisations, including US government agencies. Supply chain attacks rose 20% between 2020 and 2021 because one break-in produces many victims.",
+            "Correct. Orion is network monitoring software. The attackers compromised that trusted third-party product, then rode it into every organisation that installed it. The malicious code arrived inside a normal, signed update that IT teams applied on purpose, so nobody had to be fooled and security tools treated it as legitimate. No files were encrypted and no ransom was demanded: the attackers stayed quiet, taking sensitive communications and proprietary data from thousands of organisations, including US government agencies. That's the pattern: break in once at the supplier, reach all of the supplier's customers. Supply chain attacks rose 20% between 2020 and 2021 for exactly that reason.",
         },
         {
-          label: "The attackers encrypted the data and demanded a ransom.",
+          label: "GitHub DDoS attack",
           correct: false,
           feedback:
-            "There was no ransom. The attackers took sensitive communications and proprietary data and kept quiet access for months. Ransomware makes itself obvious. A supply chain intrusion is designed to stay hidden.",
+            "That was a denial-of-service attack. In 2018 GitHub was flooded with 1.35 terabits per second of traffic, the largest recorded at the time, until the site couldn't serve users. Nothing was stolen and no software was tampered with. The goal was to knock a service offline, not to hide inside a trusted product.",
         },
         {
-          label: "The company had no antivirus software installed.",
+          label: "WannaCry ransomware attack",
           correct: false,
           feedback:
-            "Antivirus wasn't the gap. The code was signed and delivered as a normal update, so security tools treated it as legitimate. The weakness was trust in the update, not missing software.",
+            "WannaCry encrypted victims' files and demanded payment to unlock them. It spread by exploiting a known flaw in unpatched Windows systems, so the failure was missing patches rather than a compromised supplier. Ransomware also announces itself immediately, while a supply chain intrusion is built to stay hidden.",
         },
       ],
       source: SOURCES.supplyChain,
@@ -511,10 +522,98 @@ export const act2 = {
       ],
       source: SOURCES.jbs,
       xp: 25,
+      next: "a2-colonial-quiz",
+    },
+
+    /* ---------------- 7. naming the Colonial Pipeline attack ---------------- */
+    "a2-colonial-quiz": {
+      id: "a2-colonial-quiz",
+      type: "quiz",
+      title: "Knowledge check: the 2021 fuel shortages",
+      speaker: "Ravi Mehta",
+      avatar: "shield-check",
+      location: "Security Operations Centre",
+      text: [
+        'Ravi pulls up four 2021 headlines. "You\'ve read all of these case files now. Only one of them ended with people queuing for petrol."',
+        '"Match the incident to what it actually did, not to how often you\'ve heard the name."',
+      ],
+      question: "Which high-profile 2021 attack led to fuel shortages on the U.S. East Coast?",
+      options: [
+        {
+          label: "SolarWinds breach",
+          correct: false,
+          feedback:
+            "The SolarWinds breach was discovered in late 2020 and it was a supply chain attack, not a shutdown. Compromised network monitoring software let attackers quietly take sensitive communications and proprietary data from thousands of organisations, including US government agencies. Nothing stopped running, so the public never felt it directly.",
+        },
+        {
+          label: "Microsoft Exchange Server attack",
+          correct: false,
+          feedback:
+            "The Exchange Server attack was early 2021, and it hit over 30,000 organisations globally through vulnerabilities in email server software. The attackers read communications and installed backdoors for future breaches. That's a mass intrusion into mailboxes, not an interruption to fuel supply.",
+        },
+        {
+          label: "Colonial Pipeline ransomware attack",
+          correct: true,
+          feedback:
+            "Correct. In May 2021 ransomware halted operations at the largest fuel pipeline in the US, and widespread fuel shortages and panic buying followed along the East Coast within days. That's what makes critical infrastructure such a valuable target: the disruption reaches the public almost immediately, which is pressure the attacker can charge for.",
+        },
+        {
+          label: "T-Mobile data breach",
+          correct: false,
+          feedback:
+            "The T-Mobile breach of August 2021 exposed the personal information of over 50 million customers, including names, social security numbers and driver's licence details. Nothing was encrypted and no service was shut down. The damage lands later, as identity theft and financial fraud, rather than as an outage anyone can see.",
+        },
+      ],
+      source: SOURCES.colonial,
+      xp: 25,
+      next: "a2-ransom-amount-quiz",
+    },
+
+    /* ---------------- 8. what Colonial paid ---------------- */
+    "a2-ransom-amount-quiz": {
+      id: "a2-ransom-amount-quiz",
+      type: "quiz",
+      title: "Knowledge check: the Colonial Pipeline ransom",
+      speaker: "Dana Okoye",
+      avatar: "radar",
+      location: "Security Operations Centre",
+      text: [
+        'Dana writes four figures on the whiteboard. "Every one of these is a real number from a real incident. Only one of them is what Colonial Pipeline handed over."',
+        '"Keeping these apart matters. A ransom, an average cost and a legal settlement are three different things."',
+      ],
+      question: "How much did Colonial Pipeline pay in ransom to regain control of its systems?",
+      options: [
+        {
+          label: "$4.35 million",
+          correct: false,
+          feedback:
+            "That's the average cost of a data breach for organisations in 2022, across every breach of every kind. It's an average, not a payment anyone made, and it covers investigation, recovery, legal work and lost business rather than money handed to an attacker. The two figures are close enough to confuse, so read the question carefully.",
+        },
+        {
+          label: "$4.4 million",
+          correct: true,
+          feedback:
+            "Correct. Colonial Pipeline paid $4.4 million to regain control of its systems. Note that this is only the ransom. It doesn't include the shutdown, the recovery work or the public disruption, so the true cost of the incident is far higher than the number the attackers named.",
+        },
+        {
+          label: "$11 million",
+          correct: false,
+          feedback:
+            "That's what JBS USA paid after ransomware disrupted its global food supply operations, also in 2021. Two ransomware attacks on critical infrastructure in the same year, two different payments. Energy and food are both essential services, which is why both companies were under so much pressure to pay.",
+        },
+        {
+          label: "$575 million",
+          correct: false,
+          feedback:
+            "That's the Equifax settlement, money paid to regulators and affected people after a breach, not to an attacker. It shows how the two kinds of cost separate: a ransom is what you pay the criminals, and a settlement is what you pay afterwards for failing to protect the data.",
+        },
+      ],
+      source: SOURCES.colonial,
+      xp: 25,
       next: "a2-dossier",
     },
 
-    /* ---------------- 7. key terms ---------------- */
+    /* ---------------- 9. key terms ---------------- */
     "a2-dossier": {
       id: "a2-dossier",
       type: "dossier",
@@ -571,7 +670,7 @@ export const act2 = {
       next: "a2-privacy",
     },
 
-    /* ---------------- 8. the human ledger ---------------- */
+    /* ---------------- 10. the human ledger ---------------- */
     "a2-privacy": {
       id: "a2-privacy",
       type: "narrative",
@@ -589,7 +688,7 @@ export const act2 = {
       next: "a2-reveal",
     },
 
-    /* ---------------- 9. the 533 million reveal ---------------- */
+    /* ---------------- 11. the 533 million reveal ---------------- */
     "a2-reveal": {
       id: "a2-reveal",
       type: "reveal",
@@ -613,7 +712,7 @@ export const act2 = {
       next: "a2-bulletin",
     },
 
-    /* ---------------- 10. what you do about leaked data ---------------- */
+    /* ---------------- 12. what you do about leaked data ---------------- */
     "a2-bulletin": {
       id: "a2-bulletin",
       type: "choice",
@@ -630,7 +729,7 @@ export const act2 = {
       options: [
         {
           label: "Force an immediate password reset for every employee, no explanation attached.",
-          next: "a2-pattern",
+          next: "a2-facebook-quiz",
           xp: 8,
           tone: "bad",
           feedback:
@@ -639,7 +738,7 @@ export const act2 = {
         {
           label:
             "Send a specific bulletin: here's the exact message, here's why the sender knows your number, here's where to report it.",
-          next: "a2-pattern",
+          next: "a2-facebook-quiz",
           xp: 25,
           tone: "good",
           feedback:
@@ -647,7 +746,7 @@ export const act2 = {
         },
         {
           label: "Say nothing yet. Quietly block the sender and avoid alarming anyone.",
-          next: "a2-pattern",
+          next: "a2-facebook-quiz",
           xp: 8,
           tone: "neutral",
           feedback:
@@ -657,7 +756,51 @@ export const act2 = {
       source: SOURCES.facebook,
     },
 
-    /* ---------------- 11. name the playbook ---------------- */
+    /* ---------------- 13. whose leak was it ---------------- */
+    "a2-facebook-quiz": {
+      id: "a2-facebook-quiz",
+      type: "quiz",
+      title: "Knowledge check: the 533 million user leak",
+      speaker: "Dana Okoye",
+      avatar: "radar",
+      location: "Security Operations Centre",
+      text: [
+        'Dana points at the phishing bulletin. "Those personal details came from a leak of 533 million users in 2021. You already know the number."',
+        '"Now name the company it belonged to. Four large breaches, four very different scales."',
+      ],
+      question: "Which breach exposed the personal data of 533 million users in 2021?",
+      options: [
+        {
+          label: "Equifax breach",
+          correct: false,
+          feedback:
+            "The Equifax breach exposed the data of about 147 million people, and it was credit data held by a credit reporting agency rather than social media contact details. Serious, but a different company and a different scale.",
+        },
+        {
+          label: "Facebook data leak",
+          correct: true,
+          feedback:
+            "Correct. In April 2021 the personal information of over 533 million Facebook users worldwide was exposed, including phone numbers and email addresses. Facebook initially downplayed it. The data has been reused in phishing attacks, scams and other cybercrime ever since, which is why it's still turning up in mailboxes here.",
+        },
+        {
+          label: "T-Mobile breach",
+          correct: false,
+          feedback:
+            "The T-Mobile breach of August 2021 affected over 50 million customers, roughly a tenth of the Facebook figure. What it exposed was more dangerous per person though: names, social security numbers and driver's licence details. Scale and severity aren't the same measure.",
+        },
+        {
+          label: "Yahoo breach",
+          correct: false,
+          feedback:
+            "The Yahoo breaches were larger still, around 3 billion accounts, but they happened in 2013 and 2014 and weren't disclosed until years later. The date in the question rules this one out.",
+        },
+      ],
+      source: SOURCES.facebook,
+      xp: 25,
+      next: "a2-pattern",
+    },
+
+    /* ---------------- 14. name the playbook ---------------- */
     "a2-pattern": {
       id: "a2-pattern",
       type: "quiz",
@@ -703,7 +846,7 @@ export const act2 = {
       next: "a2-ransom",
     },
 
-    /* ---------------- 12. the ransom ---------------- */
+    /* ---------------- 15. the ransom ---------------- */
     "a2-ransom": {
       id: "a2-ransom",
       type: "choice",
@@ -749,7 +892,7 @@ export const act2 = {
       badge: "cool-head",
     },
 
-    /* ---------------- 13. handoff to act 3 ---------------- */
+    /* ---------------- 16. handoff to act 3 ---------------- */
     "a2-handoff": {
       id: "a2-handoff",
       type: "narrative",

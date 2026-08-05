@@ -9,22 +9,13 @@
  * anyone a message was sent when nothing left the browser.
  */
 
-import { Building2, PenLine, Users, createIcons } from "lucide";
+// Marks the file as a module. It's loaded with <script type="module">, but with
+// no import or export of its own TypeScript treats it as a global script and its
+// top-level consts collide with contact.js.
+export {};
 
 const CONTACT_EMAIL = "thetechinance@gmail.com";
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-
-createIcons({
-  attrs: {
-    "aria-hidden": "true",
-    "stroke-width": 1.8,
-  },
-  icons: {
-    Building2,
-    PenLine,
-    Users,
-  },
-});
 
 /**
  * @param {string} selector

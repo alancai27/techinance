@@ -114,25 +114,25 @@ export const act3 = {
           label: "Using strong passwords",
           correct: false,
           feedback:
-            "Incorrect. Using strong passwords (15+ characters with uppercase, numbers, and symbols) IS an essential protection strategy.",
+            "Using strong passwords (15+ characters with uppercase, numbers, and symbols) IS an essential protection strategy.",
         },
         {
           label: "Using the same password for all the accounts",
           correct: true,
           feedback:
-            "Correct! Using the same password across multiple accounts is NOT a protection strategy—it is a critical security vulnerability. If one account is breached, all other accounts become compromised.",
+            "Correct. Using the same password across multiple accounts isn't a protection strategy. It's a critical security vulnerability. If one account is breached, all other accounts become compromised.",
         },
         {
           label: "Using different passwords",
           correct: false,
           feedback:
-            "Incorrect. Using unique, different passwords for each account IS a key protection strategy.",
+            "Using unique, different passwords for each account IS a key protection strategy.",
         },
         {
           label: "Using two-factor authentication",
           correct: false,
           feedback:
-            "Incorrect. Enabling two-factor authentication (2FA) IS a recommended defense strategy requiring two forms of identification.",
+            "Enabling two-factor authentication (2FA) IS a recommended defense strategy requiring two forms of identification.",
         },
       ],
       source: SOURCES.wifiStats,
@@ -159,25 +159,25 @@ export const act3 = {
           label: "Turning off private/incognito browsing mode",
           correct: false,
           feedback:
-            "Incorrect. Disabling private browsing increases tracked data rather than minimizing it.",
+            "Disabling private browsing increases tracked data rather than minimizing it.",
         },
         {
           label: "Connecting to public Wi-Fi networks whenever it is possible",
           correct: false,
           feedback:
-            "Incorrect. Connecting to unsecured public Wi-Fi increases security risk (1 in 4 users experience issues on public networks).",
+            "Connecting to unsecured public Wi-Fi increases security risk (1 in 4 users experience issues on public networks).",
         },
         {
           label: "Sharing your location in every app",
           correct: false,
           feedback:
-            "Incorrect. Broadcasting location data expands your passive digital footprint and privacy exposure.",
+            "Broadcasting location data expands your passive digital footprint and privacy exposure.",
         },
         {
           label: "Deleting old accounts",
           correct: true,
           feedback:
-            "Correct! Deleting old, unused accounts removes stored photos, messages, and personal information, directly minimizing your digital footprint.",
+            "Correct. Deleting old, unused accounts removes stored photos, messages, and personal information, directly minimizing your digital footprint.",
         },
       ],
       source: SOURCES.wifiStats,
@@ -207,7 +207,7 @@ export const act3 = {
           xp: 5,
           tone: "bad",
           feedback:
-            "Incorrect. Passwords must never contain personal details like birthdays, addresses, or names, and 8 characters is far too short to resist automated cracking.",
+            "Passwords must never contain personal details like birthdays, addresses, or names, and 8 characters is far too short to resist automated cracking.",
         },
         {
           label:
@@ -216,7 +216,7 @@ export const act3 = {
           xp: 25,
           tone: "good",
           feedback:
-            "Correct! Strong passwords must be at least 15 characters long, avoid personal details, be unique across accounts, and be paired with Two-Factor Authentication (2FA) for multi-layered defense.",
+            "Correct. Strong passwords must be at least 15 characters long, avoid personal details, be unique across accounts, and be paired with Two-Factor Authentication (2FA) for multi-layered defense.",
         },
         {
           label:
@@ -225,7 +225,7 @@ export const act3 = {
           xp: 5,
           tone: "bad",
           feedback:
-            "Incorrect. Never reuse the same password across accounts. If one service suffers a data breach, attackers attempt credential stuffing against all your other accounts.",
+            "Never reuse the same password across accounts. If one service suffers a data breach, attackers attempt credential stuffing against all your other accounts.",
         },
       ],
       source: SOURCES.wifiStats,
@@ -441,26 +441,26 @@ export const act3 = {
           label: "Reuse one 8-character password and log into public Wi-Fi everywhere.",
           correct: false,
           feedback:
-            "Incorrect. Reusing passwords and connecting to unsecured public Wi-Fi creates severe security risks.",
+            "Reusing passwords and connecting to unsecured public Wi-Fi creates severe security risks.",
         },
         {
           label:
             "Use strong 15+ char unique passwords, enable 2FA, avoid unsecured public Wi-Fi, delete old accounts, and block third-party cookies.",
           correct: true,
           feedback:
-            "Correct! This implements all 7 strategies for protecting personal information and 5 strategies for minimizing digital footprints.",
+            "Correct. This implements all 7 strategies for protecting personal information and 5 strategies for minimizing digital footprints.",
         },
         {
           label: "Disable two-factor authentication and share location on all apps.",
           correct: false,
           feedback:
-            "Incorrect. Disabling 2FA and sharing location weakens security and expands passive tracking.",
+            "Disabling 2FA and sharing location weakens security and expands passive tracking.",
         },
         {
           label: "Never update operating system software or apps.",
           correct: false,
           feedback:
-            "Incorrect. Skipping updates leaves known software vulnerabilities unpatched.",
+            "Skipping updates leaves known software vulnerabilities unpatched.",
         },
       ],
       source: SOURCES.wifiStats,
@@ -485,7 +485,7 @@ export const act3 = {
         "Dana: \"You can now defend yourself and your organization against digital tracking and credential compromise.\"",
       ],
       teaser:
-        "Unit 3: Threats & Network Defense. In Unit 1 you diagnosed cybercrime. In Unit 2 you mastered personal defense and digital footprints. In Unit 3, you will deploy enterprise network security controls, firewalls, and encryption to defend entire infrastructures against advanced adversaries.",
+        "Unit 3: Threats and Network Defense. In Unit 1 you diagnosed cybercrime. In Unit 2 you mastered personal defense and digital footprints. In Unit 3, you will deploy enterprise network security controls, firewalls, and encryption to defend entire infrastructures against advanced adversaries.",
       xp: 60,
       badge: "unit2-certified",
       next: null,

@@ -3,9 +3,26 @@
 Interactive, role-play course episodes for the Techinance site. Learners sign in,
 step into a role, and play through a unit instead of reading slides.
 
-Unit 1 of the Cybersecurity course is live: **"The Cost of Cybercrime"**. It's 39
-scenes across three acts, roughly 35 minutes, worth 728 XP and 10 badges. The learner
-plays a junior analyst in a Security Operations Centre.
+Two Cybersecurity units are live. The learner plays a junior analyst in a Security
+Operations Centre.
+
+The Cybersecurity course has four units. Three are written.
+
+| Unit | Title | Scenes | Badges | Approx |
+|---|---|---|---|---|
+| 1 | The Cost of Cybercrime | 45 | 10 | 40 min |
+| 2 | Digital Footprint and Defense | 28 | 9 | 30 min |
+| 3 | Threats and Network Defense | not written | | |
+| 4 | Programming for Cybersecurity | 32 | 9 | 30 min |
+
+The unit list lives in two places and both must agree: the episode cards in
+`learn.html` and `CYBER_UNITS` in `profile.js`. A new episode also has to be
+registered in three consumers: `story.js` (the EPISODES map), `learn.js` and
+`profile.js` (both `loadEpisodeMeta`).
+
+Unit 4 has no official quiz checked in yet. When one exists, save it as
+`content/sources/unit4-quiz-questions.md` and bring the episode to 10/10 the way
+units 1 and 2 are.
 
 ## Pages
 
@@ -50,11 +67,26 @@ learn.js         Drives the hub
 story.js         Reads ?episode=, requires a user, mounts the engine
 learn.css        All new styling (styles.css is untouched)
 content/
-  cyber-unit1.js   Merges the three acts, registers badges, validates ids
+  cyber-unit1.js   Merges unit 1's acts, registers badges, validates ids
   unit1-act1.js    Act 1, What Cybercrime Costs       (scene ids a1-*)
   unit1-act2.js    Act 2, How Recent Breaches Happened (a2-*)
   unit1-act3.js    Act 3, Types of Cybercrime          (a3-*)
+  cyber-unit2.js   Merges unit 2's acts
+  unit2-act1.js    Act 1, Digital Footprint and Reputation  (u2a1-*)
+  unit2-act2.js    Act 2, Active and Passive Footprints     (u2a2-*)
+  unit2-act3.js    Act 3, Strategies for Protection         (u2a3-*)
+  cyber-unit4.js   Merges unit 4's acts
+  unit4-act1.js    Act 1, Why Code Matters in Security      (u4a1-*)
+  unit4-act2.js    Act 2, Reading Python and JavaScript     (u4a2-*)
+  unit4-act3.js    Act 3, Building a Security Tool          (u4a3-*)
+  sources/         Course material and the official quizzes each unit is built from
 ```
+
+Content files are flat in `content/`, named `<course>-unit<N>.js` and
+`unit<N>-act<n>.js`. Don't nest a unit in its own directory: the merger and the
+three consumers (`learn.js`, `story.js`, `profile.js`) all resolve
+`./content/<course>-unit<N>.js`, so a nested layout needs a re-export shim that
+earns nothing.
 
 ## Scene types
 
@@ -80,8 +112,23 @@ Rules that keep episodes teachable:
   clicking them teaches that weak evidence isn't evidence.
 - No dead ends: every `choice` option leads somewhere.
 - Icons are kebab-case names resolved through `icon.js`, never emoji.
+- Every question on the unit's official quiz (`content/sources/unit<N>-quiz-questions.md`)
+  must appear in the episode with the same wording, the same options in the same
+  order, and the same correct answer. Distractors are usually real figures from the
+  course, so their feedback should name what each one actually is.
+- Quiz `question` text and option `label`s are quoted from the official form, so they
+  are exempt from house style. Leave `NOT` capitalised and `it is` uncontracted if
+  that is how the form writes it. Contractions and plain phrasing apply to narration
+  and feedback, which we author. A style pass that rewrites a quoted question silently
+  breaks the match with the form.
 - Plain, factual prose. No scene-setting, metaphors, or dramatic beats. State the
   fact, then why it matters. Titles say what a scene covers rather than teasing it.
+- Right answers open with `Correct.` Wrong answers go straight into the
+  explanation: the engine already marks them with a cross, so an `Incorrect.`
+  prefix just delays the teaching. No exclamation marks, no shouty capitals.
+- Write `and`, not `&`, in any title that reaches the page.
+- Watch apostrophes in single-quoted string literals. Contractions need
+  escaping (`let\'s`) or the literal terminates early.
 
 ## Validating content
 

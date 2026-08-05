@@ -112,18 +112,13 @@ export const act1 = {
         'Ravi opens a slide with the figure hidden. "Have a guess first. Most people guess low."',
         '"The 2023 Cybersecurity Threat Report projects what cybercrime will cost the global economy by 2025. That\'s the total for every attack worldwide, per year."',
       ],
-      question: "What's the projected annual global cost of cybercrime by 2025?",
-      options: [
-        "$4.5 billion a year",
-        "$85 billion a year",
-        "$1.2 trillion a year",
-        "$10.5 trillion a year",
-      ],
-      answerIndex: 3,
+      question: "What is the projected global cost of cybercrime by 2025?",
+      options: ["$3 trillion", "$4.35 trillion", "$10.5 trillion", "$265 trillion"],
+      answerIndex: 2,
       value: "$10.5 trillion",
       caption: "Projected annual global cost of cybercrime by 2025.",
       explain:
-        "In 2015 the same cost was $3 trillion. That's more than triple in a decade. The main reason is that far more of what we own, owe and say is now stored on a network, so there's far more for attackers to reach.",
+        "The other figures are real numbers from this course, measuring different things. $3 trillion is what cybercrime cost the world in 2015, so it's the starting point rather than the projection: the cost has more than tripled in a decade. $4.35 trillion borrows its digits from $4.35 million, which is what a single data breach costs one organisation on average. That's a per-incident cost, not a global total, and the two differ by a factor of a million. The reason the world figure keeps climbing is that far more of what we own, owe and say is now stored on a network, so there's far more for attackers to reach.",
       source: SOURCES.threatReport,
       xp: 30,
       badge: "number-cruncher",
@@ -193,10 +188,53 @@ export const act1 = {
       ],
       source: SOURCES.ransomware,
       xp: 25,
+      next: "a1-ransomware-quiz",
+    },
+
+    /* ---------------- 5. the 105% quiz ---------------- */
+    "a1-ransomware-quiz": {
+      id: "a1-ransomware-quiz",
+      type: "quiz",
+      title: "Knowledge check: the 105% rise",
+      speaker: "Ravi Mehta",
+      avatar: "shield-check",
+      location: "Analyst station 7",
+      text: [
+        'Ravi reads the trend output over your shoulder. "You pulled that one yourself. Tell me what it says."',
+      ],
+      question: "Which type of cyberattack increased by 105% since 2020?",
+      options: [
+        {
+          label: "Phishing attacks",
+          correct: false,
+          feedback:
+            "Phishing has a big number attached to it, but it's a different measurement: the share of data breaches it's linked to, not a rate of growth. Watch what a statistic is counting before you match it to a figure.",
+        },
+        {
+          label: "Ransomware attacks",
+          correct: true,
+          feedback:
+            "Correct. Ransomware attacks have increased by 105% since 2020. Ransomware encrypts a victim's data and demands payment to release it. ORACLE flagged the rise as steady, not a one-off spike, which is why it changes how the SOC plans its year.",
+        },
+        {
+          label: "Identity Theft",
+          correct: false,
+          feedback:
+            "Identity theft is the fraudulent use of someone else's personal information, usually for financial gain. It's normally what an attacker does with stolen data afterwards, so it isn't the attack method the trend feed tracks.",
+        },
+        {
+          label: "DDoS attacks",
+          correct: false,
+          feedback:
+            "A DDoS attack floods a service with traffic until it stops responding. It disrupts, but it doesn't encrypt files or demand a payment, and it isn't the trend ORACLE just printed.",
+        },
+      ],
+      source: SOURCES.ransomware,
+      xp: 25,
       next: "a1-budget",
     },
 
-    /* ---------------- 5. the tempting wrong answer ---------------- */
+    /* ---------------- 6. the tempting wrong answer ---------------- */
     "a1-budget": {
       id: "a1-budget",
       type: "choice",
@@ -212,7 +250,7 @@ export const act1 = {
       options: [
         {
           label: "All of it on the strongest firewalls and intrusion detection money can buy.",
-          next: "a1-dossier",
+          next: "a1-breachcost-quiz",
           xp: 5,
           tone: "bad",
           feedback:
@@ -221,7 +259,7 @@ export const act1 = {
         {
           label:
             "Split it: technical controls, plus awareness training for everyone who touches a keyboard.",
-          next: "a1-dossier",
+          next: "a1-breachcost-quiz",
           xp: 20,
           tone: "good",
           feedback:
@@ -229,7 +267,7 @@ export const act1 = {
         },
         {
           label: "Buy a large cyber-insurance policy and accept the risk.",
-          next: "a1-dossier",
+          next: "a1-breachcost-quiz",
           xp: 5,
           tone: "bad",
           feedback:
@@ -239,7 +277,50 @@ export const act1 = {
       source: SOURCES.ibm,
     },
 
-    /* ---------------- 6. key terms ---------------- */
+    /* ---------------- 7. the breach cost quiz ---------------- */
+    "a1-breachcost-quiz": {
+      id: "a1-breachcost-quiz",
+      type: "quiz",
+      title: "Knowledge check: what one breach costs",
+      speaker: "Ravi Mehta",
+      avatar: "shield-check",
+      location: "Security Operations Centre",
+      text: [
+        '"Before you write that up, check you kept the figure straight," Ravi says. "Half of security work is arguing about money, and the wrong number loses the argument."',
+      ],
+      question: "What was the average cost of a data breach for organizations in 2022?",
+      options: [
+        {
+          label: "$4.4 million",
+          correct: false,
+          feedback:
+            "That's the ransom Colonial Pipeline paid in 2021 to get its own systems back, which you'll work through in act 2. It's one payment by one company in one incident, not an average across organisations, and the two figures sit close enough together that people mix them up. Check which one a source is describing before you quote it.",
+        },
+        {
+          label: "$4.35 million",
+          correct: true,
+          feedback:
+            "Correct. IBM put the average cost of a data breach at $4.35 million in 2022. That's the direct cost only, so it leaves out the lost reputation and the legal action that follow.",
+        },
+        {
+          label: "$10.5 trillion",
+          correct: false,
+          feedback:
+            "That's the projected cost of cybercrime to the whole global economy by 2025, every attack everywhere added together for a year. No single organisation's breach costs the size of the world total. Global figures run in trillions, one breach runs in millions.",
+        },
+        {
+          label: "$3 trillion",
+          correct: false,
+          feedback:
+            "That's what cybercrime cost the global economy in 2015, so it's a worldwide annual total from a different year rather than one organisation's loss. Read both the unit and the year on a statistic before you use it.",
+        },
+      ],
+      source: SOURCES.ibm,
+      xp: 25,
+      next: "a1-dossier",
+    },
+
+    /* ---------------- 8. key terms ---------------- */
     "a1-dossier": {
       id: "a1-dossier",
       type: "dossier",
@@ -306,7 +387,7 @@ export const act1 = {
       next: "a1-phish-quiz",
     },
 
-    /* ---------------- 7. the 90% quiz ---------------- */
+    /* ---------------- 9. the 90% quiz ---------------- */
     "a1-phish-quiz": {
       id: "a1-phish-quiz",
       type: "quiz",
@@ -317,31 +398,31 @@ export const act1 = {
       text: [
         '"One number worth remembering," Ravi says, "because it decides how we spend our time."',
       ],
-      question: "What share of data breaches are related to phishing attacks?",
+      question: "What percentage of data breaches are linked to phishing attacks?",
       options: [
         {
-          label: "About 25%",
+          label: "50%",
           correct: false,
           feedback:
-            "Too low. If phishing caused a quarter of breaches, you could treat it as one risk among many. The real figure is much higher.",
+            "Half would mean the inbox is one route in among several, and that splitting your attention evenly between email and everything else is reasonable. The real share is higher, so email deserves more than half your attention, not half.",
         },
         {
-          label: "About 50%",
+          label: "75%",
           correct: false,
           feedback:
-            "Still too low. The real figure means the inbox isn't just one way into an organisation. It's by far the most common one.",
+            "Closer, but it still understates it. Three quarters leaves a quarter of breaches coming from somewhere else, which makes the technical routes in look far more important than they are. The gap between three in four and the real figure is what decides where the training budget goes.",
         },
         {
-          label: "About 90%",
+          label: "90%",
           correct: true,
           feedback:
-            "Correct. 90% of all data breaches are related to phishing attacks: hackers tricking people into leaking sensitive information. That's why your first task today is an email, not a firewall.",
+            "Correct. 90% of data breaches are linked to phishing attacks: attackers tricking people into handing over sensitive information. That's why your first task today is an email, not a firewall.",
         },
         {
-          label: "About 100%",
+          label: "20%",
           correct: false,
           feedback:
-            "Close to the real figure, but too high. Breaches also come from unpatched software, stolen hardware and insiders. The accurate number is 90%, and precision matters when you're asking for budget.",
+            "One in five would put phishing behind unpatched software and stolen hardware as a cause of breaches, and you'd spend your budget on equipment. It's the other way round: phishing leads by a long way, and the technical causes trail it.",
         },
       ],
       source: SOURCES.phishing,
@@ -349,7 +430,7 @@ export const act1 = {
       next: "a1-ticket",
     },
 
-    /* ---------------- 8. the ticket ---------------- */
+    /* ---------------- 10. the ticket ---------------- */
     "a1-ticket": {
       id: "a1-ticket",
       type: "narrative",
@@ -364,7 +445,7 @@ export const act1 = {
       next: "a1-inspect",
     },
 
-    /* ---------------- 9. inspect the phish ---------------- */
+    /* ---------------- 11. inspect the phish ---------------- */
     "a1-inspect": {
       id: "a1-inspect",
       type: "inspect",
@@ -486,7 +567,7 @@ export const act1 = {
       next: "a1-aftermath",
     },
 
-    /* ---------------- 10. the human cost ---------------- */
+    /* ---------------- 12. the human cost ---------------- */
     "a1-aftermath": {
       id: "a1-aftermath",
       type: "choice",
@@ -530,7 +611,7 @@ export const act1 = {
       source: SOURCES.identity,
     },
 
-    /* ---------------- 11. the career hook ---------------- */
+    /* ---------------- 13. the career hook ---------------- */
     "a1-career": {
       id: "a1-career",
       type: "quiz",
@@ -574,7 +655,7 @@ export const act1 = {
       next: "a1-alert",
     },
 
-    /* ---------------- 12. handoff to act 2 ---------------- */
+    /* ---------------- 14. handoff to act 2 ---------------- */
     "a1-alert": {
       id: "a1-alert",
       type: "narrative",

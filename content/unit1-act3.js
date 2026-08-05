@@ -175,10 +175,55 @@ export const act3 = {
       ],
       source: SOURCES.anonymous,
       xp: 25,
+      next: "a3-ransomware-def",
+    },
+
+    /* ---------------- 3. naming the category ---------------- */
+    "a3-ransomware-def": {
+      id: "a3-ransomware-def",
+      type: "quiz",
+      title: "Naming the category",
+      speaker: "Dana Okoye",
+      avatar: "radar",
+      location: "Analyst station 7",
+      text: [
+        "Dana closes the taxonomy. \"Five categories, five definitions. If you can't tell them apart from the description alone, you can't triage an incident.\"",
+        "\"Start with the one that's grown fastest. Ransomware attacks are up 105% since 2020, so you'll meet this one.\"",
+      ],
+      question:
+        "What type of cyberattack involves encrypting a victim's data and demanding payment for its release?",
+      options: [
+        {
+          label: "Ransomware",
+          correct: true,
+          feedback:
+            "Correct. Ransomware locks the victim's data or systems and demands money to unlock them, usually in cryptocurrency because that's hard to trace. Colonial Pipeline paid $4.4 million in 2021 to get its systems back. That's what separates it from denial of service, which floods a system until it stops responding but never holds anything for payment.",
+        },
+        {
+          label: "Phishing",
+          correct: false,
+          feedback:
+            "Phishing is criminals posing as a trusted organisation or person to trick someone into handing over passwords, social security numbers or bank details. The target is a person, not the data, and nothing gets encrypted. Phishing often comes first though, because a stolen password is one way attackers get in to deploy ransomware later.",
+        },
+        {
+          label: "Hacking",
+          correct: false,
+          feedback:
+            "Hacking is unauthorised access to computers, networks or systems, usually to steal customer data, trade secrets or financial records. The data is copied out and the victim keeps their own copy, so there's nothing to buy back. Ransomware is the opposite: the data stays put, and the victim is the one locked out of it.",
+        },
+        {
+          label: "Identity Theft",
+          correct: false,
+          feedback:
+            "Identity theft is reusing someone's stolen personal details, like a social security number or a driver's licence, to commit fraud or impersonation. It's what happens to data after a breach, and the victim's own files are left untouched. No payment is demanded, because the criminal already has what they wanted.",
+        },
+      ],
+      source: SOURCES.colonial,
+      xp: 25,
       next: "a3-equifax",
     },
 
-    /* ---------------- 3. identity theft ---------------- */
+    /* ---------------- 4. identity theft ---------------- */
     "a3-equifax": {
       id: "a3-equifax",
       type: "quiz",
@@ -223,7 +268,7 @@ export const act3 = {
       next: "a3-dossier",
     },
 
-    /* ---------------- 4. key terms ---------------- */
+    /* ---------------- 5. key terms ---------------- */
     "a3-dossier": {
       id: "a3-dossier",
       type: "dossier",
@@ -275,7 +320,7 @@ export const act3 = {
       next: "a3-wannacry",
     },
 
-    /* ---------------- 5. ransomware and the money trail ---------------- */
+    /* ---------------- 6. ransomware and the money trail ---------------- */
     "a3-wannacry": {
       id: "a3-wannacry",
       type: "narrative",
@@ -293,7 +338,7 @@ export const act3 = {
       next: "a3-sort",
     },
 
-    /* ---------------- 6. sort the catalogue ---------------- */
+    /* ---------------- 7. sort the catalogue ---------------- */
     "a3-sort": {
       id: "a3-sort",
       type: "sort",
@@ -397,7 +442,7 @@ export const act3 = {
       next: "a3-logs",
     },
 
-    /* ---------------- 7. the live attack ---------------- */
+    /* ---------------- 8. the live attack ---------------- */
     "a3-logs": {
       id: "a3-logs",
       type: "inspect",
@@ -541,7 +586,7 @@ export const act3 = {
       next: "a3-dosquiz",
     },
 
-    /* ---------------- 8. DoS vs DDoS ---------------- */
+    /* ---------------- 9. DoS vs DDoS ---------------- */
     "a3-dosquiz": {
       id: "a3-dosquiz",
       type: "quiz",
@@ -586,7 +631,7 @@ export const act3 = {
       next: "a3-github",
     },
 
-    /* ---------------- 9. the biggest one ever ---------------- */
+    /* ---------------- 10. the biggest one ever ---------------- */
     "a3-github": {
       id: "a3-github",
       type: "reveal",
@@ -598,24 +643,24 @@ export const act3 = {
         "While the mitigation starts up, Dana puts a second graph next to yours. \"Here's the scale for comparison.\"",
         "\"In 2018, GitHub, which hosts a large share of the world's software, was hit by the biggest DDoS attack recorded so far. Estimate the peak traffic.\"",
       ],
-      question: "How much traffic hit GitHub at the peak of the 2018 DDoS attack?",
+      question: "What was the largest recorded DDoS attack (in traffic volume) as of 2018?",
       options: [
-        "13.5 megabits per second",
-        "135 megabits per second",
-        "1.35 gigabits per second",
-        "1.35 terabits per second",
+        "1.35 terabits per second (Tbps)",
+        "1.0 terabits per second (Tbps)",
+        "500 gigabits per second (Gbps)",
+        "2.0 terabits per second (Tbps)",
       ],
-      answerIndex: 3,
+      answerIndex: 0,
       value: "1.35 Tbps",
       caption: "Peak traffic in the 2018 GitHub DDoS attack, the biggest on record.",
       explain:
-        "1.35 terabits per second, aimed at one platform, from a very large number of sources at once. GitHub was offline for several minutes. Dana: \"Several minutes is what good mitigation gets you. It doesn't stop the attack. It shortens the outage.\"",
+        "1.35 terabits per second, aimed at one platform, from a very large number of sources at once. Read the unit as carefully as the number: a terabit is 1,000 gigabits, so 500 Gbps is only about a third of the real figure. GitHub was offline for several minutes. Dana: \"Several minutes is what good mitigation gets you. It doesn't stop the attack. It shortens the outage.\"",
       source: SOURCES.github,
       xp: 35,
       next: "a3-response",
     },
 
-    /* ---------------- 10. the decision ---------------- */
+    /* ---------------- 11. the decision ---------------- */
     "a3-response": {
       id: "a3-response",
       type: "choice",
@@ -658,7 +703,7 @@ export const act3 = {
       ],
     },
 
-    /* ---------------- 11. consequence ---------------- */
+    /* ---------------- 12. consequence ---------------- */
     "a3-fallout": {
       id: "a3-fallout",
       type: "narrative",
@@ -675,7 +720,7 @@ export const act3 = {
       next: "a3-lockdown",
     },
 
-    /* ---------------- 12. the real move ---------------- */
+    /* ---------------- 13. the real move ---------------- */
     "a3-lockdown": {
       id: "a3-lockdown",
       type: "choice",
@@ -719,7 +764,7 @@ export const act3 = {
       badge: "nightjar-hunter",
     },
 
-    /* ---------------- 13. certification ---------------- */
+    /* ---------------- 14. certification ---------------- */
     "a3-cert": {
       id: "a3-cert",
       type: "quiz",
@@ -764,7 +809,7 @@ export const act3 = {
       next: "a3-end",
     },
 
-    /* ---------------- 14. ending ---------------- */
+    /* ---------------- 15. ending ---------------- */
     "a3-end": {
       id: "a3-end",
       type: "ending",
@@ -780,7 +825,7 @@ export const act3 = {
         "Dana: \"All of that is diagnosis. You can describe how an organisation gets attacked. Unit 2 is about preventing it.\"",
       ],
       teaser:
-        "Unit 2: Defence. Unit 1 covered how attacks work. Unit 2 covers how to stop them: strong passwords, multi-factor authentication, encryption, and using the internet without giving away access.",
+        "Unit 2: Digital Footprint and Defense. Unit 1 covered how attacks work and what they cost. Unit 2 covers the trail you leave online, what cookies and public Wi-Fi give away, and the strategies that shrink your digital footprint.",
       xp: 60,
       badge: "unit1-certified",
       next: null,

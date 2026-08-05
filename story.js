@@ -10,6 +10,7 @@
 import { getUser, initAuth, onAuthChange } from "./auth.js";
 import { episode as cyberUnit1 } from "./content/cyber-unit1.js";
 import { episode as cyberUnit2 } from "./content/cyber-unit2.js";
+import { episode as cyberUnit4 } from "./content/cyber-unit4.js";
 import { mountStory } from "./story-engine.js";
 
 /** @typedef {import("./story-engine.js").Episode} Episode */
@@ -21,6 +22,7 @@ const LEARN_URL = "learn.html";
 const EPISODES = {
   "cyber-u1": /** @type {Episode} */ (/** @type {unknown} */ (cyberUnit1)),
   "cyber-u2": /** @type {Episode} */ (/** @type {unknown} */ (cyberUnit2)),
+  "cyber-u4": /** @type {Episode} */ (/** @type {unknown} */ (cyberUnit4)),
 };
 
 /**

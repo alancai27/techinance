@@ -21,8 +21,6 @@ import { getProgress, resetEpisode } from "./progress.js";
 /** @typedef {{ id: string, name: string, description: string, icon: string }} BadgeMeta */
 /** @typedef {{ unit: number, title: string, episodeId: string, playable: boolean }} UnitMeta */
 
-const EPISODE_ID = "cyber-u1";
-
 /** Icon used when a badge names no icon of its own. */
 const DEFAULT_BADGE_ICON = "award";
 
@@ -32,21 +30,35 @@ const FALLBACK_TOTAL_XP = 900;
 /** An unfinished episode never shows a full bar, however much XP is banked. */
 const MAX_INCOMPLETE_PERCENT = 96;
 
-/** The six Cybersecurity units. Only the first one has been written so far. */
-/** @type {UnitMeta[]} */
+/**
+ * The four Cybersecurity units. Units 1, 2 and 4 are written; unit 3 is not.
+ * `playable` drives the unit counter, the reset scope and the locked styling.
+ *
+ * @type {UnitMeta[]}
+ */
 const CYBER_UNITS = [
   { unit: 1, title: "The Cost of Cybercrime", episodeId: "cyber-u1", playable: true },
   {
     unit: 2,
-    title: "Digital Footprint & Defense",
+    title: "Digital Footprint and Defense",
     episodeId: "cyber-u2",
     playable: true,
   },
-  { unit: 3, title: "How Networks Work", episodeId: "cyber-u3", playable: false },
-  { unit: 4, title: "Social Engineering", episodeId: "cyber-u4", playable: false },
-  { unit: 5, title: "Incident Response", episodeId: "cyber-u5", playable: false },
-  { unit: 6, title: "Careers in Cybersecurity", episodeId: "cyber-u6", playable: false },
+  {
+    unit: 3,
+    title: "Threats and Network Defense",
+    episodeId: "cyber-u3",
+    playable: false,
+  },
+  {
+    unit: 4,
+    title: "Programming for Cybersecurity",
+    episodeId: "cyber-u4",
+    playable: true,
+  },
 ];
+
+const PLAYABLE_UNITS = CYBER_UNITS.filter((unit) => unit.playable);
 
 /** The three courses that haven't been written into Story Mode yet. */
 const OTHER_COURSES = [
@@ -79,6 +91,9 @@ let badgeOrder = [];
 
 let totalEpisodeXp = FALLBACK_TOTAL_XP;
 let totalScenes = 0;
+
+/** Maximum XP per episode, keyed by episode id. @type {Map<string, number>} */
+const episodeXpById = new Map();
 
 /* ------------------------------------------------------------------ */
 /* tiny helpers                                                        */
@@ -245,6 +260,7 @@ async function loadEpisodeMeta() {
     const modules = await Promise.all([
       import("./content/cyber-unit1.js"),
       import("./content/cyber-unit2.js"),
+      import("./content/cyber-unit4.js"),
     ]);
     badgeOrder = [];
     let grandXp = 0;
@@ -259,7 +275,13 @@ async function loadEpisodeMeta() {
             badgeOrder.push(b);
           }
         }
-        grandXp += maxEpisodeXp(episode);
+        const episodeXp = maxEpisodeXp(episode);
+        // Per-episode totals as well as the grand total. A unit's completion
+        // percentage has to divide by its own XP, not by every unit combined.
+        if (typeof episode.id === "string" && episodeXp > 0) {
+          episodeXpById.set(episode.id, episodeXp);
+        }
+        grandXp += episodeXp;
         if (isObject(episode) && isObject(episode.scenes)) {
           grandScenes += Object.keys(episode.scenes).length;
         }
@@ -281,15 +303,19 @@ async function loadEpisodeMeta() {
 /* ------------------------------------------------------------------ */
 
 /**
+ * Progress for one episode, measured against that episode's own XP ceiling.
+ *
  * @param {string} userId
+ * @param {string} episodeId
  * @returns {{ started: boolean, completed: boolean, xp: number, percent: number }}
  */
-function episodeSummary(userId) {
-  const state = getProgress(userId).episodes[EPISODE_ID];
+function episodeSummary(userId, episodeId) {
+  const state = getProgress(userId).episodes[episodeId];
   const started = state ? state.started : false;
   const completed = state ? state.completed : false;
   const xp = state ? state.xp : 0;
-  const raw = totalEpisodeXp > 0 ? Math.round((xp / totalEpisodeXp) * 100) : 0;
+  const ceiling = episodeXpById.get(episodeId) ?? totalEpisodeXp;
+  const raw = ceiling > 0 ? Math.round((xp / ceiling) * 100) : 0;
   const percent = completed ? 100 : Math.max(0, Math.min(MAX_INCOMPLETE_PERCENT, raw));
   return { started, completed, xp, percent };
 }
@@ -377,7 +403,7 @@ function renderTotals(progress) {
   const badgeNote = pick("[data-badge-note]");
   if (badgeNote) {
     badgeNote.textContent =
-      badgeOrder.length > 0 ? "earned in Unit 1" : "badges collected";
+      badgeOrder.length > 0 ? "earned so far" : "badges collected";
   }
 
   const done = Object.values(progress.episodes).filter((ep) => ep.completed).length;
@@ -396,7 +422,7 @@ function renderTotals(progress) {
   }
   const sceneNote = pick("[data-scene-note]");
   if (sceneNote) {
-    sceneNote.textContent = totalScenes > 0 ? "scenes in Unit 1" : "scenes played";
+    sceneNote.textContent = totalScenes > 0 ? "scenes across all units" : "scenes played";
   }
 }
 
@@ -425,7 +451,7 @@ function renderBadges(earnedIds) {
   if (all.length === 0) {
     const empty = el("li", "profile-badges__empty");
     empty.textContent =
-      "The badge list couldn't be loaded. Play a scene in Unit 1 and check back.";
+      "The badge list couldn't be loaded. Play a scene and check back.";
     grid.replaceChildren(empty);
     return;
   }
@@ -455,8 +481,8 @@ function renderBadges(earnedIds) {
     const count = earnedIds.filter((id) => all.some((badge) => badge.id === id)).length;
     lead.textContent =
       count === all.length
-        ? `You've earned all ${formatNumber(all.length)} badges in Cybersecurity Unit 1.`
-        : `You've earned ${formatNumber(count)} of the ${formatNumber(all.length)} badges in Cybersecurity Unit 1. Each one records a skill you used to finish part of the episode.`;
+        ? `You've earned all ${formatNumber(all.length)} Cybersecurity badges.`
+        : `You've earned ${formatNumber(count)} of the ${formatNumber(all.length)} Cybersecurity badges. Each one records a skill you used to finish part of an episode.`;
   }
 }
 
@@ -483,8 +509,12 @@ function progressBar(percent, label) {
  * @returns {HTMLElement}
  */
 function cyberCard(userId) {
-  const summary = episodeSummary(userId);
-  const unitsDone = summary.completed ? 1 : 0;
+  // One summary per playable unit. Reusing a single episode's summary for every
+  // row would show unit 1's progress against unit 2's title.
+  const summaries = new Map(
+    PLAYABLE_UNITS.map((unit) => [unit.episodeId, episodeSummary(userId, unit.episodeId)]),
+  );
+  const unitsDone = [...summaries.values()].filter((s) => s.completed).length;
   const coursePercent = Math.round((unitsDone / CYBER_UNITS.length) * 100);
 
   const card = el("article", "profile-course profile-course--live");
@@ -503,7 +533,7 @@ function cyberCard(userId) {
   const state = el(
     "p",
     "profile-course__state",
-    `${formatNumber(unitsDone)} of ${formatNumber(CYBER_UNITS.length)} units completed. Unit 1 is playable, the other five are still being written.`,
+    `${formatNumber(unitsDone)} of ${formatNumber(CYBER_UNITS.length)} units completed. ${formatNumber(PLAYABLE_UNITS.length)} are playable, the rest are still being written.`,
   );
 
   const list = el("ol", "profile-units");
@@ -516,7 +546,9 @@ function cyberCard(userId) {
     const body = el("div", "profile-unit__body");
     body.appendChild(el("p", "profile-unit__title", `Unit ${meta.unit}. ${meta.title}`));
 
-    if (meta.playable) {
+    const summary = summaries.get(meta.episodeId);
+
+    if (meta.playable && summary) {
       const line = el("p", "profile-unit__meta");
       line.append(
         el(
@@ -536,7 +568,7 @@ function cyberCard(userId) {
     }
 
     const action = el("div", "profile-unit__action");
-    if (meta.playable) {
+    if (meta.playable && summary) {
       const link = el("a", "profile-unit__link");
       if (link instanceof HTMLAnchorElement) {
         link.href = `story.html?episode=${meta.episodeId}`;
@@ -678,10 +710,12 @@ if (resetButton instanceof HTMLButtonElement) {
 if (resetYes instanceof HTMLButtonElement) {
   resetYes.addEventListener("click", () => {
     if (currentUser) {
-      resetEpisode(currentUser.id, EPISODE_ID);
+      for (const unit of PLAYABLE_UNITS) {
+        resetEpisode(currentUser.id, unit.episodeId);
+      }
       render(currentUser);
     }
-    closeConfirm("Unit 1 progress cleared. Your badges are still in your collection.");
+    closeConfirm("Progress cleared for every unit. Your badges are still in your collection.");
     if (resetButton instanceof HTMLButtonElement) {
       resetButton.focus();
     }

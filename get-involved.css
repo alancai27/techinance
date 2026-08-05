@@ -2,45 +2,10 @@
    file only covers what that page doesn't have: the ways-to-help list, the
    select control, inline field errors, and the success panel. */
 
-.involve__ways {
-  display: grid;
-  margin: 0 0 28px;
-  padding: 0;
-  gap: 18px;
-  grid-template-columns: repeat(3, 1fr);
-  list-style: none;
-}
 
-.involve__ways li {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 12px;
-  border: 1px solid rgba(11, 36, 71, 0.1);
-  border-radius: 18px;
-  padding: 18px;
-  background: var(--ice);
-}
 
-.involve__ways svg {
-  width: 22px;
-  height: 22px;
-  color: var(--steel);
-}
 
-.involve__ways h2 {
-  margin: 0 0 6px;
-  color: var(--navy);
-  font-family: "Nunito", sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-}
 
-.involve__ways p {
-  margin: 0;
-  color: var(--slate);
-  font-size: 14px;
-  line-height: 1.6;
-}
 
 .contact__field select {
   width: 100%;
@@ -127,9 +92,6 @@
 }
 
 @media (max-width: 720px) {
-  .involve__ways {
-    grid-template-columns: 1fr;
-  }
 
   .involve__success {
     padding: 22px;

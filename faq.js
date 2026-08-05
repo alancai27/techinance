@@ -24,7 +24,7 @@ createIcons({
   },
 });
 
-const DURATION = 260;
+const DURATION = 420;
 const EASING = "cubic-bezier(0.33, 1, 0.68, 1)";
 
 /**

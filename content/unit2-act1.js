@@ -81,25 +81,25 @@ export const act1 = {
           label: "a unique set of your activities on the Internet.",
           correct: true,
           feedback:
-            "Correct! A digital footprint (also called a digital shadow or electronic footprint) is a unique set of your activities on the Internet, including emails, search history, watched videos, comments, and personal information.",
+            "Correct. A digital footprint (also called a digital shadow or electronic footprint) is a unique set of your activities on the Internet, including emails, search history, watched videos, comments, and personal information.",
         },
         {
           label: "all the messages that you send across the Internet.",
           correct: false,
           feedback:
-            "Incorrect. Messages are only one part of your digital footprint. It also includes search history, videos watched, website cookies, IP addresses, and posted comments.",
+            "Messages are only one part of your digital footprint. It also includes search history, videos watched, website cookies, IP addresses, and posted comments.",
         },
         {
           label: "the amount of electricity your devices consume.",
           correct: false,
           feedback:
-            "Incorrect. That refers to energy consumption or a carbon footprint, not a digital footprint.",
+            "That refers to energy consumption or a carbon footprint, not a digital footprint.",
         },
         {
           label: "all the apps that you have on your device.",
           correct: false,
           feedback:
-            "Incorrect. Apps stored locally on your device do not define your digital footprint, although using those apps online contributes data to it.",
+            "Apps stored locally on your device don't define your digital footprint, although using those apps online contributes data to it.",
         },
       ],
       source: SOURCES.footprintStats,
@@ -156,7 +156,7 @@ export const act1 = {
           xp: 5,
           tone: "bad",
           feedback:
-            "Incorrect. Information posted on the Internet is indexed, archived, and stored in databases. It does not disappear on its own over time.",
+            "Information posted on the Internet is indexed, archived, and stored in databases. It doesn't disappear on its own over time.",
         },
         {
           label:
@@ -173,7 +173,7 @@ export const act1 = {
           xp: 5,
           tone: "bad",
           feedback:
-            "Incorrect. Most modern employers conduct background checks that evaluate an applicant's public digital shadow before making hiring decisions.",
+            "Most modern employers conduct background checks that evaluate an applicant's public digital shadow before making hiring decisions.",
         },
       ],
       source: SOURCES.footprintStats,
@@ -197,25 +197,25 @@ export const act1 = {
           label: "Digital Footprint",
           correct: false,
           feedback:
-            "Incorrect. Digital footprint is the neutral general term for all online activities.",
+            "Digital footprint is the neutral general term for all online activities.",
         },
         {
           label: "Good Digital Footprint",
           correct: false,
           feedback:
-            "Incorrect. A good digital footprint consists of traceable data that builds a positive reputation.",
+            "A good digital footprint consists of traceable data that builds a positive reputation.",
         },
         {
           label: "Bad Digital Footprint",
           correct: true,
           feedback:
-            "Correct! A bad digital footprint refers to undesirable online behaviors and activities that hurt someone's reputation or future opportunities.",
+            "Correct. A bad digital footprint refers to undesirable online behaviors and activities that hurt someone's reputation or future opportunities.",
         },
         {
           label: "Electronic Footprint",
           correct: false,
           feedback:
-            "Incorrect. Electronic footprint is simply an alternative name for digital footprint in general.",
+            "Electronic footprint is simply an alternative name for digital footprint in general.",
         },
       ],
       source: SOURCES.footprintStats,
@@ -283,24 +283,24 @@ export const act1 = {
           label: "Electronic and physical",
           correct: false,
           feedback:
-            "Incorrect. Electronic refers to the digital realm, but physical is not a category of digital footprint.",
+            "Electronic refers to the digital realm, but physical isn't a category of digital footprint.",
         },
         {
           label: "Red and blue",
           correct: false,
-          feedback: "Incorrect. Color categories have no relation to digital footprints.",
+          feedback: "Color categories have no relation to digital footprints.",
         },
         {
           label: "Active and passive",
           correct: true,
           feedback:
-            "Correct! The two types of digital footprints are active (data you deliberately share) and passive (data collected without your explicit knowledge).",
+            "Correct. The two types of digital footprints are active (data you deliberately share) and passive (data collected without your explicit knowledge).",
         },
         {
           label: "Noticeable and not noticeable",
           correct: false,
           feedback:
-            "Incorrect. While passive data may go unnoticed, the formal technical terms are active and passive.",
+            "While passive data may go unnoticed, the formal technical terms are active and passive.",
         },
       ],
       source: SOURCES.footprintStats,
