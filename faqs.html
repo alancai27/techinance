@@ -12,7 +12,11 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="learn.css" />
+    <link rel="stylesheet" href="faq.css" />
     <script type="module" src="nav.js"></script>
+    <script type="module" src="auth-nav.js"></script>
+    <script type="module" src="faq.js"></script>
   </head>
   <body>
 <header class="site-header" data-header>
@@ -35,20 +39,20 @@
 
         <div class="desktop-nav">
           <a class="nav-link" href="courses.html">Courses</a>
-          <a class="nav-link" href="faqs.html" aria-current="page">FAQs</a>
           <a class="nav-link" href="about.html">About</a>
-          <a class="nav-link" href="./#join">Get Involved</a>
+          <a class="nav-link" href="get-involved.html">Get Involved</a>
           <a class="nav-link" href="contact.html">Contact Us</a>
-          <a class="donate-link" href="./#donate">Donate</a>
+          <a class="nav-link" href="faqs.html" aria-current="page">FAQs</a>
+          <div class="auth-slot" data-auth-nav></div>
         </div>
 
         <div class="mobile-nav" id="mobile-menu" data-mobile-menu>
           <a href="courses.html">Courses</a>
-          <a href="faqs.html" aria-current="page">FAQs</a>
           <a href="about.html">About</a>
-          <a href="./#join">Get Involved</a>
+          <a href="get-involved.html">Get Involved</a>
           <a href="contact.html">Contact Us</a>
-          <a href="./#donate">Donate</a>
+          <a href="faqs.html" aria-current="page">FAQs</a>
+          <a href="learn.html">My Learning</a>
         </div>
       </nav>
     </header>
@@ -61,55 +65,81 @@
           </header>
 
           <div class="faqs__list">
-            <details class="faq" open>
-              <summary>How long are the courses?</summary>
-              <div class="faq__body">
-                <p>
-                  The courses are completely asynchronous, and full flexibility is offered upon the entrance
-                  to the courses! However, it is recommended that students take no longer than ninety (90)
-                  days to complete a course, as any further time may result in knowledge gaps, and forgetting
-                  valuable information.
-                </p>
-                <a class="faq__link" href="courses.html">Enroll in a course →</a>
+            <details class="faq" data-faq open>
+              <summary>
+                <span>How long are the courses?</span>
+                <span class="faq__chevron" aria-hidden="true">
+                  <i data-lucide="chevron-down"></i>
+                </span>
+              </summary>
+              <div class="faq__answer" data-faq-answer>
+                <div class="faq__body">
+                  <p>
+                    They're fully asynchronous, so you work through them whenever suits you. We'd
+                    suggest finishing within ninety (90) days though. Stretch it much longer and
+                    you'll start forgetting the early material before you get to the end.
+                  </p>
+                  <a class="faq__link" href="courses.html">Enroll in a course →</a>
+                </div>
               </div>
             </details>
 
-            <details class="faq">
-              <summary>Who should take these courses?</summary>
-              <div class="faq__body">
-                <p>
-                  Our courses are open to everyone – regardless of age or gender, however, we recommend our
-                  courses mainly towards 12-16 year olds.
-                </p>
-                <a class="faq__link" href="courses.html">Enroll in a course →</a>
+            <details class="faq" data-faq>
+              <summary>
+                <span>Who should take these courses?</span>
+                <span class="faq__chevron" aria-hidden="true">
+                  <i data-lucide="chevron-down"></i>
+                </span>
+              </summary>
+              <div class="faq__answer" data-faq-answer>
+                <div class="faq__body">
+                  <p>
+                    Anyone, honestly. They're pitched at 12 to 16 year olds, but nobody's turned
+                    away.
+                  </p>
+                  <a class="faq__link" href="courses.html">Enroll in a course →</a>
+                </div>
               </div>
             </details>
 
-            <details class="faq">
-              <summary>I have registered for a course. Now what?</summary>
-              <div class="faq__body">
-                <p>
-                  After completing the form for registration, please wait 2-3 days so we can send you the
-                  classroom invite! As soon as you get the classroom invite code, you can join the course and
-                  start working on it!
-                </p>
-                <a class="faq__link" href="courses.html">Enroll in a course →</a>
+            <details class="faq" data-faq>
+              <summary>
+                <span>I have registered for a course. Now what?</span>
+                <span class="faq__chevron" aria-hidden="true">
+                  <i data-lucide="chevron-down"></i>
+                </span>
+              </summary>
+              <div class="faq__answer" data-faq-answer>
+                <div class="faq__body">
+                  <p>
+                    Sit tight for 2 to 3 days while we send your classroom invite. Once that code
+                    lands in your inbox, you're in and you can start straight away.
+                  </p>
+                  <a class="faq__link" href="courses.html">Enroll in a course →</a>
+                </div>
               </div>
             </details>
 
-            <details class="faq">
-              <summary>Is Techinance a 501(c)(3)?</summary>
-              <div class="faq__body">
-                <p>
-                  Yes! Techinance is a registered 501(c)(3), and provides volunteer hours as well as the PVSA
-                  award for volunteers (Note: PVSA is on hold at the moment).
-                </p>
-                <a class="faq__link" href="about.html">About →</a>
+            <details class="faq" data-faq>
+              <summary>
+                <span>Is Techinance a 501(c)(3)?</span>
+                <span class="faq__chevron" aria-hidden="true">
+                  <i data-lucide="chevron-down"></i>
+                </span>
+              </summary>
+              <div class="faq__answer" data-faq-answer>
+                <div class="faq__body">
+                  <p>
+                    Yes. We're a registered 501(c)(3), and we sign off volunteer hours plus the PVSA
+                    award for volunteers. Heads up: PVSA is on hold right now.
+                  </p>
+                  <a class="faq__link" href="about.html">About →</a>
+                </div>
               </div>
             </details>
           </div>
         </div>
-
+      </section>
     </main>
 
 <footer class="site-footer">
@@ -131,9 +161,9 @@
         <div class="site-footer__column">
           <h2>Get Involved</h2>
           <a href="about.html">About</a>
-          <a href="./#join">Get Involved</a>
+          <a href="get-involved.html">Get Involved</a>
           <a href="contact.html">Contact Us</a>
-          <a href="./#donate">Donate</a>
+          <a href="learn.html">Story Mode</a>
         </div>
 
         <div class="site-footer__column">

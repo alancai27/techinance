@@ -1,6 +1,11 @@
 // @ts-check
 
-import { calculateLockupLayout } from "./animation-math.js";
+import {
+  calculateLockupLayout,
+  countUpValue,
+  formatStatValue,
+  parseStatValue,
+} from "./animation-math.js";
 
 const HERO_TIMING = {
   openingBeat: 450,
@@ -282,7 +287,7 @@ function measureHero() {
  * @returns {void}
  */
 function setIntroState(geometry) {
-  document.body.classList.add("is-loading");
+  document.documentElement.classList.add("is-loading");
   logoSlot.style.width = "0px";
   lockup.style.columnGap = "0px";
   lockup.style.left = `${geometry.wordLeft}px`;
@@ -334,7 +339,7 @@ function setFinalState(geometry) {
   stats.style.removeProperty("visibility");
   stats.style.removeProperty("opacity");
   stats.style.removeProperty("transform");
-  document.body.classList.remove("is-loading");
+  document.documentElement.classList.remove("is-loading");
 }
 
 /**
@@ -499,7 +504,11 @@ async function revealPage() {
   stats.style.visibility = "visible";
   stats.style.opacity = "0";
   stats.style.transform = "translateY(18px)";
-  document.body.classList.remove("is-loading");
+  document.documentElement.classList.remove("is-loading");
+
+  // Counting runs alongside the fade-up, not after it, so there is no pause
+  // between the hero landing and the numbers moving.
+  startCounters();
 
   await Promise.all([
     animate(
@@ -541,6 +550,9 @@ async function playIntro() {
   animationRun += 1;
   const run = animationRun;
   isAnimating = true;
+  // Replaying the intro re-reveals the stats row, so the counters should run
+  // with it rather than sliding back in already finished.
+  countersStarted = false;
   activeAnimations.forEach((animation) => animation.cancel());
   activeAnimations = [];
   const geometry = measureHero();
@@ -551,6 +563,10 @@ async function playIntro() {
     isAnimating = false;
     return;
   }
+
+  // Zero the stats now, while the row is still hidden, so it fades in already
+  // counting rather than showing the finished figures first.
+  primeCounters();
 
   await wait(HERO_TIMING.openingBeat);
   if (run !== animationRun) return;
@@ -569,6 +585,181 @@ async function playIntro() {
   isAnimating = false;
 }
 
+/* ------------------------------------------------------------------ *
+ * Stat counters
+ * ------------------------------------------------------------------ */
+
+const COUNTER_DURATION = 1500;
+const COUNTER_STAGGER = 110;
+
+let countersStarted = false;
+
+/**
+ * @returns {HTMLElement[]}
+ */
+function statValues() {
+  return /** @type {HTMLElement[]} */ ([...stats.querySelectorAll(".stats__value")]);
+}
+
+/**
+ * Reads the authored figure, capturing it on the element the first time so a
+ * replay cannot mistake a half-counted value for the target.
+ *
+ * @param {HTMLElement} element
+ * @returns {ReturnType<typeof parseStatValue>}
+ */
+function statShape(element) {
+  if (element.dataset.statTarget === undefined) {
+    element.dataset.statTarget = element.textContent ?? "";
+  }
+  return parseStatValue(element.dataset.statTarget);
+}
+
+/**
+ * Zeroes the counters while the stats row is still hidden.
+ *
+ * Without this the row fades in showing the finished figures and only then
+ * snaps back to zero to count, which reads as the animation starting late.
+ * Priming first means the numbers are already at zero the moment they appear.
+ *
+ * @returns {void}
+ */
+function primeCounters() {
+  for (const element of statValues()) {
+    const shape = statShape(element);
+    if (!shape) {
+      continue;
+    }
+    // Measured while the final figure is still rendered, so the locked width is
+    // the widest the label will ever be.
+    element.style.minWidth = `${element.getBoundingClientRect().width}px`;
+    element.textContent = formatStatValue(0, shape);
+  }
+}
+
+/**
+ * Counts one stat up to the figure authored in the markup.
+ *
+ * @param {HTMLElement} element
+ * @param {number} delay
+ * @returns {void}
+ */
+function runCounter(element, delay) {
+  const shape = statShape(element);
+  if (!shape) {
+    return;
+  }
+
+  // Bound after the null guard so the animation frame below, which is hoisted,
+  // still sees a non-null shape.
+  const stat = shape;
+  const final = formatStatValue(stat.value, stat);
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    element.textContent = final;
+    element.style.removeProperty("min-width");
+    return;
+  }
+
+  const start = performance.now() + delay;
+
+  /**
+   * @param {number} now
+   * @returns {void}
+   */
+  function frame(now) {
+    const elapsed = now - start;
+    if (elapsed < 0) {
+      requestAnimationFrame(frame);
+      return;
+    }
+
+    const progress = Math.min(elapsed / COUNTER_DURATION, 1);
+    element.textContent = formatStatValue(countUpValue(stat.value, progress), stat);
+
+    if (progress < 1) {
+      requestAnimationFrame(frame);
+    } else {
+      element.textContent = final;
+      element.style.removeProperty("min-width");
+    }
+  }
+
+  requestAnimationFrame(frame);
+}
+
+/**
+ * Runs the counters once, when the stats row is actually on screen.
+ *
+ * @returns {void}
+ */
+function startCounters() {
+  if (countersStarted) {
+    return;
+  }
+  countersStarted = true;
+
+  const values = statValues();
+  if (values.length === 0) {
+    return;
+  }
+
+  const begin = () => {
+    values.forEach((value, index) => runCounter(value, index * COUNTER_STAGGER));
+  };
+
+  if (typeof IntersectionObserver !== "function") {
+    begin();
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) {
+        observer.disconnect();
+        begin();
+      }
+    },
+    { threshold: 0.4 },
+  );
+  observer.observe(stats);
+}
+
+/* ------------------------------------------------------------------ *
+ * Intro playback
+ * ------------------------------------------------------------------ */
+
+const INTRO_SEEN_KEY = "techinance.introSeen";
+
+/**
+ * The intro is a first-impression animation, so it plays once per visit. Moving
+ * between pages reloads the document, which is why this needs storage rather
+ * than a module-level flag. sessionStorage scopes it to the tab: navigate away
+ * and back and it stays quiet, but a genuinely new visit gets it again.
+ *
+ * @returns {boolean}
+ */
+function shouldPlayIntro() {
+  try {
+    return window.sessionStorage.getItem(INTRO_SEEN_KEY) !== "1";
+  } catch {
+    // Storage can be unavailable in private modes. Playing it is the safer
+    // failure: an extra animation beats a broken-looking hero.
+    return true;
+  }
+}
+
+/**
+ * @returns {void}
+ */
+function markIntroSeen() {
+  try {
+    window.sessionStorage.setItem(INTRO_SEEN_KEY, "1");
+  } catch {
+    // Nothing to do. The intro simply plays again next navigation.
+  }
+}
+
 heroLogo.addEventListener("click", () => {
   void playIntro();
 });
@@ -580,4 +771,12 @@ window.addEventListener("resize", () => {
 });
 
 await document.fonts.ready;
-await playIntro();
+
+if (shouldPlayIntro()) {
+  markIntroSeen();
+  await playIntro();
+} else {
+  // Returning to the home page mid-visit: no intro, and the stats stay on their
+  // final figures rather than counting up again.
+  setFinalState(measureHero());
+}

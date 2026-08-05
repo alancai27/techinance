@@ -12,7 +12,10 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="learn.css" />
+    <link rel="stylesheet" href="courses.css" />
     <script type="module" src="nav.js"></script>
+    <script type="module" src="auth-nav.js"></script>
     <script type="module" src="icons.js"></script>
   </head>
   <body>
@@ -36,118 +39,172 @@
 
         <div class="desktop-nav">
           <a class="nav-link" href="courses.html" aria-current="page">Courses</a>
-          <a class="nav-link" href="faqs.html">FAQs</a>
           <a class="nav-link" href="about.html">About</a>
-          <a class="nav-link" href="./#join">Get Involved</a>
+          <a class="nav-link" href="get-involved.html">Get Involved</a>
           <a class="nav-link" href="contact.html">Contact Us</a>
-          <a class="donate-link" href="./#donate">Donate</a>
+          <a class="nav-link" href="faqs.html">FAQs</a>
+          <div class="auth-slot" data-auth-nav></div>
         </div>
 
         <div class="mobile-nav" id="mobile-menu" data-mobile-menu>
           <a href="courses.html" aria-current="page">Courses</a>
-          <a href="faqs.html">FAQs</a>
           <a href="about.html">About</a>
-          <a href="./#join">Get Involved</a>
+          <a href="get-involved.html">Get Involved</a>
           <a href="contact.html">Contact Us</a>
-          <a href="./#donate">Donate</a>
+          <a href="faqs.html">FAQs</a>
+          <a href="learn.html">My Learning</a>
         </div>
       </nav>
     </header>
 
     <main class="page">
-      <section class="courses" id="courses" aria-labelledby="courses-title">
-        <div class="courses__inner">
-          <header class="courses__header">
+      <section class="catalog" id="courses" aria-labelledby="courses-title">
+        <div class="catalog__inner">
+          <header class="catalog__header">
+            <p class="catalog__eyebrow">Free · Online · Certificate</p>
             <h1 id="courses-title">Courses</h1>
-            <p>Free online enrichment courses with certification for students everywhere.</p>
+            <p class="catalog__lede">
+              Four free enrichment courses, open to students anywhere. Work through them at your own
+              pace and you get a certificate at the end.
+            </p>
           </header>
 
-          <div class="courses__list">
-            <article class="course">
-              <div class="course__icon" aria-hidden="true">
-                <i data-lucide="shield-check"></i>
+          <article class="catalog-hero" aria-labelledby="course-cyber-title">
+            <div class="catalog-hero__main">
+              <p class="catalog-hero__flag">
+                <span class="catalog-hero__pip" aria-hidden="true"></span>
+                Featured course
+              </p>
+
+              <div class="catalog-hero__lockup">
+                <span class="catalog-hero__icon" aria-hidden="true">
+                  <i data-lucide="shield-check"></i>
+                </span>
+                <div>
+                  <p class="catalog-hero__kicker">Technology · Ages 12–16</p>
+                  <h2 id="course-cyber-title">Technology (Cybersecurity) Course with Certification</h2>
+                </div>
               </div>
-              <div class="course__body">
-                <p class="course__tag">Technology · Ages 12–16</p>
-                <h3>Technology (Cybersecurity) Course with Certification</h3>
-                <p>
-                  We are offering a free, online, technology enrichment course for everyone who is interested!
-                  The recommended age group for this course is 12-16, however, anyone with a passion for
-                  technology can join the course. Additionally, we provide a certificate upon the successful
-                  completion of the course!
-                </p>
+
+              <p class="catalog-hero__blurb">
+                A free online course in how technology actually gets attacked and defended. It's
+                pitched at 12 to 16 year olds, but if you're into tech, you're welcome regardless of
+                age.
+              </p>
+
+              <ul class="catalog-chips">
+                <li>Ages 12–16</li>
+                <li>Free</li>
+                <li>Certificate included</li>
+                <li>Self-paced</li>
+                <li>About 90 days</li>
+              </ul>
+
+              <div class="catalog-hero__actions">
                 <a
                   class="button button--primary"
                   href="https://docs.google.com/forms/d/e/1FAIpQLSfQDGQ-tPxP9L2Ph5loCoDUEy2Ugc_xCcHaiz-57ppEAS0RAw/viewform?usp=send_form"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Enroll in the Cybersecurity course, opens in a new tab"
                 >Enroll Here!</a>
               </div>
-            </article>
+            </div>
 
-            <article class="course">
-              <div class="course__icon" aria-hidden="true">
+            <aside class="story-feature" aria-labelledby="story-feature-title">
+              <p class="story-feature__label">Live now</p>
+              <h3 id="story-feature-title">Story Mode</h3>
+              <p>
+                Unit 1 is a playable episode. You play a junior analyst in a security operations
+                centre and work the incident as it comes in.
+              </p>
+              <a class="story-feature__link" href="learn.html?course=cybersecurity">Play Story Mode</a>
+            </aside>
+          </article>
+
+          <h2 class="catalog__subhead" id="more-courses">More courses</h2>
+
+          <div class="catalog__grid">
+            <article class="catalog-card catalog-card--finance" aria-labelledby="course-finance-title">
+              <span class="catalog-card__icon" aria-hidden="true">
                 <i data-lucide="wallet-cards"></i>
-              </div>
-              <div class="course__body">
-                <p class="course__tag">Finance · Ages 10–16</p>
-                <h3>Financial Literacy (Finance) Course with Certification</h3>
-                <p>
-                  We are offering a free, online, financial education course for everyone who is interested!
-                  Although this opportunity is primarily geared towards the youth, ages 10-16, anyone can
-                  register and complete the course. Additionally, we provide a certificate upon the successful
-                  completion of the course!
-                </p>
-                <a
-                  class="button button--primary"
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSfujwXkUuY5iIivLC0OdQriYGnavC7LS8CYOhBGYHF7V5L3xA/viewform?usp=send_form"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >Enroll Here!</a>
-              </div>
+              </span>
+              <p class="catalog-card__kicker">Finance · Ages 10–16</p>
+              <h3 id="course-finance-title">Financial Literacy (Finance) Course with Certification</h3>
+              <p class="catalog-card__blurb">
+                A free online course on how money really works: saving, credit, investing, and the
+                traps that catch people out. Aimed at 10 to 16 year olds, though anyone can sign up.
+              </p>
+              <ul class="catalog-chips">
+                <li>Ages 10–16</li>
+                <li>Free</li>
+                <li>Certificate included</li>
+                <li>Self-paced</li>
+                <li>About 90 days</li>
+              </ul>
+              <a
+                class="button button--primary catalog-card__cta"
+                href="https://docs.google.com/forms/d/e/1FAIpQLSfujwXkUuY5iIivLC0OdQriYGnavC7LS8CYOhBGYHF7V5L3xA/viewform?usp=send_form"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Enroll in the Financial Literacy course, opens in a new tab"
+              >Enroll Here!</a>
             </article>
 
-            <article class="course">
-              <div class="course__icon" aria-hidden="true">
+            <article class="catalog-card catalog-card--neuro" aria-labelledby="course-neuro-title">
+              <span class="catalog-card__icon" aria-hidden="true">
                 <i data-lucide="brain"></i>
-              </div>
-              <div class="course__body">
-                <p class="course__tag">Neuroscience · Ages 12–16</p>
-                <h3>Neuroscience Course with Certification</h3>
-                <p>
-                  We are offering a free, online, neuroscience course for everyone who is interested! The
-                  recommended age group for this course is 12-16, however, anyone with a passion for learning
-                  about how our brain works and functions can join the course. Additionally, we provide a
-                  certificate upon the successful completion of the course!
-                </p>
-                <a
-                  class="button button--primary"
-                  href="https://docs.google.com/forms/d/e/1FAIpQLScct6I9miKhr9_75V2RbxUK4zG-_R8PyFmRiIJEHEpHmH3WmA/viewform"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >Enroll Here!</a>
-              </div>
+              </span>
+              <p class="catalog-card__kicker">Neuroscience · Ages 12–16</p>
+              <h3 id="course-neuro-title">Neuroscience Course with Certification</h3>
+              <p class="catalog-card__blurb">
+                A free online course on what's going on inside your own head, and why your brain
+                makes the choices it does. Pitched at 12 to 16 year olds, open to anyone curious
+                about it.
+              </p>
+              <ul class="catalog-chips">
+                <li>Ages 12–16</li>
+                <li>Free</li>
+                <li>Certificate included</li>
+                <li>Self-paced</li>
+                <li>About 90 days</li>
+              </ul>
+              <a
+                class="button button--primary catalog-card__cta"
+                href="https://docs.google.com/forms/d/e/1FAIpQLScct6I9miKhr9_75V2RbxUK4zG-_R8PyFmRiIJEHEpHmH3WmA/viewform"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Enroll in the Neuroscience course, opens in a new tab"
+              >Enroll Here!</a>
             </article>
 
-            <article class="course">
-              <div class="course__icon" aria-hidden="true">
+            <article class="catalog-card catalog-card--startup" aria-labelledby="course-startup-title">
+              <span class="catalog-card__icon" aria-hidden="true">
                 <i data-lucide="rocket"></i>
-              </div>
-              <div class="course__body">
-                <p class="course__tag">Entrepreneurship · Ages 12–16</p>
-                <h3>How 2 Build a Start Up Course with Certification</h3>
-                <p>
-                  We are offering a free, online, entrepreneurship course for everyone who is interested!
-                  The recommended age group for this course is 12-16, however, anyone with a passion for
-                  building ideas into real startups can join the course. Additionally, we provide a certificate
-                  upon the successful completion of the course!
-                </p>
-                <a class="button button--primary" href="#enroll-startup">Enroll Here!</a>
-              </div>
+              </span>
+              <p class="catalog-card__kicker">Entrepreneurship · Ages 12–16</p>
+              <h3 id="course-startup-title">How 2 Build a Start Up Course with Certification</h3>
+              <p class="catalog-card__blurb">
+                A free online course on turning an idea into something real: finding the problem,
+                pricing it, and surviving your first pitch. Pitched at 12 to 16 year olds, open to
+                anyone who wants to build something.
+              </p>
+              <ul class="catalog-chips">
+                <li>Ages 12–16</li>
+                <li>Free</li>
+                <li>Certificate included</li>
+                <li>Self-paced</li>
+                <li>About 90 days</li>
+              </ul>
+              <a
+                class="button button--primary catalog-card__cta"
+                href="#enroll-startup"
+                aria-label="Enroll in the How 2 Build a Start Up course"
+              >Enroll Here!</a>
             </article>
           </div>
         </div>
-
+      </section>
     </main>
 
 <footer class="site-footer">
@@ -169,9 +226,9 @@
         <div class="site-footer__column">
           <h2>Get Involved</h2>
           <a href="about.html">About</a>
-          <a href="./#join">Get Involved</a>
+          <a href="get-involved.html">Get Involved</a>
           <a href="contact.html">Contact Us</a>
-          <a href="./#donate">Donate</a>
+          <a href="learn.html">Story Mode</a>
         </div>
 
         <div class="site-footer__column">

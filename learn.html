@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Your Techinance learning hub. Play Story Mode episodes, track XP, and collect badges."
+    />
+    <title>My Learning · Techinance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="learn.css" />
+    <script type="module" src="nav.js"></script>
+    <script type="module" src="learn-icons.js"></script>
+    <script type="module" src="auth-nav.js"></script>
+    <script type="module" src="learn.js"></script>
+  </head>
+  <body>
+    <header class="site-header" data-header>
+      <nav class="navbar" aria-label="Primary navigation">
+        <a class="brand" href="./" aria-label="Techinance home">
+          <img class="brand__logo" src="logo.png" alt="" width="32" height="32" />
+          <span>Techinance</span>
+        </a>
+
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          data-menu-toggle
+        >
+          <span>Menu</span>
+          <span class="menu-toggle__lines" aria-hidden="true"></span>
+        </button>
+
+        <div class="desktop-nav">
+          <a class="nav-link" href="courses.html">Courses</a>
+          <a class="nav-link" href="about.html">About</a>
+          <a class="nav-link" href="get-involved.html">Get Involved</a>
+          <a class="nav-link" href="contact.html">Contact Us</a>
+          <a class="nav-link" href="faqs.html">FAQs</a>
+          <div class="auth-slot" data-auth-nav></div>
+        </div>
+
+        <div class="mobile-nav" id="mobile-menu" data-mobile-menu>
+          <a href="courses.html">Courses</a>
+          <a href="about.html">About</a>
+          <a href="get-involved.html">Get Involved</a>
+          <a href="contact.html">Contact Us</a>
+          <a href="faqs.html">FAQs</a>
+          <a href="learn.html" aria-current="page">My Learning</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="page learn-page">
+      <section class="learn-hero" aria-labelledby="learn-title">
+        <div class="learn-hero__inner">
+          <p class="learn-hero__eyebrow">Story Mode</p>
+          <h1 class="learn-hero__title" id="learn-title">My Learning</h1>
+          <p class="learn-hero__lead">
+            Techinance courses you can play. You take on a role, make decisions, and see
+            what each decision leads to.
+          </p>
+        </div>
+      </section>
+
+      <!-- Signed-out: welcome + sign-in ------------------------------------->
+      <section
+        class="learn-gate"
+        aria-labelledby="learn-gate-title"
+        data-signed-out
+        hidden
+      >
+        <div class="learn-gate__inner">
+          <div class="learn-gate__copy">
+            <h2 class="learn-gate__title" id="learn-gate-title">
+              How Story Mode works
+            </h2>
+            <p class="learn-gate__lead">
+              Each unit is an interactive episode. You play an analyst, a founder, or a
+              researcher, and the decisions you make change what happens next.
+            </p>
+            <ul class="learn-gate__points">
+              <li class="learn-gate__point">
+                <span class="learn-gate__point-icon" aria-hidden="true"
+                  ><i data-lucide="headphones" aria-hidden="true"></i
+                ></span>
+                <span
+                  ><strong>Play a role.</strong> Read the evidence, ask questions, and
+                  decide what to do next.</span
+                >
+              </li>
+              <li class="learn-gate__point">
+                <span class="learn-gate__point-icon" aria-hidden="true"
+                  ><i data-lucide="zap" aria-hidden="true"></i
+                ></span>
+                <span
+                  ><strong>Earn XP.</strong> Correct decisions earn points. Wrong ones come
+                  with an explanation before you continue.</span
+                >
+              </li>
+              <li class="learn-gate__point">
+                <span class="learn-gate__point-icon" aria-hidden="true"
+                  ><i data-lucide="award" aria-hidden="true"></i
+                ></span>
+                <span
+                  ><strong>Collect badges.</strong> Each badge records a skill you used to
+                  finish part of an episode.</span
+                >
+              </li>
+              <li class="learn-gate__point">
+                <span class="learn-gate__point-icon" aria-hidden="true"
+                  ><i data-lucide="hard-drive" aria-hidden="true"></i
+                ></span>
+                <span
+                  ><strong>Pick up where you left off.</strong> Your checkpoint is saved on
+                  this device.</span
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="learn-signin">
+            <h3 class="learn-signin__title">Sign in to save your progress</h3>
+            <div class="learn-signin__google" data-google-button></div>
+            <p class="learn-signin__divider"><span>or</span></p>
+            <button
+              class="button button--secondary learn-signin__guest"
+              type="button"
+              data-guest-button
+            >
+              Continue as guest
+            </button>
+            <p class="learn-signin__note">
+              Guest progress is stored in this browser only. It isn't sent anywhere, and it
+              won't be available on another device.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Signed-in: account summary ---------------------------------------->
+      <section class="learn-account" aria-labelledby="learn-account-title" data-signed-in hidden>
+        <h2 class="learn-account__heading" id="learn-account-title">Your progress</h2>
+        <div class="learn-account__inner">
+          <div class="learn-account__identity">
+            <span class="learn-avatar" data-user-avatar aria-hidden="true"></span>
+            <div class="learn-account__text">
+              <p class="learn-account__greeting">
+                Welcome back, <span class="learn-account__name" data-user-name>learner</span>
+              </p>
+              <p class="learn-account__meta" data-user-meta></p>
+            </div>
+            <button class="learn-signout" type="button" data-signout-button>Sign out</button>
+          </div>
+
+          <dl class="learn-stats">
+            <div class="learn-stat">
+              <dt class="learn-stat__label">Total XP</dt>
+              <dd class="learn-stat__value" data-total-xp>0</dd>
+            </div>
+            <div class="learn-stat">
+              <dt class="learn-stat__label">Badges</dt>
+              <dd class="learn-stat__value" data-badge-count>0</dd>
+            </div>
+            <div class="learn-stat">
+              <dt class="learn-stat__label">Episodes finished</dt>
+              <dd class="learn-stat__value" data-episode-count>0</dd>
+            </div>
+          </dl>
+
+          <div class="learn-badges" data-badge-list>
+            <p class="learn-badges__empty">
+              No badges yet. Finish a scene in Unit 1 to earn your first.
+            </p>
+          </div>
+
+          <p class="learn-account__more">
+            <a class="learn-account__profile" href="profile.html">
+              <span
+                class="learn-account__profile-icon"
+                data-profile-icon
+                aria-hidden="true"
+              ></span>
+              <span>View full profile</span>
+              <span class="learn-account__profile-arrow" aria-hidden="true">→</span>
+            </a>
+          </p>
+        </div>
+      </section>
+
+      <!-- Course rail -------------------------------------------------------->
+      <section
+        class="learn-section"
+        id="learn-courses"
+        aria-labelledby="learn-courses-title"
+        data-course-section
+      >
+        <div class="learn-section__head">
+          <h2 class="learn-section__title" id="learn-courses-title">Courses</h2>
+          <p class="learn-section__lead">
+            Four Techinance courses are being made into Story Mode seasons. Cybersecurity
+            is available now.
+          </p>
+          <button
+            class="learn-rail-toggle"
+            type="button"
+            aria-expanded="true"
+            aria-controls="learn-rail"
+            data-rail-toggle
+            hidden
+          >
+            <span data-rail-toggle-label>Hide the other courses</span>
+          </button>
+        </div>
+
+        <ul class="learn-rail" id="learn-rail" data-rail>
+          <li class="learn-course learn-course--live" data-course="cybersecurity">
+            <span class="learn-course__icon" aria-hidden="true"
+              ><i data-lucide="shield-check" aria-hidden="true"></i
+            ></span>
+            <p class="learn-course__tag">Technology · Ages 12–16</p>
+            <h3 class="learn-course__title">Cybersecurity</h3>
+            <p class="learn-course__blurb">
+              You work as an analyst in a Security Operations Centre. Covers the cost of
+              cybercrime, phishing, passwords, networks and incident response.
+            </p>
+            <p class="learn-course__status learn-course__status--live">
+              <span class="learn-course__dot" aria-hidden="true"></span>Live · Unit 1
+              playable
+            </p>
+            <a class="learn-course__link" href="#learn-episodes">
+              View episodes<span class="learn-course__arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+
+          <li class="learn-course learn-course--soon" data-course="financial-literacy">
+            <span class="learn-course__icon" aria-hidden="true"
+              ><i data-lucide="wallet-cards" aria-hidden="true"></i
+            ></span>
+            <p class="learn-course__tag">Finance · Ages 10–16</p>
+            <h3 class="learn-course__title">Financial Literacy</h3>
+            <p class="learn-course__blurb">
+              Budgeting, saving, interest, credit and risk, taught through a first job and
+              a first bank account.
+            </p>
+            <p class="learn-course__status learn-course__status--soon">
+              <span class="learn-course__dot" aria-hidden="true"></span>Coming soon
+            </p>
+          </li>
+
+          <li class="learn-course learn-course--soon" data-course="neuroscience">
+            <span class="learn-course__icon" aria-hidden="true"
+              ><i data-lucide="brain" aria-hidden="true"></i
+            ></span>
+            <p class="learn-course__tag">Neuroscience · Ages 12–16</p>
+            <h3 class="learn-course__title">Neuroscience</h3>
+            <p class="learn-course__blurb">
+              How the brain works and how it's studied. You design an experiment, read a
+              brain scan, and work out what the data does and doesn't show.
+            </p>
+            <p class="learn-course__status learn-course__status--soon">
+              <span class="learn-course__dot" aria-hidden="true"></span>Coming soon
+            </p>
+          </li>
+
+          <li class="learn-course learn-course--soon" data-course="startup">
+            <span class="learn-course__icon" aria-hidden="true"
+              ><i data-lucide="rocket" aria-hidden="true"></i
+            ></span>
+            <p class="learn-course__tag">Entrepreneurship · Ages 12–16</p>
+            <h3 class="learn-course__title">How 2 Build a Start Up</h3>
+            <p class="learn-course__blurb">
+              Taking an idea to a pitch deck in ninety days. You choose a co-founder, price
+              the product, and prepare for a first investor meeting.
+            </p>
+            <p class="learn-course__status learn-course__status--soon">
+              <span class="learn-course__dot" aria-hidden="true"></span>Coming soon
+            </p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Episode list ------------------------------------------------------->
+      <section
+        class="learn-section learn-section--episodes"
+        id="learn-episodes"
+        aria-labelledby="learn-episodes-title"
+        data-season="cybersecurity"
+      >
+        <div class="learn-section__head">
+          <p class="learn-season-back" data-season-back hidden>
+            <a class="learn-season-back__link" href="learn.html">
+              <span
+                class="learn-season-back__icon"
+                data-season-back-icon
+                aria-hidden="true"
+              ></span>
+              <span>All courses</span>
+            </a>
+          </p>
+          <h2
+            class="learn-section__title"
+            id="learn-episodes-title"
+            tabindex="-1"
+            data-season-heading
+          >
+            Cybersecurity · Season 1
+          </h2>
+          <p class="learn-section__lead">
+            Six units, following one attacker across a single organisation. Unit 1 is
+            playable now. The other five are still being written.
+          </p>
+        </div>
+
+        <ol class="learn-episode-list">
+          <li class="learn-episode learn-episode--open" data-episode="cyber-u1">
+            <span class="learn-episode__marker" aria-hidden="true">1</span>
+            <div class="learn-episode__body">
+              <p class="learn-episode__unit">Unit 1 · Available</p>
+              <h3 class="learn-episode__title">The Cost of Cybercrime</h3>
+              <p class="learn-episode__blurb">
+                Your first shift in the Techinance SOC. You follow the traces an attacker
+                called Nightjar leaves across the network, and work out what a breach costs
+                an organisation.
+              </p>
+              <p class="learn-episode__meta">
+                <span class="learn-episode__chip">~35 min</span>
+                <span class="learn-episode__chip">Junior Security Analyst</span>
+                <span class="learn-episode__chip">3 acts</span>
+              </p>
+              <div class="learn-progress" data-progress hidden>
+                <div
+                  class="learn-progress__track"
+                  role="progressbar"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-valuenow="0"
+                  aria-label="Unit 1 progress"
+                  data-progress-bar
+                >
+                  <span class="learn-progress__fill" data-progress-fill></span>
+                </div>
+                <p class="learn-progress__label">
+                  <span class="learn-progress__state" data-progress-text>Not started</span>
+                  <span class="learn-progress__xp" data-progress-xp>0 XP</span>
+                </p>
+              </div>
+            </div>
+            <div class="learn-episode__action">
+              <a
+                class="button button--primary learn-episode__cta"
+                href="story.html?episode=cyber-u1"
+                data-episode-cta
+                >Start episode</a
+              >
+            </div>
+          </li>
+
+          <li class="learn-episode learn-episode--locked" data-episode="cyber-u2">
+            <span class="learn-episode__marker" aria-hidden="true">2</span>
+            <div class="learn-episode__body">
+              <p class="learn-episode__unit">Unit 2 · Locked</p>
+              <h3 class="learn-episode__title">Passwords and Multi-Factor Authentication</h3>
+              <p class="learn-episode__blurb">
+                How passwords are cracked, what makes a passphrase stronger, and how
+                multi-factor authentication adds a second check at sign-in.
+              </p>
+            </div>
+            <div class="learn-episode__action">
+              <span class="learn-lock" aria-hidden="true"
+                ><i data-lucide="lock" aria-hidden="true"></i
+              ></span>
+              <p class="learn-episode__status">Coming soon</p>
+            </div>
+          </li>
+
+          <li class="learn-episode learn-episode--locked" data-episode="cyber-u3">
+            <span class="learn-episode__marker" aria-hidden="true">3</span>
+            <div class="learn-episode__body">
+              <p class="learn-episode__unit">Unit 3 · Locked</p>
+              <h3 class="learn-episode__title">How Networks Work</h3>
+              <p class="learn-episode__blurb">
+                How data travels from a laptop to a data centre, and the points along the
+                way where a network can be attacked.
+              </p>
+            </div>
+            <div class="learn-episode__action">
+              <span class="learn-lock" aria-hidden="true"
+                ><i data-lucide="lock" aria-hidden="true"></i
+              ></span>
+              <p class="learn-episode__status">Coming soon</p>
+            </div>
+          </li>
+
+          <li class="learn-episode learn-episode--locked" data-episode="cyber-u4">
+            <span class="learn-episode__marker" aria-hidden="true">4</span>
+            <div class="learn-episode__body">
+              <p class="learn-episode__unit">Unit 4 · Locked</p>
+              <h3 class="learn-episode__title">Social Engineering</h3>
+              <p class="learn-episode__blurb">
+                Attacks that target people rather than software, such as phone calls asking
+                for access, and how to check who you're actually talking to.
+              </p>
+            </div>
+            <div class="learn-episode__action">
+              <span class="learn-lock" aria-hidden="true"
+                ><i data-lucide="lock" aria-hidden="true"></i
+              ></span>
+              <p class="learn-episode__status">Coming soon</p>
+            </div>
+          </li>
+
+          <li class="learn-episode learn-episode--locked" data-episode="cyber-u5">
+            <span class="learn-episode__marker" aria-hidden="true">5</span>
+            <div class="learn-episode__body">
+              <p class="learn-episode__unit">Unit 5 · Locked</p>
+              <h3 class="learn-episode__title">Incident Response</h3>
+              <p class="learn-episode__blurb">
+                The stages of handling an attack: detect, contain, eradicate and recover.
+                Also covers who has to be told about a breach, and when.
+              </p>
+            </div>
+            <div class="learn-episode__action">
+              <span class="learn-lock" aria-hidden="true"
+                ><i data-lucide="lock" aria-hidden="true"></i
+              ></span>
+              <p class="learn-episode__status">Coming soon</p>
+            </div>
+          </li>
+
+          <li class="learn-episode learn-episode--locked" data-episode="cyber-u6">
+            <span class="learn-episode__marker" aria-hidden="true">6</span>
+            <div class="learn-episode__body">
+              <p class="learn-episode__unit">Unit 6 · Locked</p>
+              <h3 class="learn-episode__title">Careers in Cybersecurity</h3>
+              <p class="learn-episode__blurb">
+                The jobs in the field, including security analysts, threat hunters and
+                penetration testers, and the skills and qualifications each one needs.
+              </p>
+            </div>
+            <div class="learn-episode__action">
+              <span class="learn-lock" aria-hidden="true"
+                ><i data-lucide="lock" aria-hidden="true"></i
+              ></span>
+              <p class="learn-episode__status">Coming soon</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <div class="site-footer__brand">
+          <a class="site-footer__logo" href="./" aria-label="Techinance home">
+            <img src="logo.png" alt="" width="32" height="32" />
+            <span>Techinance</span>
+          </a>
+          <p>A registered 501(c)(3) nonprofit organization.</p>
+        </div>
+
+        <div class="site-footer__column">
+          <h2>Quick Links</h2>
+          <a href="courses.html">Courses</a>
+          <a href="faqs.html">FAQs</a>
+        </div>
+
+        <div class="site-footer__column">
+          <h2>Get Involved</h2>
+          <a href="about.html">About</a>
+          <a href="get-involved.html">Get Involved</a>
+          <a href="contact.html">Contact Us</a>
+          <a href="learn.html" aria-current="page">Story Mode</a>
+        </div>
+
+        <div class="site-footer__column">
+          <h2>Legal</h2>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+        </div>
+
+        <div class="site-footer__column">
+          <h2>Connect</h2>
+          <div class="site-footer__social">
+            <a
+              href="https://www.instagram.com/techinance/"
+              aria-label="Techinance on Instagram"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            <a href="mailto:thetechinance@gmail.com" aria-label="Email Techinance">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="site-footer__bottom">
+        <p>© 2026 Techinance. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

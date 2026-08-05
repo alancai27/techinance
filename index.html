@@ -7,7 +7,7 @@
       name="description"
       content="Techinance makes technology and finance education clear, practical, and free."
     />
-    <title>Techinance — Where tech meets finance</title>
+    <title>Techinance | Where tech meets finance</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -15,10 +15,39 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="learn.css" />
+    <script>
+      /* Runs before first paint so the hero never renders in the wrong state.
+         script.js can only act after `document.fonts.ready` resolves, which is
+         long enough to show a frame of the un-animated lockup: no logo, and a
+         dotless "i". Deciding here means a returning visitor paints straight
+         into the finished hero, and a first-time visitor paints hidden, ready
+         for the intro. */
+      (function () {
+        var seen = false;
+        try {
+          seen = window.sessionStorage.getItem("techinance.introSeen") === "1";
+        } catch (error) {
+          seen = false;
+        }
+        document.documentElement.classList.add(seen ? "intro-done" : "is-loading");
+      })();
+    </script>
+    <noscript>
+      <!-- No script means no intro and no class on <html>, which would otherwise
+           leave the hero mid-assembly forever. Render it finished instead. -->
+      <style>
+        .hero__logo-slot { width: var(--logo-size); }
+        .hero__logo-button { opacity: 1; }
+        .hero__lockup { column-gap: var(--lockup-gap); }
+        .hero__i-dot { transform: translate(-50%, -50%) scale(1); }
+      </style>
+    </noscript>
     <script type="module" src="nav.js"></script>
+    <script type="module" src="auth-nav.js"></script>
     <script type="module" src="script.js"></script>
   </head>
-  <body class="home-page is-loading">
+  <body class="home-page">
     <header class="site-header" data-header>
       <nav class="navbar" aria-label="Primary navigation">
         <a class="brand" href="./" aria-label="Techinance home">
@@ -39,20 +68,20 @@
 
         <div class="desktop-nav">
           <a class="nav-link" href="courses.html">Courses</a>
-          <a class="nav-link" href="faqs.html">FAQs</a>
           <a class="nav-link" href="about.html">About</a>
-          <a class="nav-link" href="#join">Get Involved</a>
+          <a class="nav-link" href="get-involved.html">Get Involved</a>
           <a class="nav-link" href="contact.html">Contact Us</a>
-          <a class="donate-link" href="#donate">Donate</a>
+          <a class="nav-link" href="faqs.html">FAQs</a>
+          <div class="auth-slot" data-auth-nav></div>
         </div>
 
         <div class="mobile-nav" id="mobile-menu" data-mobile-menu>
           <a href="courses.html">Courses</a>
-          <a href="faqs.html">FAQs</a>
           <a href="about.html">About</a>
-          <a href="#join">Get Involved</a>
+          <a href="get-involved.html">Get Involved</a>
           <a href="contact.html">Contact Us</a>
-          <a href="#donate">Donate</a>
+          <a href="faqs.html">FAQs</a>
+          <a href="learn.html">My Learning</a>
         </div>
       </nav>
     </header>
@@ -132,9 +161,9 @@
         <div class="site-footer__column">
           <h2>Get Involved</h2>
           <a href="about.html">About</a>
-          <a href="#join">Get Involved</a>
+          <a href="get-involved.html">Get Involved</a>
           <a href="contact.html">Contact Us</a>
-          <a href="#donate">Donate</a>
+          <a href="learn.html">Story Mode</a>
         </div>
 
         <div class="site-footer__column">

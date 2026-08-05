@@ -203,6 +203,28 @@ a:focus-visible {
   flex: 0 0 auto;
 }
 
+/* The assembled hero, expressed in CSS so a returning visitor paints straight
+   into it. The ratios match measureHero(), which derives the logo and gap from
+   the wordmark font size using the same 0.58 and 0.18 factors. script.js still
+   sets exact pixel geometry once fonts are ready; these rules only have to hold
+   the correct picture until then. Every property here is also set inline by
+   setIntroState(), and inline styles win, so a replay still animates. */
+.intro-done .hero__logo-slot {
+  width: var(--logo-size);
+}
+
+.intro-done .hero__logo-button {
+  opacity: 1;
+}
+
+.intro-done .hero__lockup {
+  column-gap: var(--lockup-gap);
+}
+
+.intro-done .hero__i-dot {
+  transform: translate(-50%, -50%) scale(1);
+}
+
 .hero__logo-button {
   display: block;
   width: var(--logo-size);
@@ -360,6 +382,7 @@ a:focus-visible {
   font-family: "Nunito", sans-serif;
   font-size: clamp(34px, 5vw, 48px);
   font-weight: 700;
+  font-variant-numeric: tabular-nums;
   letter-spacing: -0.03em;
   line-height: 1;
 }

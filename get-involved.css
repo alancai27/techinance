@@ -1,0 +1,141 @@
+/* Get Involved page. Reuses the .contact__* form styles in styles.css, so this
+   file only covers what that page doesn't have: the ways-to-help list, the
+   select control, inline field errors, and the success panel. */
+
+.involve__ways {
+  display: grid;
+  margin: 0 0 28px;
+  padding: 0;
+  gap: 18px;
+  grid-template-columns: repeat(3, 1fr);
+  list-style: none;
+}
+
+.involve__ways li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  border: 1px solid rgba(11, 36, 71, 0.1);
+  border-radius: 18px;
+  padding: 18px;
+  background: var(--ice);
+}
+
+.involve__ways svg {
+  width: 22px;
+  height: 22px;
+  color: var(--steel);
+}
+
+.involve__ways h2 {
+  margin: 0 0 6px;
+  color: var(--navy);
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.involve__ways p {
+  margin: 0;
+  color: var(--slate);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.contact__field select {
+  width: 100%;
+  border: 1px solid rgba(11, 36, 71, 0.16);
+  border-radius: 12px;
+  padding: 12px 14px;
+  color: var(--navy);
+  background: var(--white);
+  font: 500 15px/1.4 "DM Sans", sans-serif;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.contact__field select:focus-visible {
+  border-color: var(--steel);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--ice);
+}
+
+.contact__field .is-invalid {
+  border-color: #b23b3b;
+}
+
+.contact__field .involve__error {
+  color: #b23b3b;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.contact__field .involve__hint {
+  color: var(--slate);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.involve__success {
+  border: 1px solid rgba(11, 36, 71, 0.1);
+  border-radius: 22px;
+  padding: 28px;
+  background: var(--white);
+  box-shadow: 0 12px 32px rgba(11, 36, 71, 0.06);
+}
+
+.involve__success:focus-visible {
+  outline: 3px solid var(--steel);
+  outline-offset: 4px;
+}
+
+.involve__success h2 {
+  margin: 0 0 12px;
+  color: var(--navy);
+  font-family: "Nunito", sans-serif;
+  font-size: clamp(20px, 3vw, 26px);
+  font-weight: 700;
+}
+
+.involve__success p {
+  margin: 0;
+  color: var(--slate);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.involve__success-actions {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  gap: 12px;
+}
+
+.involve__fallback {
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+.involve__fallback a {
+  color: var(--steel);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.involve__fallback a:hover,
+.involve__fallback a:focus-visible {
+  text-decoration: underline;
+}
+
+@media (max-width: 720px) {
+  .involve__ways {
+    grid-template-columns: 1fr;
+  }
+
+  .involve__success {
+    padding: 22px;
+  }
+
+  .involve__success-actions .button {
+    width: 100%;
+  }
+}

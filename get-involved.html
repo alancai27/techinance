@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Contact Techinance with questions about our courses, certifications, and programs."
+      content="Volunteer with Techinance as a tutor, course writer, or partner organisation."
     />
-    <title>Contact | Techinance</title>
+    <title>Get Involved | Techinance</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -16,9 +16,10 @@
     />
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="learn.css" />
+    <link rel="stylesheet" href="get-involved.css" />
     <script type="module" src="nav.js"></script>
     <script type="module" src="auth-nav.js"></script>
-    <script type="module" src="contact.js"></script>
+    <script type="module" src="get-involved.js"></script>
   </head>
   <body>
     <header class="site-header" data-header>
@@ -42,8 +43,8 @@
         <div class="desktop-nav">
           <a class="nav-link" href="courses.html">Courses</a>
           <a class="nav-link" href="about.html">About</a>
-          <a class="nav-link" href="get-involved.html">Get Involved</a>
-          <a class="nav-link" href="contact.html" aria-current="page">Contact Us</a>
+          <a class="nav-link" href="get-involved.html" aria-current="page">Get Involved</a>
+          <a class="nav-link" href="contact.html">Contact Us</a>
           <a class="nav-link" href="faqs.html">FAQs</a>
           <div class="auth-slot" data-auth-nav></div>
         </div>
@@ -51,8 +52,8 @@
         <div class="mobile-nav" id="mobile-menu" data-mobile-menu>
           <a href="courses.html">Courses</a>
           <a href="about.html">About</a>
-          <a href="get-involved.html">Get Involved</a>
-          <a href="contact.html" aria-current="page">Contact Us</a>
+          <a href="get-involved.html" aria-current="page">Get Involved</a>
+          <a href="contact.html">Contact Us</a>
           <a href="faqs.html">FAQs</a>
           <a href="learn.html">My Learning</a>
         </div>
@@ -60,37 +61,75 @@
     </header>
 
     <main class="page">
-      <section class="contact" id="contact" aria-labelledby="contact-title">
+      <section class="contact" id="get-involved" aria-labelledby="get-involved-title">
         <div class="contact__inner">
           <header class="contact__header">
-            <h1 id="contact-title">Contact</h1>
+            <h1 id="get-involved-title">Get Involved</h1>
             <p>
-              Got a question the <a href="faqs.html">FAQ page</a> didn't cover, or want to know more
-              about one of our courses? Drop us a message here, or email
-              <a href="mailto:thetechinance@gmail.com">thetechinance@gmail.com</a>. We'll get back to
-              you as soon as we can.
+              Techinance is a volunteer-run 501(c)(3) nonprofit. Nobody here is paid, so every
+              lesson, quiz, and tutoring session comes from someone giving their time. If you'd
+              like to help, tell us a bit about yourself below.
             </p>
           </header>
 
-          <form class="contact__form" data-contact-form novalidate>
+          <ul class="involve__ways">
+            <li>
+              <i data-lucide="users"></i>
+              <div>
+                <h2>Tutor a student</h2>
+                <p>
+                  Run sessions online and walk students through the parts they're stuck on. A
+                  couple of hours a month is enough.
+                </p>
+              </div>
+            </li>
+            <li>
+              <i data-lucide="pen-line"></i>
+              <div>
+                <h2>Write course content</h2>
+                <p>
+                  Draft lessons, write quiz questions, or check what's already published for
+                  mistakes and out of date figures.
+                </p>
+              </div>
+            </li>
+            <li>
+              <i data-lucide="building-2"></i>
+              <div>
+                <h2>Partner with us</h2>
+                <p>
+                  Schools, libraries, and youth programs can run our courses with their own
+                  students. We'll help you set it up.
+                </p>
+              </div>
+            </li>
+          </ul>
+
+          <form class="contact__form" data-involve-form novalidate>
             <div class="contact__row">
               <label class="contact__field">
                 <span>First name <em>(required)</em></span>
                 <input
                   type="text"
+                  id="involve-first-name"
                   name="firstName"
                   autocomplete="given-name"
+                  aria-describedby="involve-first-name-error"
                   required
                 />
+                <span class="involve__error" id="involve-first-name-error" hidden></span>
               </label>
               <label class="contact__field">
                 <span>Last name <em>(required)</em></span>
                 <input
                   type="text"
+                  id="involve-last-name"
                   name="lastName"
                   autocomplete="family-name"
+                  aria-describedby="involve-last-name-error"
                   required
                 />
+                <span class="involve__error" id="involve-last-name-error" hidden></span>
               </label>
             </div>
 
@@ -98,23 +137,75 @@
               <span>Email <em>(required)</em></span>
               <input
                 type="email"
+                id="involve-email"
                 name="email"
                 autocomplete="email"
+                aria-describedby="involve-email-error"
                 required
               />
+              <span class="involve__error" id="involve-email-error" hidden></span>
             </label>
 
             <label class="contact__field">
-              <span>Message <em>(required)</em></span>
-              <textarea name="message" rows="6" required></textarea>
+              <span>How do you want to get involved? <em>(required)</em></span>
+              <select
+                id="involve-role"
+                name="role"
+                aria-describedby="involve-role-error"
+                required
+              >
+                <option value="">Choose one</option>
+                <option value="Volunteer as a tutor">Volunteer as a tutor</option>
+                <option value="Help write course content">Help write course content</option>
+                <option value="Partner with us as a school or organisation">
+                  Partner with us as a school or organisation
+                </option>
+                <option value="Something else">Something else</option>
+              </select>
+              <span class="involve__error" id="involve-role-error" hidden></span>
             </label>
 
-            <p class="contact__status" data-contact-status hidden></p>
+            <label class="contact__field">
+              <span>Anything else you want to tell us? <em>(optional)</em></span>
+              <textarea
+                id="involve-message"
+                name="message"
+                rows="6"
+                aria-describedby="involve-message-hint"
+              ></textarea>
+              <span class="involve__hint" id="involve-message-hint">
+                Time you can give, subjects you know well, or the organisation you're with.
+              </span>
+            </label>
 
-            <button class="button button--primary" type="submit" data-contact-submit>
-              Submit
+            <p class="contact__status" data-involve-status role="status" aria-live="polite" hidden></p>
+
+            <button class="button button--primary" type="submit" data-involve-submit>
+              Continue
             </button>
           </form>
+
+          <div class="involve__success" data-involve-success tabindex="-1" hidden>
+            <h2 data-involve-success-title>Thanks, your answers are ready to send</h2>
+            <p>
+              This page doesn't have a mailbox behind it, so nothing has reached us yet. The button
+              below opens your email app with your answers already filled in. Send that email and
+              we'll be in touch, usually within a week.
+            </p>
+            <div class="involve__success-actions">
+              <a class="button button--primary" href="mailto:thetechinance@gmail.com" data-involve-mailto>
+                Open the email
+              </a>
+              <button class="button button--secondary" type="button" data-involve-edit>
+                Change my answers
+              </button>
+            </div>
+            <p class="involve__fallback">
+              If that button doesn't work, email
+              <a href="mailto:thetechinance@gmail.com">thetechinance@gmail.com</a> and paste your
+              answers in yourself.
+            </p>
+          </div>
         </div>
       </section>
     </main>
