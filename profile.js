@@ -166,8 +166,18 @@ const COURSES = [
         episodeId: "startup-u4",
         playable: true,
       },
-      { unit: 5, title: "Funding, Grants and Competitions", episodeId: "startup-u5", playable: false },
-      { unit: 6, title: "Wrap-Up and Founder Portfolio", episodeId: "startup-u6", playable: false },
+      {
+        unit: 5,
+        title: "Funding, Grants and Competitions",
+        episodeId: "startup-u5",
+        playable: true,
+      },
+      {
+        unit: 6,
+        title: "Wrap-Up and Founder Portfolio",
+        episodeId: "startup-u6",
+        playable: true,
+      },
     ],
   },
 ];
@@ -371,6 +381,8 @@ async function loadEpisodeMeta() {
       import("./content/startup-unit2.js"),
       import("./content/startup-unit3.js"),
       import("./content/startup-unit4.js"),
+      import("./content/startup-unit5.js"),
+      import("./content/startup-unit6.js"),
     ]);
     badgeOrder = [];
     let grandXp = 0;

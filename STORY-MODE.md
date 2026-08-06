@@ -225,6 +225,8 @@ Rules that keep episodes teachable:
 - A course gets at most 15 badges across all its units, split roughly by unit
   size. Badges mark real milestones, not participation, so most scenes award none.
   Cybersecurity is at the cap (5 / 3 / 3 / 4), so a new badge means retiring one.
+  How 2 Build a Start Up is also at the cap, across six modules (3 / 3 / 3 / 3 / 1 / 2):
+  its sort scenes in modules 5 and 6 and its inspect scene in module 5 award none.
 - Retiring a badge means deleting its `BADGE_REGISTRY` entry **and** the `badge:`
   field on the scene that awarded it. Drop only the registry entry and
   `fallbackBadge()` silently regenerates the badge from the scene. Change nothing

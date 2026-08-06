@@ -171,6 +171,8 @@ async function loadEpisodeMeta() {
       import("./content/startup-unit2.js"),
       import("./content/startup-unit3.js"),
       import("./content/startup-unit4.js"),
+      import("./content/startup-unit5.js"),
+      import("./content/startup-unit6.js"),
     ]);
     let grandMax = 0;
     for (const mod of modules) {

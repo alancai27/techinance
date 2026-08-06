@@ -23,6 +23,8 @@ import { episode as startupUnit1 } from "./content/startup-unit1.js";
 import { episode as startupUnit2 } from "./content/startup-unit2.js";
 import { episode as startupUnit3 } from "./content/startup-unit3.js";
 import { episode as startupUnit4 } from "./content/startup-unit4.js";
+import { episode as startupUnit5 } from "./content/startup-unit5.js";
+import { episode as startupUnit6 } from "./content/startup-unit6.js";
 import { mountStory } from "./story-engine.js";
 import { startProgressSync } from "./progress-sync.js";
 
@@ -48,6 +50,8 @@ const EPISODES = {
   "startup-u2": /** @type {Episode} */ (/** @type {unknown} */ (startupUnit2)),
   "startup-u3": /** @type {Episode} */ (/** @type {unknown} */ (startupUnit3)),
   "startup-u4": /** @type {Episode} */ (/** @type {unknown} */ (startupUnit4)),
+  "startup-u5": /** @type {Episode} */ (/** @type {unknown} */ (startupUnit5)),
+  "startup-u6": /** @type {Episode} */ (/** @type {unknown} */ (startupUnit6)),
 };
 
 /**

@@ -17,6 +17,8 @@ import { episode as startup1 } from "../content/startup-unit1.js";
 import { episode as startup2 } from "../content/startup-unit2.js";
 import { episode as startup3 } from "../content/startup-unit3.js";
 import { episode as startup4 } from "../content/startup-unit4.js";
+import { episode as startup5 } from "../content/startup-unit5.js";
+import { episode as startup6 } from "../content/startup-unit6.js";
 
 /**
  * Structural checks on the Story Mode episodes.
@@ -28,7 +30,7 @@ import { episode as startup4 } from "../content/startup-unit4.js";
  * once, which is what these tests are here to catch.
  */
 
-const EPISODES = [unit1, unit2, unit3, unit4, finance1, finance2, finance4, neuro1, neuro2, neuro3, neuro4, startup1, startup2, startup3, startup4];
+const EPISODES = [unit1, unit2, unit3, unit4, finance1, finance2, finance4, neuro1, neuro2, neuro3, neuro4, startup1, startup2, startup3, startup4, startup5, startup6];
 
 /** Badges the whole Cybersecurity course is allowed to award. See STORY-MODE.md. */
 const COURSE_BADGE_CAP = 15;
