@@ -64,7 +64,7 @@
         <div class="legal__inner">
           <header class="legal__header">
             <h1 id="privacy-title">Privacy Policy</h1>
-            <p class="legal__updated">Last updated: August 5, 2026</p>
+            <p class="legal__updated">Last updated: August 6, 2026</p>
           </header>
 
           <div class="legal__body">
@@ -95,15 +95,19 @@
               </li>
               <li>
                 <strong>Story Mode sign-in.</strong> Story Mode is the interactive part of our courses. If
-                you choose to sign in with Google, Google returns your name, email address, and profile
-                picture to your own browser. We do not run a server for Story Mode, so this information is
-                never transmitted to Techinance and we never see or store it. You can also use Story Mode as
-                a guest, which asks for nothing at all.
+                you choose to sign in with Google, we receive your name, email address, and profile picture
+                and store them in our database, which is hosted by Supabase. We never receive your Google
+                password. You can also use Story Mode as a guest, which asks for nothing at all and stores
+                nothing outside your own browser.
               </li>
               <li>
-                <strong>Story Mode progress.</strong> Your XP, badges, completed scenes, and place in an
-                episode are saved in your own browser using local storage. This stays on your device, is not
-                sent to us, and is not shared between devices. Clearing your browser data deletes it.
+                <strong>Story Mode progress.</strong> Your XP, badges, completed episodes, and place in an
+                episode are saved in your browser so that a lesson keeps working if your connection drops.
+                <strong>If you are signed in with Google</strong>, that progress is also saved to our database
+                so it follows you between devices, and your display name, profile picture and totals appear
+                on the leaderboard where other signed-in learners can see them. <strong>If you play as a
+                guest</strong>, nothing is uploaded: your progress stays on that one device, and you do not
+                appear on the leaderboard.
               </li>
               <li>
                 <strong>Technical information.</strong> Like most websites, our hosting or analytics providers
@@ -136,6 +140,15 @@
                 on our behalf and only as needed to deliver their services. Messages sent through our contact
                 and Get Involved forms are delivered to our inbox by FormSubmit, a third-party form service,
                 which receives the name, email address, and message you submit in order to forward it to us.
+                Story Mode accounts and progress are stored with Supabase, which hosts our database and
+                handles sign-in on our behalf.
+              </li>
+              <li>
+                <strong>Other learners, on the leaderboard.</strong> If you sign in to Story Mode with
+                Google, your display name, profile picture, total XP, badge count, and number of completed
+                episodes are visible to other signed-in learners on the leaderboard page. Nothing else is
+                shared: your email address, your answers, and which scenes you have played are never shown
+                to anyone else. If you would rather not appear, play as a guest, or ask us to remove you.
               </li>
               <li>
                 <strong>Legal requirements.</strong> We may disclose information if required by law, court
@@ -158,6 +171,15 @@
               We do not knowingly collect personal information from children under 13 for commercial purposes.
               If you believe we have collected such information inappropriately, please contact us and we will
               take reasonable steps to delete it.
+            </p>
+            <p>
+              <strong>A note for parents about the leaderboard.</strong> Signing in to Story Mode with Google
+              puts a learner's first and last name, as it appears on their Google account, and their profile
+              picture on a page that other signed-in learners can see. If you would prefer a child not to be
+              visible to other learners, have them use <strong>guest mode</strong>, which keeps everything on
+              their own device and shows nothing to anybody. You can also email us at
+              <a href="mailto:thetechinance@gmail.com">thetechinance@gmail.com</a> and we will delete the
+              account and remove them from the leaderboard.
             </p>
 
             <h2>5. Cookies and Similar Technologies</h2>
@@ -189,12 +211,23 @@
               nonprofit recordkeeping requirements. When information is no longer needed, we take reasonable
               steps to delete or de-identify it.
             </p>
+            <p>
+              Story Mode accounts and progress are kept until you delete them. Deleting your progress from
+              your profile page removes it immediately, and asking us to delete your account removes
+              everything we hold about it.
+            </p>
 
             <h2>7. Data Security</h2>
             <p>
               We use reasonable administrative and technical safeguards to protect personal information.
               However, no method of transmission or storage is completely secure, and we cannot guarantee
               absolute security.
+            </p>
+            <p>
+              Story Mode data is protected at the database level: each learner's records can only be read or
+              changed by that learner's own signed-in account. Nobody, including other learners, can read your
+              answers or your history. The leaderboard is the one deliberate exception, and it exposes only
+              the display name, picture and totals described in section 3.
             </p>
 
             <h2>8. Your Choices and Rights</h2>
@@ -206,8 +239,13 @@
               <li>Opt out of non-essential communications</li>
               <li>
                 Delete your Story Mode progress yourself at any time, using the reset control on your profile
-                page or by clearing your browser data. Because that information never leaves your device, we
-                cannot delete it for you and we hold no copy of it.
+                page. If you are signed in, that clears your saved progress from our database as well as from
+                your browser, and removes you from the leaderboard. Guest progress lives only in your browser,
+                so clearing your browser data removes it and we hold no copy.
+              </li>
+              <li>
+                Ask us to delete your Story Mode account entirely, including your name, email address and
+                profile picture. Email us and we will remove it.
               </li>
             </ul>
             <p>
