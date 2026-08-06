@@ -3,26 +3,27 @@
 Interactive, role-play course episodes for the Techinance site. Learners sign in,
 step into a role, and play through a unit instead of reading slides.
 
-Two Cybersecurity units are live. The learner plays a junior analyst in a Security
-Operations Centre.
+The Cybersecurity course has four units. All four are written and playable. The
+learner plays an analyst in a Security Operations Centre.
 
-The Cybersecurity course has four units. Three are written.
-
-| Unit | Title | Scenes | Badges | Approx |
-|---|---|---|---|---|
-| 1 | The Cost of Cybercrime | 45 | 6 | 40 min |
-| 2 | Digital Footprint and Defense | 28 | 4 | 30 min |
-| 3 | Threats and Network Defense | not written | | |
-| 4 | Programming for Cybersecurity | 32 | 5 | 30 min |
+| Unit | Title | Scenes | Acts | Badges | Approx |
+|---|---|---|---|---|---|
+| 1 | The Cost of Cybercrime | 45 | 3 | 5 | 40 min |
+| 2 | Digital Footprint and Defense | 28 | 3 | 3 | 30 min |
+| 3 | Careers, Skills, and Certifications | 29 | 3 | 3 | 30 min |
+| 4 | Programming for Cybersecurity | 32 | 3 | 4 | 30 min |
 
 The unit list lives in two places and both must agree: the episode cards in
 `learn.html` and `CYBER_UNITS` in `profile.js`. A new episode also has to be
 registered in three consumers: `story.js` (the EPISODES map), `learn.js` and
-`profile.js` (both `loadEpisodeMeta`).
+`profile.js` (both `loadEpisodeMeta`). Adding an episode without touching
+`learn.html` and `profile.js` leaves it playable only by typing its URL.
 
-Unit 4 has no official quiz checked in yet. When one exists, save it as
-`content/sources/unit4-quiz-questions.md` and bring the episode to 10/10 the way
-units 1 and 2 are.
+Units 3 and 4 have no official quiz checked in yet. When one exists, save it as
+`content/sources/unit<N>-quiz-questions.md` and bring the episode to 10/10 the
+way units 1 and 2 are. Unit 3's source documents ("Overview of Cybersecurity
+Careers" and "Skills and Certifications") aren't in `content/sources/` either,
+so its figures can't be re-checked against the originals.
 
 ## Pages
 
@@ -75,6 +76,10 @@ content/
   unit2-act1.js    Act 1, Digital Footprint and Reputation  (u2a1-*)
   unit2-act2.js    Act 2, Active and Passive Footprints     (u2a2-*)
   unit2-act3.js    Act 3, Strategies for Protection         (u2a3-*)
+  cyber-unit3.js   Merges unit 3's acts
+  unit3-act1.js    Act 1, The Cybersecurity Job Market      (u3a1-*)
+  unit3-act2.js    Act 2, Skills and Certifications         (u3a2-*)
+  unit3-act3.js    Act 3, Planning Your Own Path            (u3a3-*)
   cyber-unit4.js   Merges unit 4's acts
   unit4-act1.js    Act 1, Why Code Matters in Security      (u4a1-*)
   unit4-act2.js    Act 2, Reading Python and JavaScript     (u4a2-*)
@@ -114,6 +119,14 @@ Rules that keep episodes teachable:
 - Icons are kebab-case names resolved through `icon.js`, never emoji.
 - A course gets at most 15 badges across all its units, split roughly by unit
   size. Badges mark real milestones, not participation, so most scenes award none.
+  Cybersecurity is at the cap (5 / 3 / 3 / 4), so a new badge means retiring one.
+- Retiring a badge means deleting its `BADGE_REGISTRY` entry **and** the `badge:`
+  field on the scene that awarded it. Drop only the registry entry and
+  `fallbackBadge()` silently regenerates the badge from the scene. Change nothing
+  else: an automated pass over these files once emptied the `commands` and
+  `buckets` arrays of 17 terminal and sort scenes while trimming badges, which
+  type-checks, lints and renders, but leaves those scenes unplayable. `validate`
+  below catches it; a diff review catches it sooner.
 - Outside the episodes themselves, keep copy short. Page ledes, card blurbs and
   panel text are one or two lines. The long-form writing belongs in the scenes.
 - Every question on the unit's official quiz (`content/sources/unit<N>-quiz-questions.md`)
@@ -136,12 +149,20 @@ Rules that keep episodes teachable:
 
 ## Validating content
 
-The scene graph is easy to break by hand-editing. Check it with:
+The scene graph is easy to break by hand-editing, and a broken episode still
+type-checks, lints and renders. `test/episodes.test.js` covers every unit:
 
 ```bash
-node -e 'import("./content/cyber-unit1.js").then(({episode:e})=>{const s=e.scenes,seen=new Set(),st=[e.startScene];while(st.length){const c=st.pop();if(seen.has(c)||!s[c])continue;seen.add(c);const x=s[c];(x.type==="choice"?x.options.map(o=>o.next):[x.next]).filter(Boolean).forEach(n=>st.push(n))}console.log(`${seen.size}/${Object.keys(s).length} scenes reachable`)})'
+pnpm test
 ```
 
-Unreachable scenes, dangling `next` ids, a `requiredFinds` higher than the number of
-suspicious hotspots, and `sort` items pointing at unknown buckets all make an episode
-unwinnable, so they're worth checking before you ship.
+It fails on unreachable scenes, dangling `next` ids, dead ends, empty
+`commands` / `buckets` / `hotspots` / `terms` / `options` arrays, a
+`requiredFinds` higher than the number of suspicious hotspots, `sort` items
+pointing at unknown buckets, hotspots that are defined but never rendered,
+quizzes without exactly one correct answer, a `reveal` whose `answerIndex` is out
+of range, badges awarded without a registry entry (or registered without a scene
+awarding them), icon names that would silently fall back to `sparkles`, and a
+course going over the badge cap.
+
+Run it before shipping content. `tsc` and `eslint` will not catch any of it.

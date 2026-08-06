@@ -31,34 +31,28 @@ const BADGE_REGISTRY = /** @type {Badge[]} */ ([
     icon: "fish",
   },
   {
-    id: "case-historian",
-    name: "Breach Case Files",
-    description: "Reviewed six major breaches and what caused them.",
-    icon: "folder",
-  },
-  {
-    id: "unit1-certified",
-    name: "Unit 1 Complete",
-    description: "Completed Unit 1 of the Techinance Cybersecurity course.",
-    icon: "medal",
-  },
-  {
     id: "chain-breaker",
     name: "Supply Chain Attacks",
     description: "Traced an attack back through a software supply chain.",
     icon: "unlink",
   },
   {
-    id: "cool-head",
-    name: "Ransom Decision",
-    description: "Worked through the decision on whether to pay a ransom.",
-    icon: "snowflake",
+    id: "case-historian",
+    name: "Breach Case Files",
+    description: "Reviewed six major breaches and what caused them.",
+    icon: "folder",
   },
   {
     id: "traffic-reader",
     name: "Traffic Analysis",
     description: "Told a DoS from a DDoS by reading server logs.",
     icon: "waves",
+  },
+  {
+    id: "unit1-certified",
+    name: "Unit 1 Complete",
+    description: "Completed Unit 1 of the Techinance Cybersecurity course.",
+    icon: "medal",
   },
 ]);
 

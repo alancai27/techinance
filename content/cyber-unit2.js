@@ -43,12 +43,6 @@ const BADGE_REGISTRY = /** @type {Badge[]} */ ([
     description: "Completed Unit 2 of the Techinance Cybersecurity course.",
     icon: "medal",
   },
-  {
-    id: "cookie-inspector",
-    name: "Cookie Inspector",
-    description: "Discovered how many websites leave session cookies unsecured.",
-    icon: "eye",
-  },
 ]);
 
 const acts = [act1, act2, act3];

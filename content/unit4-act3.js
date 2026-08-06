@@ -37,20 +37,8 @@ const SOURCES = {
  * Badge metadata for the awards handed out in this act. The merger in
  * cyber-unit4.js holds the registry these must agree with.
  */
-export const act3Badges = [
-  {
-    id: "tool-builder",
-    name: "Tool Builder",
-    description: "Planned a working security tool of your own.",
-    icon: "key",
-  },
-  {
-    id: "unit4-certified",
-    name: "Unit 4 Complete",
-    description: "Completed Unit 4 of the Techinance Cybersecurity course.",
-    icon: "medal",
-  },
-];
+/** @type {{ id: string, name: string, description: string, icon: string }[]} */
+export const act3Badges = [];
 
 export const act3 = {
   entry: "u4a3-start",
@@ -88,6 +76,31 @@ export const act3 = {
       prompt: "Read the file, then run it.",
       host: "analyst@techinance-soc",
       commands: [
+        {
+          id: "listing",
+          cmd: "cat password_check.py",
+          output: [
+            "# password_check.py // stage 1: hold the facts and report them",
+            'password = "sunshine"',
+            "min_length = 12",
+            "is_strong = False",
+            "",
+            'print("Checking password:", password)',
+            'print("Minimum length required:", min_length)',
+            'print("Strong so far:", is_strong)',
+          ],
+          required: true,
+        },
+        {
+          id: "run",
+          cmd: "python3 password_check.py",
+          output: [
+            "Checking password: sunshine",
+            "Minimum length required: 12",
+            "Strong so far: False",
+          ],
+          required: true,
+        },
       ],
       source: SOURCES.codingGuide,
       xp: 30,
@@ -110,6 +123,40 @@ export const act3 = {
       prompt: "Read the two functions, then run the file again.",
       host: "analyst@techinance-soc",
       commands: [
+        {
+          id: "listing",
+          cmd: "cat password_check.py",
+          output: [
+            "# password_check.py // stage 2: one function per rule",
+            'password = "sunshine"',
+            "min_length = 12",
+            "is_strong = False",
+            "",
+            "def is_long_enough(password, min_length):",
+            "    return len(password) >= min_length",
+            "",
+            "def has_a_number(password):",
+            "    for character in password:",
+            "        if character.isdigit():",
+            "            return True",
+            "    return False",
+            "",
+            'print("Checking password:", password)',
+            'print("Minimum length required:", min_length)',
+            'print("Strong so far:", is_strong)',
+          ],
+          required: true,
+        },
+        {
+          id: "run",
+          cmd: "python3 password_check.py",
+          output: [
+            "Checking password: sunshine",
+            "Minimum length required: 12",
+            "Strong so far: False",
+          ],
+          required: true,
+        },
       ],
       source: SOURCES.codingGuide,
       xp: 30,
@@ -139,7 +186,6 @@ export const act3 = {
     /* ---------------- 5. boolean logic quiz ---------------- */
     "u4a3-boolean-quiz": {
       id: "u4a3-boolean-quiz",
-      badge: "boolean-thinker",
       type: "quiz",
       title: "Knowledge check: the decision line",
       speaker: "Ravi Mehta",
@@ -198,6 +244,60 @@ export const act3 = {
       prompt: "Read the file, then run both tests.",
       host: "analyst@techinance-soc",
       commands: [
+        {
+          id: "listing",
+          cmd: "cat password_check.py",
+          output: [
+            "# password_check.py // finished: checks length and digits, then decides",
+            "import sys",
+            "",
+            "password = sys.argv[1]",
+            "min_length = 12",
+            "is_strong = False",
+            "",
+            "def is_long_enough(password, min_length):",
+            "    return len(password) >= min_length",
+            "",
+            "def has_a_number(password):",
+            "    for character in password:",
+            "        if character.isdigit():",
+            "            return True",
+            "    return False",
+            "",
+            'print("Checking password:", password)',
+            "",
+            "long_enough = is_long_enough(password, min_length)",
+            "has_number = has_a_number(password)",
+            "is_strong = long_enough and has_number",
+            "",
+            'print("Long enough:", long_enough)',
+            'print("Contains a number:", has_number)',
+            'print("Strong password:", is_strong)',
+          ],
+          required: true,
+        },
+        {
+          id: "weak",
+          cmd: "python3 password_check.py sunshine",
+          output: [
+            "Checking password: sunshine",
+            "Long enough: False",
+            "Contains a number: False",
+            "Strong password: False",
+          ],
+          required: true,
+        },
+        {
+          id: "strong",
+          cmd: "python3 password_check.py Th3-Quiet-River-88",
+          output: [
+            "Checking password: Th3-Quiet-River-88",
+            "Long enough: True",
+            "Contains a number: True",
+            "Strong password: True",
+          ],
+          required: true,
+        },
       ],
       source: SOURCES.codingGuide,
       xp: 35,
@@ -207,7 +307,6 @@ export const act3 = {
     /* ---------------- 7. line by line review ---------------- */
     "u4a3-sort": {
       id: "u4a3-sort",
-      badge: "code-reviewer",
       type: "sort",
       title: "Sign off the code line by line",
       speaker: "Dana Okoye",
@@ -219,6 +318,26 @@ export const act3 = {
       ],
       prompt: "Put each line of the checker into the group it belongs to.",
       buckets: [
+        {
+          id: "variable",
+          label: "Variable",
+          hint: "Stores a value you chose: a string, an integer or a boolean",
+        },
+        {
+          id: "function",
+          label: "Function definition",
+          hint: "Starts a block of lines that do one specific task",
+        },
+        {
+          id: "print",
+          label: "Print statement",
+          hint: "Sends output to the console for a person to read",
+        },
+        {
+          id: "boolean",
+          label: "Boolean check",
+          hint: "Works out whether something is true or false right now",
+        },
       ],
       items: [
         {
@@ -287,6 +406,7 @@ export const act3 = {
       ],
       source: SOURCES.codingGuide,
       xp: 40,
+      badge: "code-reviewer",
       next: "u4a3-requirements",
     },
 

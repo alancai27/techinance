@@ -23,14 +23,8 @@ const SOURCES = {
 /**
  * Badge metadata for the awards handed out in this act.
  */
-export const act1Badges = [
-  {
-    id: "shadow-analyst",
-    name: "Footprint Classifier",
-    description: "Identified active and passive digital footprints.",
-    icon: "network",
-  },
-];
+/** @type {{ id: string, name: string, description: string, icon: string }[]} */
+export const act1Badges = [];
 
 export const act1 = {
   entry: "u2a1-start",

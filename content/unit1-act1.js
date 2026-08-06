@@ -42,14 +42,8 @@ const SOURCES = {
  * Badge metadata for the awards handed out in this act. The integrator
  * registers these on the episode; the ids match the `badge` field below.
  */
-export const act1Badges = [
-  {
-    id: "phish-eye",
-    name: "Phish Eye",
-    description: "Found five genuine warning signs in a phishing email.",
-    icon: "fish",
-  },
-];
+/** @type {{ id: string, name: string, description: string, icon: string }[]} */
+export const act1Badges = [];
 
 export const act1 = {
   entry: "a1-start",
@@ -126,6 +120,51 @@ export const act1 = {
       prompt: "Run the required commands to get up to speed.",
       host: "analyst@techinance-soc",
       commands: [
+        {
+          id: "shift",
+          cmd: "shift --status",
+          output: [
+            "ORACLE // Techinance SOC · shift 07:00–15:00",
+            "analyst: you (junior, day 1)   supervisor: r.mehta",
+            "open incidents: 3   watchlist actors: 1",
+            "ready. try `feed --trend ransomware`",
+          ],
+          required: false,
+        },
+        {
+          id: "trend",
+          cmd: "feed --trend ransomware",
+          output: [
+            "TREND // ransomware",
+            "definition: attackers encrypt a victim's data and demand payment to release it.",
+            "volume change since 2020 ............ +105%",
+            "note: a steady rise, not a one-off spike.",
+          ],
+          required: true,
+        },
+        {
+          id: "actor",
+          cmd: "actor --list --active",
+          output: [
+            "ACTIVE ACTORS // 1 tracked",
+            'alias "Nightjar" / first seen 14 months ago',
+            "  no direct observation. identified from traces only.",
+            "  preferred entry: email.",
+          ],
+          required: false,
+        },
+        {
+          id: "queue",
+          cmd: "queue --mine",
+          output: [
+            "QUEUE // analyst: you",
+            "[1] user report: forwarded email, flagged by student account",
+            "    reporter: p.raman@student.techinance.org",
+            "    status: unreviewed",
+            "assigned by: r.mehta",
+          ],
+          required: true,
+        },
       ],
       source: SOURCES.ransomware,
       xp: 25,

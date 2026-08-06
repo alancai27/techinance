@@ -61,14 +61,8 @@ const SOURCES = {
  * Badge metadata for the awards handed out in this act. The integrator
  * registers these on the episode; the ids match the `badge` field below.
  */
-export const act2Badges = [
-  {
-    id: "case-historian",
-    name: "Case Historian",
-    description: "Sorted six major breaches into the right attack patterns.",
-    icon: "folder",
-  },
-];
+/** @type {{ id: string, name: string, description: string, icon: string }[]} */
+export const act2Badges = [];
 
 export const act2 = {
   entry: "a2-start",
@@ -105,6 +99,120 @@ export const act2 = {
       prompt: "Open the case files. The required ones are the ones that match our alert.",
       host: "analyst@techinance-soc",
       commands: [
+        {
+          id: "list",
+          cmd: "archive --list --since 2020",
+          output: [
+            "BREACH ARCHIVE // 6 case files",
+            "  solarwinds-orion .... late 2020   supply chain",
+            "  exchange-server ..... early 2021  zero-day, backdoors",
+            "  facebook-leak ....... Apr 2021    mass data leak",
+            "  colonial-pipeline ... May 2021    ransomware, energy",
+            "  jbs-usa ............. 2021        ransomware, food supply",
+            "  t-mobile ............ Aug 2021    mass data leak",
+            "open one with `case --open <id>`",
+          ],
+          required: false,
+        },
+        {
+          id: "solarwinds",
+          cmd: "case --open solarwinds-orion",
+          output: [
+            "CASE // solarwinds-orion · discovered late 2020",
+            "SolarWinds Orion is network monitoring software. Attackers",
+            "compromised it, so the malicious code arrived inside an update",
+            "customers installed themselves.",
+            "reach ......... thousands of organisations, incl. US government agencies",
+            "taken ......... sensitive communications and proprietary data",
+            "outcome ....... treated as a national security crisis",
+            "lesson ........ the attackers entered through software the victims",
+            "                already trusted and installed on purpose.",
+          ],
+          required: true,
+        },
+        {
+          id: "exchange",
+          cmd: "case --open exchange-server",
+          output: [
+            "CASE // exchange-server · early 2021",
+            "Attackers exploited vulnerabilities in Microsoft's email server",
+            "software to reach communications and install backdoors for",
+            "future breaches.",
+            "reach ......... over 30,000 organisations globally",
+            "victims ....... every size, from small enterprises to large corporations",
+            "lesson ........ patch management is a security control, not routine",
+            "                admin work.",
+          ],
+          required: true,
+        },
+        {
+          id: "colonial",
+          cmd: "case --open colonial-pipeline",
+          output: [
+            "CASE // colonial-pipeline · May 2021",
+            "Ransomware halted operations at the largest fuel pipeline in the US.",
+            "public impact .. widespread fuel shortages and panic buying,",
+            "                 East Coast",
+            "ransom paid ... $4,400,000 to regain control of its systems",
+            "lesson ........ an attack on critical infrastructure reaches the",
+            "                public within days.",
+          ],
+          required: true,
+        },
+        {
+          id: "tmobile",
+          cmd: "case --open t-mobile",
+          output: [
+            "CASE // t-mobile · August 2021",
+            "affected ...... over 50,000,000 customers",
+            "exposed ....... names, social security numbers, driver's licence details",
+            "ransom ........ none. no encryption, no shutdown.",
+            "lesson ........ the cost falls on customers for years afterwards,",
+            "                as identity theft and financial fraud.",
+          ],
+          required: false,
+        },
+        {
+          id: "facebook",
+          cmd: "case --open facebook-leak",
+          output: [
+            "CASE // facebook-leak · April 2021",
+            "affected ...... over 533,000,000 users worldwide",
+            "exposed ....... phone numbers and email addresses",
+            "response ...... initially downplayed by the company",
+            "afterlife ..... data reused in phishing attacks, scams and other",
+            "                forms of cybercrime",
+          ],
+          required: false,
+        },
+        {
+          id: "jbs",
+          cmd: "case --open jbs-usa",
+          output: [
+            "CASE // jbs-usa · 2021",
+            "sector ........ food supply",
+            "impact ........ disrupted global food supply operations",
+            "payment ....... $11,000,000",
+            "lesson ........ food supply is critical infrastructure, the same",
+            "                category as energy.",
+          ],
+          required: false,
+        },
+        {
+          id: "compare",
+          cmd: "case --compare --actor nightjar",
+          output: [
+            "COMPARE // live alert vs archive",
+            "shared indicators:",
+            "  [x] entry through trusted, already-installed software",
+            "  [x] no signature match. nothing in the archive fires on it",
+            "  [x] quiet outbound traffic, long intervals",
+            "  [ ] files encrypted on disk .................... not observed",
+            "  [ ] customer records staged for export ......... not observed",
+            "verdict: insufficient for automated attribution. analyst decision required.",
+          ],
+          required: true,
+        },
       ],
       source: SOURCES.solarwinds,
       xp: 40,
@@ -287,8 +395,65 @@ export const act2 = {
       ],
       prompt: "Drop each incident into the attack pattern it belongs to.",
       buckets: [
+        {
+          id: "supply",
+          label: "Supply Chain & Vendor Software",
+          hint: "One weakness inside software thousands of organisations already trust and run.",
+        },
+        {
+          id: "extortion",
+          label: "Ransomware on Critical Infrastructure",
+          hint: "Shut down a service the public depends on, then demand payment to restore it.",
+        },
+        {
+          id: "leak",
+          label: "Mass Personal Data Leak",
+          hint: "No encryption and no shutdown. Millions of people's private details are exposed.",
+        },
       ],
       items: [
+        {
+          id: "solarwinds",
+          label: "SolarWinds Orion (late 2020)",
+          bucket: "supply",
+          explain:
+            "The textbook case. Network monitoring software was compromised, so the attack arrived inside an update thousands of organisations installed themselves, including US government agencies. Attackers reached sensitive communications and proprietary data, and it became a national security crisis.",
+        },
+        {
+          id: "exchange",
+          label: "Microsoft Exchange Server (early 2021)",
+          bucket: "supply",
+          explain:
+            "Over 30,000 organisations globally, through vulnerabilities in one email product, and the attackers installed backdoors for future breaches. The break-in method differs from SolarWinds, but the pattern is the same: one flaw in widely used software, thousands of victims at once, from small enterprises to large corporations.",
+        },
+        {
+          id: "colonial",
+          label: "Colonial Pipeline (May 2021)",
+          bucket: "extortion",
+          explain:
+            "Ransomware halted the largest fuel pipeline in the US, causing widespread fuel shortages and panic buying along the East Coast. Colonial Pipeline paid a $4.4 million ransom to regain control of its systems.",
+        },
+        {
+          id: "jbs",
+          label: "JBS USA (2021)",
+          bucket: "extortion",
+          explain:
+            "The JBS USA ransomware attack disrupted global food supply operations and ended in an $11 million payment. Energy and food are both critical infrastructure: essential services a country can't go without.",
+        },
+        {
+          id: "tmobile",
+          label: "T-Mobile (August 2021)",
+          bucket: "leak",
+          explain:
+            "Over 50 million customers had personal information exposed, including names, social security numbers and driver's licence details. Nothing was encrypted and nothing was shut down. The harm arrives later, as identity theft and financial fraud affecting customers for years.",
+        },
+        {
+          id: "facebook",
+          label: "Facebook (April 2021)",
+          bucket: "leak",
+          explain:
+            "Over 533 million users' personal information, including phone numbers and email addresses, was exposed. Facebook initially downplayed it, and the data has since been used in phishing attacks, scams and other forms of cybercrime.",
+        },
       ],
       source: SOURCES.supplyChain,
       xp: 40,
@@ -620,7 +785,6 @@ export const act2 = {
     /* ---------------- 14. name the playbook ---------------- */
     "a2-pattern": {
       id: "a2-pattern",
-      badge: "chain-breaker",
       type: "quiz",
       title: "Matching the alert to a case file",
       speaker: "Ravi Mehta",
@@ -660,13 +824,13 @@ export const act2 = {
       ],
       source: SOURCES.solarwinds,
       xp: 40,
+      badge: "chain-breaker",
       next: "a2-ransom",
     },
 
     /* ---------------- 15. the ransom ---------------- */
     "a2-ransom": {
       id: "a2-ransom",
-      badge: "cool-head",
       type: "choice",
       title: "The ransom demand",
       speaker: "Nightjar",

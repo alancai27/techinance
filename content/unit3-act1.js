@@ -28,22 +28,12 @@ const SOURCES = {
 };
 
 /**
- * Badge metadata for the awards handed out in this act.
+ * Badges the acts award are registered centrally in cyber-unit3.js. This act
+ * awards `career-mapper`.
+ *
+ * @type {{ id: string, name: string, description: string, icon: string }[]}
  */
-export const act1Badges = [
-  {
-    id: "market-scout",
-    name: "Market Scout",
-    description: "Learned how much demand there is for cybersecurity talent right now.",
-    icon: "trending-up",
-  },
-  {
-    id: "career-mapper",
-    name: "Career Mapper",
-    description: "Sorted cybersecurity roles by entry, mid, and advanced level.",
-    icon: "map",
-  },
-];
+export const act1Badges = [];
 
 export const act1 = {
   entry: "u3a1-start",
@@ -105,11 +95,33 @@ export const act1 = {
       ],
       source: SOURCES.careerGuide,
       xp: 25,
-      badge: "market-scout",
+      next: "u3a1-growth-reveal",
+    },
+
+    /* ---------------- 3. projected growth ---------------- */
+    "u3a1-growth-reveal": {
+      id: "u3a1-growth-reveal",
+      type: "reveal",
+      title: "Projected growth to 2033",
+      speaker: "Ravi Mehta",
+      avatar: "shield-check",
+      location: "Security Operations Centre",
+      text: [
+        "\"Openings today are one thing. What matters more for someone your age is where the field is heading,\" Ravi says. \"The Bureau of Labor Statistics publishes a growth projection for every occupation. Guess this one before I show you.\"",
+      ],
+      question: "What job growth does the US Bureau of Labor Statistics predict for this field between 2023 and 2033?",
+      options: ["3%", "12%", "33%", "70%"],
+      answerIndex: 2,
+      value: "33%",
+      caption: "Predicted cybersecurity job growth, 2023 to 2033 (US Bureau of Labor Statistics).",
+      explain:
+        "The Bureau of Labor Statistics predicts 33% job growth between 2023 and 2033, which is much faster than the average across all occupations. That projection is why employers are competing for people rather than the other way round.",
+      source: SOURCES.careerGuide,
+      xp: 25,
       next: "u3a1-roles-intro",
     },
 
-    /* ---------------- 3. six roles, briefly ---------------- */
+    /* ---------------- 4. six roles, briefly ---------------- */
     "u3a1-roles-intro": {
       id: "u3a1-roles-intro",
       type: "terminal",
@@ -163,7 +175,7 @@ export const act1 = {
       next: "u3a1-sort-roles",
     },
 
-    /* ---------------- 4. sort roles by level ---------------- */
+    /* ---------------- 5. sort roles by level ---------------- */
     "u3a1-sort-roles": {
       id: "u3a1-sort-roles",
       type: "sort",
@@ -226,10 +238,54 @@ export const act1 = {
       source: SOURCES.jobsGuide,
       xp: 35,
       badge: "career-mapper",
+      next: "u3a1-pay-quiz",
+    },
+
+    /* ---------------- 6. pay is not the same as level ---------------- */
+    "u3a1-pay-quiz": {
+      id: "u3a1-pay-quiz",
+      type: "quiz",
+      title: "Knowledge check: does entry-level mean lower pay?",
+      speaker: "Dana Okoye",
+      avatar: "radar",
+      location: "Security Operations Centre",
+      text: [
+        "\"Look at the two columns again before you answer,\" Dana says. \"One of the entry-level roles overlaps with the mid and advanced ones on salary.\"",
+      ],
+      question:
+        "Which entry-level role has a salary range that reaches higher than the Security System Administrator's whole range?",
+      options: [
+        {
+          label: "Information Security Analyst, at $70,000-120,000",
+          correct: true,
+          feedback:
+            "Correct. Information Security Analyst is entry-level but ranges to $120,000, above the $78,000-88,000 range for the mid/advanced Security System Administrator. Entry-level describes the experience a role expects, not a pay ceiling.",
+        },
+        {
+          label: "Digital Forensic Examiner, at $83,000-90,000",
+          correct: false,
+          feedback:
+            "Digital Forensic Examiner tops out at $90,000, only slightly above the Security System Administrator's $88,000. Information Security Analyst reaches $120,000, well past it.",
+        },
+        {
+          label: "IT Auditor, at $89,000-100,000",
+          correct: false,
+          feedback:
+            "IT Auditor reaches $100,000, which does pass $88,000, but Information Security Analyst goes further at $120,000. That's the widest entry-level range of the three.",
+        },
+        {
+          label: "None of them. Entry-level roles always pay less.",
+          correct: false,
+          feedback:
+            "They don't. Information Security Analyst is entry-level and ranges to $120,000, above the mid/advanced Security System Administrator's $78,000-88,000. Remember that salaries depend on your professional level, skills, experience, and certifications.",
+        },
+      ],
+      source: SOURCES.jobsGuide,
+      xp: 25,
       next: "u3a1-salary-reveal",
     },
 
-    /* ---------------- 5. top salary reveal ---------------- */
+    /* ---------------- 7. top salary reveal ---------------- */
     "u3a1-salary-reveal": {
       id: "u3a1-salary-reveal",
       type: "reveal",
@@ -243,16 +299,59 @@ export const act1 = {
       question: "What's the top of the average salary range for a Security Engineer?",
       options: ["Up to $100,000", "Up to $120,000", "Up to $156,000", "Up to $200,000"],
       answerIndex: 2,
-      value: "$136,000-156,000",
+      value: "$156,000",
       caption: "Security Engineer averages $136,000-156,000, the highest of the six roles covered.",
       explain:
         "Security Engineer is the highest-paid of the six roles, averaging $136,000-156,000. It's also a mid/advanced role, so it typically expects the experience the entry-level roles are there to build toward. Remember that average salaries and job descriptions depend on your professional level, skills, experience, and certifications.",
       source: SOURCES.jobsGuide,
       xp: 30,
+      next: "u3a1-pentest-quiz",
+    },
+
+    /* ---------------- 8. what a pen tester actually does ---------------- */
+    "u3a1-pentest-quiz": {
+      id: "u3a1-pentest-quiz",
+      type: "quiz",
+      title: "Knowledge check: what a penetration tester does",
+      speaker: "Ravi Mehta",
+      avatar: "shield-check",
+      location: "Security Operations Centre",
+      text: [
+        "\"One role on that list gets misunderstood more than any other,\" Ravi says. \"People hear the job title and picture something illegal.\"",
+      ],
+      question: "What does a Penetration Tester do?",
+      options: [
+        {
+          label: "Performs simulated cyberattacks and creates reports based on the results.",
+          correct: true,
+          feedback:
+            "Correct. A penetration test is an authorized, simulated cyberattack made by a specialist in order to discover system vulnerabilities. The authorization is what separates it from an actual attack.",
+        },
+        {
+          label: "Breaks into systems without permission to prove they're weak.",
+          correct: false,
+          feedback:
+            "That's an attack, not a penetration test. A penetration test is authorized in advance. Testers perform simulated cyberattacks and then report what they found.",
+        },
+        {
+          label: "Monitors systems and troubleshoots issues and outages.",
+          correct: false,
+          feedback:
+            "That's the Security System Administrator, averaging $78,000-88,000. Penetration Testers average $111,000-120,000 and run simulated attacks instead.",
+        },
+        {
+          label: "Examines computer systems, then plans and performs audits.",
+          correct: false,
+          feedback:
+            "That's the IT Auditor, an entry-level role averaging $89,000-100,000. Penetration Testers perform simulated cyberattacks and report the results.",
+        },
+      ],
+      source: SOURCES.jobsGuide,
+      xp: 25,
       next: "u3a1-dossier",
     },
 
-    /* ---------------- 6. dossier ---------------- */
+    /* ---------------- 9. dossier ---------------- */
     "u3a1-dossier": {
       id: "u3a1-dossier",
       type: "dossier",
@@ -296,7 +395,7 @@ export const act1 = {
       next: "u3a1-handoff",
     },
 
-    /* ---------------- 7. handoff to act 2 ---------------- */
+    /* ---------------- 10. handoff to act 2 ---------------- */
     "u3a1-handoff": {
       id: "u3a1-handoff",
       type: "narrative",

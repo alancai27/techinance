@@ -31,7 +31,7 @@ const FALLBACK_TOTAL_XP = 900;
 const MAX_INCOMPLETE_PERCENT = 96;
 
 /**
- * The four Cybersecurity units. Units 1, 2 and 4 are written; unit 3 is not.
+ * The four Cybersecurity units, all written and playable.
  * `playable` drives the unit counter, the reset scope and the locked styling.
  *
  * @type {UnitMeta[]}
@@ -46,9 +46,9 @@ const CYBER_UNITS = [
   },
   {
     unit: 3,
-    title: "Threats and Network Defense",
+    title: "Careers, Skills, and Certifications",
     episodeId: "cyber-u3",
-    playable: false,
+    playable: true,
   },
   {
     unit: 4,
@@ -260,6 +260,7 @@ async function loadEpisodeMeta() {
     const modules = await Promise.all([
       import("./content/cyber-unit1.js"),
       import("./content/cyber-unit2.js"),
+      import("./content/cyber-unit3.js"),
       import("./content/cyber-unit4.js"),
     ]);
     badgeOrder = [];

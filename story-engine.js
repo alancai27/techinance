@@ -1286,6 +1286,9 @@ export function mountStory(options) {
     if (kind === "headers") {
       return "Message Headers";
     }
+    if (kind === "posting") {
+      return "Job Posting";
+    }
     return "Email";
   }
 

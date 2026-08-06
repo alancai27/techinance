@@ -13,12 +13,7 @@
  *   the three free platforms (Cisco Networking Academy, Coursera, Codecademy),
  *   the five hard skills and five soft skills listed.
  *
- * NOTE: This is currently the last act in Unit 3 (no source material exists yet
- * for an Act 3). The final scene is type "ending" so the episode completes here.
- * If a third source document arrives, move "u3a2-handoff" style scene + rename
- * the ending scene, then add unit3-act3.js the same way unit4-act3.js was added.
- *
- * Scene ids are namespaced `u3a2-*`.
+ * Scene ids are namespaced `u3a2-*`. The last scene hands off to `u3a3-start`.
  */
 
 /** Citations used by the fact-bearing scenes in this act. */
@@ -38,22 +33,12 @@ const SOURCES = {
 };
 
 /**
- * Badge metadata for the awards handed out in this act.
+ * Badges the acts award are registered centrally in cyber-unit3.js. This act
+ * awards `cert-strategist`.
+ *
+ * @type {{ id: string, name: string, description: string, icon: string }[]}
  */
-export const act2Badges = [
-  {
-    id: "cert-strategist",
-    name: "Cert Strategist",
-    description: "Learned which certifications and free resources build cybersecurity skills.",
-    icon: "graduation-cap",
-  },
-  {
-    id: "skill-sorter",
-    name: "Skill Sorter",
-    description: "Told hard skills and soft skills apart.",
-    icon: "list-checks",
-  },
-];
+export const act2Badges = [];
 
 export const act2 = {
   entry: "u3a2-start",
@@ -214,10 +199,52 @@ export const act2 = {
       ],
       source: SOURCES.certBeginner,
       xp: 25,
-      next: "u3a2-free-resources",
+      next: "u3a2-cert-match",
     },
 
-    /* ---------------- 5. free resources ---------------- */
+    /* ---------------- 5. matching a cert to a goal ---------------- */
+    "u3a2-cert-match": {
+      id: "u3a2-cert-match",
+      type: "choice",
+      title: "Match the certification to the goal",
+      speaker: "Dana Okoye",
+      avatar: "radar",
+      location: "Security Operations Centre",
+      text: [
+        "\"Cost isn't the only thing that decides this,\" Dana says. \"Someone tells you they want to become a Penetration Tester eventually. They already have the basics down.\"",
+        "\"Which of the three fits what they're aiming at?\"",
+      ],
+      prompt: "Pick the certification that matches the goal.",
+      options: [
+        {
+          label: "Certified Ethical Hacker, because it covers finding weaknesses and the tools a malicious hacker uses.",
+          next: "u3a2-free-resources",
+          xp: 25,
+          tone: "good",
+          feedback:
+            "Correct. CEH indicates the holder understands how to look for weaknesses and vulnerabilities in computer systems and is proficient with the tools used by a malicious hacker. That's the work a Penetration Tester does, so it's the closest match to the goal.",
+        },
+        {
+          label: "GISF, because it's the most expensive, so it must be the most advanced.",
+          next: "u3a2-free-resources",
+          xp: 5,
+          tone: "bad",
+          feedback:
+            "Price doesn't tell you what a certification covers. GISF is about key concepts of information security, including threats and risks and best practices to protect information. That's broad knowledge, not penetration testing.",
+        },
+        {
+          label: "It doesn't matter which one. Any certification works for any goal.",
+          next: "u3a2-free-resources",
+          xp: 5,
+          tone: "bad",
+          feedback:
+            "It does matter. Some certifications give a little bit of knowledge in every cybersecurity field, and some concentrate specifically on networking, securing operating systems, or penetration tests. Matching the certification to your field is the whole point of choosing a field first.",
+        },
+      ],
+      source: SOURCES.certBeginner,
+    },
+
+    /* ---------------- 6. free resources ---------------- */
     "u3a2-free-resources": {
       id: "u3a2-free-resources",
       type: "dossier",
@@ -248,10 +275,54 @@ export const act2 = {
       source: SOURCES.cisco,
       xp: 20,
       badge: "cert-strategist",
+      next: "u3a2-platform-quiz",
+    },
+
+    /* ---------------- 7. which platform, and what to take first ---------------- */
+    "u3a2-platform-quiz": {
+      id: "u3a2-platform-quiz",
+      type: "quiz",
+      title: "Knowledge check: where to start for free",
+      speaker: "Ravi Mehta",
+      avatar: "shield-check",
+      location: "Security Operations Centre",
+      text: [
+        "\"You have three free platforms on that card,\" Ravi says. \"One of them stands out for a beginner in this field specifically.\"",
+      ],
+      question:
+        "Which platform is described as the most recognized in the cybersecurity field, and also offers certifications?",
+      options: [
+        {
+          label: "Cisco Networking Academy",
+          correct: true,
+          feedback:
+            "Correct. Cisco Networking Academy is the most recognized platform in the cybersecurity field and it also offers certifications. Good starting points there are Introduction to Cybersecurity, Introduction to Operating Systems, and Networking Basics.",
+        },
+        {
+          label: "Coursera",
+          correct: false,
+          feedback:
+            "Coursera is a reliable platform with many free courses, and some courses that aren't free. The most recognized platform in the cybersecurity field is Cisco Networking Academy, which also offers certifications.",
+        },
+        {
+          label: "Codecademy",
+          correct: false,
+          feedback:
+            "Codecademy offers cybersecurity and coding courses that build basic skills, and some of its courses aren't free. Cisco Networking Academy is the most recognized in this field and also offers certifications.",
+        },
+        {
+          label: "None of them. Free platforms don't offer certifications.",
+          correct: false,
+          feedback:
+            "Cisco Networking Academy does offer certifications alongside its free courses, which is part of why it's the most recognized platform in the cybersecurity field.",
+        },
+      ],
+      source: SOURCES.cisco,
+      xp: 25,
       next: "u3a2-sort-skills",
     },
 
-    /* ---------------- 6. sort hard vs soft skills ---------------- */
+    /* ---------------- 8. sort hard vs soft skills ---------------- */
     "u3a2-sort-skills": {
       id: "u3a2-sort-skills",
       type: "sort",
@@ -331,25 +402,65 @@ export const act2 = {
       ],
       source: SOURCES.skillsGuide,
       xp: 35,
-      badge: "skill-sorter",
-      next: "u3a2-ending",
+      next: "u3a2-soft-quiz",
     },
 
-    /* ---------------- 7. ending ---------------- */
-    "u3a2-ending": {
-      id: "u3a2-ending",
-      type: "ending",
-      title: "Unit 3 complete",
+    /* ---------------- 9. why the soft column exists ---------------- */
+    "u3a2-soft-quiz": {
+      id: "u3a2-soft-quiz",
+      type: "quiz",
+      title: "Knowledge check: hard and soft skills",
       speaker: "Dana Okoye",
       avatar: "radar",
-      location: "Security Operations Centre, 10:00",
+      location: "Security Operations Centre",
       text: [
-        "\"You now know the job market has more openings than people to fill them, what the six most common roles pay, and how a beginner actually builds toward one of them without going broke first,\" Dana says.",
-        "\"That's the map from 'I'm interested in cybersecurity' to 'I have a plan.' Carry it with you into the next unit.\"",
+        "\"People training for this field tend to work on one column and ignore the other,\" Dana says. \"Usually the same one.\"",
       ],
-      xp: 20,
-      badge: "unit3-certified",
-      next: null,
+      question: "What's the difference between a hard skill and a soft skill?",
+      options: [
+        {
+          label: "Hard skills are technical knowledge from education; soft skills are personal skills and characteristics.",
+          correct: true,
+          feedback:
+            "Correct. Scripting, networking, operating systems, programming languages, and understanding threats and vulnerabilities are hard skills. Communication, collaboration, critical thinking, adaptability, and attention to detail are soft skills. Employers check both.",
+        },
+        {
+          label: "Hard skills are difficult to learn; soft skills are easy to learn.",
+          correct: false,
+          feedback:
+            "The names aren't about difficulty. Hard skills are technical knowledge you get from education and practice. Soft skills are personal skills and characteristics, and they can take just as long to build.",
+        },
+        {
+          label: "Hard skills are needed for advanced roles; soft skills are needed for entry-level roles.",
+          correct: false,
+          feedback:
+            "Both matter at every level. Employers check hard skills and soft skills together, whether the role is entry-level or advanced.",
+        },
+        {
+          label: "Hard skills appear on certifications; soft skills don't exist on job postings.",
+          correct: false,
+          feedback:
+            "Soft skills appear on job postings constantly. Communication, collaboration, critical thinking, adaptability, and attention to detail are all things employers list and ask about.",
+        },
+      ],
+      source: SOURCES.skillsGuide,
+      xp: 25,
+      next: "u3a2-handoff",
+    },
+
+    /* ---------------- 10. handoff to act 3 ---------------- */
+    "u3a2-handoff": {
+      id: "u3a2-handoff",
+      type: "narrative",
+      speaker: "Dana Okoye",
+      avatar: "radar",
+      location: "Security Operations Centre, 09:50",
+      text: [
+        "\"You know the roles, the certifications, and the skills behind both,\" Dana says. \"Last part of the shift is putting them together.\"",
+        "\"Act 3 is you reading a real posting and deciding what your own first year would look like.\"",
+      ],
+      xp: 15,
+      next: "u3a3-start",
     },
   },
 };

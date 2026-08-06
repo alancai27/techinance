@@ -29,6 +29,18 @@ import { act3 } from "./unit4-act3.js";
  */
 const BADGE_REGISTRY = /** @type {Badge[]} */ ([
   {
+    id: "function-builder",
+    name: "Function Builder",
+    description: "Followed a function that does one job and returns an answer.",
+    icon: "network",
+  },
+  {
+    id: "code-reviewer",
+    name: "Code Reviewer",
+    description: "Found the flaw in a script before it shipped.",
+    icon: "eye",
+  },
+  {
     id: "tool-builder",
     name: "Tool Builder",
     description: "Planned a working security tool of your own.",
@@ -39,24 +51,6 @@ const BADGE_REGISTRY = /** @type {Badge[]} */ ([
     name: "Unit 4 Complete",
     description: "Completed Unit 4 of the Techinance Cybersecurity course.",
     icon: "medal",
-  },
-  {
-    id: "function-builder",
-    name: "Function Builder",
-    description: "Followed a function that does one job and returns an answer.",
-    icon: "network",
-  },
-  {
-    id: "boolean-thinker",
-    name: "Boolean Thinker",
-    description: "Used true and false logic to make a security decision.",
-    icon: "check",
-  },
-  {
-    id: "code-reviewer",
-    name: "Code Reviewer",
-    description: "Found the flaw in a script before it shipped.",
-    icon: "file-search",
   },
 ]);
 

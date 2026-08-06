@@ -30,8 +30,7 @@ const SOURCES = {
  * Badge metadata for the awards handed out in this act.
  */
 /** @type {{ id: string, name: string, description: string, icon: string }[]} */
-export const act1Badges = [
-];
+export const act1Badges = [];
 
 export const act1 = {
   entry: "u4a1-start",
@@ -152,6 +151,65 @@ export const act1 = {
       prompt: "Run the briefing commands on ORACLE.",
       host: "analyst@techinance-soc",
       commands: [
+        {
+          id: "top8",
+          cmd: "langs --list --field cybersecurity",
+          output: [
+            "MOST USED LANGUAGES IN CYBERSECURITY // 8 entries",
+            "  1. JavaScript",
+            "  2. Python",
+            "  3. Java",
+            "  4. C/C++",
+            "  5. PHP",
+            "  6. SQL",
+            "  7. Ruby",
+            "  8. Perl",
+            "  note: approximately 250 popular languages exist. These eight come up most.",
+          ],
+          required: true,
+        },
+        {
+          id: "web",
+          cmd: "langs --info javascript php ruby",
+          output: [
+            "JavaScript : the most popular and used language in the world. Mostly used in",
+            "             web development, supporting interaction between a user and a web",
+            "             application. A hacker can also use it to embed malicious code into",
+            "             a legitimate website, which then runs in the browser of anyone who",
+            "             visits that site.",
+            "PHP        : a general-purpose scripting language, used to build web",
+            "             applications and systems.",
+            "Ruby       : similar to Python and Perl. Often used for web development.",
+          ],
+          required: true,
+        },
+        {
+          id: "defence",
+          cmd: "langs --info c-cpp python perl sql",
+          output: [
+            "C/C++  : most malware is written in C/C++. Security people need to read these",
+            "         languages to work out what a malware sample does.",
+            "Python : one of the easiest languages, and usable for almost everything, from",
+            "         automating simple processes to developing web applications.",
+            "Perl   : mostly text manipulation and system administration. A great tool for",
+            "         automating security processes.",
+            "SQL    : Structured Query Language, used for managing databases. Databases are",
+            "         crucially important in cybersecurity, so almost everyone working in",
+            "         security knows SQL.",
+          ],
+          required: true,
+        },
+        {
+          id: "java",
+          cmd: "langs --info java",
+          output: [
+            "Java : extremely popular across the whole IT world, which is why cybersecurity",
+            "       professionals care about it. If it's everywhere, its weaknesses are",
+            "       everywhere too.",
+            "       See: reach report pending analyst review.",
+          ],
+          required: false,
+        },
       ],
       source: SOURCES.codingGuide,
       xp: 30,
@@ -239,8 +297,65 @@ export const act1 = {
       ],
       prompt: "Drag each language into the right column.",
       buckets: [
+        {
+          id: "pentest",
+          label: "Penetration testers only",
+          hint: "On the penetration tester list, not the security engineer list",
+        },
+        {
+          id: "seceng",
+          label: "Security engineers only",
+          hint: "On the security engineer list, not the penetration tester list",
+        },
+        {
+          id: "both",
+          label: "On both lists",
+          hint: "Required for penetration testers and security engineers alike",
+        },
       ],
       items: [
+        {
+          id: "perl",
+          label: "Perl",
+          bucket: "pentest",
+          explain:
+            "Perl is on the penetration tester list only. It's used mostly for text manipulation and system administration, which makes it a great tool for automating security processes during a test.",
+        },
+        {
+          id: "javascript",
+          label: "JavaScript",
+          bucket: "seceng",
+          explain:
+            "JavaScript is on the security engineer list. It supports interaction between a user and a web application, so engineers defending a site need to read it. A hacker can use it to embed malicious code into a legitimate website, which then runs in the browser of anyone who visits.",
+        },
+        {
+          id: "sql",
+          label: "SQL",
+          bucket: "seceng",
+          explain:
+            "SQL is on the security engineer list. Structured Query Language manages databases, and databases are crucially important in cybersecurity, so almost everyone working in security ends up knowing it.",
+        },
+        {
+          id: "php",
+          label: "PHP",
+          bucket: "seceng",
+          explain:
+            "PHP is on the security engineer list. It's a general-purpose scripting language used to build web applications and systems, which is exactly the surface a security engineer is asked to protect.",
+        },
+        {
+          id: "java",
+          label: "Java",
+          bucket: "both",
+          explain:
+            "Java is on both lists. It's extremely popular in the IT world, with industry sources estimating that over 95% of enterprise desktops run it, so both jobs meet it constantly.",
+        },
+        {
+          id: "python",
+          label: "Python",
+          bucket: "both",
+          explain:
+            "Python is on both lists. It's one of the easiest languages and can be used for almost everything, from automating simple processes to developing web applications, so both roles reach for it.",
+        },
       ],
       source: SOURCES.codingGuide,
       xp: 35,
