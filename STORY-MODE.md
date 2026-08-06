@@ -30,7 +30,7 @@ between units.
 | 3 | not written (taxes) | | | | |
 | 4 | Investing, Savings, and Retirement | 32 | 3 | 3 | 35 min |
 
-**Neuroscience.** Units 1 and 2 playable. The learner is a Research Assistant at the
+**Neuroscience.** All four units playable. The learner is a Research Assistant at the
 Ashgrove Cognitive Lab with Dr. Imani Reyes, Theo Lindqvist and the ATLAS
 terminal. Third course, third cast: nobody crosses over.
 
@@ -38,13 +38,16 @@ terminal. Third course, third cast: nobody crosses over.
 |---|---|---|---|---|---|
 | 1 | How Your Brain Processes Reality | 31 | 3 | 3 | 35 min |
 | 2 | The Neuroscience Behind Emotions | 30 | 3 | 3 | 35 min |
-| 3 | not written (reward systems) | | | | |
-| 4 | not written (neurological disorders) | | | | |
+| 3 | Hacking Reward Systems | 29 | 3 | 3 | 35 min |
+| 4 | Understanding Neurological Disorders | 28 | 3 | 3 | 40 min |
 
-Neuroscience has **one quiz per unit**, like Cybersecurity. Units 1 and 2 both
-match their forms 10/10, enforced by `test/neuro-quiz.test.js`. All four forms
-are transcribed in `content/sources/`, so units 3 and 4 need only their lesson
-documents to be buildable.
+Neuroscience has **one quiz per unit**, like Cybersecurity. All four units match
+their forms 10/10, enforced by `test/neuro-quiz.test.js`.
+
+Units 4's content covers real conditions that a learner or their family may have.
+The act files carry a TONE note: state mechanisms plainly, never frame a disorder
+as a weakness or a puzzle, and be honest in both directions about what treatment
+achieves (CBT helps 40-60%, which means it does not help everyone).
 
 The unit 3 and 4 forms are transcribed with the answers marked; five errors were
 found across the four forms while transcribing (a duplicated question stem, a

@@ -122,8 +122,18 @@ const COURSES = [
         episodeId: "neuro-u2",
         playable: true,
       },
-      { unit: 3, title: "Hacking Reward Systems", episodeId: "neuro-u3", playable: false },
-      { unit: 4, title: "Understanding Neurological Disorders", episodeId: "neuro-u4", playable: false },
+      {
+        unit: 3,
+        title: "Hacking Reward Systems to Overcome Dopamine Addictions",
+        episodeId: "neuro-u3",
+        playable: true,
+      },
+      {
+        unit: 4,
+        title: "Understanding Neurological Disorders",
+        episodeId: "neuro-u4",
+        playable: true,
+      },
     ],
   },
 ];
@@ -326,6 +336,8 @@ async function loadEpisodeMeta() {
       import("./content/finance-unit4.js"),
       import("./content/neuro-unit1.js"),
       import("./content/neuro-unit2.js"),
+      import("./content/neuro-unit3.js"),
+      import("./content/neuro-unit4.js"),
     ]);
     badgeOrder = [];
     let grandXp = 0;

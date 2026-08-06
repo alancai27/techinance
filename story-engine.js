@@ -1298,6 +1298,9 @@ export function mountStory(options) {
     if (kind === "report") {
       return "Research Write-up";
     }
+    if (kind === "recovery") {
+      return "Recovery Plan";
+    }
     return "Email";
   }
 
