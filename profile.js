@@ -89,7 +89,12 @@ const COURSES = [
         episodeId: "fin-u1",
         playable: true,
       },
-      { unit: 2, title: "Coming soon", episodeId: "fin-u2", playable: false },
+      {
+        unit: 2,
+        title: "Debt and Credit Management",
+        episodeId: "fin-u2",
+        playable: true,
+      },
       { unit: 3, title: "Coming soon", episodeId: "fin-u3", playable: false },
       {
         unit: 4,
@@ -302,6 +307,7 @@ async function loadEpisodeMeta() {
       import("./content/cyber-unit3.js"),
       import("./content/cyber-unit4.js"),
       import("./content/finance-unit1.js"),
+      import("./content/finance-unit2.js"),
       import("./content/finance-unit4.js"),
     ]);
     badgeOrder = [];

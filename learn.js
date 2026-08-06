@@ -161,6 +161,7 @@ async function loadEpisodeMeta() {
       import("./content/cyber-unit3.js"),
       import("./content/cyber-unit4.js"),
       import("./content/finance-unit1.js"),
+      import("./content/finance-unit2.js"),
       import("./content/finance-unit4.js"),
     ]);
     let grandMax = 0;
