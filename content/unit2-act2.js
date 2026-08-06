@@ -23,19 +23,8 @@ const SOURCES = {
 /**
  * Badge metadata for the awards handed out in this act.
  */
+/** @type {{ id: string, name: string, description: string, icon: string }[]} */
 export const act2Badges = [
-  {
-    id: "cookie-inspector",
-    name: "Cookie Inspector",
-    description: "Discovered that only 26% of websites secure their session cookies.",
-    icon: "lock",
-  },
-  {
-    id: "passive-tracker",
-    name: "Passive Data Audit",
-    description: "Identified passive footprint components like search history and IP addresses.",
-    icon: "eye",
-  },
 ];
 
 export const act2 = {
@@ -98,7 +87,6 @@ export const act2 = {
       ],
       source: SOURCES.cookieStats,
       xp: 25,
-      badge: "passive-tracker",
       next: "u2a2-cookies-quiz",
     },
 
@@ -148,6 +136,7 @@ export const act2 = {
     /* ---------------- 4. cookie security reveal ---------------- */
     "u2a2-cookies-reveal": {
       id: "u2a2-cookies-reveal",
+      badge: "cookie-inspector",
       type: "reveal",
       title: "Session cookie vulnerability statistic",
       speaker: "Dana Okoye",
@@ -167,7 +156,6 @@ export const act2 = {
         "Only 26% of websites secure their session cookies. This leaves 74% of websites exposing session cookies to potential cyberattacks, tracking, and data theft.",
       source: SOURCES.cookieStats,
       xp: 35,
-      badge: "cookie-inspector",
       next: "u2a2-terminal",
     },
 
@@ -185,39 +173,6 @@ export const act2 = {
       prompt: "Run the required commands to analyze passive data indicators.",
       host: "analyst@techinance-soc",
       commands: [
-        {
-          id: "passive",
-          cmd: "footprint --type passive",
-          output: [
-            "PASSIVE FOOTPRINT TELEMETRY // recorded automatically",
-            "  - search_history : recorded by engine (urls, queries, timestamps)",
-            "  - ip_address     : assigned unique network address",
-            "  - device_info    : os version, screen size, user-agent string",
-            "  - cookies        : session tokens & tracking identifiers",
-          ],
-          required: true,
-        },
-        {
-          id: "cookies",
-          cmd: "audit --cookies --secured",
-          output: [
-            "COOKIE SECURITY AUDIT // global web scan",
-            "  secured cookies   : 26% (HTTPS + Secure flag + HttpOnly)",
-            "  unsecured cookies : 74% (at high risk of interception)",
-            "warning: unauthorized hackers buy and exploit stolen session cookies.",
-          ],
-          required: true,
-        },
-        {
-          id: "ip",
-          cmd: "network --ip-lookup",
-          output: [
-            "IP LOOKUP // local interface",
-            "  IPv4 Address: 198.51.100.42",
-            "  definition  : unique number assigned to each device using the Internet.",
-          ],
-          required: false,
-        },
       ],
       source: SOURCES.cookieStats,
       xp: 30,
@@ -449,16 +404,6 @@ export const act2 = {
       ],
       prompt: "Drag each item into the footprint category it belongs to.",
       buckets: [
-        {
-          id: "active",
-          label: "Active Digital Footprint",
-          hint: "Information deliberately shared by the user",
-        },
-        {
-          id: "passive",
-          label: "Passive Digital Footprint",
-          hint: "Information collected automatically without user awareness",
-        },
       ],
       items: [
         {
@@ -467,13 +412,6 @@ export const act2 = {
           bucket: "active",
           explain:
             "Active digital footprint: You deliberately share comments and posts online knowing they remain on platforms.",
-        },
-        {
-          id: "shopping",
-          label: "Submitting details during online shopping or banking",
-          bucket: "active",
-          explain:
-            "Active digital footprint: Intentionally entering payment or form data creates an active footprint.",
         },
         {
           id: "app_download",

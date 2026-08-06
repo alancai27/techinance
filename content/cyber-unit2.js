@@ -26,39 +26,9 @@ import { act3 } from "./unit2-act3.js";
 /** Badges the acts are expected to award, in display order. */
 const BADGE_REGISTRY = /** @type {Badge[]} */ ([
   {
-    id: "footprint-initiate",
-    name: "Digital Shadow",
-    description: "Started Unit 2 briefing on digital footprints.",
-    icon: "user",
-  },
-  {
-    id: "reputation-guardian",
-    name: "Reputation Audit",
-    description: "Analyzed how online behavior impacts long-term career opportunities.",
-    icon: "shield-check",
-  },
-  {
     id: "shadow-analyst",
     name: "Footprint Classifier",
     description: "Identified active and passive digital footprints.",
-    icon: "network",
-  },
-  {
-    id: "cookie-inspector",
-    name: "Cookie Inspector",
-    description: "Discovered that only 26% of websites secure their session cookies.",
-    icon: "lock",
-  },
-  {
-    id: "passive-tracker",
-    name: "Passive Data Audit",
-    description: "Identified passive footprint components like search history and IP addresses.",
-    icon: "eye",
-  },
-  {
-    id: "wifi-defender",
-    name: "Wi-Fi Defender",
-    description: "Identified public network security risks (1 in 4 statistic).",
     icon: "network",
   },
   {
@@ -68,16 +38,16 @@ const BADGE_REGISTRY = /** @type {Badge[]} */ ([
     icon: "key",
   },
   {
-    id: "footprint-minimizer",
-    name: "Footprint Minimizer",
-    description: "Applied strategies to minimize digital footprints and delete old accounts.",
-    icon: "shield-check",
-  },
-  {
     id: "unit2-certified",
     name: "Unit 2 Complete",
     description: "Completed Unit 2 of the Techinance Cybersecurity course.",
     icon: "medal",
+  },
+  {
+    id: "cookie-inspector",
+    name: "Cookie Inspector",
+    description: "Discovered how many websites leave session cookies unsecured.",
+    icon: "eye",
   },
 ]);
 

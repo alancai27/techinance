@@ -9,7 +9,6 @@
    -------------------------------------------------------------------------- */
 
 :root {
-  --profile-gold: #b5822a;
   --profile-locked: rgba(11, 36, 71, 0.34);
 }
 
@@ -69,7 +68,8 @@
   justify-content: center;
   border-radius: 50%;
   color: var(--steel);
-  background: var(--ice);
+  color: var(--white);
+  background: var(--navy);
 }
 
 .profile-gate__title {
@@ -181,8 +181,9 @@
 }
 
 .profile-tag--guest {
-  color: var(--navy);
-  background: var(--ice);
+  border: 1px solid var(--learn-line-strong);
+  color: var(--slate);
+  background: var(--white);
 }
 
 .profile-identity__detail {
@@ -211,7 +212,8 @@
 .profile-signout:hover,
 .profile-signout:focus-visible {
   border-color: var(--steel);
-  background: var(--ice);
+  color: var(--steel);
+  background: var(--white);
 }
 
 /* Totals ----------------------------------------------------------------- */
@@ -330,27 +332,20 @@
 }
 
 .profile-badge--earned {
-  border-color: color-mix(in srgb, var(--profile-gold) 34%, var(--learn-line));
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--profile-gold) 8%, var(--white)) 0%,
-    var(--white) 62%
-  );
+  border-color: rgba(62, 119, 184, 0.34);
+  background: var(--white);
 }
 
+/* Solid fill, no gradient and no glow: the icon reads as earned because it is
+   filled navy rather than because it shines. */
 .profile-badge--earned .profile-badge__icon {
   color: var(--white);
-  background: linear-gradient(
-    140deg,
-    var(--profile-gold) 0%,
-    color-mix(in srgb, var(--profile-gold) 62%, var(--steel)) 100%
-  );
-  box-shadow: 0 8px 20px color-mix(in srgb, var(--profile-gold) 30%, transparent);
+  background: var(--navy);
 }
 
 .profile-badge--earned .profile-badge__status {
-  color: color-mix(in srgb, var(--profile-gold) 78%, var(--navy));
-  background: color-mix(in srgb, var(--profile-gold) 16%, var(--white));
+  color: var(--steel);
+  background: rgba(217, 232, 246, 0.55);
 }
 
 .profile-badge--locked {
@@ -414,7 +409,8 @@
   justify-content: center;
   border-radius: 12px;
   color: var(--steel);
-  background: var(--ice);
+  color: var(--white);
+  background: var(--navy);
 }
 
 .profile-course__heading {

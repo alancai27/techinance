@@ -25,25 +25,8 @@ const SOURCES = {
 /**
  * Badge metadata for the awards handed out in this act.
  */
+/** @type {{ id: string, name: string, description: string, icon: string }[]} */
 export const act2Badges = [
-  {
-    id: "hello-console",
-    name: "Hello, Console",
-    description: "Read program output in Python and in JavaScript.",
-    icon: "terminal",
-  },
-  {
-    id: "variable-handler",
-    name: "Variable Handler",
-    description: "Stored strings, integers and booleans in variables.",
-    icon: "file-search",
-  },
-  {
-    id: "function-builder",
-    name: "Function Builder",
-    description: "Followed a function that does one job and returns an answer.",
-    icon: "network",
-  },
 ];
 
 export const act2 = {
@@ -80,54 +63,8 @@ export const act2 = {
       prompt: "Read each file, then run it. Watch what lands on the console.",
       host: "analyst@techinance-soc",
       commands: [
-        {
-          id: "cat-py",
-          cmd: "cat hello.py",
-          output: [
-            "# hello.py",
-            "# print sends output to the console.",
-            'print("Hello, World")',
-          ],
-          required: true,
-        },
-        {
-          id: "run-py",
-          cmd: "python3 hello.py",
-          output: ["Hello, World"],
-          required: true,
-        },
-        {
-          id: "cat-js",
-          cmd: "cat hello.js",
-          output: [
-            "// hello.js",
-            "// console.log does the same job as print in Python.",
-            'console.log("Hello, World");',
-          ],
-          required: true,
-        },
-        {
-          id: "run-js",
-          cmd: "node hello.js",
-          output: ["Hello, World"],
-          required: true,
-        },
-        {
-          id: "diff",
-          cmd: "compare hello.py hello.js",
-          output: [
-            "Same output. Three differences in the source:",
-            "  1. Python says print, JavaScript says console.log.",
-            "  2. JavaScript ends the statement with a semicolon.",
-            "  3. Comments start with # in Python and with // in JavaScript.",
-            "print is used in every program. It prints the output of a variable,",
-            "a function, or thousands of lines of code.",
-          ],
-          required: false,
-        },
       ],
       xp: 30,
-      badge: "hello-console",
       next: "u4a2-semicolon",
     },
 
@@ -203,7 +140,6 @@ export const act2 = {
         '"var and let do the exact same job. const is the different one. It\'s for variables that aren\'t supposed to be altered, and once a variable is defined that way it can\'t be changed."',
       ],
       xp: 20,
-      badge: "variable-handler",
       next: "u4a2-boolean-quiz",
     },
 
@@ -296,6 +232,7 @@ export const act2 = {
     /* ---------------- 7. functions ---------------- */
     "u4a2-functions": {
       id: "u4a2-functions",
+      badge: "function-builder",
       type: "terminal",
       title: "ORACLE: a function that does one job",
       speaker: "ORACLE",
@@ -308,60 +245,8 @@ export const act2 = {
       prompt: "Read each function, then run it and read the two answers it returns.",
       host: "analyst@techinance-soc",
       commands: [
-        {
-          id: "cat-func-py",
-          cmd: "cat length_check.py",
-          output: [
-            "# Returns True when the password is long enough.",
-            "def is_long_enough(password):",
-            "    return len(password) >= 15",
-            "",
-            'print(is_long_enough("cat"))',
-            'print(is_long_enough("correct-horse-battery"))',
-          ],
-          required: true,
-        },
-        {
-          id: "run-func-py",
-          cmd: "python3 length_check.py",
-          output: ["False", "True"],
-          required: true,
-        },
-        {
-          id: "cat-func-js",
-          cmd: "cat length_check.js",
-          output: [
-            "// Returns true when the password is long enough.",
-            "function isLongEnough(password) {",
-            "  return password.length >= 15;",
-            "}",
-            "",
-            'console.log(isLongEnough("cat"));',
-            'console.log(isLongEnough("correct-horse-battery"));',
-          ],
-          required: true,
-        },
-        {
-          id: "run-func-js",
-          cmd: "node length_check.js",
-          output: ["false", "true"],
-          required: true,
-        },
-        {
-          id: "explain",
-          cmd: "explain length_check",
-          output: [
-            "The function was defined once and called twice.",
-            '  "cat" is 3 characters, so the answer is false.',
-            '  "correct-horse-battery" is 21 characters, so the answer is true.',
-            "Both answers are booleans: two possible values, nothing else.",
-            "Python spells them True and False. JavaScript spells them true and false.",
-          ],
-          required: false,
-        },
       ],
       xp: 30,
-      badge: "function-builder",
       next: "u4a2-popularity",
     },
 

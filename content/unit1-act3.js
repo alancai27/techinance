@@ -50,24 +50,6 @@ const SOURCES = {
  */
 export const act3Badges = [
   {
-    id: "threat-taxonomist",
-    name: "Threat Taxonomist",
-    description: "Sorted eight real incidents into the five categories of cybercrime.",
-    icon: "dna",
-  },
-  {
-    id: "traffic-reader",
-    name: "Traffic Reader",
-    description: "Used log evidence to tell a DDoS from a DoS.",
-    icon: "waves",
-  },
-  {
-    id: "nightjar-hunter",
-    name: "Nightjar Hunter",
-    description: "Decided what to do about Nightjar's export while it was still running.",
-    icon: "bird",
-  },
-  {
     id: "unit1-certified",
     name: "Unit 1 Certified",
     description: "Completed Unit 1 of the Techinance Cybersecurity course.",
@@ -109,69 +91,6 @@ export const act3 = {
       prompt: "Pull the taxonomy and open the case file.",
       host: "analyst@techinance-soc",
       commands: [
-        {
-          id: "taxonomy",
-          cmd: "threat --taxonomy",
-          output: [
-            "CYBERCRIME // five working categories",
-            "1 hacking .......... unauthorised access to computers, networks or",
-            "                     systems. usually to steal customer data, trade",
-            "                     secrets or financial records. sometimes political.",
-            "2 phishing ......... criminals pose as a trusted body or person and",
-            "                     trick people into handing over passwords, social",
-            "                     security numbers or bank details.",
-            "3 ransomware ....... attackers lock the victim's data and demand money",
-            "                     to unlock it.",
-            "4 identity theft ... stolen personal details reused to commit fraud or",
-            "                     impersonation.",
-            "5 dos / ddos ....... flood a system with traffic until it slows or",
-            "                     crashes. availability, not secrecy, is the target.",
-          ],
-          required: true,
-        },
-        {
-          id: "groups",
-          cmd: "group --profile hacking",
-          output: [
-            "KNOWN HACKING GROUPS // public record",
-            "Anonymous ...... loose collective, no membership list, no leader.",
-            "                 politically motivated. has taken down websites and",
-            "                 services belonging to governments and corporations.",
-            "Lizard Squad ... best known for attacks on gaming networks and",
-            "                 online services.",
-            "note: some of the biggest attacks on websites and online services",
-            "      have come from organised groups like these rather than from",
-            "      individuals working alone.",
-          ],
-          required: false,
-        },
-        {
-          id: "dnc",
-          cmd: "case --id dnc-2016",
-          output: [
-            "CASE // Democratic National Committee email leak, 2016",
-            "category ..... phishing",
-            "method ....... attackers posed as a legitimate service and asked",
-            "               high-level political figures to enter their",
-            "               credentials. the figures typed them in.",
-            "outcome ...... internal emails compromised and published.",
-            "lesson ....... phishing isn't only about email. fake websites,",
-            "               phone calls and text messages do the same job.",
-            "               the target was a person, not a server.",
-          ],
-          required: true,
-        },
-        {
-          id: "nightjar",
-          cmd: "actor --profile nightjar",
-          output: [
-            'ACTOR // "Nightjar"',
-            "observed techniques: phishing, supply chain compromise.",
-            "observed today ...: staged access, then stopped.",
-            "assessment .......: a pause is not a withdrawal. treat as active.",
-          ],
-          required: false,
-        },
       ],
       source: SOURCES.anonymous,
       xp: 25,
@@ -352,99 +271,18 @@ export const act3 = {
       ],
       prompt: "Drag each incident into its category, or tap an incident and then tap a category.",
       buckets: [
-        {
-          id: "hacking",
-          label: "Hacking",
-          hint: "Unauthorised access to systems",
-        },
-        {
-          id: "phishing",
-          label: "Phishing",
-          hint: "Tricking a person into handing it over",
-        },
-        {
-          id: "ransomware",
-          label: "Ransomware",
-          hint: "Data locked, payment demanded",
-        },
-        {
-          id: "identity-theft",
-          label: "Identity theft",
-          hint: "Personal details reused for fraud",
-        },
-        {
-          id: "dos",
-          label: "DoS / DDoS",
-          hint: "Flooded until it stops responding",
-        },
       ],
       items: [
-        {
-          id: "yahoo",
-          label: "Yahoo, 2013–2014: attackers break in and take data from 3 billion accounts",
-          bucket: "hacking",
-          explain:
-            "Hacking. Unauthorised access to Yahoo's systems exposed the personal data of 3 billion user accounts, the largest breach ever recorded. Stolen data like this is often reused later for identity theft and phishing.",
-        },
-        {
-          id: "anon",
-          label: "Anonymous and Lizard Squad take down websites and online services",
-          bucket: "hacking",
-          explain:
-            "Hacking. Both are well-known groups behind large attacks on websites and services. Anonymous is usually politically motivated. Lizard Squad became known for attacks on gaming networks.",
-        },
-        {
-          id: "dnc",
-          label: "2016: political figures type their credentials into a convincing fake login page",
-          bucket: "phishing",
-          explain:
-            "Phishing. This is the Democratic National Committee email leak of 2016. No system was broken into directly. Attackers posed as a legitimate service, and the credentials were typed in and handed over.",
-        },
-        {
-          id: "wannacry",
-          label: "2017: 200,000+ computers in 150 countries locked, payment demanded",
-          bucket: "ransomware",
-          explain:
-            "Ransomware. WannaCry hit more than 200,000 computers across 150 countries and disrupted critical services including healthcare. Damages ran into the billions.",
-        },
-        {
-          id: "colonial",
-          label: "2021: a fuel pipeline stops and $4.4 million is paid to restore the systems",
-          bucket: "ransomware",
-          explain:
-            "Ransomware. Colonial Pipeline, 2021: the largest fuel pipeline in the U.S. shut down and a $4.4 million ransom was paid. Payment in cryptocurrency is what makes collecting a ransom relatively safe for the attacker, because it's hard to trace.",
-        },
-        {
-          id: "equifax",
-          label: "147 million names, birth dates and social security numbers reused for fraud",
-          bucket: "identity-theft",
-          explain:
-            "Identity theft. The 2017 Equifax breach exposed more than 147 million Americans' records, each with a name, birth date and social security number. Those are the details needed to impersonate someone.",
-        },
-        {
-          id: "github",
-          label: "2018: a code-hosting site is buried under traffic from a huge number of machines",
-          bucket: "dos",
-          explain:
-            "DDoS. It's distributed because the traffic came from many systems at once. This is the 2018 GitHub attack, which you'll look at in more detail shortly.",
-        },
-        {
-          id: "single",
-          label: "One machine floods a school's booking site until the site crashes",
-          bucket: "dos",
-          explain:
-            "Denial of service. Same category, smaller scale: one source flooding a target until it slows or crashes. One machine makes it a DoS. Many machines would make it a DDoS.",
-        },
       ],
       source: SOURCES.dnc,
       xp: 40,
-      badge: "threat-taxonomist",
       next: "a3-logs",
     },
 
     /* ---------------- 8. the live attack ---------------- */
     "a3-logs": {
       id: "a3-logs",
+      badge: "traffic-reader",
       type: "inspect",
       title: "Edge server log: one source or many",
       speaker: "ORACLE",
@@ -582,7 +420,6 @@ export const act3 = {
       },
       requiredFinds: 4,
       xp: 45,
-      badge: "traffic-reader",
       next: "a3-dosquiz",
     },
 
@@ -761,7 +598,6 @@ export const act3 = {
             "Right instinct, wrong order. Escalating and acting aren't alternatives: you disconnect first and brief while you do it. Ravi afterwards: \"You're already authorised for this. Don't wait for permission to stop an active export.\"",
         },
       ],
-      badge: "nightjar-hunter",
     },
 
     /* ---------------- 14. certification ---------------- */

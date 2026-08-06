@@ -28,10 +28,10 @@
   box-shadow: 0 14px 32px rgba(11, 36, 71, 0.09);
 }
 
+/* The card itself stays white when open. Only the question and the chevron
+   change, which is enough to show state without the whole box shifting. */
 .faq[open] {
   border-color: rgba(62, 119, 184, 0.45);
-  background: rgba(217, 232, 246, 0.5);
-  box-shadow: 0 18px 40px rgba(11, 36, 71, 0.1);
 }
 
 .faq summary {

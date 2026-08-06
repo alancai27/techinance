@@ -41,8 +41,8 @@
         </button>
 
         <div class="desktop-nav">
-          <a class="nav-link" href="courses.html">Courses</a>
           <a class="nav-link" href="about.html">About</a>
+          <a class="nav-link" href="courses.html">Learn</a>
           <a class="nav-link" href="get-involved.html">Get Involved</a>
           <a class="nav-link" href="contact.html">Contact Us</a>
           <a class="nav-link" href="faqs.html">FAQs</a>
@@ -50,8 +50,8 @@
         </div>
 
         <div class="mobile-nav" id="mobile-menu" data-mobile-menu>
-          <a href="courses.html">Courses</a>
           <a href="about.html">About</a>
+          <a href="courses.html">Learn</a>
           <a href="get-involved.html">Get Involved</a>
           <a href="contact.html">Contact Us</a>
           <a href="faqs.html">FAQs</a>
@@ -65,10 +65,7 @@
         <div class="learn-hero__inner">
           <p class="learn-hero__eyebrow">Story Mode</p>
           <h1 class="learn-hero__title" id="learn-title">My Learning</h1>
-          <p class="learn-hero__lead">
-            Techinance courses you can play. You take on a role, make decisions, and see
-            what each decision leads to.
-          </p>
+          <p class="learn-hero__lead">Courses you play, not read.</p>
         </div>
       </section>
 
@@ -82,12 +79,9 @@
         <div class="learn-gate__inner">
           <div class="learn-gate__copy">
             <h2 class="learn-gate__title" id="learn-gate-title">
-              How Story Mode works
+              How Story Mode Works
             </h2>
-            <p class="learn-gate__lead">
-              Each unit is an interactive episode. You play an analyst, a founder, or a
-              researcher, and the decisions you make change what happens next.
-            </p>
+            <p class="learn-gate__lead">Each unit is an episode. Your decisions change what happens next.</p>
             <ul class="learn-gate__points">
               <li class="learn-gate__point">
                 <span class="learn-gate__point-icon" aria-hidden="true"
@@ -129,7 +123,7 @@
           </div>
 
           <div class="learn-signin">
-            <h3 class="learn-signin__title">Sign in to save your progress</h3>
+            <h3 class="learn-signin__title">Sign In to Save Your Progress</h3>
             <div class="learn-signin__google" data-google-button></div>
             <p class="learn-signin__divider"><span>or</span></p>
             <button
@@ -139,17 +133,14 @@
             >
               Continue as guest
             </button>
-            <p class="learn-signin__note">
-              Guest progress is stored in this browser only. It isn't sent anywhere, and it
-              won't be available on another device.
-            </p>
+            <p class="learn-signin__note">Guest progress stays in this browser.</p>
           </div>
         </div>
       </section>
 
       <!-- Signed-in: account summary ---------------------------------------->
       <section class="learn-account" aria-labelledby="learn-account-title" data-signed-in hidden>
-        <h2 class="learn-account__heading" id="learn-account-title">Your progress</h2>
+        <h2 class="learn-account__heading" id="learn-account-title">Your Progress</h2>
         <div class="learn-account__inner">
           <div class="learn-account__identity">
             <span class="learn-avatar" data-user-avatar aria-hidden="true"></span>
@@ -205,7 +196,7 @@
         data-course-section
       >
         <div class="learn-section__head">
-          <h2 class="learn-section__title" id="learn-courses-title">Courses</h2>
+          <h2 class="learn-section__title" id="learn-courses-title">Interactive Courses</h2>
           <p class="learn-section__lead">
             Four Techinance courses are being made into Story Mode seasons. Cybersecurity
             is available now.
@@ -224,15 +215,18 @@
 
         <ul class="learn-rail" id="learn-rail" data-rail>
           <li class="learn-course learn-course--live" data-course="cybersecurity">
-            <span class="learn-course__icon" aria-hidden="true"
-              ><i data-lucide="shield-check" aria-hidden="true"></i
-            ></span>
+            <span class="learn-course__art" aria-hidden="true"><svg class="course-art" viewBox="0 0 240 116" fill="none" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet">
+              <rect x="28" y="24" width="128" height="72" rx="10" fill="var(--art-card)"/>
+              <rect x="42" y="40" width="76" height="6" rx="3" fill="var(--art-line)"/>
+              <rect x="42" y="54" width="96" height="6" rx="3" fill="var(--art-line)"/>
+              <rect x="42" y="68" width="58" height="6" rx="3" fill="var(--art-line)"/>
+              <rect x="140" y="46" width="72" height="56" rx="10" fill="var(--art-accent)"/>
+              <path d="M176 60l12 4.5v9c0 6.4-4.6 11.7-12 13.4-7.4-1.7-12-7-12-13.4v-9l12-4.5Z" fill="var(--art-card)"/>
+              <path d="M171 74.5l3.4 3.4 6-6" stroke="var(--art-accent)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
             <p class="learn-course__tag">Technology · Ages 12–16</p>
             <h3 class="learn-course__title">Cybersecurity</h3>
-            <p class="learn-course__blurb">
-              You work as an analyst in a Security Operations Centre. Covers the cost of
-              cybercrime, phishing, passwords, networks and incident response.
-            </p>
+            <p class="learn-course__blurb">Work a shift as a security analyst. Real breaches, real decisions.</p>
             <p class="learn-course__status learn-course__status--live">
               <span class="learn-course__dot" aria-hidden="true"></span>Live · Unit 1
               playable
@@ -243,45 +237,64 @@
           </li>
 
           <li class="learn-course learn-course--soon" data-course="financial-literacy">
-            <span class="learn-course__icon" aria-hidden="true"
-              ><i data-lucide="wallet-cards" aria-hidden="true"></i
-            ></span>
+            <span class="learn-course__art" aria-hidden="true"><svg class="course-art" viewBox="0 0 240 116" fill="none" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet">
+              <rect x="24" y="18" width="124" height="80" rx="10" fill="var(--art-card)"/>
+              <rect x="38" y="60" width="16" height="26" rx="4" fill="var(--art-soft)"/>
+              <rect x="62" y="48" width="16" height="38" rx="4" fill="var(--art-soft)"/>
+              <rect x="86" y="66" width="16" height="20" rx="4" fill="var(--art-soft)"/>
+              <rect x="110" y="38" width="16" height="48" rx="4" fill="var(--art-accent)"/>
+              <rect x="38" y="30" width="48" height="6" rx="3" fill="var(--art-line)"/>
+              <rect x="150" y="34" width="66" height="52" rx="10" fill="var(--art-accent)"/>
+              <circle cx="176" cy="60" r="15" fill="var(--art-card)"/>
+              <path d="M176 45a15 15 0 0 1 15 15h-15V45Z" fill="var(--art-accent)"/>
+              <rect x="196" y="52" width="14" height="5" rx="2.5" fill="var(--art-card)"/>
+              <rect x="196" y="63" width="10" height="5" rx="2.5" fill="var(--art-card)"/></svg>
+            </span>
             <p class="learn-course__tag">Finance · Ages 10–16</p>
             <h3 class="learn-course__title">Financial Literacy</h3>
-            <p class="learn-course__blurb">
-              Budgeting, saving, interest, credit and risk, taught through a first job and
-              a first bank account.
-            </p>
+            <p class="learn-course__blurb">Money, credit and risk, through a first job and a first account.</p>
             <p class="learn-course__status learn-course__status--soon">
               <span class="learn-course__dot" aria-hidden="true"></span>Coming soon
             </p>
           </li>
 
           <li class="learn-course learn-course--soon" data-course="neuroscience">
-            <span class="learn-course__icon" aria-hidden="true"
-              ><i data-lucide="brain" aria-hidden="true"></i
-            ></span>
+            <span class="learn-course__art" aria-hidden="true"><svg class="course-art" viewBox="0 0 240 116" fill="none" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet">
+              <rect x="22" y="20" width="132" height="76" rx="10" fill="var(--art-card)"/>
+              <path d="M36 66c9 0 9-22 18-22s9 28 18 28 9-34 18-34 9 19 18 19 8-8 14-8"
+                    stroke="var(--art-accent)" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <rect x="36" y="80" width="44" height="5" rx="2.5" fill="var(--art-line)"/>
+              <rect x="86" y="80" width="26" height="5" rx="2.5" fill="var(--art-line)"/>
+              <rect x="148" y="38" width="70" height="60" rx="10" fill="var(--art-accent)"/>
+              <circle cx="168" cy="58" r="5.5" fill="var(--art-card)"/>
+              <circle cx="200" cy="52" r="5.5" fill="var(--art-card)"/>
+              <circle cx="184" cy="82" r="5.5" fill="var(--art-card)"/>
+              <path d="M168 58l32-6M168 58l16 24M200 52l-16 30" stroke="var(--art-card)" stroke-width="2.4" stroke-linecap="round"/></svg>
+            </span>
             <p class="learn-course__tag">Neuroscience · Ages 12–16</p>
             <h3 class="learn-course__title">Neuroscience</h3>
-            <p class="learn-course__blurb">
-              How the brain works and how it's studied. You design an experiment, read a
-              brain scan, and work out what the data does and doesn't show.
-            </p>
+            <p class="learn-course__blurb">Design the experiment, read the scan, argue with the data.</p>
             <p class="learn-course__status learn-course__status--soon">
               <span class="learn-course__dot" aria-hidden="true"></span>Coming soon
             </p>
           </li>
 
           <li class="learn-course learn-course--soon" data-course="startup">
-            <span class="learn-course__icon" aria-hidden="true"
-              ><i data-lucide="rocket" aria-hidden="true"></i
-            ></span>
+            <span class="learn-course__art" aria-hidden="true"><svg class="course-art" viewBox="0 0 240 116" fill="none" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet">
+              <rect x="22" y="24" width="130" height="74" rx="10" fill="var(--art-card)"/>
+              <rect x="36" y="38" width="44" height="6" rx="3" fill="var(--art-line)"/>
+              <path d="M36 80l24-18 20 11 26-26" stroke="var(--art-accent)" stroke-width="3.4"
+                    stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <circle cx="106" cy="47" r="5" fill="var(--art-accent)"/>
+              <rect x="146" y="16" width="72" height="60" rx="10" fill="var(--art-accent)"/>
+              <path d="M182 30c4.6 3.9 7.2 9.1 7.2 14.7v3.7l-7.2 4.3-7.2-4.3v-3.7c0-5.6 2.6-10.8 7.2-14.7Z" fill="var(--art-card)"/>
+              <path d="M175 47l-6 6 5 1.2 1.2 5 4.4-5M189 47l6 6-5 1.2-1.2 5-4.4-5"
+                    stroke="var(--art-card)" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+              <rect x="158" y="84" width="48" height="6" rx="3" fill="var(--art-soft)"/></svg>
+            </span>
             <p class="learn-course__tag">Entrepreneurship · Ages 12–16</p>
             <h3 class="learn-course__title">How 2 Build a Start Up</h3>
-            <p class="learn-course__blurb">
-              Taking an idea to a pitch deck in ninety days. You choose a co-founder, price
-              the product, and prepare for a first investor meeting.
-            </p>
+            <p class="learn-course__blurb">Idea to pitch deck. Pick a co-founder, price it, face an investor.</p>
             <p class="learn-course__status learn-course__status--soon">
               <span class="learn-course__dot" aria-hidden="true"></span>Coming soon
             </p>
@@ -326,11 +339,7 @@
             <div class="learn-episode__body">
               <p class="learn-episode__unit">Unit 1 · Available</p>
               <h3 class="learn-episode__title">The Cost of Cybercrime</h3>
-              <p class="learn-episode__blurb">
-                Your first shift in the Techinance SOC. You follow the traces an attacker
-                called Nightjar leaves across the network, and work out what a breach costs
-                an organisation.
-              </p>
+              <p class="learn-episode__blurb">Track an attacker across the network and price the damage.</p>
               <p class="learn-episode__meta">
                 <span class="learn-episode__chip">~35 min</span>
                 <span class="learn-episode__chip">Junior Security Analyst</span>
@@ -369,10 +378,7 @@
             <div class="learn-episode__body">
               <p class="learn-episode__unit">Unit 2 · Available</p>
               <h3 class="learn-episode__title">Digital Footprint and Defense</h3>
-              <p class="learn-episode__blurb">
-                Protecting personal information, active vs passive digital footprints,
-                cookie security, public Wi-Fi risks, and strategies to minimize your online shadow.
-              </p>
+              <p class="learn-episode__blurb">The trail you leave online, and how to shrink it.</p>
               <p class="learn-episode__meta">
                 <span class="learn-episode__chip">~30 min</span>
                 <span class="learn-episode__chip">Security Analyst</span>
@@ -411,10 +417,7 @@
             <div class="learn-episode__body">
               <p class="learn-episode__unit">Unit 3 · Locked</p>
               <h3 class="learn-episode__title">Threats and Network Defense</h3>
-              <p class="learn-episode__blurb">
-                Defending a whole organisation rather than one person: network security
-                controls, firewalls, and encryption.
-              </p>
+              <p class="learn-episode__blurb">Defending a whole network, not just one person.</p>
             </div>
             <div class="learn-episode__action">
               <span class="learn-lock" aria-hidden="true"
@@ -429,10 +432,7 @@
             <div class="learn-episode__body">
               <p class="learn-episode__unit">Unit 4 · Available</p>
               <h3 class="learn-episode__title">Programming for Cybersecurity</h3>
-              <p class="learn-episode__blurb">
-                Why security work runs on code: which languages matter, how to read
-                Python and JavaScript, and building a small security tool of your own.
-              </p>
+              <p class="learn-episode__blurb">Read Python and JavaScript, then build a security tool.</p>
               <p class="learn-episode__meta">
                 <span class="learn-episode__chip">~30 min</span>
                 <span class="learn-episode__chip">Security Analyst</span>
@@ -483,7 +483,7 @@
 
         <div class="site-footer__column">
           <h2>Quick Links</h2>
-          <a href="courses.html">Courses</a>
+          <a href="courses.html">Interactive Courses</a>
           <a href="faqs.html">FAQs</a>
         </div>
 

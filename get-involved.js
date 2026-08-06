@@ -3,10 +3,12 @@
 /**
  * Get Involved form.
  *
- * There's no backend, so this form never posts anywhere. It validates on the
- * client, then hands the person a prefilled mailto: link so their answers can
- * actually reach a human. The copy has to stay honest about that: don't tell
- * anyone a message was sent when nothing left the browser.
+ * Submits through FormSubmit, the same relay contact.js uses, so both forms
+ * reach the same inbox. If that request fails the person still gets a prefilled
+ * mailto: link, so a submission is never silently lost.
+ *
+ * The success copy is written from the outcome, not assumed: it only says the
+ * message was sent when the request actually succeeded.
  */
 
 // Marks the file as a module. It's loaded with <script type="module">, but with
@@ -15,6 +17,7 @@
 export {};
 
 const CONTACT_EMAIL = "thetechinance@gmail.com";
+const FORM_SUBMIT_URL = `https://formsubmit.co/ajax/${CONTACT_EMAIL}`;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 /**
@@ -105,8 +108,11 @@ const form = getFormElement("[data-involve-form]");
 const statusEl = getHtmlElement("[data-involve-status]");
 const successEl = getHtmlElement("[data-involve-success]");
 const successTitleEl = getHtmlElement("[data-involve-success-title]");
+const successBodyEl = getHtmlElement("[data-involve-success-body]");
+const mailtoWrap = getHtmlElement("[data-involve-mailto-wrap]");
 const mailtoLink = getAnchorElement("[data-involve-mailto]");
 const editButton = getButtonElement("[data-involve-edit]");
+const submitButton = getButtonElement("[data-involve-submit]");
 
 const firstNameInput = getInputElement("#involve-first-name");
 const lastNameInput = getInputElement("#involve-last-name");
@@ -246,6 +252,15 @@ function buildMailto(firstName, lastName, email, role, message) {
 }
 
 /**
+ * @param {boolean} sending
+ * @returns {void}
+ */
+function setSubmitting(sending) {
+  submitButton.disabled = sending;
+  submitButton.textContent = sending ? "Sending…" : "Submit";
+}
+
+/**
  * @returns {void}
  */
 function showForm() {
@@ -259,7 +274,30 @@ editButton.addEventListener("click", () => {
   showForm();
 });
 
-form.addEventListener("submit", (event) => {
+/**
+ * Swaps the success panel between "we received it" and "send it yourself",
+ * depending on whether the request actually got through.
+ *
+ * @param {string} firstName
+ * @param {boolean} sent
+ * @returns {void}
+ */
+function showSuccess(firstName, sent) {
+  successTitleEl.textContent = sent
+    ? `Thanks ${firstName}, we have your answers`
+    : `Thanks ${firstName}, your answers are ready to send`;
+  successBodyEl.textContent = sent
+    ? "Your message is on its way to the Techinance team. We'll be in touch, usually within a week. There's nothing else you need to do."
+    : "We couldn't reach our mail service just now, so nothing has been sent yet. The button below opens your email app with your answers already filled in.";
+  mailtoWrap.hidden = sent;
+
+  clearStatus();
+  form.hidden = true;
+  successEl.hidden = false;
+  successEl.focus();
+}
+
+form.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   const failed = runChecks();
@@ -280,11 +318,36 @@ form.addEventListener("submit", (event) => {
   const role = roleSelect.value;
   const message = messageInput.value.trim();
 
+  // The mailto is built either way, so the fallback is ready if the post fails.
   mailtoLink.href = buildMailto(firstName, lastName, email, role, message);
-  successTitleEl.textContent = `Thanks ${firstName}, your answers are ready to send`;
 
-  clearStatus();
-  form.hidden = true;
-  successEl.hidden = false;
-  successEl.focus();
+  setSubmitting(true);
+  setStatus("Sending your answers…", false);
+
+  try {
+    const response = await fetch(FORM_SUBMIT_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        firstName,
+        lastName,
+        name: `${firstName} ${lastName}`,
+        email,
+        role,
+        message,
+        _subject: `Techinance Get Involved from ${firstName} ${lastName}`,
+        _replyto: email,
+        _captcha: "false",
+      }),
+    });
+
+    showSuccess(firstName, response.ok);
+  } catch {
+    showSuccess(firstName, false);
+  } finally {
+    setSubmitting(false);
+  }
 });

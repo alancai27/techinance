@@ -26,22 +26,10 @@ const SOURCES = {
  */
 export const act3Badges = [
   {
-    id: "wifi-defender",
-    name: "Wi-Fi Defender",
-    description: "Identified public network security risks (1 in 4 statistic).",
-    icon: "network",
-  },
-  {
     id: "shield-master",
     name: "Credential Defense",
     description: "Mastered strong passwords, unique credentials, and 2FA strategies.",
     icon: "key",
-  },
-  {
-    id: "footprint-minimizer",
-    name: "Footprint Minimizer",
-    description: "Applied strategies to minimize digital footprints and delete old accounts.",
-    icon: "shield-check",
   },
   {
     id: "unit2-certified",
@@ -92,7 +80,6 @@ export const act3 = {
         "Statistics state that 1 in 4 people (25%) have experienced a security issue from browsing on unsecured networks. Connecting to passwordless public Wi-Fi exposes your network traffic and session cookies to attackers.",
       source: SOURCES.wifiStats,
       xp: 35,
-      badge: "wifi-defender",
       next: "u2a3-protect-quiz",
     },
 
@@ -182,7 +169,6 @@ export const act3 = {
       ],
       source: SOURCES.wifiStats,
       xp: 25,
-      badge: "footprint-minimizer",
       next: "u2a3-passwords-choice",
     },
 
@@ -296,16 +282,6 @@ export const act3 = {
       ],
       prompt: "Categorize each defensive action into its primary strategy objective.",
       buckets: [
-        {
-          id: "protect",
-          label: "Protect Personal Information",
-          hint: "Defensive controls safeguarding data & account access",
-        },
-        {
-          id: "minimize",
-          label: "Minimize Digital Footprint",
-          hint: "Actions reducing overall online data trails & exposure",
-        },
       ],
       items: [
         {
@@ -384,38 +360,6 @@ export const act3 = {
       prompt: "Execute commands to confirm protection and footprint minimization status.",
       host: "analyst@techinance-soc",
       commands: [
-        {
-          id: "passwords",
-          cmd: "audit --passwords --policy",
-          output: [
-            "CREDENTIAL POLICY CHECK // system compliance",
-            "  min_length       : 15 characters (PASSED)",
-            "  complexity       : uppercase + symbols + numbers (PASSED)",
-            "  personal_data    : no birthdays/names (PASSED)",
-            "  reuse_check      : unique per account (PASSED)",
-          ],
-          required: true,
-        },
-        {
-          id: "2fa",
-          cmd: "auth --status 2fa",
-          output: [
-            "2FA SYSTEM STATUS // multi-factor enabled",
-            "  two-factor authentication active across all user portals.",
-          ],
-          required: false,
-        },
-        {
-          id: "cleanup",
-          cmd: "footprint --cleanup --accounts",
-          output: [
-            "FOOTPRINT MINIMIZATION // account cleanup",
-            "  old accounts purged : 14 obsolete profiles deleted",
-            "  third-party cookies : blocked in enhanced browser settings",
-            "  digital shadow      : minimized successfully",
-          ],
-          required: true,
-        },
       ],
       source: SOURCES.wifiStats,
       xp: 30,

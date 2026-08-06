@@ -1004,7 +1004,8 @@
   flex: 0 0 auto;
   place-items: center;
   border-radius: 50%;
-  background: var(--ice);
+  color: var(--white);
+  background: var(--navy);
   font-size: 16px;
   line-height: 1;
 }
@@ -1173,7 +1174,8 @@
   flex: 0 0 auto;
   place-items: center;
   border-radius: 12px;
-  background: var(--ice);
+  color: var(--white);
+  background: var(--navy);
   font-size: 17px;
   line-height: 1;
 }
@@ -3795,7 +3797,8 @@ body.story-page .story-message__action:focus-visible {
   flex: 0 0 auto;
   place-items: center;
   border-radius: 50%;
-  background: var(--ice);
+  color: var(--white);
+  background: var(--navy);
   color: var(--navy);
 }
 
@@ -3917,4 +3920,72 @@ body.story-page .story-message__action:focus-visible {
     width: 100%;
     justify-content: center;
   }
+}
+
+/* --------------------------------------------------------------------------
+   Course card artwork
+
+   The four course cards carry the same flat illustration treatment as the
+   courses page: a solid accent band with layered white shapes on it. The card
+   goes edge to edge, so the padding moves off .learn-course and onto its parts.
+   -------------------------------------------------------------------------- */
+
+.learn-course {
+  padding: 0;
+  overflow: hidden;
+}
+
+.learn-course__art {
+  display: block;
+  margin: 0 0 4px;
+  padding: 14px 16px;
+  background: var(--course-band);
+}
+
+.learn-course__art .course-art {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Everything below the artwork keeps the original inset. */
+.learn-course > :not(.learn-course__art) {
+  margin-left: 22px;
+  margin-right: 22px;
+}
+
+.learn-course > :last-child {
+  margin-bottom: 22px;
+}
+
+.learn-course[data-course="cybersecurity"] {
+  --course-band: #17376a;
+  --art-card: #ffffff;
+  --art-soft: #dfe9f7;
+  --art-accent: #4f86d6;
+  --art-line: #c3d5ee;
+}
+
+.learn-course[data-course="financial-literacy"] {
+  --course-band: #235c96;
+  --art-card: #ffffff;
+  --art-soft: #dbeafb;
+  --art-accent: #5fa2e6;
+  --art-line: #bcd8f4;
+}
+
+.learn-course[data-course="neuroscience"] {
+  --course-band: #3f4490;
+  --art-card: #ffffff;
+  --art-soft: #e2e3fa;
+  --art-accent: #8d92e8;
+  --art-line: #cdcff5;
+}
+
+.learn-course[data-course="startup"] {
+  --course-band: #3d5872;
+  --art-card: #ffffff;
+  --art-soft: #dce8f2;
+  --art-accent: #6f9ec4;
+  --art-line: #c4d8e8;
 }

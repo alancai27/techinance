@@ -16,6 +16,7 @@
     />
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="learn.css" />
+    <link rel="stylesheet" href="about.css" />
     <script type="module" src="nav.js"></script>
     <script type="module" src="auth-nav.js"></script>
   </head>
@@ -39,8 +40,8 @@
         </button>
 
         <div class="desktop-nav">
-          <a class="nav-link" href="courses.html">Courses</a>
           <a class="nav-link" href="about.html" aria-current="page">About</a>
+          <a class="nav-link" href="courses.html">Learn</a>
           <a class="nav-link" href="get-involved.html">Get Involved</a>
           <a class="nav-link" href="contact.html">Contact Us</a>
           <a class="nav-link" href="faqs.html">FAQs</a>
@@ -48,8 +49,8 @@
         </div>
 
         <div class="mobile-nav" id="mobile-menu" data-mobile-menu>
-          <a href="courses.html">Courses</a>
           <a href="about.html" aria-current="page">About</a>
+          <a href="courses.html">Learn</a>
           <a href="get-involved.html">Get Involved</a>
           <a href="contact.html">Contact Us</a>
           <a href="faqs.html">FAQs</a>
@@ -63,44 +64,103 @@
         <div class="about__inner">
           <header class="about__header">
             <h1 id="about-title">About Techinance</h1>
+            <p class="about__lede">
+              Placeholder. One or two lines on why Techinance exists, in your own words.
+            </p>
           </header>
 
-          <div class="about__layout">
-            <figure class="about__founder">
-              <img
-                src="founder.jpg"
-                alt="Krish Sav, Founder of Techinance"
-                width="320"
-                height="400"
-              />
-              <figcaption>Krish Sav, Founder of Techinance</figcaption>
-              <blockquote>
-                “With a keen passion for Computer Science, Krish developed Techinance in order to give
-                back to his community and empower the youth through certified courses, enabling them to
-                be better equipped in real world scenarios.”
-              </blockquote>
-            </figure>
+          <section class="about__block" aria-labelledby="what-we-do">
+            <p class="about__eyebrow">Who We Are</p>
+            <h2 id="what-we-do">What We Do</h2>
+            <p class="about__body">
+              Placeholder. A short paragraph on what Techinance is, when it started, who
+              runs it, and what you offer. Two or three sentences is plenty.
+            </p>
+            <p class="about__body">
+              Placeholder. A second paragraph if you want one, covering the subjects you
+              teach and who the courses are for.
+            </p>
+          </section>
 
-            <div class="about__text">
-              <p>
-                Techinance is a registered 501(c)(3) nonprofit. We teach technology, neuroscience and
-                finance to young people, for free, anywhere in the world. A lot of our students don't
-                have easy access to this kind of thing, and that's exactly who we built it for.
-              </p>
-              <p>
-                We cover the stuff that actually comes up in real life: staying safe online, how money
-                and investing really work, and what's going on inside your own head. Good courses
-                shouldn't cost anything, and you shouldn't need someone in your family who already
-                knows this to get started.
-              </p>
-              <p>
-                Every young person deserves to understand the tools shaping their world, not just use
-                them. So our courses are built to be practical. You won't just learn what a concept
-                means, you'll use it. Whatever your background, we want to hand you the best version of
-                this we can make.
-              </p>
-            </div>
-          </div>
+          <section class="about__block" aria-labelledby="our-mission">
+            <p class="about__eyebrow">Our Mission</p>
+            <h2 id="our-mission">What We Are Working Towards</h2>
+            <ol class="mission">
+              <li class="mission__item">
+                <span class="mission__number" aria-hidden="true">1</span>
+                <div>
+                  <h3>Placeholder Heading</h3>
+                  <p>
+                    Placeholder. Two sentences on the first thing Techinance is trying to
+                    change, and why it matters.
+                  </p>
+                </div>
+              </li>
+              <li class="mission__item">
+                <span class="mission__number" aria-hidden="true">2</span>
+                <div>
+                  <h3>Placeholder Heading</h3>
+                  <p>
+                    Placeholder. Two sentences on the second part of the mission.
+                  </p>
+                </div>
+              </li>
+              <li class="mission__item">
+                <span class="mission__number" aria-hidden="true">3</span>
+                <div>
+                  <h3>Placeholder Heading</h3>
+                  <p>
+                    Placeholder. Two sentences on the third part of the mission.
+                  </p>
+                </div>
+              </li>
+            </ol>
+          </section>
+
+          <section class="about__block" aria-labelledby="our-team">
+            <p class="about__eyebrow">Our Team</p>
+            <h2 id="our-team">Meet the Team</h2>
+            <p class="about__body">
+              Placeholder. One line introducing the people who run Techinance.
+            </p>
+            <ul class="people">
+            <li class="person">
+              <div class="person__art"><img src="founder.jpg" alt="" width="320" height="400" /></div>
+              <p class="person__name">Krish Sav</p>
+              <p class="person__role">Founder</p>
+              <p class="person__note">Placeholder. One line about Krish.</p>
+            </li>
+            <li class="person">
+              <div class="person__art"><span class="person__placeholder" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none" focusable="false"><circle cx="32" cy="24" r="11" fill="currentColor" opacity=".28"/><path d="M12 56c0-11 9-19 20-19s20 8 20 19" fill="currentColor" opacity=".28"/></svg></span></div>
+              <p class="person__name">Placeholder Name</p>
+              <p class="person__role">Director of Technology</p>
+              <p class="person__note">Placeholder. One line about this person.</p>
+            </li>
+            <li class="person">
+              <div class="person__art"><span class="person__placeholder" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none" focusable="false"><circle cx="32" cy="24" r="11" fill="currentColor" opacity=".28"/><path d="M12 56c0-11 9-19 20-19s20 8 20 19" fill="currentColor" opacity=".28"/></svg></span></div>
+              <p class="person__name">Placeholder Name</p>
+              <p class="person__role">Course Developer</p>
+              <p class="person__note">Placeholder. One line about this person.</p>
+            </li>
+            <li class="person">
+              <div class="person__art"><span class="person__placeholder" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none" focusable="false"><circle cx="32" cy="24" r="11" fill="currentColor" opacity=".28"/><path d="M12 56c0-11 9-19 20-19s20 8 20 19" fill="currentColor" opacity=".28"/></svg></span></div>
+              <p class="person__name">Placeholder Name</p>
+              <p class="person__role">Operations</p>
+              <p class="person__note">Placeholder. One line about this person.</p>
+            </li>
+            </ul>
+          </section>
+
+          <section class="about__block about__block--stats" aria-labelledby="our-reach">
+            <p class="about__eyebrow">Our Reach</p>
+            <h2 id="our-reach">Where We Have Got To</h2>
+            <ul class="reach">
+              <li><p class="reach__value">1050+</p><p class="reach__label">Students</p></li>
+              <li><p class="reach__value">21</p><p class="reach__label">Countries</p></li>
+              <li><p class="reach__value">25+</p><p class="reach__label">Provinces</p></li>
+              <li><p class="reach__value">4</p><p class="reach__label">Courses</p></li>
+            </ul>
+          </section>
         </div>
       </section>
     </main>
@@ -117,7 +177,7 @@
 
         <div class="site-footer__column">
           <h2>Quick Links</h2>
-          <a href="courses.html">Courses</a>
+          <a href="courses.html">Interactive Courses</a>
           <a href="faqs.html">FAQs</a>
         </div>
 

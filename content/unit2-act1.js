@@ -25,18 +25,6 @@ const SOURCES = {
  */
 export const act1Badges = [
   {
-    id: "footprint-initiate",
-    name: "Digital Shadow",
-    description: "Started Unit 2 briefing on digital footprints and online shadows.",
-    icon: "user",
-  },
-  {
-    id: "reputation-guardian",
-    name: "Reputation Audit",
-    description: "Analyzed how online behavior impacts long-term career opportunities.",
-    icon: "shield-check",
-  },
-  {
     id: "shadow-analyst",
     name: "Footprint Classifier",
     description: "Identified active and passive digital footprints.",
@@ -60,7 +48,6 @@ export const act1 = {
         "\"Every system user and organization leaves a trail of data across the Internet. Understanding that trail is the first line of cybersecurity defense.\"",
       ],
       xp: 10,
-      badge: "footprint-initiate",
       next: "u2a1-definition",
     },
 
@@ -220,7 +207,6 @@ export const act1 = {
       ],
       source: SOURCES.footprintStats,
       xp: 25,
-      badge: "reputation-guardian",
       next: "u2a1-dossier",
     },
 

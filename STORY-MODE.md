@@ -10,10 +10,10 @@ The Cybersecurity course has four units. Three are written.
 
 | Unit | Title | Scenes | Badges | Approx |
 |---|---|---|---|---|
-| 1 | The Cost of Cybercrime | 45 | 10 | 40 min |
-| 2 | Digital Footprint and Defense | 28 | 9 | 30 min |
+| 1 | The Cost of Cybercrime | 45 | 6 | 40 min |
+| 2 | Digital Footprint and Defense | 28 | 4 | 30 min |
 | 3 | Threats and Network Defense | not written | | |
-| 4 | Programming for Cybersecurity | 32 | 9 | 30 min |
+| 4 | Programming for Cybersecurity | 32 | 5 | 30 min |
 
 The unit list lives in two places and both must agree: the episode cards in
 `learn.html` and `CYBER_UNITS` in `profile.js`. A new episode also has to be
@@ -112,6 +112,10 @@ Rules that keep episodes teachable:
   clicking them teaches that weak evidence isn't evidence.
 - No dead ends: every `choice` option leads somewhere.
 - Icons are kebab-case names resolved through `icon.js`, never emoji.
+- A course gets at most 15 badges across all its units, split roughly by unit
+  size. Badges mark real milestones, not participation, so most scenes award none.
+- Outside the episodes themselves, keep copy short. Page ledes, card blurbs and
+  panel text are one or two lines. The long-form writing belongs in the scenes.
 - Every question on the unit's official quiz (`content/sources/unit<N>-quiz-questions.md`)
   must appear in the episode with the same wording, the same options in the same
   order, and the same correct answer. Distractors are usually real figures from the

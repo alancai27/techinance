@@ -25,34 +25,28 @@ import { act3 } from "./unit1-act3.js";
 /** Badges the acts are expected to award, in display order. */
 const BADGE_REGISTRY = /** @type {Badge[]} */ ([
   {
-    id: "first-shift",
-    name: "Induction",
-    description: "Completed the SOC induction briefing.",
-    icon: "id-card",
-  },
-  {
     id: "phish-eye",
     name: "Phishing Analysis",
     description: "Identified the warning signs in a phishing email.",
     icon: "fish",
   },
   {
-    id: "number-cruncher",
-    name: "Cost of Cybercrime",
-    description: "Learned what cybercrime costs globally and per breach.",
-    icon: "bar-chart",
+    id: "case-historian",
+    name: "Breach Case Files",
+    description: "Reviewed six major breaches and what caused them.",
+    icon: "folder",
+  },
+  {
+    id: "unit1-certified",
+    name: "Unit 1 Complete",
+    description: "Completed Unit 1 of the Techinance Cybersecurity course.",
+    icon: "medal",
   },
   {
     id: "chain-breaker",
     name: "Supply Chain Attacks",
     description: "Traced an attack back through a software supply chain.",
     icon: "unlink",
-  },
-  {
-    id: "case-historian",
-    name: "Breach Case Files",
-    description: "Reviewed six major breaches and what caused them.",
-    icon: "folder",
   },
   {
     id: "cool-head",
@@ -65,24 +59,6 @@ const BADGE_REGISTRY = /** @type {Badge[]} */ ([
     name: "Traffic Analysis",
     description: "Told a DoS from a DDoS by reading server logs.",
     icon: "waves",
-  },
-  {
-    id: "threat-taxonomist",
-    name: "Cybercrime Types",
-    description: "Sorted incidents into the main categories of cybercrime.",
-    icon: "dna",
-  },
-  {
-    id: "nightjar-hunter",
-    name: "Incident Response",
-    description: "Contained the Nightjar intrusion before the payload ran.",
-    icon: "bird",
-  },
-  {
-    id: "unit1-certified",
-    name: "Unit 1 Complete",
-    description: "Completed Unit 1 of the Techinance Cybersecurity course.",
-    icon: "medal",
   },
 ]);
 

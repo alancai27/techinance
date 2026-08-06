@@ -373,7 +373,7 @@ export function mountStory(options) {
   progressBar.setAttribute("role", "progressbar");
   progressBar.setAttribute("aria-valuemin", "0");
   progressBar.setAttribute("aria-valuemax", "100");
-  progressBar.setAttribute("aria-label", "Episode progress");
+  progressBar.setAttribute("aria-label", "Episode Progress");
   const progressLabel = make("p", "story-progress-label", "");
   const progress = make("div", "story-progress");
   progress.append(hudAct, progressBar, progressLabel);
@@ -757,7 +757,7 @@ export function mountStory(options) {
    */
   function renderError(message) {
     const section = make("section", "story-scene story-error");
-    const title = make("h2", "story-scene-title", "Something went wrong");
+    const title = make("h2", "story-scene-title", "Something Went Wrong");
     title.tabIndex = -1;
     section.append(title, make("p", "story-error-text", message));
     const back = makeButton("story-button story-button-secondary", "Back to my learning");
@@ -832,7 +832,7 @@ export function mountStory(options) {
    * @returns {SceneFrame}
    */
   function renderChoice(scene) {
-    const frameRef = makeSceneFrame(scene, scene.title ?? "Your decision");
+    const frameRef = makeSceneFrame(scene, scene.title ?? "Your Decision");
     if (scene.prompt) {
       frameRef.body.append(make("p", "story-prompt", scene.prompt));
     }
@@ -882,7 +882,7 @@ export function mountStory(options) {
    * @returns {SceneFrame}
    */
   function renderQuiz(scene) {
-    const frameRef = makeSceneFrame(scene, scene.title ?? "Knowledge check");
+    const frameRef = makeSceneFrame(scene, scene.title ?? "Knowledge Check");
     if (scene.question) {
       frameRef.body.append(make("p", "story-question", scene.question));
     }
@@ -1074,7 +1074,7 @@ export function mountStory(options) {
    * @returns {SceneFrame}
    */
   function renderReveal(scene) {
-    const frameRef = makeSceneFrame(scene, scene.title ?? "Estimate the number");
+    const frameRef = makeSceneFrame(scene, scene.title ?? "Estimate the Number");
     if (scene.question) {
       frameRef.body.append(make("p", "story-question", scene.question));
     }
@@ -1149,7 +1149,7 @@ export function mountStory(options) {
    * @returns {SceneFrame}
    */
   function renderInspect(scene) {
-    const frameRef = makeSceneFrame(scene, scene.title ?? "Inspect the evidence");
+    const frameRef = makeSceneFrame(scene, scene.title ?? "Inspect the Evidence");
     if (scene.prompt) {
       frameRef.body.append(make("p", "story-prompt", scene.prompt));
     }
@@ -1284,7 +1284,7 @@ export function mountStory(options) {
       return "Server log";
     }
     if (kind === "headers") {
-      return "Message headers";
+      return "Message Headers";
     }
     return "Email";
   }
@@ -1296,7 +1296,7 @@ export function mountStory(options) {
    * @returns {SceneFrame}
    */
   function renderSort(scene) {
-    const frameRef = makeSceneFrame(scene, scene.title ?? "Sort the items");
+    const frameRef = makeSceneFrame(scene, scene.title ?? "Sort the Items");
     if (scene.prompt) {
       frameRef.body.append(make("p", "story-prompt", scene.prompt));
     }
@@ -1304,7 +1304,7 @@ export function mountStory(options) {
     const wrap = make("div", "story-sort");
     const tray = make("div", "story-sort-items");
     tray.setAttribute("role", "group");
-    tray.setAttribute("aria-label", "Items to sort");
+    tray.setAttribute("aria-label", "Items to Sort");
     const bucketRow = make("div", "story-buckets");
     wrap.append(tray, bucketRow);
     frameRef.body.append(wrap);
@@ -1495,7 +1495,7 @@ export function mountStory(options) {
 
     const commandRow = make("div", "story-commands");
     commandRow.setAttribute("role", "group");
-    commandRow.setAttribute("aria-label", "Available commands");
+    commandRow.setAttribute("aria-label", "Available Commands");
     frameRef.body.append(terminal, commandRow);
 
     const commands = Array.isArray(scene.commands) ? scene.commands : [];
@@ -1653,7 +1653,7 @@ export function mountStory(options) {
    * @returns {SceneFrame}
    */
   function renderDossier(scene) {
-    const frameRef = makeSceneFrame(scene, scene.title ?? "Field dossier");
+    const frameRef = makeSceneFrame(scene, scene.title ?? "Field Dossier");
     const cards = make("div", "story-cards");
     frameRef.body.append(cards);
 
@@ -1705,7 +1705,7 @@ export function mountStory(options) {
     completeEpisode(userId, episodeId);
     updateHud(scene.id);
 
-    const frameRef = makeSceneFrame(scene, scene.title ?? "Episode complete");
+    const frameRef = makeSceneFrame(scene, scene.title ?? "Episode Complete");
     frameRef.section.classList.add("story-ending");
 
     const crest = make("p", "story-ending-crest");
@@ -1752,7 +1752,7 @@ export function mountStory(options) {
     if (scene.teaser) {
       const teaser = make("div", "story-ending-teaser");
       teaser.append(
-        make("p", "story-ending-teaser-label", "Next up"),
+        make("p", "story-ending-teaser-label", "Next Up"),
         make("p", "story-ending-teaser-text", scene.teaser),
       );
       frameRef.body.append(teaser);
@@ -1816,7 +1816,7 @@ export function mountStory(options) {
     updateHud(target);
 
     const panel = make("section", "story-resume");
-    const title = make("h2", "story-resume-title", "Episode in progress");
+    const title = make("h2", "story-resume-title", "Episode in Progress");
     title.tabIndex = -1;
     const who = user && user.name ? `, ${user.name}` : "";
     panel.append(

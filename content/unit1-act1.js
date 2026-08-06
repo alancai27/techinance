@@ -44,18 +44,6 @@ const SOURCES = {
  */
 export const act1Badges = [
   {
-    id: "first-shift",
-    name: "First Shift",
-    description: "Started your induction as a junior analyst in the SOC.",
-    icon: "id-card",
-  },
-  {
-    id: "number-cruncher",
-    name: "Number Cruncher",
-    description: "Identified the projected annual global cost of cybercrime.",
-    icon: "bar-chart",
-  },
-  {
     id: "phish-eye",
     name: "Phish Eye",
     description: "Found five genuine warning signs in a phishing email.",
@@ -80,7 +68,6 @@ export const act1 = {
         '"One thing before we go in. Nothing on that floor is theoretical. Every incident on those screens affects real people and real money."',
       ],
       xp: 10,
-      badge: "first-shift",
       next: "a1-floor",
     },
 
@@ -121,7 +108,6 @@ export const act1 = {
         "The other figures are real numbers from this course, measuring different things. $3 trillion is what cybercrime cost the world in 2015, so it's the starting point rather than the projection: the cost has more than tripled in a decade. $4.35 trillion borrows its digits from $4.35 million, which is what a single data breach costs one organisation on average. That's a per-incident cost, not a global total, and the two differ by a factor of a million. The reason the world figure keeps climbing is that far more of what we own, owe and say is now stored on a network, so there's far more for attackers to reach.",
       source: SOURCES.threatReport,
       xp: 30,
-      badge: "number-cruncher",
       next: "a1-oracle",
     },
 
@@ -140,51 +126,6 @@ export const act1 = {
       prompt: "Run the required commands to get up to speed.",
       host: "analyst@techinance-soc",
       commands: [
-        {
-          id: "shift",
-          cmd: "shift --status",
-          output: [
-            "ORACLE // Techinance SOC · shift 07:00–15:00",
-            "analyst: you (junior, day 1)   supervisor: r.mehta",
-            "open incidents: 3   watchlist actors: 1",
-            "ready. try `feed --trend ransomware`",
-          ],
-          required: false,
-        },
-        {
-          id: "trend",
-          cmd: "feed --trend ransomware",
-          output: [
-            "TREND // ransomware",
-            "definition: attackers encrypt a victim's data and demand payment to release it.",
-            "volume change since 2020 ............ +105%",
-            "note: a steady rise, not a one-off spike.",
-          ],
-          required: true,
-        },
-        {
-          id: "actor",
-          cmd: "actor --list --active",
-          output: [
-            "ACTIVE ACTORS // 1 tracked",
-            'alias "Nightjar" / first seen 14 months ago',
-            "  no direct observation. identified from traces only.",
-            "  preferred entry: email.",
-          ],
-          required: false,
-        },
-        {
-          id: "queue",
-          cmd: "queue --mine",
-          output: [
-            "QUEUE // analyst: you",
-            "[1] user report: forwarded email, flagged by student account",
-            "    reporter: p.raman@student.techinance.org",
-            "    status: unreviewed",
-            "assigned by: r.mehta",
-          ],
-          required: true,
-        },
       ],
       source: SOURCES.ransomware,
       xp: 25,

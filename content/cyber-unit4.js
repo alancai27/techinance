@@ -29,28 +29,16 @@ import { act3 } from "./unit4-act3.js";
  */
 const BADGE_REGISTRY = /** @type {Badge[]} */ ([
   {
-    id: "code-induction",
-    name: "Why Code",
-    description: "Learned why cybersecurity work depends on programming.",
-    icon: "book-open",
+    id: "tool-builder",
+    name: "Tool Builder",
+    description: "Planned a working security tool of your own.",
+    icon: "key",
   },
   {
-    id: "language-scout",
-    name: "Language Scout",
-    description: "Matched programming languages to the security jobs that use them.",
-    icon: "search",
-  },
-  {
-    id: "hello-console",
-    name: "Hello, Console",
-    description: "Read program output in Python and in JavaScript.",
-    icon: "terminal",
-  },
-  {
-    id: "variable-handler",
-    name: "Variable Handler",
-    description: "Stored strings, integers and booleans in variables.",
-    icon: "file-search",
+    id: "unit4-certified",
+    name: "Unit 4 Complete",
+    description: "Completed Unit 4 of the Techinance Cybersecurity course.",
+    icon: "medal",
   },
   {
     id: "function-builder",
@@ -68,19 +56,7 @@ const BADGE_REGISTRY = /** @type {Badge[]} */ ([
     id: "code-reviewer",
     name: "Code Reviewer",
     description: "Found the flaw in a script before it shipped.",
-    icon: "eye",
-  },
-  {
-    id: "tool-builder",
-    name: "Tool Builder",
-    description: "Planned a working security tool of your own.",
-    icon: "key",
-  },
-  {
-    id: "unit4-certified",
-    name: "Unit 4 Complete",
-    description: "Completed Unit 4 of the Techinance Cybersecurity course.",
-    icon: "medal",
+    icon: "file-search",
   },
 ]);
 
