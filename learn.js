@@ -168,6 +168,9 @@ async function loadEpisodeMeta() {
       import("./content/neuro-unit3.js"),
       import("./content/neuro-unit4.js"),
       import("./content/startup-unit1.js"),
+      import("./content/startup-unit2.js"),
+      import("./content/startup-unit3.js"),
+      import("./content/startup-unit4.js"),
     ]);
     let grandMax = 0;
     for (const mod of modules) {

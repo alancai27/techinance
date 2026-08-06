@@ -148,9 +148,24 @@ const COURSES = [
         episodeId: "startup-u1",
         playable: true,
       },
-      { unit: 2, title: "Finding a Real Problem Worth Solving", episodeId: "startup-u2", playable: false },
-      { unit: 3, title: "From Idea to MVP", episodeId: "startup-u3", playable: false },
-      { unit: 4, title: "Y Combinator and Accelerators", episodeId: "startup-u4", playable: false },
+      {
+        unit: 2,
+        title: "Finding a Real Problem Worth Solving",
+        episodeId: "startup-u2",
+        playable: true,
+      },
+      {
+        unit: 3,
+        title: "From Idea to MVP",
+        episodeId: "startup-u3",
+        playable: true,
+      },
+      {
+        unit: 4,
+        title: "Y Combinator and Accelerators",
+        episodeId: "startup-u4",
+        playable: true,
+      },
       { unit: 5, title: "Funding, Grants and Competitions", episodeId: "startup-u5", playable: false },
       { unit: 6, title: "Wrap-Up and Founder Portfolio", episodeId: "startup-u6", playable: false },
     ],
@@ -353,6 +368,9 @@ async function loadEpisodeMeta() {
       import("./content/neuro-unit3.js"),
       import("./content/neuro-unit4.js"),
       import("./content/startup-unit1.js"),
+      import("./content/startup-unit2.js"),
+      import("./content/startup-unit3.js"),
+      import("./content/startup-unit4.js"),
     ]);
     badgeOrder = [];
     let grandXp = 0;

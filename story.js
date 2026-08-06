@@ -20,6 +20,9 @@ import { episode as neuroUnit2 } from "./content/neuro-unit2.js";
 import { episode as neuroUnit3 } from "./content/neuro-unit3.js";
 import { episode as neuroUnit4 } from "./content/neuro-unit4.js";
 import { episode as startupUnit1 } from "./content/startup-unit1.js";
+import { episode as startupUnit2 } from "./content/startup-unit2.js";
+import { episode as startupUnit3 } from "./content/startup-unit3.js";
+import { episode as startupUnit4 } from "./content/startup-unit4.js";
 import { mountStory } from "./story-engine.js";
 import { startProgressSync } from "./progress-sync.js";
 
@@ -42,6 +45,9 @@ const EPISODES = {
   "neuro-u3": /** @type {Episode} */ (/** @type {unknown} */ (neuroUnit3)),
   "neuro-u4": /** @type {Episode} */ (/** @type {unknown} */ (neuroUnit4)),
   "startup-u1": /** @type {Episode} */ (/** @type {unknown} */ (startupUnit1)),
+  "startup-u2": /** @type {Episode} */ (/** @type {unknown} */ (startupUnit2)),
+  "startup-u3": /** @type {Episode} */ (/** @type {unknown} */ (startupUnit3)),
+  "startup-u4": /** @type {Episode} */ (/** @type {unknown} */ (startupUnit4)),
 };
 
 /**
