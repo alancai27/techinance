@@ -4,7 +4,7 @@
  * Financial Literacy, Unit 2, Act 1: "Types of Debt and How Loans Work"
  *
  * Source material: "Different Types of Debt" (transcribed in
- * content/sources/finance-unit2-Different Types of Debt.md) and
+ * content/sources/finance-unit2-types-of-debt.md) and
  * "Techinance Financial Literacy Course Final Quiz" (finance-final-quiz.md).
  *
  * Every figure quoted here comes from those documents and must stay exact:
@@ -82,25 +82,25 @@ export const act1 = {
           label: "Debt that disappears after one year",
           correct: false,
           feedback:
-            "Incorrect. Debt does not disappear on a timer. It remains owed until paid back with interest.",
+            "Debt does not disappear on a timer. It remains owed until paid back with interest.",
         },
         {
           label: "Debt you can borrow repeatedly up to a limit",
           correct: true,
           feedback:
-            "Correct! Revolving debt allows individuals to borrow up to a credit limit, repay part or all of the balance, and borrow again repeatedly.",
+            "Correct. Revolving debt allows individuals to borrow up to a credit limit, repay part or all of the balance, and borrow again repeatedly.",
         },
         {
           label: "Debt that only applies to mortgages",
           correct: false,
           feedback:
-            "Incorrect. Mortgages are long-term installment loans, not revolving credit lines.",
+            "Mortgages are long-term installment loans, not revolving credit lines.",
         },
         {
           label: "Debt that has no interest",
           correct: false,
           feedback:
-            "Incorrect. Revolving debt (especially credit cards) typically carries high interest rates if balances are carried month to month.",
+            "Revolving debt (especially credit cards) typically carries high interest rates if balances are carried month to month.",
         },
       ],
       source: SOURCES.typesOfDebt,
@@ -149,25 +149,25 @@ export const act1 = {
           label: "Unsecured loan",
           correct: false,
           feedback:
-            "Incorrect. Unsecured loans rely solely on creditworthiness without collateral backing.",
+            "Unsecured loans rely solely on creditworthiness without collateral backing.",
         },
         {
           label: "Revolving debt",
           correct: false,
           feedback:
-            "Incorrect. Revolving debt refers to open credit lines like credit cards.",
+            "Revolving debt refers to open credit lines like credit cards.",
         },
         {
           label: "Secured loan",
           correct: true,
           feedback:
-            "Correct! A mortgage is a secured loan backed by collateral—the property itself—which can be repossessed if payments are not made.",
+            "Correct. A mortgage is a secured loan backed by collateral, the property itself, which can be repossessed if payments are not made.",
         },
         {
           label: "Personal loan",
           correct: false,
           feedback:
-            "Incorrect. Personal loans are general-purpose loans, usually unsecured, distinct from property mortgages.",
+            "Personal loans are general-purpose loans, usually unsecured, distinct from property mortgages.",
         },
       ],
       source: SOURCES.securedVsUnsecured,
@@ -179,7 +179,7 @@ export const act1 = {
     "f2a1-types-terminal": {
       id: "f2a1-types-terminal",
       type: "terminal",
-      title: "LEDGER: loan structures & risks",
+      title: "LEDGER: loan structures and risks",
       speaker: "LEDGER",
       avatar: "terminal",
       location: "Coaching desk 2",
@@ -243,8 +243,8 @@ export const act1 = {
       id: "f2a1-credit-card-quiz",
       type: "quiz",
       title: "Knowledge check: Main risk of credit card debt",
-      speaker: "Nia Barros",
-      avatar: "compass",
+      speaker: "Marcus Ellery",
+      avatar: "user",
       location: "Riverbend Credit Union",
       text: [
         'Marcus looks over the credit card output. "Credit cards seem convenient, but what makes them dangerous if mishandled?"',
@@ -255,25 +255,25 @@ export const act1 = {
           label: "Low interest rates",
           correct: false,
           feedback:
-            "Incorrect. Credit cards carry some of the highest interest rates among major debt types.",
+            "Credit cards carry some of the highest interest rates among major debt types.",
         },
         {
           label: "Too much available credit",
           correct: false,
           feedback:
-            "Incorrect. Available credit itself is not the risk; carrying an unpaid balance is where interest accumulates.",
+            "Available credit itself is not the risk; carrying an unpaid balance is where interest accumulates.",
         },
         {
           label: "Monthly statements",
           correct: false,
           feedback:
-            "Incorrect. Monthly statements are record-keeping notices, not a risk factor.",
+            "Monthly statements are record-keeping notices, not a risk factor.",
         },
         {
           label: "High interest rates that can create debt cycles",
           correct: true,
           feedback:
-            "Correct! If credit card debt is not paid in full each month, high interest rates quickly compound, creating a debt cycle where minimum payments barely cover interest.",
+            "Correct. If credit card debt is not paid in full each month, high interest rates quickly compound, creating a debt cycle where minimum payments barely cover interest.",
         },
       ],
       source: SOURCES.typesOfDebt,

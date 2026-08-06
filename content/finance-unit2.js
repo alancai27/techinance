@@ -101,9 +101,9 @@ export const episode = {
   unit: 2,
   title: "Debt and Credit Management",
   subtitle:
-    "Understanding student loans, credit cards, mortgages, and auto loans—plus the snowball, avalanche, and consolidation strategies to stay debt-free.",
+    "Understanding student loans, credit cards, mortgages, and auto loans, plus the snowball, avalanche, and consolidation strategies to stay debt-free.",
   role: "First-Year Earner",
-  estMinutes: 40,
+  estMinutes: 30,
   startScene: act1.entry,
   acts: [
     { id: "act1", title: "Types of Debt and How Loans Work", entry: act1.entry },

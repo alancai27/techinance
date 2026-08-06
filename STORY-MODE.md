@@ -16,7 +16,7 @@ terminal.
 | 3 | Careers, Skills, and Certifications | 29 | 3 | 3 | 30 min |
 | 4 | Programming for Cybersecurity | 32 | 3 | 4 | 30 min |
 
-**Financial Literacy.** Units 1 and 4 playable. The learner is a First-Year Earner
+**Financial Literacy.** Units 1, 2 and 4 playable. The learner is a First-Year Earner
 at a credit union with Nia Barros, Marcus Ellery and the LEDGER terminal. The cast
 is deliberately separate: no character or terminal is shared between courses, so
 the two don't read as reskins of each other. A third course should get its own cast
@@ -26,20 +26,19 @@ between units.
 | Unit | Title | Scenes | Acts | Badges | Approx |
 |---|---|---|---|---|---|
 | 1 | Budgeting and Smart Spending | 32 | 3 | 3 | 30 min |
-| 2 | not written (debt and credit) | | | | |
+| 2 | Debt and Credit Management | 26 | 3 | 3 | 30 min |
 | 3 | not written (taxes) | | | | |
 | 4 | Investing, Savings, and Retirement | 32 | 3 | 3 | 35 min |
 
 Financial Literacy has **one quiz for the whole course**, not one per unit
-(`content/sources/finance-final-quiz.md`, 20 questions). Units 1 and 4 cover 10
-of them verbatim. The other 10 test debt repayment methods, secured versus
-revolving debt, credit card interest, tax filing thresholds and deadlines,
-deductions, W-2s, and marginal tax brackets. That's what Units 2 and 3 have to
-be, and no source document for either exists yet.
+(`content/sources/finance-final-quiz.md`, 20 questions). Units 1, 2 and 4 cover
+15 of them verbatim. The remaining 5 are all taxes: filing thresholds and
+deadlines, deductions, W-2s, and marginal tax brackets. That's what Unit 3 has to
+be, and no source document for it exists yet.
 
 `test/finance-quiz.test.js` holds the whole form and checks every written
-question against it. Its `UNWRITTEN` set lists the 10 gaps; delete entries from
-that set as units land and the tests will start demanding them.
+question against it. Its `UNWRITTEN` set lists the 5 remaining gaps; delete
+entries from that set as units land and the tests will start demanding them.
 
 The unit list lives in two places and both must agree: the episode cards in
 `learn.html` and `COURSES` in `profile.js`. A new episode also has to be
@@ -119,6 +118,10 @@ content/
   finance-unit1-act1.js  Act 1, Where Your Money Actually Goes  (f1a1-*)
   finance-unit1-act2.js  Act 2, Choosing a Budgeting Method     (f1a2-*)
   finance-unit1-act3.js  Act 3, Habits That Hold Up             (f1a3-*)
+  finance-unit2.js       Merges Financial Literacy unit 2's acts
+  finance-unit2-act1.js  Act 1, Types of Debt and How Loans Work  (f2a1-*)
+  finance-unit2-act2.js  Act 2, Snowball vs Avalanche             (f2a2-*)
+  finance-unit2-act3.js  Act 3, Staying Debt-Free                 (f2a3-*)
   finance-unit4.js       Merges Financial Literacy unit 4's acts
   finance-unit4-act1.js  Act 1, What You Can Put Money Into     (f4a1-*)
   finance-unit4-act2.js  Act 2, Risk, Time, and Compounding     (f4a2-*)

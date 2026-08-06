@@ -4,7 +4,7 @@
  * Financial Literacy, Unit 2, Act 2: "Debt Management Strategies: Snowball vs Avalanche"
  *
  * Source material: "Debt Management" (transcribed in
- * content/sources/finance-unit2-Debt-Management .md) and
+ * content/sources/finance-unit2-debt-management.md) and
  * "Techinance Financial Literacy Course Final Quiz" (finance-final-quiz.md).
  *
  * Every figure quoted here comes from those documents and must stay exact:
@@ -50,8 +50,8 @@ export const act2 = {
       avatar: "compass",
       location: "Riverbend Credit Union, 16:30",
       text: [
-        "Nia pulls up a scenario board. \"Managing debt isn't just about paying bills—it's about having a deliberate strategy to eliminate balances while minimizing interest costs.\"",
-        'Marcus looks at a sample list of debts: "If someone has three balances—say a $500 store card at 24%, a $2,500 car repair loan at 12%, and a $5,000 student loan at 6%—where do they start?"',
+        "Nia pulls up a scenario board. \"Managing debt isn't just about paying bills: it's about having a deliberate strategy to eliminate balances while minimizing interest costs.\"",
+        'Marcus looks at a sample list of debts: "If someone has three balances, say a $500 store card at 24%, a $2,500 car repair loan at 12%, and a $5,000 student loan at 6%, where do they start?"',
         '"That depends on their strategy," Nia explains. "There are two main paydown frameworks: the Debt Snowball and the Debt Avalanche. Both work, but they target different goals."',
       ],
       source: SOURCES.snowballVsAvalanche,
@@ -77,25 +77,25 @@ export const act2 = {
           label: "Debt avalanche method",
           correct: false,
           feedback:
-            "Incorrect. The debt avalanche method focuses on highest interest rates first, not smallest balances.",
+            "The debt avalanche method focuses on highest interest rates first, not smallest balances.",
         },
         {
           label: "Debt snowball method",
           correct: true,
           feedback:
-            "Correct! The debt snowball method focuses on paying off debts from smallest to largest balance first, regardless of interest rates, to build momentum.",
+            "Correct. The debt snowball method focuses on paying off debts from smallest to largest balance first, regardless of interest rates, to build momentum.",
         },
         {
           label: "Debt consolidation method",
           correct: false,
           feedback:
-            "Incorrect. Debt consolidation combines multiple debts into one loan rather than ordering individual balance payoffs.",
+            "Debt consolidation combines multiple debts into one loan rather than ordering individual balance payoffs.",
         },
         {
           label: "Minimum payment method",
           correct: false,
           feedback:
-            "Incorrect. Paying only minimums prolongs debt and does not focus payoff on smallest balances.",
+            "Paying only minimums prolongs debt and does not focus payoff on smallest balances.",
         },
       ],
       source: SOURCES.snowballVsAvalanche,
@@ -144,25 +144,25 @@ export const act2 = {
           label: "Debt snowball method",
           correct: false,
           feedback:
-            "Incorrect. The snowball method prioritizes small balances and can cost more total interest over time.",
+            "The snowball method prioritizes small balances and can cost more total interest over time.",
         },
         {
           label: "Debt avalanche method",
           correct: true,
           feedback:
-            "Correct! The debt avalanche method targets highest-interest debt first, which saves the most money on interest and results in the fastest mathematical payoff.",
+            "Correct. The debt avalanche method targets highest-interest debt first, which saves the most money on interest and results in the fastest mathematical payoff.",
         },
         {
           label: "Making only minimum payments",
           correct: false,
           feedback:
-            "Incorrect. Making minimum payments maximizes interest charges and extends debt duration.",
+            "Making minimum payments maximizes interest charges and extends debt duration.",
         },
         {
           label: "Debt consolidation always",
           correct: false,
           feedback:
-            "Incorrect. While consolidation lowers rates, avalanche is the specific paydown method that mathematically minimizes interest.",
+            "While consolidation lowers rates, avalanche is the specific paydown method that mathematically minimizes interest.",
         },
       ],
       source: SOURCES.snowballVsAvalanche,
@@ -190,7 +190,7 @@ export const act2 = {
           output: [
             "DEBT SNOWBALL SIMULATION",
             "  Payoff Order: 1. $500 Store Card (Smallest) -> 2. $2,500 Auto Loan -> 3. $5,000 Student Loan",
-            "  First Balance Zero: 3 months (Quick win!)",
+            "  First Balance Zero: 3 months (quick win)",
             "  Total Time        : 22 months",
             "  Total Interest    : $1,120",
           ],
@@ -202,9 +202,9 @@ export const act2 = {
           output: [
             "DEBT AVALANCHE SIMULATION",
             "  Payoff Order: 1. $500 Store Card (24% APR) -> 2. $2,500 Auto Loan (12%) -> 3. $5,000 Student Loan (6%)",
-            "  First Balance Zero: 3 months (Same here because 24% is also smallest!)",
+            "  First Balance Zero: 3 months (same here, 24% is also the smallest)",
             "  Total Time        : 20 months",
-            "  Total Interest    : $890 (Saved $230 in interest!)",
+            "  Total Interest    : $890 (saves $230 in interest)",
           ],
           required: true,
         },
@@ -230,8 +230,8 @@ export const act2 = {
       id: "f2a2-strategy-choice",
       type: "choice",
       title: "Selecting the right debt management plan",
-      speaker: "Nia Barros",
-      avatar: "compass",
+      speaker: "Marcus Ellery",
+      avatar: "user",
       location: "Riverbend Credit Union",
       text: [
         'Marcus reviews the LEDGER comparison. "So snowball gives quick motivation, avalanche saves the most money, and consolidation simplifies multiple bills into one."',
@@ -245,7 +245,7 @@ export const act2 = {
           xp: 5,
           tone: "bad",
           feedback:
-            "Incorrect. While avalanche saves the most interest, a borrower who quits before seeing progress gets no benefit. Snowball provides the early wins needed for motivation.",
+            "While avalanche saves the most interest, a borrower who quits before seeing progress gets no benefit. Snowball provides the early wins needed for motivation.",
         },
         {
           label:
@@ -254,7 +254,7 @@ export const act2 = {
           xp: 25,
           tone: "good",
           feedback:
-            "Correct! For borrowers who need psychological encouragement to stay committed, paying off smallest balances first creates rapid momentum that keeps them on track.",
+            "Correct. For borrowers who need psychological encouragement to stay committed, paying off smallest balances first creates rapid momentum that keeps them on track.",
         },
         {
           label: "Recommend paying only the minimum balance on all debts indefinitely.",
@@ -262,7 +262,7 @@ export const act2 = {
           xp: 5,
           tone: "bad",
           feedback:
-            "Incorrect. Paying only minimums prolongs debt for years and maximizes total interest paid.",
+            "Paying only minimums prolongs debt for years and maximizes total interest paid.",
         },
       ],
       source: SOURCES.debtManagement,
@@ -336,7 +336,7 @@ export const act2 = {
         {
           id: "snowball_b",
           label: "Debt Snowball Method",
-          hint: "Smallest balance first for quick wins & motivation",
+          hint: "Smallest balance first for quick wins and motivation",
         },
         {
           id: "avalanche_b",

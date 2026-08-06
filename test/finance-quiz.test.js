@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { episode as unit1 } from "../content/finance-unit1.js";
+import { episode as unit2 } from "../content/finance-unit2.js";
 import { episode as unit4 } from "../content/finance-unit4.js";
 
 /**
@@ -13,9 +14,9 @@ import { episode as unit4 } from "../content/finance-unit4.js";
  * pass over the content files once rewrote a quoted question in Cybersecurity
  * unit 2 and silently dropped it from 10/10 to 8/10, which is what this guards.
  *
- * Ten of the twenty questions cover debt, credit and taxes, which no unit is
- * written for yet. Those are listed in UNWRITTEN and skipped rather than failed,
- * so this file records the gap instead of hiding it.
+ * Five of the twenty questions cover taxes, which no unit is written for yet.
+ * Those are listed in UNWRITTEN and skipped rather than failed, so this file
+ * records the gap instead of hiding it. Units 1, 2 and 4 cover the other fifteen.
  */
 
 /** @type {[string, string[], number][]} question, options in form order, index of the correct one */
@@ -201,11 +202,11 @@ const FORM = [
  * Question numbers (1-indexed) whose subject matter has no unit written yet:
  * debt and credit, and taxes. Remove entries from here as units land.
  */
-const UNWRITTEN = new Set([3, 4, 7, 9, 11, 12, 15, 16, 17, 19]);
+const UNWRITTEN = new Set([7, 9, 15, 16, 19]);
 
 /** Every quiz question asked across the written Financial Literacy units. */
 const asked = new Map();
-for (const episode of [unit1, unit4]) {
+for (const episode of [unit1, unit2, unit4]) {
   for (const [id, scene] of Object.entries(episode.scenes)) {
     if (scene.type === "quiz" && scene.question) {
       asked.set(scene.question, { id, unit: episode.unit, options: scene.options ?? [] });

@@ -47,7 +47,7 @@ export const act3 = {
       text: [
         "Nia brings up the final section of the coaching module.",
         '"Understanding loan structures and paydown methods is vital," she says, "but the ultimate goal of debt management is reaching and staying debt-free."',
-        'Marcus reviews his notes: "So debt isn\'t inherently evil—it can buy a house or finance education—but if it\'s unmanaged, it creates a debt cycle that lasts for years."',
+        'Marcus reviews his notes: "So debt isn\'t inherently evil: it can buy a house or finance education, but if it\'s unmanaged, it creates a debt cycle that lasts for years."',
         '"Exactly," Nia nods. "Let\'s look at credit scores, statement auditing, and how to keep debt as a temporary tool rather than a permanent burden."',
       ],
       source: SOURCES.debtCycle,
@@ -83,7 +83,7 @@ export const act3 = {
     "f2a3-audit-inspect": {
       id: "f2a3-audit-inspect",
       type: "inspect",
-      title: "Statement Audit: Credit Card & Loan Warnings",
+      title: "Statement Audit: Credit Card and Loan Warnings",
       speaker: "LEDGER",
       avatar: "terminal",
       location: "Coaching desk 2",
@@ -93,7 +93,7 @@ export const act3 = {
       ],
       prompt: "Tap the items that indicate financial risk or key credit metrics. Find at least 4.",
       artifact: {
-        kind: "log",
+        kind: "statement",
         fields: [
           {
             label: "Account",
@@ -120,7 +120,7 @@ export const act3 = {
           "05/01  STATEMENT BALANCE: $4,200.00",
           {
             hot: "apr",
-            text: "ANNUAL PERCENTAGE RATE (APR): 26.99% Variable Interest (High interest risk!)",
+            text: "ANNUAL PERCENTAGE RATE (APR): 26.99% Variable Interest (high interest risk)",
           },
           {
             hot: "minimum_trap",
@@ -137,7 +137,7 @@ export const act3 = {
           "05/10  PAYMENT RECEIVED: $84.00 (Minimum payment processed)",
           {
             hot: "debt_cycle",
-            text: "NEW INTEREST CHARGE: +$94.46 added to balance (Interest exceeds minimum payment -> Debt Cycle!)",
+            text: "NEW INTEREST CHARGE: +$94.46 added to balance (interest exceeds the minimum payment, which is a debt cycle)",
           },
         ],
       },
@@ -181,7 +181,7 @@ export const act3 = {
         debt_cycle: {
           suspicious: true,
           explain:
-            "When interest added ($94.46) exceeds the minimum payment ($84.00), the balance increases despite paying every month—the hallmark of a debt cycle.",
+            "When interest added ($94.46) exceeds the minimum payment ($84.00), the balance increases despite paying every month, which is the hallmark of a debt cycle.",
         },
       },
       requiredFinds: 4,
@@ -195,8 +195,8 @@ export const act3 = {
       id: "f2a3-cycle-choice",
       type: "choice",
       title: "Breaking out of a debt cycle",
-      speaker: "Nia Barros",
-      avatar: "compass",
+      speaker: "Marcus Ellery",
+      avatar: "user",
       location: "Riverbend Credit Union",
       text: [
         'Marcus looks at the warning line where interest exceeds the minimum payment. "That\'s a trap. If someone is stuck paying minimums while interest grows, what is the best corrective action?"',
@@ -209,7 +209,7 @@ export const act3 = {
           xp: 5,
           tone: "bad",
           feedback:
-            "Incorrect. Borrowing new high-interest debt to pay old debt expands the debt cycle and leads to severe financial distress.",
+            "Borrowing new high-interest debt to pay old debt expands the debt cycle and leads to severe financial distress.",
         },
         {
           label:
@@ -218,7 +218,7 @@ export const act3 = {
           xp: 25,
           tone: "good",
           feedback:
-            "Correct! Halting new card spending, allocating extra funds above the minimum toward principal, and using structured paydown methods stops interest compounding and breaks the debt cycle.",
+            "Correct. Halting new card spending, allocating extra funds above the minimum toward principal, and using structured paydown methods stops interest compounding and breaks the debt cycle.",
         },
         {
           label: "Ignore the monthly statements and wait for the debt to clear on its own.",
@@ -226,7 +226,7 @@ export const act3 = {
           xp: 5,
           tone: "bad",
           feedback:
-            "Incorrect. Ignoring debt damages your credit score, triggers late fees, and can result in collections or legal action.",
+            "Ignoring debt damages your credit score, triggers late fees, and can result in collections or legal action.",
         },
       ],
       source: SOURCES.debtCycle,
@@ -236,7 +236,7 @@ export const act3 = {
     "f2a3-dossier": {
       id: "f2a3-dossier",
       type: "dossier",
-      title: "Analyst dossier: Long-term credit health & debt prevention",
+      title: "Analyst dossier: Long-term credit health and debt prevention",
       speaker: "Nia Barros",
       avatar: "compass",
       location: "Riverbend Credit Union",
@@ -366,26 +366,26 @@ export const act3 = {
           label: "Credit card debt has low interest rates and is secured by collateral.",
           correct: false,
           feedback:
-            "Incorrect. Credit card debt is unsecured revolving debt with high interest rates.",
+            "Credit card debt is unsecured revolving debt with high interest rates.",
         },
         {
           label:
             "Mortgages are secured loans backed by collateral, credit cards are revolving debt, the debt avalanche saves the most interest, and snowball builds momentum.",
           correct: true,
           feedback:
-            "Correct! Mortgages are long-term secured loans, credit cards are high-interest revolving debt, debt avalanche minimizes total interest, and debt snowball provides psychological quick wins.",
+            "Correct. Mortgages are long-term secured loans, credit cards are high-interest revolving debt, debt avalanche minimizes total interest, and debt snowball provides psychological quick wins.",
         },
         {
           label: "The debt snowball method saves more interest than the debt avalanche method.",
           correct: false,
           feedback:
-            "Incorrect. Debt avalanche focuses on highest interest rates first and saves more interest than snowball.",
+            "Debt avalanche focuses on highest interest rates first and saves more interest than snowball.",
         },
         {
           label: "Personal loan debt has declined steadily over the past 5 years.",
           correct: false,
           feedback:
-            "Incorrect. Personal loan debt grew by $94 billion over the past 5 years.",
+            "Personal loan debt grew by $94 billion over the past 5 years.",
         },
       ],
       source: SOURCES.debtCycle,
@@ -405,7 +405,7 @@ export const act3 = {
       text: [
         "Nia signs your Unit 2 completion certificate. \"Unit 2, certified.\"",
         "Here is what you mastered in Unit 2:",
-        "1. Types of Debt & Loan Structures: You analyzed student loans (federal vs private), credit card revolving debt, mortgages (15-30 year secured loans backed by property collateral), auto loans (subject to vehicle depreciation), and personal loans ($253 billion U.S. total in 2025 across 24.6 million borrowers averaging $11,631).",
+        "1. Types of Debt and Loan Structures: You analyzed student loans (federal vs private), credit card revolving debt, mortgages (15-30 year secured loans backed by property collateral), auto loans (subject to vehicle depreciation), and personal loans ($253 billion U.S. total in 2025 across 24.6 million borrowers averaging $11,631).",
         "2. Secured vs Unsecured Credit: You separated secured loans (backed by collateral) from unsecured loans (based on credit scores in the 300–850 range).",
         "3. Debt Management Frameworks: You mastered the Debt Snowball method (paying smallest balances first for psychological momentum), the Debt Avalanche method (targeting highest interest rates first to save maximum interest), and Debt Consolidation plans.",
         "4. Avoiding Debt Cycles: You audited statements to spot interest compounding traps, evaluated global public debt trends ($100 trillion projected in 2025), and identified healthy credit habits to achieve and maintain a debt-free life.",
