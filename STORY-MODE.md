@@ -30,21 +30,27 @@ between units.
 | 3 | not written (taxes) | | | | |
 | 4 | Investing, Savings, and Retirement | 32 | 3 | 3 | 35 min |
 
-**Neuroscience.** Unit 1 playable. The learner is a Research Assistant at the
+**Neuroscience.** Units 1 and 2 playable. The learner is a Research Assistant at the
 Ashgrove Cognitive Lab with Dr. Imani Reyes, Theo Lindqvist and the ATLAS
 terminal. Third course, third cast: nobody crosses over.
 
 | Unit | Title | Scenes | Acts | Badges | Approx |
 |---|---|---|---|---|---|
 | 1 | How Your Brain Processes Reality | 31 | 3 | 3 | 35 min |
-| 2 | not written (emotions) | | | | |
+| 2 | The Neuroscience Behind Emotions | 30 | 3 | 3 | 35 min |
 | 3 | not written (reward systems) | | | | |
 | 4 | not written (neurological disorders) | | | | |
 
-Neuroscience has **one quiz per unit**, like Cybersecurity. Unit 1's episode
-matches its form 10/10, enforced by `test/neuro-quiz.test.js`. Units 2 to 4 have
-their forms transcribed or linked in `content/sources/`, but no lesson documents
-checked in yet except Unit 2's.
+Neuroscience has **one quiz per unit**, like Cybersecurity. Units 1 and 2 both
+match their forms 10/10, enforced by `test/neuro-quiz.test.js`. All four forms
+are transcribed in `content/sources/`, so units 3 and 4 need only their lesson
+documents to be buildable.
+
+The unit 3 and 4 forms are transcribed with the answers marked; five errors were
+found across the four forms while transcribing (a duplicated question stem, a
+form titled with the wrong unit, a misspelling, and two options that have lost
+their letters). Those are recorded at the bottom of each transcription and are
+worth fixing in the forms themselves.
 
 Financial Literacy has **one quiz for the whole course**, not one per unit
 (`content/sources/finance-final-quiz.md`, 20 questions). Units 1, 2 and 4 cover

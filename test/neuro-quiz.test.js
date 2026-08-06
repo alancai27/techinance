@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { episode as unit1 } from "../content/neuro-unit1.js";
+import { episode as unit2 } from "../content/neuro-unit2.js";
 
 /**
  * The Neuroscience course has one quiz per unit, like Cybersecurity, rather
@@ -102,6 +103,85 @@ const UNIT_1_FORM = [
   ],
 ];
 
+/** @type {[string, string[], number][]} */
+const UNIT_2_FORM = [
+  [
+    "Which brain structure is most involved in processing fear?",
+    ["Hippocampus", "Amygdala", "Prefrontal Cortex", "Thalamus"],
+    1,
+  ],
+  [
+    "The hippocampus is primarily responsible for:",
+    ["Regulating heartbeat", "Controlling balace", "Releasing dopamine", "Long term memory formation"],
+    3,
+  ],
+  [
+    "The prefrontal cortex plays a major role in:",
+    [
+      "Decision making and emotion regulation",
+      "Smell recognition",
+      "Visual processing",
+      "Motor control",
+    ],
+    0,
+  ],
+  [
+    "Which neurotransmitter is linked to feelings of reward and motivation?",
+    ["Acetylcholine", "GABA", "Serotonin", "Dopamine"],
+    3,
+  ],
+  [
+    "Low levels of serotonin are often associated with:",
+    [
+      "High motivation",
+      "Reduced stress",
+      "Depression and mood disorders",
+      "Increased memory recall",
+    ],
+    2,
+  ],
+  [
+    "Norepinephrine is mainly involved in:",
+    ["Sleep cycles", "Stress response and alertness", "Digestion", "Creativity"],
+    1,
+  ],
+  [
+    "Which brain pathway is crucial for regulating emotions?",
+    [
+      "Amygdala-hippocampus connection",
+      "Hippocampus-thalamus loop",
+      "Amygdala-prefrontal cortex connectivity",
+      "Cerebellum-motor cortex pathway",
+    ],
+    2,
+  ],
+  [
+    "Mindfulness can improve emotional regulation by:",
+    [
+      "Shrinking the hippocampus",
+      "Increasing cortisol levels",
+      "Weakening dopamine release",
+      "Strengthening the prefrontal-amygdala pathways",
+    ],
+    3,
+  ],
+  [
+    "Which neurotransmitter is the brain's main inhibitory signal, helping to calm neural activity?",
+    ["GABA", "Glutamate", "Dopamine", "Norepinephrine"],
+    0,
+  ],
+  [
+    "In emotion generation, which part of the brain is dominant before regulation takes place?",
+    [
+      "Brainstem nuclei",
+      "Cortical structures like the PFC",
+      "Subcortical structures like the amygdala",
+      "Occipital lobe",
+    ],
+    2,
+  ],
+];
+
 /**
  * @param {any} episode
  * @returns {Map<string, { id: string, options: any[] }>}
@@ -118,6 +198,7 @@ function quizzesIn(episode) {
 }
 
 const unit1Quizzes = quizzesIn(unit1);
+const unit2Quizzes = quizzesIn(unit2);
 
 UNIT_1_FORM.forEach(([question, options, correctIndex], index) => {
   test(`Neuroscience unit 1 quiz Q${index + 1} appears verbatim`, () => {
@@ -138,5 +219,27 @@ UNIT_1_FORM.forEach(([question, options, correctIndex], index) => {
 
 test("Neuroscience unit 1 covers the whole form", () => {
   const missing = UNIT_1_FORM.map(([question]) => question).filter((q) => !unit1Quizzes.has(q));
+  assert.deepEqual(missing, [], "form questions with no scene");
+});
+
+UNIT_2_FORM.forEach(([question, options, correctIndex], index) => {
+  test(`Neuroscience unit 2 quiz Q${index + 1} appears verbatim`, () => {
+    const found = unit2Quizzes.get(question);
+    assert.ok(found, `no scene asks "${question}"`);
+    assert.deepEqual(
+      found.options.map((option) => option.label),
+      options,
+      `${found.id}: option text or order differs from the form`,
+    );
+    assert.equal(
+      found.options.findIndex((option) => option.correct),
+      correctIndex,
+      `${found.id}: marks the wrong option correct`,
+    );
+  });
+});
+
+test("Neuroscience unit 2 covers the whole form", () => {
+  const missing = UNIT_2_FORM.map(([question]) => question).filter((q) => !unit2Quizzes.has(q));
   assert.deepEqual(missing, [], "form questions with no scene");
 });

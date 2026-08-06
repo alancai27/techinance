@@ -116,7 +116,12 @@ const COURSES = [
         episodeId: "neuro-u1",
         playable: true,
       },
-      { unit: 2, title: "The Neuroscience Behind Emotions", episodeId: "neuro-u2", playable: false },
+      {
+        unit: 2,
+        title: "The Neuroscience Behind Emotions",
+        episodeId: "neuro-u2",
+        playable: true,
+      },
       { unit: 3, title: "Hacking Reward Systems", episodeId: "neuro-u3", playable: false },
       { unit: 4, title: "Understanding Neurological Disorders", episodeId: "neuro-u4", playable: false },
     ],
@@ -320,6 +325,7 @@ async function loadEpisodeMeta() {
       import("./content/finance-unit2.js"),
       import("./content/finance-unit4.js"),
       import("./content/neuro-unit1.js"),
+      import("./content/neuro-unit2.js"),
     ]);
     badgeOrder = [];
     let grandXp = 0;
