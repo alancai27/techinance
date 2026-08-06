@@ -157,6 +157,7 @@ async function loadEpisodeMeta() {
     const modules = await Promise.all([
       import("./content/cyber-unit1.js"),
       import("./content/cyber-unit2.js"),
+      import("./content/cyber-unit3.js"),
       import("./content/cyber-unit4.js"),
     ]);
     let grandMax = 0;
