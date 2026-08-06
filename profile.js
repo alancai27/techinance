@@ -104,6 +104,23 @@ const COURSES = [
       },
     ],
   },
+  {
+    slug: "neuroscience",
+    title: "Neuroscience",
+    tag: "Neuroscience · Ages 12–16",
+    icon: "brain",
+    units: [
+      {
+        unit: 1,
+        title: "How Your Brain Processes Reality",
+        episodeId: "neuro-u1",
+        playable: true,
+      },
+      { unit: 2, title: "The Neuroscience Behind Emotions", episodeId: "neuro-u2", playable: false },
+      { unit: 3, title: "Hacking Reward Systems", episodeId: "neuro-u3", playable: false },
+      { unit: 4, title: "Understanding Neurological Disorders", episodeId: "neuro-u4", playable: false },
+    ],
+  },
 ];
 
 /** Every playable unit across every course. Drives totals and the reset scope. */
@@ -113,13 +130,6 @@ const PLAYABLE_UNITS = COURSES.flatMap((course) =>
 
 /** The courses that haven't been written into Story Mode yet. */
 const OTHER_COURSES = [
-  {
-    icon: "brain",
-    title: "Neuroscience",
-    tag: "Neuroscience · Ages 12–16",
-    blurb:
-      "How the brain works and how it's studied, from designing an experiment to reading a brain scan.",
-  },
   {
     icon: "rocket",
     title: "How 2 Build a Start Up",
@@ -309,6 +319,7 @@ async function loadEpisodeMeta() {
       import("./content/finance-unit1.js"),
       import("./content/finance-unit2.js"),
       import("./content/finance-unit4.js"),
+      import("./content/neuro-unit1.js"),
     ]);
     badgeOrder = [];
     let grandXp = 0;

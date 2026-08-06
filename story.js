@@ -15,6 +15,7 @@ import { episode as cyberUnit4 } from "./content/cyber-unit4.js";
 import { episode as financeUnit1 } from "./content/finance-unit1.js";
 import { episode as financeUnit2 } from "./content/finance-unit2.js";
 import { episode as financeUnit4 } from "./content/finance-unit4.js";
+import { episode as neuroUnit1 } from "./content/neuro-unit1.js";
 import { mountStory } from "./story-engine.js";
 import { startProgressSync } from "./progress-sync.js";
 
@@ -32,6 +33,7 @@ const EPISODES = {
   "fin-u1": /** @type {Episode} */ (/** @type {unknown} */ (financeUnit1)),
   "fin-u2": /** @type {Episode} */ (/** @type {unknown} */ (financeUnit2)),
   "fin-u4": /** @type {Episode} */ (/** @type {unknown} */ (financeUnit4)),
+  "neuro-u1": /** @type {Episode} */ (/** @type {unknown} */ (neuroUnit1)),
 };
 
 /**

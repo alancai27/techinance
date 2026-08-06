@@ -1295,6 +1295,9 @@ export function mountStory(options) {
     if (kind === "plan") {
       return "Retirement Plan";
     }
+    if (kind === "report") {
+      return "Research Write-up";
+    }
     return "Email";
   }
 

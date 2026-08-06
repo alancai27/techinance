@@ -3,7 +3,7 @@
 Interactive, role-play course episodes for the Techinance site. Learners sign in,
 step into a role, and play through a unit instead of reading slides.
 
-Two courses have episodes written.
+Three courses have episodes written.
 
 **Cybersecurity.** Four units, all playable. The learner plays an analyst in a
 Security Operations Centre alongside Ravi Mehta, Dana Okoye and the ORACLE
@@ -29,6 +29,22 @@ between units.
 | 2 | Debt and Credit Management | 26 | 3 | 3 | 30 min |
 | 3 | not written (taxes) | | | | |
 | 4 | Investing, Savings, and Retirement | 32 | 3 | 3 | 35 min |
+
+**Neuroscience.** Unit 1 playable. The learner is a Research Assistant at the
+Ashgrove Cognitive Lab with Dr. Imani Reyes, Theo Lindqvist and the ATLAS
+terminal. Third course, third cast: nobody crosses over.
+
+| Unit | Title | Scenes | Acts | Badges | Approx |
+|---|---|---|---|---|---|
+| 1 | How Your Brain Processes Reality | 31 | 3 | 3 | 35 min |
+| 2 | not written (emotions) | | | | |
+| 3 | not written (reward systems) | | | | |
+| 4 | not written (neurological disorders) | | | | |
+
+Neuroscience has **one quiz per unit**, like Cybersecurity. Unit 1's episode
+matches its form 10/10, enforced by `test/neuro-quiz.test.js`. Units 2 to 4 have
+their forms transcribed or linked in `content/sources/`, but no lesson documents
+checked in yet except Unit 2's.
 
 Financial Literacy has **one quiz for the whole course**, not one per unit
 (`content/sources/finance-final-quiz.md`, 20 questions). Units 1, 2 and 4 cover

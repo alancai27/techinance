@@ -263,7 +263,7 @@
             </a>
           </li>
 
-          <li class="learn-course learn-course--soon" data-course="neuroscience">
+          <li class="learn-course learn-course--live" data-course="neuroscience">
             <span class="learn-course__art" aria-hidden="true"><svg class="course-art" viewBox="0 0 240 116" fill="none" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet">
               <rect x="22" y="20" width="132" height="76" rx="10" fill="var(--art-card)"/>
               <path d="M36 66c9 0 9-22 18-22s9 28 18 28 9-34 18-34 9 19 18 19 8-8 14-8"
@@ -279,9 +279,13 @@
             <p class="learn-course__tag">Neuroscience · Ages 12–16</p>
             <h3 class="learn-course__title">Neuroscience</h3>
             <p class="learn-course__blurb">Design the experiment, read the scan, argue with the data.</p>
-            <p class="learn-course__status learn-course__status--soon">
-              <span class="learn-course__dot" aria-hidden="true"></span>Coming soon
+            <p class="learn-course__status learn-course__status--live">
+              <span class="learn-course__dot" aria-hidden="true"></span>Live · Unit 1
+              playable
             </p>
+            <a class="learn-course__link" href="#learn-episodes-neuro">
+              View episodes<span class="learn-course__arrow" aria-hidden="true">→</span>
+            </a>
           </li>
 
           <li class="learn-course learn-course--soon" data-course="startup">
@@ -657,6 +661,79 @@
               <a
                 class="button button--primary learn-episode__cta"
                 href="story.html?episode=fin-u4"
+                data-episode-cta
+                >Start episode</a
+              >
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <!-- Neuroscience episodes ---------------------------------------------->
+      <section
+        class="learn-section learn-section--episodes"
+        id="learn-episodes-neuro"
+        aria-labelledby="learn-episodes-neuro-title"
+        data-season="neuroscience"
+      >
+        <div class="learn-section__head">
+          <p class="learn-season-back" data-season-back hidden>
+            <a class="learn-season-back__link" href="learn.html">
+              <span
+                class="learn-season-back__icon"
+                data-season-back-icon
+                aria-hidden="true"
+              ></span>
+              <span>All courses</span>
+            </a>
+          </p>
+          <h2
+            class="learn-section__title"
+            id="learn-episodes-neuro-title"
+            tabindex="-1"
+            data-season-heading
+          >
+            Neuroscience · Season 1
+          </h2>
+          <p class="learn-section__lead">
+            Unit 1 is playable. Units 2 to 4 are being written.
+          </p>
+        </div>
+
+        <ol class="learn-episode-list">
+          <li class="learn-episode learn-episode--open" data-episode="neuro-u1">
+            <span class="learn-episode__marker" aria-hidden="true">1</span>
+            <div class="learn-episode__body">
+              <p class="learn-episode__unit">Unit 1 · Available</p>
+              <h3 class="learn-episode__title">How Your Brain Processes Reality</h3>
+              <p class="learn-episode__blurb">Which region does which job, and where perception goes wrong.</p>
+              <p class="learn-episode__meta">
+                <span class="learn-episode__chip">~35 min</span>
+                <span class="learn-episode__chip">Research Assistant</span>
+                <span class="learn-episode__chip">3 acts</span>
+              </p>
+              <div class="learn-progress" data-progress hidden>
+                <div
+                  class="learn-progress__track"
+                  role="progressbar"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-valuenow="0"
+                  aria-label="Neuroscience unit 1 progress"
+                  data-progress-bar
+                >
+                  <span class="learn-progress__fill" data-progress-fill></span>
+                </div>
+                <p class="learn-progress__label">
+                  <span class="learn-progress__state" data-progress-text>Not started</span>
+                  <span class="learn-progress__xp" data-progress-xp>0 XP</span>
+                </p>
+              </div>
+            </div>
+            <div class="learn-episode__action">
+              <a
+                class="button button--primary learn-episode__cta"
+                href="story.html?episode=neuro-u1"
                 data-episode-cta
                 >Start episode</a
               >

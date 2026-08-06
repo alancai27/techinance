@@ -163,6 +163,7 @@ async function loadEpisodeMeta() {
       import("./content/finance-unit1.js"),
       import("./content/finance-unit2.js"),
       import("./content/finance-unit4.js"),
+      import("./content/neuro-unit1.js"),
     ]);
     let grandMax = 0;
     for (const mod of modules) {
