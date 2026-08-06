@@ -199,8 +199,7 @@
         <div class="learn-section__head">
           <h2 class="learn-section__title" id="learn-courses-title">Interactive Courses</h2>
           <p class="learn-section__lead">
-            Four Techinance courses are being made into Story Mode seasons. Cybersecurity
-            and Financial Literacy are available now.
+            All four Techinance courses are playable in Story Mode.
           </p>
           <button
             class="learn-rail-toggle"
@@ -288,7 +287,7 @@
             </a>
           </li>
 
-          <li class="learn-course learn-course--soon" data-course="startup">
+          <li class="learn-course learn-course--live" data-course="startup">
             <span class="learn-course__art" aria-hidden="true"><svg class="course-art" viewBox="0 0 240 116" fill="none" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet">
               <rect x="22" y="24" width="130" height="74" rx="10" fill="var(--art-card)"/>
               <rect x="36" y="38" width="44" height="6" rx="3" fill="var(--art-line)"/>
@@ -304,9 +303,13 @@
             <p class="learn-course__tag">Entrepreneurship · Ages 12–16</p>
             <h3 class="learn-course__title">How 2 Build a Start Up</h3>
             <p class="learn-course__blurb">Idea to pitch deck. Pick a co-founder, price it, face an investor.</p>
-            <p class="learn-course__status learn-course__status--soon">
-              <span class="learn-course__dot" aria-hidden="true"></span>Coming soon
+            <p class="learn-course__status learn-course__status--live">
+              <span class="learn-course__dot" aria-hidden="true"></span>Live · Module 1
+              playable
             </p>
+            <a class="learn-course__link" href="#learn-episodes-startup">
+              View episodes<span class="learn-course__arrow" aria-hidden="true">→</span>
+            </a>
           </li>
         </ul>
       </section>
@@ -849,6 +852,79 @@
               <a
                 class="button button--primary learn-episode__cta"
                 href="story.html?episode=neuro-u4"
+                data-episode-cta
+                >Start episode</a
+              >
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <!-- Start-up episodes -------------------------------------------------->
+      <section
+        class="learn-section learn-section--episodes"
+        id="learn-episodes-startup"
+        aria-labelledby="learn-episodes-startup-title"
+        data-season="startup"
+      >
+        <div class="learn-section__head">
+          <p class="learn-season-back" data-season-back hidden>
+            <a class="learn-season-back__link" href="learn.html">
+              <span
+                class="learn-season-back__icon"
+                data-season-back-icon
+                aria-hidden="true"
+              ></span>
+              <span>All courses</span>
+            </a>
+          </p>
+          <h2
+            class="learn-section__title"
+            id="learn-episodes-startup-title"
+            tabindex="-1"
+            data-season-heading
+          >
+            How 2 Build a Start Up · Season 1
+          </h2>
+          <p class="learn-section__lead">
+            Module 1 is playable. Modules 2 to 6 are being written.
+          </p>
+        </div>
+
+        <ol class="learn-episode-list">
+          <li class="learn-episode learn-episode--open" data-episode="startup-u1">
+            <span class="learn-episode__marker" aria-hidden="true">1</span>
+            <div class="learn-episode__body">
+              <p class="learn-episode__unit">Module 1 · Available</p>
+              <h3 class="learn-episode__title">What Is a Startup, Really?</h3>
+              <p class="learn-episode__blurb">What it actually is, why most fail, and what you already have.</p>
+              <p class="learn-episode__meta">
+                <span class="learn-episode__chip">~45 min</span>
+                <span class="learn-episode__chip">Student Founder</span>
+                <span class="learn-episode__chip">3 acts</span>
+              </p>
+              <div class="learn-progress" data-progress hidden>
+                <div
+                  class="learn-progress__track"
+                  role="progressbar"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-valuenow="0"
+                  aria-label="Start-up module 1 progress"
+                  data-progress-bar
+                >
+                  <span class="learn-progress__fill" data-progress-fill></span>
+                </div>
+                <p class="learn-progress__label">
+                  <span class="learn-progress__state" data-progress-text>Not started</span>
+                  <span class="learn-progress__xp" data-progress-xp>0 XP</span>
+                </p>
+              </div>
+            </div>
+            <div class="learn-episode__action">
+              <a
+                class="button button--primary learn-episode__cta"
+                href="story.html?episode=startup-u1"
                 data-episode-cta
                 >Start episode</a
               >

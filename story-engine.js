@@ -1301,6 +1301,9 @@ export function mountStory(options) {
     if (kind === "recovery") {
       return "Recovery Plan";
     }
+    if (kind === "assessment") {
+      return "Founder Doc";
+    }
     return "Email";
   }
 

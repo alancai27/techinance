@@ -136,6 +136,25 @@ const COURSES = [
       },
     ],
   },
+  {
+    slug: "startup",
+    title: "How 2 Build a Start Up",
+    tag: "Entrepreneurship · Ages 12–16",
+    icon: "rocket",
+    units: [
+      {
+        unit: 1,
+        title: "What Is a Startup, Really?",
+        episodeId: "startup-u1",
+        playable: true,
+      },
+      { unit: 2, title: "Finding a Real Problem Worth Solving", episodeId: "startup-u2", playable: false },
+      { unit: 3, title: "From Idea to MVP", episodeId: "startup-u3", playable: false },
+      { unit: 4, title: "Y Combinator and Accelerators", episodeId: "startup-u4", playable: false },
+      { unit: 5, title: "Funding, Grants and Competitions", episodeId: "startup-u5", playable: false },
+      { unit: 6, title: "Wrap-Up and Founder Portfolio", episodeId: "startup-u6", playable: false },
+    ],
+  },
 ];
 
 /** Every playable unit across every course. Drives totals and the reset scope. */
@@ -143,16 +162,11 @@ const PLAYABLE_UNITS = COURSES.flatMap((course) =>
   course.units.filter((unit) => unit.playable),
 );
 
-/** The courses that haven't been written into Story Mode yet. */
-const OTHER_COURSES = [
-  {
-    icon: "rocket",
-    title: "How 2 Build a Start Up",
-    tag: "Entrepreneurship · Ages 12–16",
-    blurb:
-      "Taking an idea to a pitch deck in ninety days, including pricing and a first investor meeting.",
-  },
-];
+/**
+ * Courses with no episodes written. Every Techinance course is now in Story
+ * Mode, so this is empty; renderCourses() skips the section entirely when it is.
+ */
+const OTHER_COURSES = /** @type {{ icon: string, title: string, tag: string, blurb: string }[]} */ ([]);
 
 /** Badge metadata in the order the episode declares it. */
 /** @type {BadgeMeta[]} */
@@ -338,6 +352,7 @@ async function loadEpisodeMeta() {
       import("./content/neuro-unit2.js"),
       import("./content/neuro-unit3.js"),
       import("./content/neuro-unit4.js"),
+      import("./content/startup-unit1.js"),
     ]);
     badgeOrder = [];
     let grandXp = 0;

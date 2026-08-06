@@ -3,7 +3,7 @@
 Interactive, role-play course episodes for the Techinance site. Learners sign in,
 step into a role, and play through a unit instead of reading slides.
 
-Three courses have episodes written.
+All four courses have episodes written.
 
 **Cybersecurity.** Four units, all playable. The learner plays an analyst in a
 Security Operations Centre alongside Ravi Mehta, Dana Okoye and the ORACLE
@@ -82,6 +82,29 @@ Units 3 and 4 have no official quiz checked in yet. When one exists, save it as
 way units 1 and 2 are. Unit 3's source documents ("Overview of Cybersecurity
 Careers" and "Skills and Certifications") aren't in `content/sources/` either,
 so its figures can't be re-checked against the originals.
+
+**How 2 Build a Start Up.** Module 1 playable, of six. The learner is a Student
+Founder in a student founder programme with Sofia Okonkwo, Devin Cho and the
+RUNWAY terminal. Fourth course, fourth cast.
+
+| Module | Title | Scenes | Acts | Badges | Approx |
+|---|---|---|---|---|---|
+| 1 | What Is a Startup, Really? | 24 | 3 | 3 | 45 min |
+| 2 | Finding a Real Problem Worth Solving | not written | | | |
+| 3 | From Idea to MVP | not written | | | |
+| 4 | Y Combinator and Accelerators | not written | | | |
+| 5 | Funding, Grants and Competitions | not written | | | |
+| 6 | Wrap-Up and Founder Portfolio | not written | | | |
+
+This course's lessons are **public Netlify slide decks**, not Google Docs. All
+six deck URLs and the extraction recipe are in
+`content/sources/startup-modules/README.md`. Every deck follows the same twelve
+slide shape, which maps cleanly onto three acts.
+
+Its quizzes are 5-question Google Forms and are **not transcribed yet**, so this
+is the one course with no verbatim quiz match enforced. Transcribe them into
+`content/sources/startup-modules/` and add a test alongside
+`test/neuro-quiz.test.js` to bring it to the same bar as the others.
 
 ## Pages
 
