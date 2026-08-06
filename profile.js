@@ -16,10 +16,20 @@
 import { initAuth, onAuthChange, signOut } from "./auth.js";
 import { icon } from "./icon.js";
 import { getProgress, resetEpisode } from "./progress.js";
+import { startProgressSync } from "./progress-sync.js";
 
 /** @typedef {import("./auth.js").User} User */
 /** @typedef {{ id: string, name: string, description: string, icon: string }} BadgeMeta */
 /** @typedef {{ unit: number, title: string, episodeId: string, playable: boolean }} UnitMeta */
+/**
+ * @typedef {{
+ *   slug: string,
+ *   title: string,
+ *   tag: string,
+ *   icon: string,
+ *   units: UnitMeta[],
+ * }} CourseMeta
+ */
 
 /** Icon used when a badge names no icon of its own. */
 const DEFAULT_BADGE_ICON = "award";
@@ -31,44 +41,73 @@ const FALLBACK_TOTAL_XP = 900;
 const MAX_INCOMPLETE_PERCENT = 96;
 
 /**
- * The four Cybersecurity units, all written and playable.
- * `playable` drives the unit counter, the reset scope and the locked styling.
+ * Courses with episodes written. `playable` drives the unit counter, the reset
+ * scope and the locked styling, so a unit listed here but not yet written stays
+ * visible as a locked row.
  *
- * @type {UnitMeta[]}
+ * This list and the episode cards in learn.html must agree. See STORY-MODE.md.
+ *
+ * @type {CourseMeta[]}
  */
-const CYBER_UNITS = [
-  { unit: 1, title: "The Cost of Cybercrime", episodeId: "cyber-u1", playable: true },
+const COURSES = [
   {
-    unit: 2,
-    title: "Digital Footprint and Defense",
-    episodeId: "cyber-u2",
-    playable: true,
+    slug: "cybersecurity",
+    title: "Cybersecurity",
+    tag: "Technology · Ages 12–16",
+    icon: "shield-check",
+    units: [
+      { unit: 1, title: "The Cost of Cybercrime", episodeId: "cyber-u1", playable: true },
+      {
+        unit: 2,
+        title: "Digital Footprint and Defense",
+        episodeId: "cyber-u2",
+        playable: true,
+      },
+      {
+        unit: 3,
+        title: "Careers, Skills, and Certifications",
+        episodeId: "cyber-u3",
+        playable: true,
+      },
+      {
+        unit: 4,
+        title: "Programming for Cybersecurity",
+        episodeId: "cyber-u4",
+        playable: true,
+      },
+    ],
   },
   {
-    unit: 3,
-    title: "Careers, Skills, and Certifications",
-    episodeId: "cyber-u3",
-    playable: true,
-  },
-  {
-    unit: 4,
-    title: "Programming for Cybersecurity",
-    episodeId: "cyber-u4",
-    playable: true,
+    slug: "financial-literacy",
+    title: "Financial Literacy",
+    tag: "Finance · Ages 10–16",
+    icon: "wallet",
+    units: [
+      {
+        unit: 1,
+        title: "Budgeting and Smart Spending",
+        episodeId: "fin-u1",
+        playable: true,
+      },
+      { unit: 2, title: "Coming soon", episodeId: "fin-u2", playable: false },
+      { unit: 3, title: "Coming soon", episodeId: "fin-u3", playable: false },
+      {
+        unit: 4,
+        title: "Investing, Savings, and Retirement",
+        episodeId: "fin-u4",
+        playable: true,
+      },
+    ],
   },
 ];
 
-const PLAYABLE_UNITS = CYBER_UNITS.filter((unit) => unit.playable);
+/** Every playable unit across every course. Drives totals and the reset scope. */
+const PLAYABLE_UNITS = COURSES.flatMap((course) =>
+  course.units.filter((unit) => unit.playable),
+);
 
-/** The three courses that haven't been written into Story Mode yet. */
+/** The courses that haven't been written into Story Mode yet. */
 const OTHER_COURSES = [
-  {
-    icon: "wallet",
-    title: "Financial Literacy",
-    tag: "Finance · Ages 10–16",
-    blurb:
-      "Budgeting, saving, interest, credit and risk, taught through a first job and a first bank account.",
-  },
   {
     icon: "brain",
     title: "Neuroscience",
@@ -262,6 +301,8 @@ async function loadEpisodeMeta() {
       import("./content/cyber-unit2.js"),
       import("./content/cyber-unit3.js"),
       import("./content/cyber-unit4.js"),
+      import("./content/finance-unit1.js"),
+      import("./content/finance-unit4.js"),
     ]);
     badgeOrder = [];
     let grandXp = 0;
@@ -507,38 +548,43 @@ function progressBar(percent, label) {
 
 /**
  * @param {string} userId
+ * @param {CourseMeta} course
  * @returns {HTMLElement}
  */
-function cyberCard(userId) {
+function liveCourseCard(userId, course) {
+  const playable = course.units.filter((unit) => unit.playable);
   // One summary per playable unit. Reusing a single episode's summary for every
   // row would show unit 1's progress against unit 2's title.
   const summaries = new Map(
-    PLAYABLE_UNITS.map((unit) => [unit.episodeId, episodeSummary(userId, unit.episodeId)]),
+    playable.map((unit) => [unit.episodeId, episodeSummary(userId, unit.episodeId)]),
   );
   const unitsDone = [...summaries.values()].filter((s) => s.completed).length;
-  const coursePercent = Math.round((unitsDone / CYBER_UNITS.length) * 100);
+  const coursePercent = Math.round((unitsDone / course.units.length) * 100);
 
   const card = el("article", "profile-course profile-course--live");
 
   const head = el("div", "profile-course__head");
   const iconWrap = el("span", "profile-course__icon");
   iconWrap.setAttribute("aria-hidden", "true");
-  iconWrap.appendChild(icon("shield-check", { size: 22 }));
+  iconWrap.appendChild(icon(course.icon, { size: 22 }));
   const heading = el("div", "profile-course__heading");
   heading.append(
-    el("p", "profile-course__tag", "Technology · Ages 12–16"),
-    el("h3", "profile-course__title", "Cybersecurity"),
+    el("p", "profile-course__tag", course.tag),
+    el("h3", "profile-course__title", course.title),
   );
   head.append(iconWrap, heading);
 
+  const unitWord = course.units.length === 1 ? "unit" : "units";
   const state = el(
     "p",
     "profile-course__state",
-    `${formatNumber(unitsDone)} of ${formatNumber(CYBER_UNITS.length)} units completed. ${formatNumber(PLAYABLE_UNITS.length)} are playable, the rest are still being written.`,
+    playable.length === course.units.length
+      ? `${formatNumber(unitsDone)} of ${formatNumber(course.units.length)} ${unitWord} completed.`
+      : `${formatNumber(unitsDone)} of ${formatNumber(course.units.length)} ${unitWord} completed. ${formatNumber(playable.length)} are playable, the rest are still being written.`,
   );
 
   const list = el("ol", "profile-units");
-  for (const meta of CYBER_UNITS) {
+  for (const meta of course.units) {
     const row = el("li", `profile-unit ${meta.playable ? "" : "profile-unit--soon"}`.trim());
 
     const marker = el("span", "profile-unit__marker", String(meta.unit));
@@ -591,7 +637,7 @@ function cyberCard(userId) {
     list.appendChild(row);
   }
 
-  card.append(head, state, progressBar(coursePercent, "Cybersecurity course progress"), list);
+  card.append(head, state, progressBar(coursePercent, `${course.title} course progress`), list);
   return card;
 }
 
@@ -632,7 +678,7 @@ function renderCourses(userId) {
     return;
   }
   /** @type {HTMLElement[]} */
-  const cards = [cyberCard(userId)];
+  const cards = COURSES.map((course) => liveCourseCard(userId, course));
   for (const course of OTHER_COURSES) {
     cards.push(soonCard(course));
   }
@@ -747,6 +793,7 @@ onAuthChange((user) => {
 });
 
 initAuth();
+startProgressSync();
 
 // Progress written by the player in another tab should show up here.
 window.addEventListener("storage", (event) => {

@@ -1289,6 +1289,12 @@ export function mountStory(options) {
     if (kind === "posting") {
       return "Job Posting";
     }
+    if (kind === "statement") {
+      return "Account Statement";
+    }
+    if (kind === "plan") {
+      return "Retirement Plan";
+    }
     return "Email";
   }
 

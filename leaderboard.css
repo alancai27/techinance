@@ -1,0 +1,199 @@
+/*
+ * Leaderboard page.
+ *
+ * Loaded after styles.css, learn.css and profile.css, and namespaced under
+ * .board so it can't reach the rest of the site. Rows reuse the site tokens
+ * rather than introducing a palette: no gradients, no light-blue body buttons.
+ */
+
+.board {
+  padding: 0 24px 96px;
+}
+
+.board__inner {
+  width: min(760px, 100%);
+  margin: 0 auto;
+}
+
+/* Header -------------------------------------------------------------------- */
+
+.board__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.board__title {
+  margin: 0;
+  color: var(--navy);
+  font-family: "Nunito", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.board__count {
+  margin: 0;
+  color: var(--slate);
+  font-size: 14px;
+}
+
+/* The scope note is load-bearing, not decoration: without it the page implies a
+   global ranking it cannot provide. */
+.board__scope {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0 0 22px;
+  border: 1px solid rgba(11, 36, 71, 0.12);
+  border-radius: 14px;
+  padding: 14px 16px;
+  background: var(--ice);
+  color: var(--navy);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.board__scope-icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  margin-top: 1px;
+  color: var(--steel);
+}
+
+/* Rows ---------------------------------------------------------------------- */
+
+.board__list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.board-row {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  align-items: center;
+  gap: 14px;
+  border: 1px solid rgba(11, 36, 71, 0.12);
+  border-radius: 16px;
+  padding: 14px 18px;
+  background: var(--white);
+}
+
+.board-row--you {
+  border-color: var(--steel);
+  background: var(--ice);
+}
+
+.board-row__rank {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--slate);
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}
+
+.board-row__medal {
+  display: inline-flex;
+  color: var(--profile-locked);
+}
+
+.board-row__medal--1 {
+  color: #b8860b;
+}
+
+.board-row__medal--2 {
+  color: #7d8794;
+}
+
+.board-row__medal--3 {
+  color: #a2673f;
+}
+
+.board-row__place {
+  font-size: 15px;
+}
+
+.board-row__name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  color: var(--navy);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.board-row__you {
+  border-radius: 999px;
+  padding: 1px 8px;
+  background: var(--navy);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.board-row__meta {
+  margin: 3px 0 0;
+  color: var(--slate);
+  font-size: 13px;
+}
+
+.board-row__xp {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  margin: 0;
+  color: var(--navy);
+}
+
+.board-row__xp-value {
+  font-family: "Nunito", sans-serif;
+  font-size: 20px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+}
+
+.board-row__xp-label {
+  color: var(--slate);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+/* Empty state and footer ---------------------------------------------------- */
+
+.board__empty {
+  margin: 0;
+  border: 1px dashed rgba(11, 36, 71, 0.2);
+  border-radius: 16px;
+  padding: 28px 20px;
+  color: var(--slate);
+  text-align: center;
+}
+
+.board__cta {
+  margin: 22px 0 0;
+  text-align: center;
+}
+
+/* Responsive ---------------------------------------------------------------- */
+
+@media (max-width: 560px) {
+  .board-row {
+    grid-template-columns: 40px 1fr;
+    row-gap: 8px;
+  }
+
+  .board-row__xp {
+    grid-column: 2;
+  }
+}

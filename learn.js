@@ -23,6 +23,7 @@ import {
   signOut,
 } from "./auth.js";
 import { icon, iconMarkup } from "./icon.js";
+import { startProgressSync } from "./progress-sync.js";
 import { getProgress } from "./progress.js";
 
 /** @typedef {import("./auth.js").User} User */
@@ -159,6 +160,8 @@ async function loadEpisodeMeta() {
       import("./content/cyber-unit2.js"),
       import("./content/cyber-unit3.js"),
       import("./content/cyber-unit4.js"),
+      import("./content/finance-unit1.js"),
+      import("./content/finance-unit4.js"),
     ]);
     let grandMax = 0;
     for (const mod of modules) {
@@ -606,6 +609,7 @@ onAuthChange((user) => {
 });
 
 initAuth();
+startProgressSync();
 
 // Progress written by the player in another tab should show up here.
 window.addEventListener("storage", (event) => {

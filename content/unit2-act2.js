@@ -179,7 +179,7 @@ export const act2 = {
             "  - search_history : recorded by engine (urls, queries, timestamps)",
             "  - ip_address     : assigned unique network address",
             "  - device_info    : os version, screen size, user-agent string",
-            "  - cookies        : session tokens & tracking identifiers",
+            "  - cookies        : session tokens and tracking identifiers",
           ],
           required: true,
         },
@@ -307,7 +307,7 @@ export const act2 = {
           },
           {
             hot: "device",
-            text: "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 14_2) DeviceInfo/Build_9981 (Broadcast of exact hardware & OS details)",
+            text: "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 14_2) DeviceInfo/Build_9981 (Broadcast of exact hardware and OS details)",
           },
           "09:12:05 200 OK Content-Type: text/html",
           {
@@ -369,7 +369,7 @@ export const act2 = {
     "u2a2-dossier": {
       id: "u2a2-dossier",
       type: "dossier",
-      title: "Analyst dossier: Active vs Passive footprint & cookies",
+      title: "Analyst dossier: Active vs Passive footprint and cookies",
       speaker: "Dana Okoye",
       avatar: "radar",
       location: "Security Operations Centre",

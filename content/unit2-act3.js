@@ -209,7 +209,7 @@ export const act3 = {
     "u2a3-dossier": {
       id: "u2a3-dossier",
       type: "dossier",
-      title: "Analyst dossier: Protection & Minimization rules",
+      title: "Analyst dossier: Protection and Minimization rules",
       speaker: "Dana Okoye",
       avatar: "radar",
       location: "Security Operations Centre",
@@ -273,18 +273,18 @@ export const act3 = {
         {
           id: "protect",
           label: "Protect Personal Information",
-          hint: "Defensive controls safeguarding data & account access",
+          hint: "Defensive controls safeguarding data and account access",
         },
         {
           id: "minimize",
           label: "Minimize Digital Footprint",
-          hint: "Actions reducing overall online data trails & exposure",
+          hint: "Actions reducing overall online data trails and exposure",
         },
       ],
       items: [
         {
           id: "pwd_15",
-          label: "Use strong passwords (15+ chars with symbols, caps & numbers)",
+          label: "Use strong passwords (15+ chars with symbols, caps and numbers)",
           bucket: "protect",
           explain:
             "Protect Personal Information: 15+ character strong passwords prevent unauthorized account access.",
@@ -446,7 +446,7 @@ export const act3 = {
     "u2a3-end": {
       id: "u2a3-end",
       type: "ending",
-      title: "Unit 2 complete: Defense & Digital Footprints",
+      title: "Unit 2 complete: Defense and Digital Footprints",
       speaker: "Ravi Mehta",
       avatar: "shield-check",
       location: "Techinance SOC, 17:00",
@@ -455,7 +455,7 @@ export const act3 = {
         "Here is what you mastered in Unit 2:",
         "1. Digital Footprint Fundamentals: You defined digital footprints (digital shadows / electronic footprints) across 5.35 billion global internet users (66.2% of the population). You analyzed how bad digital footprints (like a 10-year-old social media comment) destroy job opportunities, while good digital footprints build trust.",
         "2. Active vs Passive Footprints: You separated active footprints (deliberately shared via social media, banking, downloads) from passive footprints (search history, IP addresses, device info, browser cookies). You learned that only 26% of websites secure their session cookies, leaving 74% vulnerable to cyberattacks.",
-        "3. Defensive Protection & Minimization: You implemented 7 strategies to protect personal information (15+ char strong passwords, unique credentials, 2FA, OS updates, avoiding malware sites, withholding personal info, avoiding unsecured public Wi-Fi where 1 in 4 users suffer security issues) and 5 strategies to minimize digital footprints (deleting old accounts, limiting social media, blocking third-party cookies, protecting identity, and coordinating with family/friends).",
+        "3. Defensive Protection and Minimization: You implemented 7 strategies to protect personal information (15+ char strong passwords, unique credentials, 2FA, OS updates, avoiding malware sites, withholding personal info, avoiding unsecured public Wi-Fi where 1 in 4 users suffer security issues) and 5 strategies to minimize digital footprints (deleting old accounts, limiting social media, blocking third-party cookies, protecting identity, and coordinating with family/friends).",
         "Dana: \"You can now defend yourself and your organization against digital tracking and credential compromise.\"",
       ],
       teaser:

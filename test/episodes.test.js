@@ -6,6 +6,8 @@ import { episode as unit1 } from "../content/cyber-unit1.js";
 import { episode as unit2 } from "../content/cyber-unit2.js";
 import { episode as unit3 } from "../content/cyber-unit3.js";
 import { episode as unit4 } from "../content/cyber-unit4.js";
+import { episode as finance1 } from "../content/finance-unit1.js";
+import { episode as finance4 } from "../content/finance-unit4.js";
 
 /**
  * Structural checks on the Story Mode episodes.
@@ -17,7 +19,7 @@ import { episode as unit4 } from "../content/cyber-unit4.js";
  * once, which is what these tests are here to catch.
  */
 
-const EPISODES = [unit1, unit2, unit3, unit4];
+const EPISODES = [unit1, unit2, unit3, unit4, finance1, finance4];
 
 /** Badges the whole Cybersecurity course is allowed to award. See STORY-MODE.md. */
 const COURSE_BADGE_CAP = 15;
@@ -44,7 +46,7 @@ function exits(scene) {
 }
 
 for (const episode of EPISODES) {
-  const label = `unit ${episode.unit}`;
+  const label = `${episode.courseTitle} unit ${episode.unit}`;
   const scenes = episode.scenes;
   const ids = Object.keys(scenes);
 
@@ -197,17 +199,57 @@ test("every icon and avatar name resolves in icon.js", () => {
     walk(episode.badges);
     for (const name of names) {
       if (!known.has(name)) {
-        missing.push(`unit ${episode.unit}: ${name}`);
+        missing.push(`${episode.courseTitle} unit ${episode.unit}: ${name}`);
       }
     }
   }
   assert.deepEqual(missing, [], "icon names that fall back to the sparkles placeholder");
 });
 
-test("the Cybersecurity course stays within its badge cap", () => {
-  const total = EPISODES.reduce((sum, episode) => sum + episode.badges.length, 0);
-  assert.ok(
-    total <= COURSE_BADGE_CAP,
-    `course awards ${total} badges, cap is ${COURSE_BADGE_CAP}`,
-  );
+test("every course stays within its badge cap", () => {
+  /** @type {Map<string, number>} */
+  const perCourse = new Map();
+  for (const episode of EPISODES) {
+    const key = episode.courseTitle;
+    perCourse.set(key, (perCourse.get(key) ?? 0) + episode.badges.length);
+  }
+  const over = [...perCourse.entries()]
+    .filter(([, total]) => total > COURSE_BADGE_CAP)
+    .map(([course, total]) => `${course}: ${total}`);
+  assert.deepEqual(over, [], `courses over the ${COURSE_BADGE_CAP} badge cap`);
+});
+
+test("badge ids are unique across every course", () => {
+  // progress.js keeps one flat list of earned badge ids per user, so two courses
+  // sharing an id would unlock each other's badges.
+  const seen = new Map();
+  const clashes = [];
+  for (const episode of EPISODES) {
+    for (const badge of episode.badges) {
+      const owner = seen.get(badge.id);
+      if (owner) {
+        clashes.push(`${badge.id}: ${owner} and ${episode.courseTitle} unit ${episode.unit}`);
+      } else {
+        seen.set(badge.id, `${episode.courseTitle} unit ${episode.unit}`);
+      }
+    }
+  }
+  assert.deepEqual(clashes, [], "badge ids used by more than one episode");
+});
+
+test("scene ids are unique across every course", () => {
+  // progress.js also keys per-scene state by scene id alone.
+  const seen = new Map();
+  const clashes = [];
+  for (const episode of EPISODES) {
+    for (const id of Object.keys(episode.scenes)) {
+      const owner = seen.get(id);
+      if (owner) {
+        clashes.push(`${id}: ${owner} and ${episode.courseTitle} unit ${episode.unit}`);
+      } else {
+        seen.set(id, `${episode.courseTitle} unit ${episode.unit}`);
+      }
+    }
+  }
+  assert.deepEqual(clashes, [], "scene ids used by more than one episode");
 });

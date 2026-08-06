@@ -12,7 +12,10 @@ import { episode as cyberUnit1 } from "./content/cyber-unit1.js";
 import { episode as cyberUnit2 } from "./content/cyber-unit2.js";
 import { episode as cyberUnit3 } from "./content/cyber-unit3.js";
 import { episode as cyberUnit4 } from "./content/cyber-unit4.js";
+import { episode as financeUnit1 } from "./content/finance-unit1.js";
+import { episode as financeUnit4 } from "./content/finance-unit4.js";
 import { mountStory } from "./story-engine.js";
+import { startProgressSync } from "./progress-sync.js";
 
 /** @typedef {import("./story-engine.js").Episode} Episode */
 
@@ -25,6 +28,8 @@ const EPISODES = {
   "cyber-u2": /** @type {Episode} */ (/** @type {unknown} */ (cyberUnit2)),
   "cyber-u3": /** @type {Episode} */ (/** @type {unknown} */ (cyberUnit3)),
   "cyber-u4": /** @type {Episode} */ (/** @type {unknown} */ (cyberUnit4)),
+  "fin-u1": /** @type {Episode} */ (/** @type {unknown} */ (financeUnit1)),
+  "fin-u4": /** @type {Episode} */ (/** @type {unknown} */ (financeUnit4)),
 };
 
 /**
@@ -74,6 +79,7 @@ function renderMessage(root, title, body) {
 }
 
 initAuth();
+startProgressSync();
 
 const root = pick("#story-root");
 

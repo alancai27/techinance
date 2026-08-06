@@ -17,6 +17,13 @@
  */
 
 import { GOOGLE_CLIENT_ID } from "./auth-config.js";
+import {
+  getRemoteUser,
+  isRemoteEnabled,
+  onRemoteAuthChange,
+  signInWithGoogle,
+  signOutRemote,
+} from "./supabase.js";
 
 const STORAGE_KEY = "techinance.auth.v1";
 const SESSION_VERSION = 1;
@@ -26,6 +33,8 @@ const GIS_POLL_MS = 200;
 const GIS_TIMEOUT_MS = 10000;
 const LEARN_URL = "learn.html";
 const PROFILE_URL = "profile.html";
+const LEADERBOARD_URL = "leaderboard.html";
+const ROSTER_KEY = "techinance.roster.v1";
 const MAX_TIMEOUT = 2147483647;
 
 /**
@@ -160,6 +169,49 @@ function writeSession(next) {
   } catch {
     // Nothing persists this session, but the in-memory session still works.
     return;
+  }
+  if (next) {
+    rememberLearner(next);
+  }
+}
+
+/**
+ * Records a display name against a user id so the leaderboard can label rows.
+ *
+ * progress.js keys everything by user id and stores no names, and a signed-out
+ * user's session is gone. Without this, every past learner on the device would
+ * render as their raw id. Signing out deliberately leaves the roster alone: the
+ * progress it labels survives sign-out too.
+ *
+ * @param {Session} session
+ * @returns {void}
+ */
+function rememberLearner(session) {
+  try {
+    const raw = localStorage.getItem(ROSTER_KEY);
+    const roster = raw ? JSON.parse(raw) : {};
+    if (typeof roster !== "object" || roster === null) {
+      return;
+    }
+    roster[session.user.id] = { name: session.user.name, picture: session.user.picture ?? "" };
+    localStorage.setItem(ROSTER_KEY, JSON.stringify(roster));
+  } catch {
+    // A leaderboard without names is a cosmetic loss, not a reason to fail.
+  }
+}
+
+/**
+ * Display names for every learner who has signed in on this device.
+ *
+ * @returns {Record<string, { name: string, picture: string }>}
+ */
+export function getLearnerRoster() {
+  try {
+    const raw = localStorage.getItem(ROSTER_KEY);
+    const roster = raw ? JSON.parse(raw) : {};
+    return typeof roster === "object" && roster !== null ? roster : {};
+  } catch {
+    return {};
   }
 }
 
@@ -377,11 +429,66 @@ export function initAuth() {
   } else if (restored) {
     setSession(null);
   }
+  if (isRemoteEnabled()) {
+    adoptRemoteSession();
+    return;
+  }
   if (clientId() !== "") {
     ensureGis().catch(() => {
       // Offline, blocked, or misconfigured. Guest mode is unaffected.
     });
   }
+}
+
+/**
+ * Makes a verified Supabase session the site's session.
+ *
+ * The rest of the site talks to getUser()/onAuthChange() and knows nothing about
+ * Supabase. Mapping the remote session onto the same shape here means learn.js,
+ * profile.js, story.js and progress.js need no changes at all, and the local
+ * user id keeps namespacing progress exactly as before.
+ *
+ * A guest session is left alone: signing in with Google replaces it, but merely
+ * having Supabase configured shouldn't kick a guest out mid-episode.
+ *
+ * @returns {void}
+ */
+function adoptRemoteSession() {
+  getRemoteUser()
+    .then((remote) => {
+      if (remote) {
+        setSession({
+          user: {
+            id: remote.id,
+            name: remote.name,
+            email: remote.email,
+            picture: remote.picture,
+            guest: false,
+          },
+          exp: null,
+        });
+      }
+    })
+    .catch(() => {
+      // Offline or the project is unreachable. Guest mode still works.
+    });
+
+  onRemoteAuthChange((remote) => {
+    if (remote) {
+      setSession({
+          user: {
+            id: remote.id,
+            name: remote.name,
+            email: remote.email,
+            picture: remote.picture,
+            guest: false,
+          },
+          exp: null,
+        });
+    } else if (session && session.user.id !== GUEST_ID) {
+      setSession(null);
+    }
+  });
 }
 
 /**
@@ -427,6 +534,12 @@ export function signOut() {
     } catch {
       // Not fatal. We clear our own session regardless.
     }
+  }
+  if (isRemoteEnabled()) {
+    // Clear the local session first so the UI updates now rather than after the
+    // network call. onRemoteAuthChange would clear it anyway; this just avoids a
+    // signed-in header lingering on a slow connection.
+    signOutRemote().catch(() => {});
   }
   setSession(null);
 }
@@ -477,6 +590,32 @@ export function mountGoogleButton(el) {
     return;
   }
   el.replaceChildren();
+
+  // Supabase, when configured, is the better path: it verifies the Google token
+  // server-side, so the session can be trusted enough to hang a leaderboard off.
+  // The browser-only GIS flow below never verifies anything, so it stays as the
+  // fallback rather than the default.
+  if (isRemoteEnabled()) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "button button--primary auth-google-button";
+    button.textContent = "Continue with Google";
+    button.addEventListener("click", () => {
+      button.disabled = true;
+      button.textContent = "Opening Google...";
+      signInWithGoogle().then((result) => {
+        if (!result.ok) {
+          button.disabled = false;
+          button.textContent = "Continue with Google";
+          el.appendChild(note(`Google sign-in failed: ${result.error}`));
+        }
+        // On success the browser is already navigating to Google.
+      });
+    });
+    el.appendChild(button);
+    return;
+  }
+
   if (clientId() === "") {
     el.appendChild(note("Google sign-in isn't set up yet. Carry on as a guest."));
     return;
@@ -623,12 +762,17 @@ function renderAuthNav(el, user) {
   learn.href = LEARN_URL;
   learn.textContent = "My Learning";
 
+  const board = document.createElement("a");
+  board.className = "auth-menu__item";
+  board.href = LEADERBOARD_URL;
+  board.textContent = "Leaderboard";
+
   const out = document.createElement("button");
   out.type = "button";
   out.className = "auth-menu__item auth-menu__item--signout";
   out.textContent = "Sign out";
 
-  menu.append(profile, learn, out);
+  menu.append(profile, learn, board, out);
   wrap.append(toggle, menu);
   el.appendChild(wrap);
 
@@ -673,7 +817,7 @@ function renderAuthNav(el, user) {
 /**
  * Renders the header auth control into `el` and keeps it in sync: a "Sign in"
  * pill when signed out, or an avatar + first name that opens a small menu with
- * "Profile", "My Learning" and "Sign out".
+ * "Profile", "My Learning", "Leaderboard" and "Sign out".
  *
  * @param {HTMLElement} el
  * @returns {void}

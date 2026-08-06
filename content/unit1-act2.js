@@ -397,7 +397,7 @@ export const act2 = {
       buckets: [
         {
           id: "supply",
-          label: "Supply Chain & Vendor Software",
+          label: "Supply Chain and Vendor Software",
           hint: "One weakness inside software thousands of organisations already trust and run.",
         },
         {

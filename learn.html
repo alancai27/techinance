@@ -56,6 +56,7 @@
           <a href="contact.html">Contact Us</a>
           <a href="faqs.html">FAQs</a>
           <a href="learn.html" aria-current="page">My Learning</a>
+          <a href="leaderboard.html">Leaderboard</a>
         </div>
       </nav>
     </header>
@@ -199,7 +200,7 @@
           <h2 class="learn-section__title" id="learn-courses-title">Interactive Courses</h2>
           <p class="learn-section__lead">
             Four Techinance courses are being made into Story Mode seasons. Cybersecurity
-            is available now.
+            and Financial Literacy are available now.
           </p>
           <button
             class="learn-rail-toggle"
@@ -236,7 +237,7 @@
             </a>
           </li>
 
-          <li class="learn-course learn-course--soon" data-course="financial-literacy">
+          <li class="learn-course learn-course--live" data-course="financial-literacy">
             <span class="learn-course__art" aria-hidden="true"><svg class="course-art" viewBox="0 0 240 116" fill="none" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet">
               <rect x="24" y="18" width="124" height="80" rx="10" fill="var(--art-card)"/>
               <rect x="38" y="60" width="16" height="26" rx="4" fill="var(--art-soft)"/>
@@ -252,10 +253,14 @@
             </span>
             <p class="learn-course__tag">Finance · Ages 10–16</p>
             <h3 class="learn-course__title">Financial Literacy</h3>
-            <p class="learn-course__blurb">Money, credit and risk, through a first job and a first account.</p>
-            <p class="learn-course__status learn-course__status--soon">
-              <span class="learn-course__dot" aria-hidden="true"></span>Coming soon
+            <p class="learn-course__blurb">Your first paycheque, and deciding where it goes before it's gone.</p>
+            <p class="learn-course__status learn-course__status--live">
+              <span class="learn-course__dot" aria-hidden="true"></span>Live · Units 1 and 4
+              playable
             </p>
+            <a class="learn-course__link" href="#learn-episodes-finance">
+              View episodes<span class="learn-course__arrow" aria-hidden="true">→</span>
+            </a>
           </li>
 
           <li class="learn-course learn-course--soon" data-course="neuroscience">
@@ -491,6 +496,148 @@
           </li>
 
 
+        </ol>
+      </section>
+
+      <!-- Financial Literacy episodes ---------------------------------------->
+      <section
+        class="learn-section learn-section--episodes"
+        id="learn-episodes-finance"
+        aria-labelledby="learn-episodes-finance-title"
+        data-season="financial-literacy"
+      >
+        <div class="learn-section__head">
+          <p class="learn-season-back" data-season-back hidden>
+            <a class="learn-season-back__link" href="learn.html">
+              <span
+                class="learn-season-back__icon"
+                data-season-back-icon
+                aria-hidden="true"
+              ></span>
+              <span>All courses</span>
+            </a>
+          </p>
+          <h2
+            class="learn-section__title"
+            id="learn-episodes-finance-title"
+            tabindex="-1"
+            data-season-heading
+          >
+            Financial Literacy · Season 1
+          </h2>
+          <p class="learn-section__lead">
+            Units 1 and 4 are playable. Units 2 and 3 are being written.
+          </p>
+        </div>
+
+        <ol class="learn-episode-list">
+          <li class="learn-episode learn-episode--open" data-episode="fin-u1">
+            <span class="learn-episode__marker" aria-hidden="true">1</span>
+            <div class="learn-episode__body">
+              <p class="learn-episode__unit">Unit 1 · Available</p>
+              <h3 class="learn-episode__title">Budgeting and Smart Spending</h3>
+              <p class="learn-episode__blurb">A first paycheque, and what to do with it before it's gone.</p>
+              <p class="learn-episode__meta">
+                <span class="learn-episode__chip">~30 min</span>
+                <span class="learn-episode__chip">First-Year Earner</span>
+                <span class="learn-episode__chip">3 acts</span>
+              </p>
+              <div class="learn-progress" data-progress hidden>
+                <div
+                  class="learn-progress__track"
+                  role="progressbar"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-valuenow="0"
+                  aria-label="Financial Literacy unit 1 progress"
+                  data-progress-bar
+                >
+                  <span class="learn-progress__fill" data-progress-fill></span>
+                </div>
+                <p class="learn-progress__label">
+                  <span class="learn-progress__state" data-progress-text>Not started</span>
+                  <span class="learn-progress__xp" data-progress-xp>0 XP</span>
+                </p>
+              </div>
+            </div>
+            <div class="learn-episode__action">
+              <a
+                class="button button--primary learn-episode__cta"
+                href="story.html?episode=fin-u1"
+                data-episode-cta
+                >Start episode</a
+              >
+            </div>
+          </li>
+
+          <li class="learn-episode learn-episode--locked" data-episode="fin-u2">
+            <span class="learn-episode__marker" aria-hidden="true">2</span>
+            <div class="learn-episode__body">
+              <p class="learn-episode__unit">Unit 2 · Locked</p>
+              <h3 class="learn-episode__title">Coming soon</h3>
+              <p class="learn-episode__blurb">Still being written.</p>
+            </div>
+            <div class="learn-episode__action">
+              <span class="learn-lock" aria-hidden="true"
+                ><i data-lucide="lock" aria-hidden="true"></i
+              ></span>
+              <p class="learn-episode__status">Coming soon</p>
+            </div>
+          </li>
+
+          <li class="learn-episode learn-episode--locked" data-episode="fin-u3">
+            <span class="learn-episode__marker" aria-hidden="true">3</span>
+            <div class="learn-episode__body">
+              <p class="learn-episode__unit">Unit 3 · Locked</p>
+              <h3 class="learn-episode__title">Coming soon</h3>
+              <p class="learn-episode__blurb">Still being written.</p>
+            </div>
+            <div class="learn-episode__action">
+              <span class="learn-lock" aria-hidden="true"
+                ><i data-lucide="lock" aria-hidden="true"></i
+              ></span>
+              <p class="learn-episode__status">Coming soon</p>
+            </div>
+          </li>
+
+          <li class="learn-episode learn-episode--open" data-episode="fin-u4">
+            <span class="learn-episode__marker" aria-hidden="true">4</span>
+            <div class="learn-episode__body">
+              <p class="learn-episode__unit">Unit 4 · Available</p>
+              <h3 class="learn-episode__title">Investing, Savings, and Retirement</h3>
+              <p class="learn-episode__blurb">What to do with money you don't need this year.</p>
+              <p class="learn-episode__meta">
+                <span class="learn-episode__chip">~35 min</span>
+                <span class="learn-episode__chip">First-Year Earner</span>
+                <span class="learn-episode__chip">3 acts</span>
+              </p>
+              <div class="learn-progress" data-progress hidden>
+                <div
+                  class="learn-progress__track"
+                  role="progressbar"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-valuenow="0"
+                  aria-label="Financial Literacy unit 4 progress"
+                  data-progress-bar
+                >
+                  <span class="learn-progress__fill" data-progress-fill></span>
+                </div>
+                <p class="learn-progress__label">
+                  <span class="learn-progress__state" data-progress-text>Not started</span>
+                  <span class="learn-progress__xp" data-progress-xp>0 XP</span>
+                </p>
+              </div>
+            </div>
+            <div class="learn-episode__action">
+              <a
+                class="button button--primary learn-episode__cta"
+                href="story.html?episode=fin-u4"
+                data-episode-cta
+                >Start episode</a
+              >
+            </div>
+          </li>
         </ol>
       </section>
     </main>

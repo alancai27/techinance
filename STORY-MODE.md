@@ -3,8 +3,11 @@
 Interactive, role-play course episodes for the Techinance site. Learners sign in,
 step into a role, and play through a unit instead of reading slides.
 
-The Cybersecurity course has four units. All four are written and playable. The
-learner plays an analyst in a Security Operations Centre.
+Two courses have episodes written.
+
+**Cybersecurity.** Four units, all playable. The learner plays an analyst in a
+Security Operations Centre alongside Ravi Mehta, Dana Okoye and the ORACLE
+terminal.
 
 | Unit | Title | Scenes | Acts | Badges | Approx |
 |---|---|---|---|---|---|
@@ -13,11 +16,42 @@ learner plays an analyst in a Security Operations Centre.
 | 3 | Careers, Skills, and Certifications | 29 | 3 | 3 | 30 min |
 | 4 | Programming for Cybersecurity | 32 | 3 | 4 | 30 min |
 
+**Financial Literacy.** Units 1 and 4 playable. The learner is a First-Year Earner
+at a credit union with Nia Barros, Marcus Ellery and the LEDGER terminal. The cast
+is deliberately separate: no character or terminal is shared between courses, so
+the two don't read as reskins of each other. A third course should get its own cast
+again. Within a course the cast carries over, and Marcus's situation moves on
+between units.
+
+| Unit | Title | Scenes | Acts | Badges | Approx |
+|---|---|---|---|---|---|
+| 1 | Budgeting and Smart Spending | 32 | 3 | 3 | 30 min |
+| 2 | not written (debt and credit) | | | | |
+| 3 | not written (taxes) | | | | |
+| 4 | Investing, Savings, and Retirement | 32 | 3 | 3 | 35 min |
+
+Financial Literacy has **one quiz for the whole course**, not one per unit
+(`content/sources/finance-final-quiz.md`, 20 questions). Units 1 and 4 cover 10
+of them verbatim. The other 10 test debt repayment methods, secured versus
+revolving debt, credit card interest, tax filing thresholds and deadlines,
+deductions, W-2s, and marginal tax brackets. That's what Units 2 and 3 have to
+be, and no source document for either exists yet.
+
+`test/finance-quiz.test.js` holds the whole form and checks every written
+question against it. Its `UNWRITTEN` set lists the 10 gaps; delete entries from
+that set as units land and the tests will start demanding them.
+
 The unit list lives in two places and both must agree: the episode cards in
-`learn.html` and `CYBER_UNITS` in `profile.js`. A new episode also has to be
+`learn.html` and `COURSES` in `profile.js`. A new episode also has to be
 registered in three consumers: `story.js` (the EPISODES map), `learn.js` and
 `profile.js` (both `loadEpisodeMeta`). Adding an episode without touching
 `learn.html` and `profile.js` leaves it playable only by typing its URL.
+
+A new **course** needs four more things: a `data-season="<slug>"` section in
+`learn.html` holding its episode cards, its rail card flipped from
+`learn-course--soon` to `--live`, an entry in `COURSES` in `profile.js` (and
+removal from `OTHER_COURSES`), and a slug that `COURSE_ALIASES` in `learn.js`
+resolves, so `learn.html?course=<slug>` focuses the right season.
 
 Units 3 and 4 have no official quiz checked in yet. When one exists, save it as
 `content/sources/unit<N>-quiz-questions.md` and bring the episode to 10/10 the
@@ -81,6 +115,14 @@ content/
   unit3-act2.js    Act 2, Skills and Certifications         (u3a2-*)
   unit3-act3.js    Act 3, Planning Your Own Path            (u3a3-*)
   cyber-unit4.js   Merges unit 4's acts
+  finance-unit1.js       Merges Financial Literacy unit 1's acts
+  finance-unit1-act1.js  Act 1, Where Your Money Actually Goes  (f1a1-*)
+  finance-unit1-act2.js  Act 2, Choosing a Budgeting Method     (f1a2-*)
+  finance-unit1-act3.js  Act 3, Habits That Hold Up             (f1a3-*)
+  finance-unit4.js       Merges Financial Literacy unit 4's acts
+  finance-unit4-act1.js  Act 1, What You Can Put Money Into     (f4a1-*)
+  finance-unit4-act2.js  Act 2, Risk, Time, and Compounding     (f4a2-*)
+  finance-unit4-act3.js  Act 3, Retirement Accounts             (f4a3-*)
   unit4-act1.js    Act 1, Why Code Matters in Security      (u4a1-*)
   unit4-act2.js    Act 2, Reading Python and JavaScript     (u4a2-*)
   unit4-act3.js    Act 3, Building a Security Tool          (u4a3-*)
@@ -88,10 +130,18 @@ content/
 ```
 
 Content files are flat in `content/`, named `<course>-unit<N>.js` and
-`unit<N>-act<n>.js`. Don't nest a unit in its own directory: the merger and the
-three consumers (`learn.js`, `story.js`, `profile.js`) all resolve
+`<course>-unit<N>-act<n>.js`. Don't nest a unit in its own directory: the merger
+and the three consumers (`learn.js`, `story.js`, `profile.js`) all resolve
 `./content/<course>-unit<N>.js`, so a nested layout needs a re-export shim that
 earns nothing.
+
+Cybersecurity's act files predate the second course and are named `unit<N>-act<n>.js`
+with no course prefix. Everything written since carries the prefix, because a
+second course's unit 1 would otherwise collide with the first course's.
+
+Scene ids and badge ids are global, not per-course: `progress.js` keeps one flat
+list of each per user. Namespace both per unit (`f1a1-*`, `fin-unit1-certified`)
+or two courses will unlock each other's badges. `pnpm test` checks this.
 
 ## Scene types
 
@@ -112,6 +162,10 @@ granted once each, tracked through `progress.js`.
 Rules that keep episodes teachable:
 
 - Every statistic must be exact and carry a `source`. Never invent a figure.
+- Figures that go stale (contribution limits, tax bands, benefit amounts) need the
+  year attached and a line telling the learner to check the current number.
+  Financial Literacy unit 4 does this for the 401(k) and IRA limits, because the
+  source document's 2024 figures don't match the IRS ones for that year.
 - Wrong answers must explain *why* they're wrong. The feedback is the lesson.
 - Decoys matter. In the phishing scene three hotspots are deliberately innocent, and
   clicking them teaches that weak evidence isn't evidence.

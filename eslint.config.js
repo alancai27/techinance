@@ -7,7 +7,7 @@ export default [
   },
   eslint.configs.recommended,
   {
-    files: ["**/*.js"],
+    files: ["**/*.js", "**/*.mjs"],
     languageOptions: {
       ecmaVersion: "latest",
       globals: {
@@ -18,6 +18,15 @@ export default [
     },
     rules: {
       "no-console": "error",
+    },
+  },
+  {
+    // CI scripts are command-line tools: printing to the console is the whole
+    // point of them, and their output is what shows up in the Actions log.
+    files: ["scripts/**"],
+    languageOptions: { globals: globals.node },
+    rules: {
+      "no-console": "off",
     },
   },
 ];

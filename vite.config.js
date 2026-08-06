@@ -17,6 +17,7 @@ export default defineConfig({
         story: "story.html",
         getInvolved: "get-involved.html",
         profile: "profile.html",
+        leaderboard: "leaderboard.html",
       },
     },
   },
