@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Explore free online STEM courses with certification from Techinance." />
+    <title>Interactive Courses | Techinance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="learn.css" />
+    <link rel="stylesheet" href="courses.css" />
+    <script type="module" src="nav.js"></script>
+    <script type="module" src="auth-nav.js"></script>
+    <script type="module" src="courses.js"></script>
+  </head>
+  <body>
+<header class="site-header" data-header>
+      <nav class="navbar" aria-label="Primary navigation">
+        <a class="brand" href="./" aria-label="Techinance home">
+          <img class="brand__logo" src="logo.png" alt="" width="32" height="32" />
+          <span>Techinance</span>
+        </a>
+
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          data-menu-toggle
+        >
+          <span>Menu</span>
+          <span class="menu-toggle__lines" aria-hidden="true"></span>
+        </button>
+
+        <div class="desktop-nav">
+          <a class="nav-link" href="about.html">About</a>
+          <a class="nav-link" href="courses.html" aria-current="page">Learn</a>
+          <a class="nav-link" href="get-involved.html">Get Involved</a>
+          <a class="nav-link" href="contact.html">Contact Us</a>
+          <a class="nav-link" href="faqs.html">FAQs</a>
+          <div class="auth-slot" data-auth-nav></div>
+        </div>
+
+        <div class="mobile-nav" id="mobile-menu" data-mobile-menu>
+          <a href="about.html">About</a>
+          <a href="courses.html" aria-current="page">Learn</a>
+          <a href="get-involved.html">Get Involved</a>
+          <a href="contact.html">Contact Us</a>
+          <a href="faqs.html">FAQs</a>
+          <a href="learn.html">My Learning</a>
+          <a href="leaderboard.html">Leaderboard</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="page">
+      <section class="catalog" id="courses" aria-labelledby="courses-title">
+        <div class="catalog__inner">
+          <header class="catalog__header">
+            <h1 id="courses-title">Interactive Courses</h1>
+            <p class="catalog__lede">
+              Experience role-playing as a newbie in the field as you learn more about your
+              career, applying concepts into real-world scenarios. Earn a certificate upon
+              completion!
+            </p>
+          </header>
+
+          <div
+            class="deck"
+            data-deck
+            role="region"
+            aria-roledescription="carousel"
+            aria-label="Course browser"
+            tabindex="0"
+          >
+            <p class="deck__sr-hint">
+              Use the previous and next buttons, or the left and right arrow keys, to
+              move between courses.
+            </p>
+
+            <div class="deck__stage">
+              <button
+                class="deck__arrow deck__arrow--prev"
+                type="button"
+                data-deck-prev
+                aria-label="Previous course"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M15 5 8 12l7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+
+              <div class="deck__viewport">
+                <ul class="deck__track" data-deck-track>
+            <li
+              class="slide slide--cyber"
+              id="slide-cyber"
+              role="group"
+              aria-roledescription="course"
+              aria-label="1 of 4"
+            >
+              <div class="slide__art" aria-hidden="true">
+              <svg class="art" viewBox="0 0 320 260" fill="none" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet">
+      <rect x="30" y="52" width="196" height="150" rx="14" fill="var(--art-card)"/>
+      <circle cx="48" cy="70" r="3.5" fill="var(--art-soft)"/>
+      <circle cx="59" cy="70" r="3.5" fill="var(--art-soft)"/>
+      <circle cx="70" cy="70" r="3.5" fill="var(--art-soft)"/>
+      <rect x="46" y="88" width="164" height="30" rx="7" fill="var(--art-soft)"/>
+      <rect x="56" y="96" width="70" height="5" rx="2.5" fill="var(--art-line)"/>
+      <rect x="56" y="107" width="46" height="5" rx="2.5" fill="var(--art-line)"/>
+      <rect x="46" y="126" width="164" height="30" rx="7" fill="var(--art-soft)"/>
+      <rect x="56" y="134" width="88" height="5" rx="2.5" fill="var(--art-line)"/>
+      <rect x="56" y="145" width="40" height="5" rx="2.5" fill="var(--art-line)"/>
+      <rect x="46" y="164" width="164" height="26" rx="7" fill="var(--art-soft)"/>
+      <rect x="56" y="172" width="60" height="5" rx="2.5" fill="var(--art-line)"/>
+      <rect x="196" y="26" width="98" height="70" rx="12" fill="var(--art-card)"/>
+      <path d="M245 42l16 6v12.5c0 8.6-6.2 15.7-16 18-9.8-2.3-16-9.4-16-18V48l16-6Z" fill="var(--art-accent)"/>
+      <path d="M239 61.5l4.5 4.5 8-8" stroke="var(--art-card)" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="200" y="150" width="96" height="76" rx="14" fill="var(--art-accent)"/>
+      <path d="M238 176v-6a10 10 0 0 1 20 0v6" fill="none" stroke="var(--art-card)" stroke-width="4" stroke-linecap="round"/>
+      <rect x="232" y="176" width="32" height="24" rx="5" fill="var(--art-card)"/>
+      <circle cx="248" cy="187" r="3.4" fill="var(--art-accent)"/>
+      <rect x="216" y="206" width="64" height="5" rx="2.5" fill="var(--art-onacc)"/>
+    </svg>
+            </div>
+              <div class="slide__body">
+                <p class="slide__kicker">Technology · Ages 12 to 16</p>
+                <h3 class="slide__title">Cybersecurity</h3>
+                <p class="slide__blurb">How technology actually gets attacked, and how it gets defended. You work through real breaches, take a phishing email apart, and learn to tell one kind of attack from another.</p>
+                <p class="slide__note">
+                  All four units are also playable in Story Mode, where you take the role
+                  of an analyst in a security operations centre.
+                </p>
+                <div class="slide__actions">
+                  <a
+                    class="button button--primary"
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSfQDGQ-tPxP9L2Ph5loCoDUEy2Ugc_xCcHaiz-57ppEAS0RAw/viewform?usp=send_form"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Enroll in the Cybersecurity course, opens in a new tab"
+                  >Enroll</a>
+                  <a class="button button--secondary" href="learn.html?course=cybersecurity"
+                    >Play Story Mode</a
+                  >
+                </div>
+              </div>
+            </li>
+            <li
+              class="slide slide--finance"
+              id="slide-finance"
+              role="group"
+              aria-roledescription="course"
+              aria-label="2 of 4"
+            >
+              <div class="slide__art" aria-hidden="true">
+              <svg class="art" viewBox="0 0 320 260" fill="none" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet">
+      <rect x="24" y="40" width="188" height="140" rx="14" fill="var(--art-card)"/>
+      <rect x="42" y="58" width="56" height="6" rx="3.0" fill="var(--art-line)"/>
+      <rect x="42" y="74" width="92" height="12" rx="6" fill="var(--art-accent)"/>
+      <rect x="42" y="112" width="24" height="48" rx="6" fill="var(--art-soft)"/>
+      <rect x="76" y="98" width="24" height="62" rx="6" fill="var(--art-soft)"/>
+      <rect x="110" y="120" width="24" height="40" rx="6" fill="var(--art-soft)"/>
+      <rect x="144" y="82" width="24" height="78" rx="6" fill="var(--art-accent)"/>
+      <rect x="178" y="104" width="24" height="56" rx="6" fill="var(--art-soft)"/>
+      <rect x="188" y="150" width="104" height="76" rx="14" fill="var(--art-card)"/>
+      <circle cx="222" cy="188" r="20" fill="var(--art-soft)"/>
+      <path d="M222 168a20 20 0 0 1 20 20h-20v-20Z" fill="var(--art-accent)"/>
+      <rect x="254" y="178" width="26" height="5" rx="2.5" fill="var(--art-line)"/>
+      <rect x="254" y="190" width="18" height="5" rx="2.5" fill="var(--art-line)"/>
+      <rect x="208" y="24" width="88" height="52" rx="12" fill="var(--art-accent)"/>
+      <path d="M224 60l14-14 10 9 16-19" stroke="var(--art-card)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+            </div>
+              <div class="slide__body">
+                <p class="slide__kicker">Finance · Ages 10 to 16</p>
+                <h3 class="slide__title">Financial Literacy</h3>
+                <p class="slide__blurb">How money really works: saving, credit, investing, and the traps that catch people out. Built around a first job, a first account, and a first very bad idea.</p>
+                <p class="slide__note">
+                  Three of its four units are playable in Story Mode, where a credit union
+                  coach walks you through a first paycheque.
+                </p>
+                <div class="slide__actions">
+                  <a
+                    class="button button--primary"
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSfujwXkUuY5iIivLC0OdQriYGnavC7LS8CYOhBGYHF7V5L3xA/viewform?usp=send_form"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Enroll in the Financial Literacy course, opens in a new tab"
+                  >Enroll</a>
+                  <a class="button button--secondary" href="learn.html?course=financial-literacy"
+                    >Play Story Mode</a
+                  >
+                </div>
+              </div>
+            </li>
+            <li
+              class="slide slide--neuro"
+              id="slide-neuro"
+              role="group"
+              aria-roledescription="course"
+              aria-label="3 of 4"
+            >
+              <div class="slide__art" aria-hidden="true">
+              <svg class="art" viewBox="0 0 320 260" fill="none" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet">
+      <rect x="28" y="44" width="200" height="132" rx="14" fill="var(--art-card)"/>
+      <circle cx="46" cy="62" r="3.5" fill="var(--art-soft)"/>
+      <circle cx="57" cy="62" r="3.5" fill="var(--art-soft)"/>
+      <circle cx="68" cy="62" r="3.5" fill="var(--art-soft)"/>
+      <path d="M46 128c14 0 14-34 28-34s14 44 28 44 14-54 28-54 14 30 28 30 12-12 22-12"
+            stroke="var(--art-accent)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <rect x="46" y="150" width="72" height="8" rx="4" fill="var(--art-line)"/>
+      <rect x="128" y="150" width="44" height="8" rx="4" fill="var(--art-line)"/>
+      <rect x="186" y="150" width="98" height="80" rx="14" fill="var(--art-accent)"/>
+      <circle cx="212" cy="176" r="7" fill="var(--art-card)"/>
+      <circle cx="256" cy="168" r="7" fill="var(--art-card)"/>
+      <circle cx="234" cy="206" r="7" fill="var(--art-card)"/>
+      <path d="M212 176l44-8M212 176l22 30M256 168l-22 38" stroke="var(--art-card)" stroke-width="3" stroke-linecap="round"/>
+      <rect x="204" y="22" width="92" height="60" rx="12" fill="var(--art-card)"/>
+      <circle cx="234" cy="52" r="17" fill="none" stroke="var(--art-soft)" stroke-width="6"/>
+      <path d="M234 35a17 17 0 0 1 14.5 25.8" stroke="var(--art-accent)" stroke-width="6" stroke-linecap="round" fill="none"/>
+      <rect x="262" y="44" width="22" height="5" rx="2.5" fill="var(--art-line)"/>
+      <rect x="262" y="56" width="14" height="5" rx="2.5" fill="var(--art-line)"/>
+    </svg>
+            </div>
+              <div class="slide__body">
+                <p class="slide__kicker">Neuroscience · Ages 12 to 16</p>
+                <h3 class="slide__title">Neuroscience</h3>
+                <p class="slide__blurb">What's going on inside your own head, and why your brain makes the choices it does. Design the experiment, read the scan, argue with the data.</p>
+                <p class="slide__note">
+                  All four units are playable in Story Mode, where you work a placement as a
+                  research assistant in a cognitive lab.
+                </p>
+                <div class="slide__actions">
+                  <a
+                    class="button button--primary"
+                    href="https://docs.google.com/forms/d/e/1FAIpQLScct6I9miKhr9_75V2RbxUK4zG-_R8PyFmRiIJEHEpHmH3WmA/viewform"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Enroll in the Neuroscience course, opens in a new tab"
+                  >Enroll</a>
+                  <a class="button button--secondary" href="learn.html?course=neuroscience"
+                    >Play Story Mode</a
+                  >
+                </div>
+              </div>
+            </li>
+            <li
+              class="slide slide--startup"
+              id="slide-startup"
+              role="group"
+              aria-roledescription="course"
+              aria-label="4 of 4"
+            >
+              <div class="slide__art" aria-hidden="true">
+              <svg class="art" viewBox="0 0 320 260" fill="none" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet">
+      <rect x="26" y="56" width="192" height="146" rx="14" fill="var(--art-card)"/>
+      <rect x="44" y="74" width="64" height="6" rx="3.0" fill="var(--art-line)"/>
+      <rect x="44" y="87" width="96" height="6" rx="3.0" fill="var(--art-line)"/>
+      <path d="M44 178l32-26 28 16 34-38 30 22" stroke="var(--art-accent)" stroke-width="4.5"
+            stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <circle cx="168" cy="152" r="7" fill="var(--art-accent)"/>
+      <rect x="44" y="192" width="150" height="6" rx="3" fill="var(--art-line)"/>
+      <rect x="192" y="30" width="100" height="72" rx="14" fill="var(--art-accent)"/>
+      <path d="M242 46c6.4 5.4 10 12.6 10 20.4V72l-10 6-10-6v-5.6c0-7.8 3.6-15 10-20.4Z" fill="var(--art-card)"/>
+      <path d="M232 70l-8 8 7 1.6 1.6 7 6-7M252 70l8 8-7 1.6-1.6 7-6-7"
+            stroke="var(--art-card)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+      <rect x="196" y="146" width="96" height="84" rx="14" fill="var(--art-card)"/>
+      <rect x="212" y="166" width="64" height="10" rx="5" fill="var(--art-soft)"/>
+      <rect x="212" y="186" width="44" height="10" rx="5" fill="var(--art-soft)"/>
+      <rect x="212" y="206" width="52" height="12" rx="6" fill="var(--art-accent)"/>
+    </svg>
+            </div>
+              <div class="slide__body">
+                <p class="slide__kicker">Entrepreneurship · Ages 12 to 16</p>
+                <h3 class="slide__title">How to Build a Start Up</h3>
+                <p class="slide__blurb">Turning an idea into something real: finding the problem worth solving, pricing it, and surviving your first investor meeting.</p>
+                <p class="slide__note">
+                  All six modules are playable in Story Mode, where you join a student
+                  founder programme and build a company across a term.
+                </p>
+                <div class="slide__actions">
+                  <a class="button button--secondary" href="contact.html">Ask about this course</a>
+                  <a class="button button--secondary" href="learn.html?course=startup"
+                    >Play Story Mode</a
+                  >
+                </div>
+              </div>
+            </li>
+                </ul>
+              </div>
+
+              <button
+                class="deck__arrow deck__arrow--next"
+                type="button"
+                data-deck-next
+                aria-label="Next course"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+
+            <div class="deck__footer">
+              <ol class="deck__dots" data-deck-dots></ol>
+              <p class="deck__count" data-deck-count>1 of 4</p>
+            </div>
+
+            <p class="deck__live" role="status" aria-live="polite" data-deck-live></p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+<footer class="site-footer">
+      <div class="site-footer__inner">
+        <div class="site-footer__brand">
+          <a class="site-footer__logo" href="./" aria-label="Techinance home">
+            <img src="logo.png" alt="" width="32" height="32" />
+            <span>Techinance</span>
+          </a>
+          <p>A registered 501(c)(3) nonprofit organization.</p>
+        </div>
+
+        <div class="site-footer__column">
+          <h2>Quick Links</h2>
+          <a href="courses.html">Interactive Courses</a>
+          <a href="faqs.html">FAQs</a>
+        </div>
+
+        <div class="site-footer__column">
+          <h2>Get Involved</h2>
+          <a href="about.html">About</a>
+          <a href="get-involved.html">Get Involved</a>
+          <a href="contact.html">Contact Us</a>
+          <a href="learn.html">Story Mode</a>
+        </div>
+
+        <div class="site-footer__column">
+          <h2>Legal</h2>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+        </div>
+
+        <div class="site-footer__column">
+          <h2>Connect</h2>
+          <div class="site-footer__social">
+            <a
+              href="https://www.instagram.com/techinance/"
+              aria-label="Techinance on Instagram"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            <a href="mailto:thetechinance@gmail.com" aria-label="Email Techinance">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="site-footer__bottom">
+        <p>© 2026 Techinance. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

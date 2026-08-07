@@ -1,0 +1,38 @@
+name: Keep Supabase awake
+
+# Free Supabase projects pause after 7 days without database activity, which
+# silently breaks sign-in. Monday and Thursday leaves a worst-case gap of four
+# days, so a single missed run still can't cross the seven-day line.
+#
+# NOTE: GitHub disables scheduled workflows in a repository with no commits for
+# 60 days, and emails the repo admins first. If Techinance goes quiet for two
+# months, re-enable this from the Actions tab or push any commit.
+on:
+  schedule:
+    - cron: "0 7 * * 1,4"
+  workflow_dispatch:
+
+# No repository contents are written and no other job depends on this one.
+permissions:
+  contents: read
+
+concurrency:
+  group: supabase-keepalive
+  cancel-in-progress: false
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # No dependency install: the script uses only the global fetch and reads
+      # supabase-config.js directly, so there is nothing to resolve.
+      - name: Ping Supabase
+        run: node scripts/supabase-keepalive.mjs

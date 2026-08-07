@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Learn about Techinance, a 501(c)(3) nonprofit providing free technology, neuroscience, and finance education worldwide."
+    />
+    <title>About Us | Techinance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="learn.css" />
+    <link rel="stylesheet" href="about.css" />
+    <script type="module" src="nav.js"></script>
+    <script type="module" src="auth-nav.js"></script>
+  </head>
+  <body>
+    <header class="site-header" data-header>
+      <nav class="navbar" aria-label="Primary navigation">
+        <a class="brand" href="./" aria-label="Techinance home">
+          <img class="brand__logo" src="logo.png" alt="" width="32" height="32" />
+          <span>Techinance</span>
+        </a>
+
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          data-menu-toggle
+        >
+          <span>Menu</span>
+          <span class="menu-toggle__lines" aria-hidden="true"></span>
+        </button>
+
+        <div class="desktop-nav">
+          <a class="nav-link" href="about.html" aria-current="page">About</a>
+          <a class="nav-link" href="courses.html">Learn</a>
+          <a class="nav-link" href="get-involved.html">Get Involved</a>
+          <a class="nav-link" href="contact.html">Contact Us</a>
+          <a class="nav-link" href="faqs.html">FAQs</a>
+          <div class="auth-slot" data-auth-nav></div>
+        </div>
+
+        <div class="mobile-nav" id="mobile-menu" data-mobile-menu>
+          <a href="about.html" aria-current="page">About</a>
+          <a href="courses.html">Learn</a>
+          <a href="get-involved.html">Get Involved</a>
+          <a href="contact.html">Contact Us</a>
+          <a href="faqs.html">FAQs</a>
+          <a href="learn.html">My Learning</a>
+          <a href="leaderboard.html">Leaderboard</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="page">
+      <section class="about" id="about" aria-labelledby="about-title">
+        <div class="about__inner">
+          <header class="about__header">
+            <h1 id="about-title">About Techinance</h1>
+            <p class="about__lede">
+              Placeholder. One or two lines on why Techinance exists, in your own words.
+            </p>
+          </header>
+
+          <section class="about__block" aria-labelledby="what-we-do">
+            <p class="about__eyebrow">Who We Are</p>
+            <h2 id="what-we-do">What We Do</h2>
+            <p class="about__body">
+              Placeholder. A short paragraph on what Techinance is, when it started, who
+              runs it, and what you offer. Two or three sentences is plenty.
+            </p>
+            <p class="about__body">
+              Placeholder. A second paragraph if you want one, covering the subjects you
+              teach and who the courses are for.
+            </p>
+          </section>
+
+          <section class="about__block" aria-labelledby="our-mission">
+            <p class="about__eyebrow">Our Mission</p>
+            <h2 id="our-mission">What We Are Working Towards</h2>
+            <ol class="mission">
+              <li class="mission__item">
+                <span class="mission__number" aria-hidden="true">1</span>
+                <div>
+                  <h3>Placeholder Heading</h3>
+                  <p>
+                    Placeholder. Two sentences on the first thing Techinance is trying to
+                    change, and why it matters.
+                  </p>
+                </div>
+              </li>
+              <li class="mission__item">
+                <span class="mission__number" aria-hidden="true">2</span>
+                <div>
+                  <h3>Placeholder Heading</h3>
+                  <p>
+                    Placeholder. Two sentences on the second part of the mission.
+                  </p>
+                </div>
+              </li>
+              <li class="mission__item">
+                <span class="mission__number" aria-hidden="true">3</span>
+                <div>
+                  <h3>Placeholder Heading</h3>
+                  <p>
+                    Placeholder. Two sentences on the third part of the mission.
+                  </p>
+                </div>
+              </li>
+            </ol>
+          </section>
+
+          <section class="about__block" aria-labelledby="our-team">
+            <p class="about__eyebrow">Our Team</p>
+            <h2 id="our-team">Meet the Team</h2>
+            <p class="about__body">
+              Placeholder. One line introducing the people who run Techinance.
+            </p>
+            <ul class="people">
+            <li class="person">
+              <div class="person__art"><img src="founder.jpg" alt="" width="320" height="400" /></div>
+              <p class="person__name">Krish Sav</p>
+              <p class="person__role">Founder</p>
+              <p class="person__note">Placeholder. One line about Krish.</p>
+            </li>
+            <li class="person">
+              <div class="person__art"><span class="person__placeholder" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none" focusable="false"><circle cx="32" cy="24" r="11" fill="currentColor" opacity=".28"/><path d="M12 56c0-11 9-19 20-19s20 8 20 19" fill="currentColor" opacity=".28"/></svg></span></div>
+              <p class="person__name">Placeholder Name</p>
+              <p class="person__role">Director of Technology</p>
+              <p class="person__note">Placeholder. One line about this person.</p>
+            </li>
+            <li class="person">
+              <div class="person__art"><span class="person__placeholder" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none" focusable="false"><circle cx="32" cy="24" r="11" fill="currentColor" opacity=".28"/><path d="M12 56c0-11 9-19 20-19s20 8 20 19" fill="currentColor" opacity=".28"/></svg></span></div>
+              <p class="person__name">Placeholder Name</p>
+              <p class="person__role">Course Developer</p>
+              <p class="person__note">Placeholder. One line about this person.</p>
+            </li>
+            <li class="person">
+              <div class="person__art"><span class="person__placeholder" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none" focusable="false"><circle cx="32" cy="24" r="11" fill="currentColor" opacity=".28"/><path d="M12 56c0-11 9-19 20-19s20 8 20 19" fill="currentColor" opacity=".28"/></svg></span></div>
+              <p class="person__name">Placeholder Name</p>
+              <p class="person__role">Operations</p>
+              <p class="person__note">Placeholder. One line about this person.</p>
+            </li>
+            </ul>
+          </section>
+
+          <section class="about__block about__block--stats" aria-labelledby="our-reach">
+            <p class="about__eyebrow">Our Reach</p>
+            <h2 id="our-reach">Where We Have Got To</h2>
+            <ul class="reach">
+              <li><p class="reach__value">1050+</p><p class="reach__label">Students</p></li>
+              <li><p class="reach__value">21</p><p class="reach__label">Countries</p></li>
+              <li><p class="reach__value">25+</p><p class="reach__label">Provinces</p></li>
+              <li><p class="reach__value">4</p><p class="reach__label">Courses</p></li>
+            </ul>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <div class="site-footer__brand">
+          <a class="site-footer__logo" href="./" aria-label="Techinance home">
+            <img src="logo.png" alt="" width="32" height="32" />
+            <span>Techinance</span>
+          </a>
+          <p>A registered 501(c)(3) nonprofit organization.</p>
+        </div>
+
+        <div class="site-footer__column">
+          <h2>Quick Links</h2>
+          <a href="courses.html">Interactive Courses</a>
+          <a href="faqs.html">FAQs</a>
+        </div>
+
+        <div class="site-footer__column">
+          <h2>Get Involved</h2>
+          <a href="about.html">About</a>
+          <a href="get-involved.html">Get Involved</a>
+          <a href="contact.html">Contact Us</a>
+          <a href="learn.html">Story Mode</a>
+        </div>
+
+        <div class="site-footer__column">
+          <h2>Legal</h2>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+        </div>
+
+        <div class="site-footer__column">
+          <h2>Connect</h2>
+          <div class="site-footer__social">
+            <a
+              href="https://www.instagram.com/techinance/"
+              aria-label="Techinance on Instagram"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            <a href="mailto:thetechinance@gmail.com" aria-label="Email Techinance">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="site-footer__bottom">
+        <p>© 2026 Techinance. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

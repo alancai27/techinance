@@ -1,0 +1,103 @@
+/* Get Involved page. Reuses the .contact__* form styles in styles.css, so this
+   file only covers what that page doesn't have: the ways-to-help list, the
+   select control, inline field errors, and the success panel. */
+
+
+
+
+
+
+.contact__field select {
+  width: 100%;
+  border: 1px solid rgba(11, 36, 71, 0.14);
+  border-radius: 14px;
+  padding: 13px 15px;
+  color: var(--navy);
+  background: var(--white);
+  font: 500 15px/1.4 "DM Sans", sans-serif;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.contact__field select:focus-visible {
+  border-color: var(--steel);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--ice);
+}
+
+.contact__field .is-invalid {
+  border-color: #b23b3b;
+}
+
+.contact__field .involve__error {
+  color: #b23b3b;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.contact__field .involve__hint {
+  color: var(--slate);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.involve__success {
+  border: 1px solid rgba(11, 36, 71, 0.08);
+  border-radius: var(--card-radius);
+  padding: 32px;
+  background: var(--soft-surface);
+  box-shadow: var(--card-shadow);
+}
+
+.involve__success:focus-visible {
+  outline: 3px solid var(--steel);
+  outline-offset: 4px;
+}
+
+.involve__success h2 {
+  margin: 0 0 12px;
+  color: var(--navy);
+  font-family: "Nunito", sans-serif;
+  font-size: clamp(20px, 3vw, 26px);
+  font-weight: 700;
+}
+
+.involve__success p {
+  margin: 0;
+  color: var(--slate);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.involve__success-actions {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  gap: 12px;
+}
+
+.involve__fallback {
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+.involve__fallback a {
+  color: var(--steel);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.involve__fallback a:hover,
+.involve__fallback a:focus-visible {
+  text-decoration: underline;
+}
+
+@media (max-width: 720px) {
+
+  .involve__success {
+    padding: 22px;
+  }
+
+  .involve__success-actions .button {
+    width: 100%;
+  }
+}

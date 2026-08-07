@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <meta
+      name="description"
+      content="Techinance Story Mode: work through an episode, answer the questions, and see the results of your choices."
+    />
+    <title>Story Mode | Techinance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="learn.css" />
+    <script type="module" src="story.js"></script>
+  </head>
+  <body class="story-page">
+    <header class="story-bar">
+      <a class="story-bar__brand" href="./" aria-label="Techinance home">
+        <img class="story-bar__logo" src="logo.png" alt="" width="28" height="28" />
+        <span>Techinance</span>
+      </a>
+      <a class="story-bar__exit" href="learn.html" data-story-exit>
+        <span class="story-bar__exit-icon" aria-hidden="true"></span>
+        Exit to my learning
+      </a>
+    </header>
+
+    <!--
+      The page never calls createIcons, so the back arrow is built at runtime
+      from the same icon module the story engine uses.
+    -->
+    <script type="module">
+      import { icon } from "./icon.js";
+
+      const slot = document.querySelector(".story-bar__exit-icon");
+      if (slot) {
+        slot.append(icon("arrow-left", { size: 16 }));
+      }
+    </script>
+
+    <main class="story-main">
+      <div id="story-root" data-story-root></div>
+    </main>
+  </body>
+</html>

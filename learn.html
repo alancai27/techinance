@@ -1,0 +1,1187 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Your Techinance learning hub. Play Story Mode episodes, track XP, and collect badges."
+    />
+    <title>My Learning · Techinance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="learn.css" />
+    <script type="module" src="nav.js"></script>
+    <script type="module" src="learn-icons.js"></script>
+    <script type="module" src="auth-nav.js"></script>
+    <script type="module" src="learn.js"></script>
+  </head>
+  <body>
+    <header class="site-header" data-header>
+      <nav class="navbar" aria-label="Primary navigation">
+        <a class="brand" href="./" aria-label="Techinance home">
+          <img class="brand__logo" src="logo.png" alt="" width="32" height="32" />
+          <span>Techinance</span>
+        </a>
+
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          data-menu-toggle
+        >
+          <span>Menu</span>
+          <span class="menu-toggle__lines" aria-hidden="true"></span>
+        </button>
+
+        <div class="desktop-nav">
+          <a class="nav-link" href="about.html">About</a>
+          <a class="nav-link" href="courses.html">Learn</a>
+          <a class="nav-link" href="get-involved.html">Get Involved</a>
+          <a class="nav-link" href="contact.html">Contact Us</a>
+          <a class="nav-link" href="faqs.html">FAQs</a>
+          <div class="auth-slot" data-auth-nav></div>
+        </div>
+
+        <div class="mobile-nav" id="mobile-menu" data-mobile-menu>
+          <a href="about.html">About</a>
+          <a href="courses.html">Learn</a>
+          <a href="get-involved.html">Get Involved</a>
+          <a href="contact.html">Contact Us</a>
+          <a href="faqs.html">FAQs</a>
+          <a href="learn.html" aria-current="page">My Learning</a>
+          <a href="leaderboard.html">Leaderboard</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="page learn-page">
+      <section class="learn-hero" aria-labelledby="learn-title">
+        <div class="learn-hero__inner">
+          <p class="learn-hero__eyebrow">Story Mode</p>
+          <h1 class="learn-hero__title" id="learn-title">My Learning</h1>
+          <p class="learn-hero__lead">Courses you play, not read.</p>
+        </div>
+      </section>
+
+      <!-- Signed-out: welcome + sign-in ------------------------------------->
+      <section
+        class="learn-gate"
+        aria-labelledby="learn-gate-title"
+        data-signed-out
+        hidden
+      >
+        <div class="learn-gate__inner">
+          <div class="learn-gate__copy">
+            <h2 class="learn-gate__title" id="learn-gate-title">
+              How Story Mode Works
+            </h2>
+            <p class="learn-gate__lead">Each unit is an episode. Your decisions change what happens next.</p>
+            <ul class="learn-gate__points">
+              <li class="learn-gate__point">
+                <span class="learn-gate__point-icon" aria-hidden="true"
+                  ><i data-lucide="headphones" aria-hidden="true"></i
+                ></span>
+                <span
+                  ><strong>Play a role.</strong> Read the evidence, ask questions, and
+                  decide what to do next.</span
+                >
+              </li>
+              <li class="learn-gate__point">
+                <span class="learn-gate__point-icon" aria-hidden="true"
+                  ><i data-lucide="zap" aria-hidden="true"></i
+                ></span>
+                <span
+                  ><strong>Earn XP.</strong> Correct decisions earn points. Wrong ones come
+                  with an explanation before you continue.</span
+                >
+              </li>
+              <li class="learn-gate__point">
+                <span class="learn-gate__point-icon" aria-hidden="true"
+                  ><i data-lucide="award" aria-hidden="true"></i
+                ></span>
+                <span
+                  ><strong>Collect badges.</strong> Each badge records a skill you used to
+                  finish part of an episode.</span
+                >
+              </li>
+              <li class="learn-gate__point">
+                <span class="learn-gate__point-icon" aria-hidden="true"
+                  ><i data-lucide="hard-drive" aria-hidden="true"></i
+                ></span>
+                <span
+                  ><strong>Pick up where you left off.</strong> Your checkpoint is saved on
+                  this device.</span
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="learn-signin">
+            <h3 class="learn-signin__title">Sign In to Save Your Progress</h3>
+            <div class="learn-signin__google" data-google-button></div>
+            <p class="learn-signin__divider"><span>or</span></p>
+            <button
+              class="button button--secondary learn-signin__guest"
+              type="button"
+              data-guest-button
+            >
+              Continue as guest
+            </button>
+            <p class="learn-signin__note">Guest progress stays in this browser.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Signed-in: account summary ---------------------------------------->
+      <section class="learn-account" aria-labelledby="learn-account-title" data-signed-in hidden>
+        <h2 class="learn-account__heading" id="learn-account-title">Your Progress</h2>
+        <div class="learn-account__inner">
+          <div class="learn-account__identity">
+            <span class="learn-avatar" data-user-avatar aria-hidden="true"></span>
+            <div class="learn-account__text">
+              <p class="learn-account__greeting">
+                Welcome back, <span class="learn-account__name" data-user-name>learner</span>
+              </p>
+              <p class="learn-account__meta" data-user-meta></p>
+            </div>
+            <button class="learn-signout" type="button" data-signout-button>Sign out</button>
+          </div>
+
+          <dl class="learn-stats">
+            <div class="learn-stat">
+              <dt class="learn-stat__label">Total XP</dt>
+              <dd class="learn-stat__value" data-total-xp>0</dd>
+            </div>
+            <div class="learn-stat">
+              <dt class="learn-stat__label">Badges</dt>
+              <dd class="learn-stat__value" data-badge-count>0</dd>
+            </div>
+            <div class="learn-stat">
+              <dt class="learn-stat__label">Episodes finished</dt>
+              <dd class="learn-stat__value" data-episode-count>0</dd>
+            </div>
+          </dl>
+
+          <div class="learn-badges" data-badge-list>
+            <p class="learn-badges__empty">
+              No badges yet. Finish a scene in Unit 1 to earn your first.
+            </p>
+          </div>
+
+          <p class="learn-account__more">
+            <a class="learn-account__profile" href="profile.html">
+              <span
+                class="learn-account__profile-icon"
+                data-profile-icon
+                aria-hidden="true"
+              ></span>
+              <span>View full profile</span>
+              <span class="learn-account__profile-arrow" aria-hidden="true">→</span>
+            </a>
+          </p>
+        </div>
+      </section>
+
+      <!-- Course rail -------------------------------------------------------->
+      <section
+        class="learn-section"
+        id="learn-courses"
+        aria-labelledby="learn-courses-title"
+        data-course-section
+      >
+        <div class="learn-section__head">
+          <h2 class="learn-section__title" id="learn-courses-title">Interactive Courses</h2>
+          <p class="learn-section__lead">
+            All four Techinance courses are playable in Story Mode.
+          </p>
+          <button
+            class="learn-rail-toggle"
+            type="button"
+            aria-expanded="true"
+            aria-controls="learn-rail"
+            data-rail-toggle
+            hidden
+          >
+            <span data-rail-toggle-label>Hide the other courses</span>
+          </button>
+        </div>
+
+        <ul class="learn-rail" id="learn-rail" data-rail>
+          <li class="learn-course learn-course--live" data-course="cybersecurity">
+            <span class="learn-course__art" aria-hidden="true"><svg class="course-art" viewBox="0 0 240 116" fill="none" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet">
+              <rect x="28" y="24" width="128" height="72" rx="10" fill="var(--art-card)"/>
+              <rect x="42" y="40" width="76" height="6" rx="3" fill="var(--art-line)"/>
+              <rect x="42" y="54" width="96" height="6" rx="3" fill="var(--art-line)"/>
+              <rect x="42" y="68" width="58" height="6" rx="3" fill="var(--art-line)"/>
+              <rect x="140" y="46" width="72" height="56" rx="10" fill="var(--art-accent)"/>
+              <path d="M176 60l12 4.5v9c0 6.4-4.6 11.7-12 13.4-7.4-1.7-12-7-12-13.4v-9l12-4.5Z" fill="var(--art-card)"/>
+              <path d="M171 74.5l3.4 3.4 6-6" stroke="var(--art-accent)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <p class="learn-course__tag">Technology · Ages 12–16</p>
+            <h3 class="learn-course__title">Cybersecurity</h3>
+            <p class="learn-course__blurb">Work a shift as a security analyst. Real breaches, real decisions.</p>
+            <p class="learn-course__status learn-course__status--live">
+              <span class="learn-course__dot" aria-hidden="true"></span>Live · All four units
+              playable
+            </p>
+            <a class="learn-course__link" href="#learn-episodes">
+              View episodes<span class="learn-course__arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+
+          <li class="learn-course learn-course--live" data-course="financial-literacy">
+            <span class="learn-course__art" aria-hidden="true"><svg class="course-art" viewBox="0 0 240 116" fill="none" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet">
+              <rect x="24" y="18" width="124" height="80" rx="10" fill="var(--art-card)"/>
+              <rect x="38" y="60" width="16" height="26" rx="4" fill="var(--art-soft)"/>
+              <rect x="62" y="48" width="16" height="38" rx="4" fill="var(--art-soft)"/>
+              <rect x="86" y="66" width="16" height="20" rx="4" fill="var(--art-soft)"/>
+              <rect x="110" y="38" width="16" height="48" rx="4" fill="var(--art-accent)"/>
+              <rect x="38" y="30" width="48" height="6" rx="3" fill="var(--art-line)"/>
+              <rect x="150" y="34" width="66" height="52" rx="10" fill="var(--art-accent)"/>
+              <circle cx="176" cy="60" r="15" fill="var(--art-card)"/>
+              <path d="M176 45a15 15 0 0 1 15 15h-15V45Z" fill="var(--art-accent)"/>
+              <rect x="196" y="52" width="14" height="5" rx="2.5" fill="var(--art-card)"/>
+              <rect x="196" y="63" width="10" height="5" rx="2.5" fill="var(--art-card)"/></svg>
+            </span>
+            <p class="learn-course__tag">Finance · Ages 10–16</p>
+            <h3 class="learn-course__title">Financial Literacy</h3>
+            <p class="learn-course__blurb">Your first paycheque, and deciding where it goes before it's gone.</p>
+            <p class="learn-course__status learn-course__status--live">
+              <span class="learn-course__dot" aria-hidden="true"></span>Live · Units 1, 2 and 4
+              playable
+            </p>
+            <a class="learn-course__link" href="#learn-episodes-finance">
+              View episodes<span class="learn-course__arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+
+          <li class="learn-course learn-course--live" data-course="neuroscience">
+            <span class="learn-course__art" aria-hidden="true"><svg class="course-art" viewBox="0 0 240 116" fill="none" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet">
+              <rect x="22" y="20" width="132" height="76" rx="10" fill="var(--art-card)"/>
+              <path d="M36 66c9 0 9-22 18-22s9 28 18 28 9-34 18-34 9 19 18 19 8-8 14-8"
+                    stroke="var(--art-accent)" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <rect x="36" y="80" width="44" height="5" rx="2.5" fill="var(--art-line)"/>
+              <rect x="86" y="80" width="26" height="5" rx="2.5" fill="var(--art-line)"/>
+              <rect x="148" y="38" width="70" height="60" rx="10" fill="var(--art-accent)"/>
+              <circle cx="168" cy="58" r="5.5" fill="var(--art-card)"/>
+              <circle cx="200" cy="52" r="5.5" fill="var(--art-card)"/>
+              <circle cx="184" cy="82" r="5.5" fill="var(--art-card)"/>
+              <path d="M168 58l32-6M168 58l16 24M200 52l-16 30" stroke="var(--art-card)" stroke-width="2.4" stroke-linecap="round"/></svg>
+            </span>
+            <p class="learn-course__tag">Neuroscience · Ages 12–16</p>
+            <h3 class="learn-course__title">Neuroscience</h3>
+            <p class="learn-course__blurb">Design the experiment, read the scan, argue with the data.</p>
+            <p class="learn-course__status learn-course__status--live">
+              <span class="learn-course__dot" aria-hidden="true"></span>Live · All four units
+              playable
+            </p>
+            <a class="learn-course__link" href="#learn-episodes-neuro">
+              View episodes<span class="learn-course__arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+
+          <li class="learn-course learn-course--live" data-course="startup">
+            <span class="learn-course__art" aria-hidden="true"><svg class="course-art" viewBox="0 0 240 116" fill="none" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet">
+              <rect x="22" y="24" width="130" height="74" rx="10" fill="var(--art-card)"/>
+              <rect x="36" y="38" width="44" height="6" rx="3" fill="var(--art-line)"/>
+              <path d="M36 80l24-18 20 11 26-26" stroke="var(--art-accent)" stroke-width="3.4"
+                    stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <circle cx="106" cy="47" r="5" fill="var(--art-accent)"/>
+              <rect x="146" y="16" width="72" height="60" rx="10" fill="var(--art-accent)"/>
+              <path d="M182 30c4.6 3.9 7.2 9.1 7.2 14.7v3.7l-7.2 4.3-7.2-4.3v-3.7c0-5.6 2.6-10.8 7.2-14.7Z" fill="var(--art-card)"/>
+              <path d="M175 47l-6 6 5 1.2 1.2 5 4.4-5M189 47l6 6-5 1.2-1.2 5-4.4-5"
+                    stroke="var(--art-card)" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+              <rect x="158" y="84" width="48" height="6" rx="3" fill="var(--art-soft)"/></svg>
+            </span>
+            <p class="learn-course__tag">Entrepreneurship · Ages 12–16</p>
+            <h3 class="learn-course__title">How 2 Build a Start Up</h3>
+            <p class="learn-course__blurb">Idea to pitch deck. Pick a co-founder, price it, face an investor.</p>
+            <p class="learn-course__status learn-course__status--live">
+              <span class="learn-course__dot" aria-hidden="true"></span>Live · All six modules
+              playable
+            </p>
+            <a class="learn-course__link" href="#learn-episodes-startup">
+              View episodes<span class="learn-course__arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Episode list ------------------------------------------------------->
+      <section
+        class="learn-section learn-section--episodes"
+        id="learn-episodes"
+        aria-labelledby="learn-episodes-title"
+        data-season="cybersecurity"
+      >
+        <div class="learn-section__head">
+          <p class="learn-season-back" data-season-back hidden>
+            <a class="learn-season-back__link" href="learn.html">
+              <span
+                class="learn-season-back__icon"
+                data-season-back-icon
+                aria-hidden="true"
+              ></span>
+              <span>All courses</span>
+            </a>
+          </p>
+          <h2
+            class="learn-section__title"
+            id="learn-episodes-title"
+            tabindex="-1"
+            data-season-heading
+          >
+            Cybersecurity · Season 1
+          </h2>
+          <p class="learn-section__lead">
+            Four units, all playable.
+          </p>
+        </div>
+
+        <ol class="learn-episode-list">
+          <li class="learn-episode learn-episode--open" data-episode="cyber-u1">
+            <span class="learn-episode__marker" aria-hidden="true">1</span>
+            <div class="learn-episode__body">
+              <p class="learn-episode__unit">Unit 1 · Available</p>
+              <h3 class="learn-episode__title">The Cost of Cybercrime</h3>
+              <p class="learn-episode__blurb">Track an attacker across the network and price the damage.</p>
+              <p class="learn-episode__meta">
+                <span class="learn-episode__chip">~40 min</span>
+                <span class="learn-episode__chip">Junior Security Analyst</span>
+                <span class="learn-episode__chip">3 acts</span>
+              </p>
+              <div class="learn-progress" data-progress hidden>
+                <div
+                  class="learn-progress__track"
+                  role="progressbar"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-valuenow="0"
+                  aria-label="Unit 1 progress"
+                  data-progress-bar
+                >
+                  <span class="learn-progress__fill" data-progress-fill></span>
+                </div>
+                <p class="learn-progress__label">
+                  <span class="learn-progress__state" data-progress-text>Not started</span>
+                  <span class="learn-progress__xp" data-progress-xp>0 XP</span>
+                </p>
+              </div>
+            </div>
+            <div class="learn-episode__action">
+              <a
+                class="button button--primary learn-episode__cta"
+                href="story.html?episode=cyber-u1"
+                data-episode-cta
+                >Start episode</a
+              >
+            </div>
+          </li>
+
+          <li class="learn-episode learn-episode--open" data-episode="cyber-u2">
+            <span class="learn-episode__marker" aria-hidden="true">2</span>
+            <div class="learn-episode__body">
+              <p class="learn-episode__unit">Unit 2 · Available</p>
+              <h3 class="learn-episode__title">Digital Footprint and Defense</h3>
+              <p class="learn-episode__blurb">The trail you leave online, and how to shrink it.</p>
+              <p class="learn-episode__meta">
+                <span class="learn-episode__chip">~30 min</span>
+                <span class="learn-episode__chip">Security Analyst</span>
+                <span class="learn-episode__chip">3 acts</span>
+              </p>
+              <div class="learn-progress" data-progress hidden>
+                <div
+                  class="learn-progress__track"
+                  role="progressbar"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-valuenow="0"
+                  aria-label="Unit 2 progress"
+                  data-progress-bar
+                >
+                  <span class="learn-progress__fill" data-progress-fill></span>
+                </div>
+                <p class="learn-progress__label">
+                  <span class="learn-progress__state" data-progress-text>Not started</span>
+                  <span class="learn-progress__xp" data-progress-xp>0 XP</span>
+                </p>
+              </div>
+            </div>
+            <div class="learn-episode__action">
+              <a
+                class="button button--primary learn-episode__cta"
+                href="story.html?episode=cyber-u2"
+                data-episode-cta
+                >Start episode</a
+              >
+            </div>
+          </li>
+
+          <li class="learn-episode learn-episode--open" data-episode="cyber-u3">
+            <span class="learn-episode__marker" aria-hidden="true">3</span>
+            <div class="learn-episode__body">
+              <p class="learn-episode__unit">Unit 3 · Available</p>
+              <h3 class="learn-episode__title">Careers, Skills, and Certifications</h3>
+              <p class="learn-episode__blurb">What the roles pay, and how a beginner builds toward one.</p>
+              <p class="learn-episode__meta">
+                <span class="learn-episode__chip">~30 min</span>
+                <span class="learn-episode__chip">Security Analyst</span>
+                <span class="learn-episode__chip">3 acts</span>
+              </p>
+              <div class="learn-progress" data-progress hidden>
+                <div
+                  class="learn-progress__track"
+                  role="progressbar"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-valuenow="0"
+                  aria-label="Unit 3 progress"
+                  data-progress-bar
+                >
+                  <span class="learn-progress__fill" data-progress-fill></span>
+                </div>
+                <p class="learn-progress__label">
+                  <span class="learn-progress__state" data-progress-text>Not started</span>
+                  <span class="learn-progress__xp" data-progress-xp>0 XP</span>
+                </p>
+              </div>
+            </div>
+            <div class="learn-episode__action">
+              <a
+                class="button button--primary learn-episode__cta"
+                href="story.html?episode=cyber-u3"
+                data-episode-cta
+                >Start episode</a
+              >
+            </div>
+          </li>
+
+          <li class="learn-episode learn-episode--open" data-episode="cyber-u4">
+            <span class="learn-episode__marker" aria-hidden="true">4</span>
+            <div class="learn-episode__body">
+              <p class="learn-episode__unit">Unit 4 · Available</p>
+              <h3 class="learn-episode__title">Programming for Cybersecurity</h3>
+              <p class="learn-episode__blurb">Read Python and JavaScript, then build a security tool.</p>
+              <p class="learn-episode__meta">
+                <span class="learn-episode__chip">~30 min</span>
+                <span class="learn-episode__chip">Security Analyst</span>
+                <span class="learn-episode__chip">3 acts</span>
+              </p>
+              <div class="learn-progress" data-progress hidden>
+                <div
+                  class="learn-progress__track"
+                  role="progressbar"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-valuenow="0"
+                  aria-label="Unit 4 progress"
+                  data-progress-bar
+                >
+                  <span class="learn-progress__fill" data-progress-fill></span>
+                </div>
+                <p class="learn-progress__label">
+                  <span class="learn-progress__state" data-progress-text>Not started</span>
+                  <span class="learn-progress__xp" data-progress-xp>0 XP</span>
+                </p>
+              </div>
+            </div>
+            <div class="learn-episode__action">
+              <a
+                class="button button--primary learn-episode__cta"
+                href="story.html?episode=cyber-u4"
+                data-episode-cta
+                >Start episode</a
+              >
+            </div>
+          </li>
+
+
+        </ol>
+      </section>
+
+      <!-- Financial Literacy episodes ---------------------------------------->
+      <section
+        class="learn-section learn-section--episodes"
+        id="learn-episodes-finance"
+        aria-labelledby="learn-episodes-finance-title"
+        data-season="financial-literacy"
+      >
+        <div class="learn-section__head">
+          <p class="learn-season-back" data-season-back hidden>
+            <a class="learn-season-back__link" href="learn.html">
+              <span
+                class="learn-season-back__icon"
+                data-season-back-icon
+                aria-hidden="true"
+              ></span>
+              <span>All courses</span>
+            </a>
+          </p>
+          <h2
+            class="learn-section__title"
+            id="learn-episodes-finance-title"
+            tabindex="-1"
+            data-season-heading
+          >
+            Financial Literacy · Season 1
+          </h2>
+          <p class="learn-section__lead">
+            Units 1, 2 and 4 are playable. Unit 3 is being written.
+          </p>
+        </div>
+
+        <ol class="learn-episode-list">
+          <li class="learn-episode learn-episode--open" data-episode="fin-u1">
+            <span class="learn-episode__marker" aria-hidden="true">1</span>
+            <div class="learn-episode__body">
+              <p class="learn-episode__unit">Unit 1 · Available</p>
+              <h3 class="learn-episode__title">Budgeting and Smart Spending</h3>
+              <p class="learn-episode__blurb">A first paycheque, and what to do with it before it's gone.</p>
+              <p class="learn-episode__meta">
+                <span class="learn-episode__chip">~30 min</span>
+                <span class="learn-episode__chip">First-Year Earner</span>
+                <span class="learn-episode__chip">3 acts</span>
+              </p>
+              <div class="learn-progress" data-progress hidden>
+                <div
+                  class="learn-progress__track"
+                  role="progressbar"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-valuenow="0"
+                  aria-label="Financial Literacy unit 1 progress"
+                  data-progress-bar
+                >
+                  <span class="learn-progress__fill" data-progress-fill></span>
+                </div>
+                <p class="learn-progress__label">
+                  <span class="learn-progress__state" data-progress-text>Not started</span>
+                  <span class="learn-progress__xp" data-progress-xp>0 XP</span>
+                </p>
+              </div>
+            </div>
+            <div class="learn-episode__action">
+              <a
+                class="button button--primary learn-episode__cta"
+                href="story.html?episode=fin-u1"
+                data-episode-cta
+                >Start episode</a
+              >
+            </div>
+          </li>
+
+          <li class="learn-episode learn-episode--open" data-episode="fin-u2">
+            <span class="learn-episode__marker" aria-hidden="true">2</span>
+            <div class="learn-episode__body">
+              <p class="learn-episode__unit">Unit 2 · Available</p>
+              <h3 class="learn-episode__title">Debt and Credit Management</h3>
+              <p class="learn-episode__blurb">What you owe, what it costs, and how to pay it off fastest.</p>
+              <p class="learn-episode__meta">
+                <span class="learn-episode__chip">~30 min</span>
+                <span class="learn-episode__chip">First-Year Earner</span>
+                <span class="learn-episode__chip">3 acts</span>
+              </p>
+              <div class="learn-progress" data-progress hidden>
+                <div
+                  class="learn-progress__track"
+                  role="progressbar"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-valuenow="0"
+                  aria-label="Financial Literacy unit 2 progress"
+                  data-progress-bar
+                >
+                  <span class="learn-progress__fill" data-progress-fill></span>
+                </div>
+                <p class="learn-progress__label">
+                  <span class="learn-progress__state" data-progress-text>Not started</span>
+                  <span class="learn-progress__xp" data-progress-xp>0 XP</span>
+                </p>
+              </div>
+            </div>
+            <div class="learn-episode__action">
+              <a
+                class="button button--primary learn-episode__cta"
+                href="story.html?episode=fin-u2"
+                data-episode-cta
+                >Start episode</a
+              >
+            </div>
+          </li>
+
+          <li class="learn-episode learn-episode--locked" data-episode="fin-u3">
+            <span class="learn-episode__marker" aria-hidden="true">3</span>
+            <div class="learn-episode__body">
+              <p class="learn-episode__unit">Unit 3 · Locked</p>
+              <h3 class="learn-episode__title">Coming soon</h3>
+              <p class="learn-episode__blurb">Still being written.</p>
+            </div>
+            <div class="learn-episode__action">
+              <span class="learn-lock" aria-hidden="true"
+                ><i data-lucide="lock" aria-hidden="true"></i
+              ></span>
+              <p class="learn-episode__status">Coming soon</p>
+            </div>
+          </li>
+
+          <li class="learn-episode learn-episode--open" data-episode="fin-u4">
+            <span class="learn-episode__marker" aria-hidden="true">4</span>
+            <div class="learn-episode__body">
+              <p class="learn-episode__unit">Unit 4 · Available</p>
+              <h3 class="learn-episode__title">Investing, Savings, and Retirement</h3>
+              <p class="learn-episode__blurb">What to do with money you don't need this year.</p>
+              <p class="learn-episode__meta">
+                <span class="learn-episode__chip">~35 min</span>
+                <span class="learn-episode__chip">First-Year Earner</span>
+                <span class="learn-episode__chip">3 acts</span>
+              </p>
+              <div class="learn-progress" data-progress hidden>
+                <div
+                  class="learn-progress__track"
+                  role="progressbar"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-valuenow="0"
+                  aria-label="Financial Literacy unit 4 progress"
+                  data-progress-bar
+                >
+                  <span class="learn-progress__fill" data-progress-fill></span>
+                </div>
+                <p class="learn-progress__label">
+                  <span class="learn-progress__state" data-progress-text>Not started</span>
+                  <span class="learn-progress__xp" data-progress-xp>0 XP</span>
+                </p>
+              </div>
+            </div>
+            <div class="learn-episode__action">
+              <a
+                class="button button--primary learn-episode__cta"
+                href="story.html?episode=fin-u4"
+                data-episode-cta
+                >Start episode</a
+              >
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <!-- Neuroscience episodes ---------------------------------------------->
+      <section
+        class="learn-section learn-section--episodes"
+        id="learn-episodes-neuro"
+        aria-labelledby="learn-episodes-neuro-title"
+        data-season="neuroscience"
+      >
+        <div class="learn-section__head">
+          <p class="learn-season-back" data-season-back hidden>
+            <a class="learn-season-back__link" href="learn.html">
+              <span
+                class="learn-season-back__icon"
+                data-season-back-icon
+                aria-hidden="true"
+              ></span>
+              <span>All courses</span>
+            </a>
+          </p>
+          <h2
+            class="learn-section__title"
+            id="learn-episodes-neuro-title"
+            tabindex="-1"
+            data-season-heading
+          >
+            Neuroscience · Season 1
+          </h2>
+          <p class="learn-section__lead">
+            All four units are playable.
+          </p>
+        </div>
+
+        <ol class="learn-episode-list">
+          <li class="learn-episode learn-episode--open" data-episode="neuro-u1">
+            <span class="learn-episode__marker" aria-hidden="true">1</span>
+            <div class="learn-episode__body">
+              <p class="learn-episode__unit">Unit 1 · Available</p>
+              <h3 class="learn-episode__title">How Your Brain Processes Reality</h3>
+              <p class="learn-episode__blurb">Which region does which job, and where perception goes wrong.</p>
+              <p class="learn-episode__meta">
+                <span class="learn-episode__chip">~35 min</span>
+                <span class="learn-episode__chip">Research Assistant</span>
+                <span class="learn-episode__chip">3 acts</span>
+              </p>
+              <div class="learn-progress" data-progress hidden>
+                <div
+                  class="learn-progress__track"
+                  role="progressbar"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-valuenow="0"
+                  aria-label="Neuroscience unit 1 progress"
+                  data-progress-bar
+                >
+                  <span class="learn-progress__fill" data-progress-fill></span>
+                </div>
+                <p class="learn-progress__label">
+                  <span class="learn-progress__state" data-progress-text>Not started</span>
+                  <span class="learn-progress__xp" data-progress-xp>0 XP</span>
+                </p>
+              </div>
+            </div>
+            <div class="learn-episode__action">
+              <a
+                class="button button--primary learn-episode__cta"
+                href="story.html?episode=neuro-u1"
+                data-episode-cta
+                >Start episode</a
+              >
+            </div>
+          </li>
+
+          <li class="learn-episode learn-episode--open" data-episode="neuro-u2">
+            <span class="learn-episode__marker" aria-hidden="true">2</span>
+            <div class="learn-episode__body">
+              <p class="learn-episode__unit">Unit 2 · Available</p>
+              <h3 class="learn-episode__title">The Neuroscience Behind Emotions</h3>
+              <p class="learn-episode__blurb">Why you feel something before you decide anything.</p>
+              <p class="learn-episode__meta">
+                <span class="learn-episode__chip">~35 min</span>
+                <span class="learn-episode__chip">Research Assistant</span>
+                <span class="learn-episode__chip">3 acts</span>
+              </p>
+              <div class="learn-progress" data-progress hidden>
+                <div
+                  class="learn-progress__track"
+                  role="progressbar"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-valuenow="0"
+                  aria-label="Neuroscience unit 2 progress"
+                  data-progress-bar
+                >
+                  <span class="learn-progress__fill" data-progress-fill></span>
+                </div>
+                <p class="learn-progress__label">
+                  <span class="learn-progress__state" data-progress-text>Not started</span>
+                  <span class="learn-progress__xp" data-progress-xp>0 XP</span>
+                </p>
+              </div>
+            </div>
+            <div class="learn-episode__action">
+              <a
+                class="button button--primary learn-episode__cta"
+                href="story.html?episode=neuro-u2"
+                data-episode-cta
+                >Start episode</a
+              >
+            </div>
+          </li>
+          <li class="learn-episode learn-episode--open" data-episode="neuro-u3">
+            <span class="learn-episode__marker" aria-hidden="true">3</span>
+            <div class="learn-episode__body">
+              <p class="learn-episode__unit">Unit 3 · Available</p>
+              <h3 class="learn-episode__title">Hacking Reward Systems</h3>
+              <p class="learn-episode__blurb">Why anticipation beats reward, and how platforms are built on it.</p>
+              <p class="learn-episode__meta">
+                <span class="learn-episode__chip">~35 min</span>
+                <span class="learn-episode__chip">Research Assistant</span>
+                <span class="learn-episode__chip">3 acts</span>
+              </p>
+              <div class="learn-progress" data-progress hidden>
+                <div
+                  class="learn-progress__track"
+                  role="progressbar"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-valuenow="0"
+                  aria-label="Neuroscience unit 3 progress"
+                  data-progress-bar
+                >
+                  <span class="learn-progress__fill" data-progress-fill></span>
+                </div>
+                <p class="learn-progress__label">
+                  <span class="learn-progress__state" data-progress-text>Not started</span>
+                  <span class="learn-progress__xp" data-progress-xp>0 XP</span>
+                </p>
+              </div>
+            </div>
+            <div class="learn-episode__action">
+              <a
+                class="button button--primary learn-episode__cta"
+                href="story.html?episode=neuro-u3"
+                data-episode-cta
+                >Start episode</a
+              >
+            </div>
+          </li>
+          <li class="learn-episode learn-episode--open" data-episode="neuro-u4">
+            <span class="learn-episode__marker" aria-hidden="true">4</span>
+            <div class="learn-episode__body">
+              <p class="learn-episode__unit">Unit 4 · Available</p>
+              <h3 class="learn-episode__title">Understanding Neurological Disorders</h3>
+              <p class="learn-episode__blurb">What breaks, why, and what actually helps.</p>
+              <p class="learn-episode__meta">
+                <span class="learn-episode__chip">~40 min</span>
+                <span class="learn-episode__chip">Research Assistant</span>
+                <span class="learn-episode__chip">3 acts</span>
+              </p>
+              <div class="learn-progress" data-progress hidden>
+                <div
+                  class="learn-progress__track"
+                  role="progressbar"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-valuenow="0"
+                  aria-label="Neuroscience unit 4 progress"
+                  data-progress-bar
+                >
+                  <span class="learn-progress__fill" data-progress-fill></span>
+                </div>
+                <p class="learn-progress__label">
+                  <span class="learn-progress__state" data-progress-text>Not started</span>
+                  <span class="learn-progress__xp" data-progress-xp>0 XP</span>
+                </p>
+              </div>
+            </div>
+            <div class="learn-episode__action">
+              <a
+                class="button button--primary learn-episode__cta"
+                href="story.html?episode=neuro-u4"
+                data-episode-cta
+                >Start episode</a
+              >
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <!-- Start-up episodes -------------------------------------------------->
+      <section
+        class="learn-section learn-section--episodes"
+        id="learn-episodes-startup"
+        aria-labelledby="learn-episodes-startup-title"
+        data-season="startup"
+      >
+        <div class="learn-section__head">
+          <p class="learn-season-back" data-season-back hidden>
+            <a class="learn-season-back__link" href="learn.html">
+              <span
+                class="learn-season-back__icon"
+                data-season-back-icon
+                aria-hidden="true"
+              ></span>
+              <span>All courses</span>
+            </a>
+          </p>
+          <h2
+            class="learn-section__title"
+            id="learn-episodes-startup-title"
+            tabindex="-1"
+            data-season-heading
+          >
+            How 2 Build a Start Up · Season 1
+          </h2>
+          <p class="learn-section__lead">
+            All six modules are playable.
+          </p>
+        </div>
+
+        <ol class="learn-episode-list">
+          <li class="learn-episode learn-episode--open" data-episode="startup-u1">
+            <span class="learn-episode__marker" aria-hidden="true">1</span>
+            <div class="learn-episode__body">
+              <p class="learn-episode__unit">Module 1 · Available</p>
+              <h3 class="learn-episode__title">What Is a Startup, Really?</h3>
+              <p class="learn-episode__blurb">What it actually is, why most fail, and what you already have.</p>
+              <p class="learn-episode__meta">
+                <span class="learn-episode__chip">~45 min</span>
+                <span class="learn-episode__chip">Student Founder</span>
+                <span class="learn-episode__chip">3 acts</span>
+              </p>
+              <div class="learn-progress" data-progress hidden>
+                <div
+                  class="learn-progress__track"
+                  role="progressbar"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-valuenow="0"
+                  aria-label="Start-up module 1 progress"
+                  data-progress-bar
+                >
+                  <span class="learn-progress__fill" data-progress-fill></span>
+                </div>
+                <p class="learn-progress__label">
+                  <span class="learn-progress__state" data-progress-text>Not started</span>
+                  <span class="learn-progress__xp" data-progress-xp>0 XP</span>
+                </p>
+              </div>
+            </div>
+            <div class="learn-episode__action">
+              <a
+                class="button button--primary learn-episode__cta"
+                href="story.html?episode=startup-u1"
+                data-episode-cta
+                >Start episode</a
+              >
+            </div>
+          </li>
+          <li class="learn-episode learn-episode--open" data-episode="startup-u2">
+            <span class="learn-episode__marker" aria-hidden="true">2</span>
+            <div class="learn-episode__body">
+              <p class="learn-episode__unit">Module 2 · Available</p>
+              <h3 class="learn-episode__title">Finding a Real Problem Worth Solving</h3>
+              <p class="learn-episode__blurb">Turning a vague idea into a problem someone actually has.</p>
+              <p class="learn-episode__meta">
+                <span class="learn-episode__chip">~45 min</span>
+                <span class="learn-episode__chip">Student Founder</span>
+                <span class="learn-episode__chip">3 acts</span>
+              </p>
+              <div class="learn-progress" data-progress hidden>
+                <div
+                  class="learn-progress__track"
+                  role="progressbar"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-valuenow="0"
+                  aria-label="Start-up module 2 progress"
+                  data-progress-bar
+                >
+                  <span class="learn-progress__fill" data-progress-fill></span>
+                </div>
+                <p class="learn-progress__label">
+                  <span class="learn-progress__state" data-progress-text>Not started</span>
+                  <span class="learn-progress__xp" data-progress-xp>0 XP</span>
+                </p>
+              </div>
+            </div>
+            <div class="learn-episode__action">
+              <a
+                class="button button--primary learn-episode__cta"
+                href="story.html?episode=startup-u2"
+                data-episode-cta
+                >Start episode</a
+              >
+            </div>
+          </li>
+          <li class="learn-episode learn-episode--open" data-episode="startup-u3">
+            <span class="learn-episode__marker" aria-hidden="true">3</span>
+            <div class="learn-episode__body">
+              <p class="learn-episode__unit">Module 3 · Available</p>
+              <h3 class="learn-episode__title">From Idea to MVP</h3>
+              <p class="learn-episode__blurb">The smallest thing that tests your riskiest assumption.</p>
+              <p class="learn-episode__meta">
+                <span class="learn-episode__chip">~45 min</span>
+                <span class="learn-episode__chip">Student Founder</span>
+                <span class="learn-episode__chip">3 acts</span>
+              </p>
+              <div class="learn-progress" data-progress hidden>
+                <div
+                  class="learn-progress__track"
+                  role="progressbar"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-valuenow="0"
+                  aria-label="Start-up module 3 progress"
+                  data-progress-bar
+                >
+                  <span class="learn-progress__fill" data-progress-fill></span>
+                </div>
+                <p class="learn-progress__label">
+                  <span class="learn-progress__state" data-progress-text>Not started</span>
+                  <span class="learn-progress__xp" data-progress-xp>0 XP</span>
+                </p>
+              </div>
+            </div>
+            <div class="learn-episode__action">
+              <a
+                class="button button--primary learn-episode__cta"
+                href="story.html?episode=startup-u3"
+                data-episode-cta
+                >Start episode</a
+              >
+            </div>
+          </li>
+          <li class="learn-episode learn-episode--open" data-episode="startup-u4">
+            <span class="learn-episode__marker" aria-hidden="true">4</span>
+            <div class="learn-episode__body">
+              <p class="learn-episode__unit">Module 4 · Available</p>
+              <h3 class="learn-episode__title">Y Combinator and Accelerators</h3>
+              <p class="learn-episode__blurb">What they look for, and how the application is really read.</p>
+              <p class="learn-episode__meta">
+                <span class="learn-episode__chip">~45 min</span>
+                <span class="learn-episode__chip">Student Founder</span>
+                <span class="learn-episode__chip">3 acts</span>
+              </p>
+              <div class="learn-progress" data-progress hidden>
+                <div
+                  class="learn-progress__track"
+                  role="progressbar"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-valuenow="0"
+                  aria-label="Start-up module 4 progress"
+                  data-progress-bar
+                >
+                  <span class="learn-progress__fill" data-progress-fill></span>
+                </div>
+                <p class="learn-progress__label">
+                  <span class="learn-progress__state" data-progress-text>Not started</span>
+                  <span class="learn-progress__xp" data-progress-xp>0 XP</span>
+                </p>
+              </div>
+            </div>
+            <div class="learn-episode__action">
+              <a
+                class="button button--primary learn-episode__cta"
+                href="story.html?episode=startup-u4"
+                data-episode-cta
+                >Start episode</a
+              >
+            </div>
+          </li>
+          <li class="learn-episode learn-episode--open" data-episode="startup-u5">
+            <span class="learn-episode__marker" aria-hidden="true">5</span>
+            <div class="learn-episode__body">
+              <p class="learn-episode__unit">Module 5 · Available</p>
+              <h3 class="learn-episode__title">Funding, Grants and Competitions</h3>
+              <p class="learn-episode__blurb">Where the first cheque comes from, and what each one costs you.</p>
+              <p class="learn-episode__meta">
+                <span class="learn-episode__chip">~45 min</span>
+                <span class="learn-episode__chip">Student Founder</span>
+                <span class="learn-episode__chip">3 acts</span>
+              </p>
+              <div class="learn-progress" data-progress hidden>
+                <div
+                  class="learn-progress__track"
+                  role="progressbar"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-valuenow="0"
+                  aria-label="Start-up module 5 progress"
+                  data-progress-bar
+                >
+                  <span class="learn-progress__fill" data-progress-fill></span>
+                </div>
+                <p class="learn-progress__label">
+                  <span class="learn-progress__state" data-progress-text>Not started</span>
+                  <span class="learn-progress__xp" data-progress-xp>0 XP</span>
+                </p>
+              </div>
+            </div>
+            <div class="learn-episode__action">
+              <a
+                class="button button--primary learn-episode__cta"
+                href="story.html?episode=startup-u5"
+                data-episode-cta
+                >Start episode</a
+              >
+            </div>
+          </li>
+          <li class="learn-episode learn-episode--open" data-episode="startup-u6">
+            <span class="learn-episode__marker" aria-hidden="true">6</span>
+            <div class="learn-episode__body">
+              <p class="learn-episode__unit">Module 6 · Available</p>
+              <h3 class="learn-episode__title">Wrap-Up and Founder Portfolio</h3>
+              <p class="learn-episode__blurb">Launching it, keeping it moving, and the page that carries all six modules.</p>
+              <p class="learn-episode__meta">
+                <span class="learn-episode__chip">~45 min</span>
+                <span class="learn-episode__chip">Student Founder</span>
+                <span class="learn-episode__chip">3 acts</span>
+              </p>
+              <div class="learn-progress" data-progress hidden>
+                <div
+                  class="learn-progress__track"
+                  role="progressbar"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-valuenow="0"
+                  aria-label="Start-up module 6 progress"
+                  data-progress-bar
+                >
+                  <span class="learn-progress__fill" data-progress-fill></span>
+                </div>
+                <p class="learn-progress__label">
+                  <span class="learn-progress__state" data-progress-text>Not started</span>
+                  <span class="learn-progress__xp" data-progress-xp>0 XP</span>
+                </p>
+              </div>
+            </div>
+            <div class="learn-episode__action">
+              <a
+                class="button button--primary learn-episode__cta"
+                href="story.html?episode=startup-u6"
+                data-episode-cta
+                >Start episode</a
+              >
+            </div>
+          </li>
+        </ol>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <div class="site-footer__brand">
+          <a class="site-footer__logo" href="./" aria-label="Techinance home">
+            <img src="logo.png" alt="" width="32" height="32" />
+            <span>Techinance</span>
+          </a>
+          <p>A registered 501(c)(3) nonprofit organization.</p>
+        </div>
+
+        <div class="site-footer__column">
+          <h2>Quick Links</h2>
+          <a href="courses.html">Interactive Courses</a>
+          <a href="faqs.html">FAQs</a>
+        </div>
+
+        <div class="site-footer__column">
+          <h2>Get Involved</h2>
+          <a href="about.html">About</a>
+          <a href="get-involved.html">Get Involved</a>
+          <a href="contact.html">Contact Us</a>
+          <a href="learn.html" aria-current="page">Story Mode</a>
+        </div>
+
+        <div class="site-footer__column">
+          <h2>Legal</h2>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+        </div>
+
+        <div class="site-footer__column">
+          <h2>Connect</h2>
+          <div class="site-footer__social">
+            <a
+              href="https://www.instagram.com/techinance/"
+              aria-label="Techinance on Instagram"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            <a href="mailto:thetechinance@gmail.com" aria-label="Email Techinance">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="site-footer__bottom">
+        <p>© 2026 Techinance. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

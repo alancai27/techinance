@@ -1,0 +1,394 @@
+/*
+ * Courses page.
+ *
+ * Loaded after styles.css and learn.css. Everything is namespaced under
+ * .catalog, .deck and .slide, so it can't reach the rest of the site.
+ *
+ * The page is a deck: one course on screen at a time, moved with the arrows,
+ * the dots, or the left and right arrow keys. courses.js drives it.
+ *
+ * The course marks are hand-drawn inline SVG rather than an icon set. Each one
+ * takes its line colour from `currentColor` and its fill from `--mark-soft`, so
+ * a slide only has to set those two values to retheme its artwork.
+ */
+
+.catalog {
+  padding: var(--section-y) 24px;
+  background: transparent;
+}
+
+.catalog__inner {
+  width: min(1080px, 100%);
+  margin: 0 auto;
+}
+
+/* Header -------------------------------------------------------------------- */
+
+/* Matches .about__header, .faqs__header, .contact__header and .legal__header
+   in styles.css, so every page title on the site is the same. */
+.catalog__header {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.catalog__header h1 {
+  margin: 0;
+  color: var(--navy);
+  font-family: "Nunito", sans-serif;
+  font-size: clamp(30px, 4vw, 42px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.catalog__lede {
+  margin: 12px auto 0;
+  max-width: 40em;
+  color: var(--slate);
+  font-size: clamp(16px, 2vw, 18px);
+  line-height: 1.55;
+}
+
+/* Deck ---------------------------------------------------------------------- */
+
+.deck {
+  border-radius: 4px;
+}
+
+.deck:focus-visible {
+  outline: 3px solid var(--steel);
+  outline-offset: 10px;
+}
+
+/* Visually hidden. The arrow-key shortcut still needs announcing to anyone
+   navigating by keyboard or screen reader. */
+.deck__sr-hint {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.deck__stage {
+  display: grid;
+  grid-template-columns: 52px 1fr 52px;
+  align-items: center;
+  gap: 14px;
+}
+
+.deck__arrow {
+  display: inline-flex;
+  width: 52px;
+  height: 52px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(11, 36, 71, 0.12);
+  border-radius: 50%;
+  padding: 0;
+  color: var(--navy);
+  background: var(--white);
+  box-shadow: var(--card-shadow);
+  cursor: pointer;
+  transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+.deck__arrow svg {
+  width: 22px;
+  height: 22px;
+}
+
+.deck__arrow:hover,
+.deck__arrow:focus-visible {
+  border-color: var(--navy);
+  background: var(--ice);
+}
+
+.deck__arrow:active {
+  transform: scale(0.94);
+}
+
+.deck__viewport {
+  border: 1px solid rgba(11, 36, 71, 0.08);
+  border-radius: var(--section-radius);
+  background: var(--white);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+}
+
+.deck__track {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transition: transform 460ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+/* Slides -------------------------------------------------------------------- */
+
+.slide {
+  display: grid;
+  grid-template-columns: 336px 1fr;
+  align-items: stretch;
+  flex: 0 0 100%;
+  min-width: 100%;
+  background: var(--white);
+}
+
+.slide--cyber {
+  --accent: #17376a;
+  --slide-art: #17376a;
+  --art-card: #ffffff;
+  --art-soft: #dfe9f7;
+  --art-accent: #4f86d6;
+  --art-line: #c3d5ee;
+  --art-onacc: rgba(255, 255, 255, 0.72);
+}
+
+.slide--finance {
+  --accent: #2f6fb0;
+  --slide-art: #235c96;
+  --art-card: #ffffff;
+  --art-soft: #dbeafb;
+  --art-accent: #5fa2e6;
+  --art-line: #bcd8f4;
+  --art-onacc: rgba(255, 255, 255, 0.72);
+}
+
+.slide--neuro {
+  --accent: #4a4f9c;
+  --slide-art: #3f4490;
+  --art-card: #ffffff;
+  --art-soft: #e2e3fa;
+  --art-accent: #8d92e8;
+  --art-line: #cdcff5;
+  --art-onacc: rgba(255, 255, 255, 0.72);
+}
+
+.slide--startup {
+  --accent: #46627e;
+  --slide-art: #3d5872;
+  --art-card: #ffffff;
+  --art-soft: #dce8f2;
+  --art-accent: #6f9ec4;
+  --art-line: #c4d8e8;
+  --art-onacc: rgba(255, 255, 255, 0.72);
+}
+
+.slide__art {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 26px;
+  background: var(--slide-art);
+}
+
+.slide__art .art {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+}
+
+.slide__body {
+  display: flex;
+  flex-direction: column;
+  padding: 46px 46px 42px;
+}
+
+.slide__kicker {
+  margin: 0;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.slide__title {
+  margin: 10px 0 0;
+  color: var(--navy);
+  font-family: "Nunito", sans-serif;
+  font-size: clamp(26px, 3.4vw, 34px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.slide__blurb {
+  margin: 16px 0 0;
+  max-width: 46ch;
+  color: var(--slate);
+  font-size: 17px;
+  line-height: 1.62;
+}
+
+.slide__note {
+  margin: 20px 0 0;
+  border-left: 3px solid var(--accent);
+  padding: 3px 0 3px 15px;
+  max-width: 46ch;
+  color: var(--slate);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.slide__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 30px;
+}
+
+.slide .button--primary {
+  background: var(--accent);
+}
+
+.slide .button--primary:hover,
+.slide .button--primary:focus-visible {
+  background: var(--navy);
+}
+
+/* Footer: dots and counter --------------------------------------------------- */
+
+.deck__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 20px 66px 0;
+}
+
+.deck__dots {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.deck__dot {
+  display: block;
+  width: 30px;
+  height: 6px;
+  border: 0;
+  border-radius: 999px;
+  padding: 0;
+  background: rgba(11, 36, 71, 0.18);
+  cursor: pointer;
+  transition: background 200ms ease, width 200ms ease;
+}
+
+/* The hit area is padded out to a comfortable size without moving the bar. */
+.deck__dots li {
+  display: flex;
+  align-items: center;
+  padding: 12px 0;
+}
+
+.deck__dot:hover {
+  background: rgba(11, 36, 71, 0.34);
+}
+
+.deck__dot.is-current {
+  width: 46px;
+  background: var(--navy);
+}
+
+.deck__dot:focus-visible {
+  outline: 3px solid var(--steel);
+  outline-offset: 4px;
+}
+
+.deck__count {
+  margin: 0;
+  color: var(--slate);
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.deck__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Responsive ---------------------------------------------------------------- */
+
+@media (max-width: 860px) {
+  .deck__stage {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  /* On narrow screens the arrows sit under the slide instead of beside it. */
+  .deck__arrow {
+    grid-row: 2;
+  }
+
+  .deck__arrow--prev {
+    justify-self: start;
+    margin-top: 18px;
+  }
+
+  .deck__arrow--next {
+    grid-row: 2;
+    justify-self: end;
+    margin-top: 18px;
+  }
+
+  .deck__viewport {
+    grid-row: 1;
+  }
+
+  .deck__footer {
+    margin: 4px 0 0;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2px;
+  }
+}
+
+@media (max-width: 720px) {
+  .catalog {
+    padding: 44px 18px 68px;
+  }
+
+  .slide {
+    grid-template-columns: 1fr;
+  }
+
+  .slide__art {
+    padding: 22px;
+  }
+
+  .slide__art .art {
+    max-width: 260px;
+  }
+
+  .slide__body {
+    padding: 28px 22px 26px;
+  }
+
+  .slide__actions .button {
+    flex: 1 1 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .deck__track,
+  .deck__arrow,
+  .deck__dot {
+    transition: none;
+  }
+
+  .deck__arrow:active {
+    transform: none;
+  }
+}

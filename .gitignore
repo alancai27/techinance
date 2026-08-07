@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.pnpm-store/
+.DS_Store
+*.local
+.env
+.env.*
+!.env.example
+
+# This project uses pnpm. A stray npm lockfile drifts from pnpm-lock.yaml.
+package-lock.json

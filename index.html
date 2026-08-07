@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Techinance makes technology and finance education clear, practical, and free."
+    />
+    <title>Techinance | Where tech meets finance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="learn.css" />
+    <script>
+      /* Runs before first paint so the hero never renders in the wrong state.
+         script.js can only act after `document.fonts.ready` resolves, which is
+         long enough to show a frame of the un-animated lockup: no logo, and a
+         dotless "i". Deciding here means a returning visitor paints straight
+         into the finished hero, and a first-time visitor paints hidden, ready
+         for the intro. */
+      (function () {
+        var seen = false;
+        try {
+          seen = window.sessionStorage.getItem("techinance.introSeen") === "1";
+        } catch (error) {
+          seen = false;
+        }
+        document.documentElement.classList.add(seen ? "intro-done" : "is-loading");
+      })();
+    </script>
+    <noscript>
+      <!-- No script means no intro and no class on <html>, which would otherwise
+           leave the hero mid-assembly forever. Render it finished instead. -->
+      <style>
+        .hero__logo-slot { width: var(--logo-size); }
+        .hero__logo-button { opacity: 1; }
+        .hero__lockup { column-gap: var(--lockup-gap); }
+        .hero__i-dot { transform: translate(-50%, -50%) scale(1); }
+      </style>
+    </noscript>
+    <script type="module" src="nav.js"></script>
+    <script type="module" src="auth-nav.js"></script>
+    <script type="module" src="script.js"></script>
+  </head>
+  <body class="home-page">
+    <header class="site-header" data-header>
+      <nav class="navbar" aria-label="Primary navigation">
+        <a class="brand" href="./" aria-label="Techinance home">
+          <img class="brand__logo" src="logo.png" alt="" width="32" height="32" />
+          <span>Techinance</span>
+        </a>
+
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          data-menu-toggle
+        >
+          <span>Menu</span>
+          <span class="menu-toggle__lines" aria-hidden="true"></span>
+        </button>
+
+        <div class="desktop-nav">
+          <a class="nav-link" href="about.html">About</a>
+          <a class="nav-link" href="courses.html">Learn</a>
+          <a class="nav-link" href="get-involved.html">Get Involved</a>
+          <a class="nav-link" href="contact.html">Contact Us</a>
+          <a class="nav-link" href="faqs.html">FAQs</a>
+          <div class="auth-slot" data-auth-nav></div>
+        </div>
+
+        <div class="mobile-nav" id="mobile-menu" data-mobile-menu>
+          <a href="about.html">About</a>
+          <a href="courses.html">Learn</a>
+          <a href="get-involved.html">Get Involved</a>
+          <a href="contact.html">Contact Us</a>
+          <a href="faqs.html">FAQs</a>
+          <a href="learn.html">My Learning</a>
+          <a href="leaderboard.html">Leaderboard</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title" data-hero>
+        <div class="hero__stage" data-stage>
+          <div class="hero__lockup" data-lockup>
+            <div class="hero__logo-slot" data-logo-slot>
+              <button
+                class="hero__logo-button"
+                type="button"
+                aria-label="Replay the Techinance intro"
+                disabled
+                data-hero-logo
+              >
+                <img src="logo.png" alt="" />
+              </button>
+            </div>
+            <h1 class="hero__wordmark" id="hero-title" aria-label="Techinance" data-wordmark>
+              <span>Tech</span><span class="hero__i" data-i>ı<span class="hero__i-dot" aria-hidden="true" data-i-dot></span></span><span>nance</span>
+            </h1>
+          </div>
+
+          <div class="hero__flyer" aria-hidden="true" data-flyer style="visibility: hidden; opacity: 0">
+            <span class="hero__flyer-dot" data-flyer-dot></span>
+            <img class="hero__flyer-logo" src="logo.png" alt="" data-flyer-logo />
+          </div>
+        </div>
+
+        <div class="hero__content" data-hero-content>
+          <p>Providing STEM education to students around the world.</p>
+          <div class="hero__actions">
+            <a class="button button--primary" href="courses.html">Explore courses</a>
+            <a class="button button--secondary" href="about.html">What we do</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="stats" aria-label="Techinance reach" id="impact" data-stats>
+        <div class="stats__inner">
+          <article class="stats__item">
+            <p class="stats__value">1050+</p>
+            <p class="stats__label">Students</p>
+          </article>
+
+          <article class="stats__item">
+            <p class="stats__value">21</p>
+            <p class="stats__label">Countries</p>
+          </article>
+
+          <article class="stats__item">
+            <p class="stats__value">25+</p>
+            <p class="stats__label">Provinces</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section--soft home-section" aria-labelledby="about-teaser-title">
+        <div class="section__inner">
+          <div class="section__shell">
+            <header class="section__header">
+              <p class="eyebrow">About us</p>
+              <h2 id="about-teaser-title">Free STEM education, built for students</h2>
+              <p class="section__lede">
+                Techinance is a 501(c)(3) nonprofit making technology, neuroscience, and
+                finance education clear, practical, and free for learners worldwide.
+              </p>
+            </header>
+            <div class="about-teaser__body">
+              <div class="about-teaser__copy">
+                <p>
+                  We offer interactive courses and Story Mode adventures so students can
+                  apply concepts in real-world scenarios—not just memorize slides.
+                </p>
+                <a class="button button--secondary" href="about.html">Learn more about us</a>
+              </div>
+              <aside class="about-teaser__aside">
+                <strong>By students, for students</strong>
+                <p>
+                  Programs are designed to be accessible from home, with a focus on
+                  hands-on learning across tech and finance.
+                </p>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section home-section" aria-labelledby="featured-courses-title">
+        <div class="section__inner">
+          <header class="section__header section__header--center">
+            <p class="eyebrow">Our courses</p>
+            <h2 id="featured-courses-title">Start learning something real</h2>
+            <p class="section__lede">
+              Role-play as a newcomer in the field, apply concepts to scenarios, and earn
+              a certificate when you finish.
+            </p>
+          </header>
+          <ul class="feature-grid feature-grid--3">
+            <li>
+              <a class="feature-card" href="courses.html#slide-cyber">
+                <span class="feature-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </span>
+                <p class="feature-card__tag">Technology</p>
+                <h3>Cybersecurity</h3>
+                <p>How systems get attacked—and how they get defended—through real breach scenarios.</p>
+                <span class="feature-card__link">Explore course</span>
+              </a>
+            </li>
+            <li>
+              <a class="feature-card" href="courses.html">
+                <span class="feature-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+                </span>
+                <p class="feature-card__tag">Finance</p>
+                <h3>Financial Literacy</h3>
+                <p>Build practical money skills with age-appropriate, scenario-based lessons.</p>
+                <span class="feature-card__link">Explore course</span>
+              </a>
+            </li>
+            <li>
+              <a class="feature-card" href="courses.html">
+                <span class="feature-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M12 5a5 5 0 0 1 5 5c0 3-2.5 5.5-5 7.5C9.5 15.5 7 13 7 10a5 5 0 0 1 5-5z"/><path d="M12 22v-4"/></svg>
+                </span>
+                <p class="feature-card__tag">Neuroscience</p>
+                <h3>Neuroscience</h3>
+                <p>Explore how the brain works through interactive lessons built for curious teens.</p>
+                <span class="feature-card__link">Explore course</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section section--soft home-section" aria-labelledby="paths-title">
+        <div class="section__inner">
+          <div class="section__shell">
+            <header class="section__header section__header--center">
+              <p class="eyebrow">Choose your path</p>
+              <h2 id="paths-title">Learn your way</h2>
+              <p class="section__lede">
+                Browse courses, join the team, or dive into Story Mode—pick what fits you.
+              </p>
+            </header>
+            <ul class="feature-grid feature-grid--3">
+              <li>
+                <a class="feature-card" href="courses.html">
+                  <span class="feature-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                  </span>
+                  <h3>Grow your skills</h3>
+                  <p>Enroll in free interactive courses with certification when you complete them.</p>
+                  <span class="feature-card__link">Browse courses</span>
+                </a>
+              </li>
+              <li>
+                <a class="feature-card" href="learn.html">
+                  <span class="feature-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                  </span>
+                  <h3>Create your path</h3>
+                  <p>Play Story Mode at your own pace and apply concepts in role-playing scenarios.</p>
+                  <span class="feature-card__link">Open Story Mode</span>
+                </a>
+              </li>
+              <li>
+                <a class="feature-card" href="get-involved.html">
+                  <span class="feature-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  </span>
+                  <h3>Get involved</h3>
+                  <p>Volunteer, instruct, or support the mission—help more students access free STEM.</p>
+                  <span class="feature-card__link">Join us</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section home-section" aria-labelledby="why-title">
+        <div class="section__inner">
+          <header class="section__header section__header--center">
+            <p class="eyebrow">Why learn with us</p>
+            <h2 id="why-title">Built for curious learners</h2>
+            <p class="section__lede">
+              Soft skills meet hard skills—practical STEM without the paywall.
+            </p>
+          </header>
+          <ul class="feature-grid feature-grid--4">
+            <li class="feature-card">
+              <span class="feature-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20a8 8 0 0 1 16 0"/></svg>
+              </span>
+              <h3>Hands-on instructors</h3>
+              <p>Lessons from people who care about clear teaching and real outcomes.</p>
+            </li>
+            <li class="feature-card">
+              <span class="feature-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
+              </span>
+              <h3>Quality programs</h3>
+              <p>Interactive courses with Story Mode so concepts stick through practice.</p>
+            </li>
+            <li class="feature-card">
+              <span class="feature-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 0 20"/><path d="M12 2a15 15 0 0 0 0 20"/></svg>
+              </span>
+              <h3>Global community</h3>
+              <p>Students across 21 countries and 25+ provinces learn with Techinance.</p>
+            </li>
+            <li class="feature-card">
+              <span class="feature-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              </span>
+              <h3>Engaging lessons</h3>
+              <p>From beginners to builders—courses meet you where you are.</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section section--soft home-section home-cta" aria-labelledby="cta-title">
+        <div class="section__inner">
+          <div class="section__shell">
+            <header class="section__header section__header--center">
+              <p class="eyebrow">Get started</p>
+              <h2 id="cta-title">Start your learning journey today</h2>
+              <p class="section__lede">
+                Explore free courses or join the team that makes them possible.
+              </p>
+            </header>
+            <div class="home-cta__actions">
+              <a class="button button--primary" href="courses.html">Explore courses</a>
+              <a class="button button--secondary" href="get-involved.html">Get involved</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <div class="site-footer__brand">
+          <a class="site-footer__logo" href="./" aria-label="Techinance home">
+            <img src="logo.png" alt="" width="32" height="32" />
+            <span>Techinance</span>
+          </a>
+          <p>A registered 501(c)(3) nonprofit organization.</p>
+        </div>
+
+        <div class="site-footer__column">
+          <h2>Quick Links</h2>
+          <a href="courses.html">Interactive Courses</a>
+          <a href="faqs.html">FAQs</a>
+        </div>
+
+        <div class="site-footer__column">
+          <h2>Get Involved</h2>
+          <a href="about.html">About</a>
+          <a href="get-involved.html">Get Involved</a>
+          <a href="contact.html">Contact Us</a>
+          <a href="learn.html">Story Mode</a>
+        </div>
+
+        <div class="site-footer__column">
+          <h2>Legal</h2>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+        </div>
+
+        <div class="site-footer__column">
+          <h2>Connect</h2>
+          <div class="site-footer__social">
+            <a
+              href="https://www.instagram.com/techinance/"
+              aria-label="Techinance on Instagram"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            <a href="mailto:thetechinance@gmail.com" aria-label="Email Techinance">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="site-footer__bottom">
+        <p>© 2026 Techinance. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
