@@ -39,10 +39,16 @@ import { act3 } from "./startup-unit6-act3.js";
  * Badges the acts award, in display order. Ids are namespaced per unit because
  * progress.js stores earned badges in one flat list per user.
  *
- * Two badges. The course sits at its 15-badge cap across six modules, so the
- * sort scene in act 1 awards none. See STORY-MODE.md.
+ * Three badges, one per act. The per-course cap scales with unit count, so a
+ * six-module course has room for all of them. See STORY-MODE.md.
  */
 const BADGE_REGISTRY = /** @type {Badge[]} */ ([
+  {
+    id: "launch-matcher",
+    name: "Launch Matcher",
+    description: "Matched six teams to the launch shape that actually fits them.",
+    icon: "compass",
+  },
   {
     id: "launch-reader",
     name: "Launch Reader",

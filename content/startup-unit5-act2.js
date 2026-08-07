@@ -162,6 +162,7 @@ export const act2 = {
       },
       source: SOURCES.module5,
       xp: 40,
+      badge: "raise-reader",
       next: "s5a2-safe-quiz",
     },
 

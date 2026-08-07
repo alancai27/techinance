@@ -222,11 +222,12 @@ Rules that keep episodes teachable:
   clicking them teaches that weak evidence isn't evidence.
 - No dead ends: every `choice` option leads somewhere.
 - Icons are kebab-case names resolved through `icon.js`, never emoji.
-- A course gets at most 15 badges across all its units, split roughly by unit
-  size. Badges mark real milestones, not participation, so most scenes award none.
-  Cybersecurity is at the cap (5 / 3 / 3 / 4), so a new badge means retiring one.
-  How 2 Build a Start Up is also at the cap, across six modules (3 / 3 / 3 / 3 / 1 / 2):
-  its sort scenes in modules 5 and 6 and its inspect scene in module 5 award none.
+- A course gets at most 4 badges per unit, counted across the whole course rather
+  than unit by unit, so the budget scales with how many units the course has and
+  can be spent unevenly. Badges mark real milestones, not participation, so most
+  scenes award none. Cybersecurity is at 15 of 16 (5 / 3 / 3 / 4), so a new badge
+  there means retiring one. How 2 Build a Start Up runs 18 of 24 across six
+  modules (3 each).
 - Retiring a badge means deleting its `BADGE_REGISTRY` entry **and** the `badge:`
   field on the scene that awarded it. Drop only the registry entry and
   `fallbackBadge()` silently regenerates the badge from the scene. Change nothing

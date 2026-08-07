@@ -141,6 +141,7 @@ export const act1 = {
       ],
       source: SOURCES.module5,
       xp: 35,
+      badge: "source-matcher",
       next: "s5a1-cost-quiz",
     },
 

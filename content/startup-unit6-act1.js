@@ -141,6 +141,7 @@ export const act1 = {
       ],
       source: SOURCES.module6,
       xp: 35,
+      badge: "launch-matcher",
       next: "s6a1-daytwo-quiz",
     },
 

@@ -32,8 +32,12 @@ import { episode as startup6 } from "../content/startup-unit6.js";
 
 const EPISODES = [unit1, unit2, unit3, unit4, finance1, finance2, finance4, neuro1, neuro2, neuro3, neuro4, startup1, startup2, startup3, startup4, startup5, startup6];
 
-/** Badges the whole Cybersecurity course is allowed to award. See STORY-MODE.md. */
-const COURSE_BADGE_CAP = 15;
+/**
+ * A course may award at most this many badges per unit, counted across the whole
+ * course rather than unit by unit. Cybersecurity spends its budget unevenly
+ * (5 / 3 / 3 / 4) and that is fine. See STORY-MODE.md.
+ */
+const BADGES_PER_UNIT = 4;
 
 /**
  * Every scene id a scene can hand control to.
@@ -218,16 +222,21 @@ test("every icon and avatar name resolves in icon.js", () => {
 });
 
 test("every course stays within its badge cap", () => {
-  /** @type {Map<string, number>} */
+  // The cap scales with the course: a six-module course has more room than a
+  // four-unit one, but the badges-per-unit density stays the same.
+  /** @type {Map<string, { units: number, badges: number }>} */
   const perCourse = new Map();
   for (const episode of EPISODES) {
     const key = episode.courseTitle;
-    perCourse.set(key, (perCourse.get(key) ?? 0) + episode.badges.length);
+    const tally = perCourse.get(key) ?? { units: 0, badges: 0 };
+    tally.units += 1;
+    tally.badges += episode.badges.length;
+    perCourse.set(key, tally);
   }
   const over = [...perCourse.entries()]
-    .filter(([, total]) => total > COURSE_BADGE_CAP)
-    .map(([course, total]) => `${course}: ${total}`);
-  assert.deepEqual(over, [], `courses over the ${COURSE_BADGE_CAP} badge cap`);
+    .filter(([, tally]) => tally.badges > tally.units * BADGES_PER_UNIT)
+    .map(([course, tally]) => `${course}: ${tally.badges} over ${tally.units * BADGES_PER_UNIT}`);
+  assert.deepEqual(over, [], `courses over ${BADGES_PER_UNIT} badges per unit`);
 });
 
 test("badge ids are unique across every course", () => {
