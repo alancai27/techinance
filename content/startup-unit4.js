@@ -112,7 +112,7 @@ export const episode = {
   subtitle:
     "What accelerators actually do, how the YC application is read, and the programmes that exist for solo founders, students, and people outside the Bay Area.",
   role: "Student Founder",
-  estMinutes: 60,
+  estMinutes: 45,
   startScene: act1.entry,
   acts: [
     { id: "act1", title: "Three Programmes and a Bar", entry: act1.entry },

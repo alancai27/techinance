@@ -112,7 +112,7 @@ export const episode = {
   subtitle:
     "Building the smallest thing that tests your riskiest assumption, shipping it in ten days, and reading what users do rather than what they say.",
   role: "Student Founder",
-  estMinutes: 60,
+  estMinutes: 45,
   startScene: act1.entry,
   acts: [
     { id: "act1", title: "Three Flavours of Prototype", entry: act1.entry },

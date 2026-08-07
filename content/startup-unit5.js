@@ -114,7 +114,7 @@ export const episode = {
   subtitle:
     "Where the first cheque actually comes from: bootstrapping, non-dilutive grants, and early investors, plus the six ways a small round turns into a long, expensive year.",
   role: "Student Founder",
-  estMinutes: 60,
+  estMinutes: 45,
   startScene: act1.entry,
   acts: [
     { id: "act1", title: "The Cheapest Dollar That Fits", entry: act1.entry },

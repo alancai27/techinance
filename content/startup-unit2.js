@@ -112,7 +112,7 @@ export const episode = {
   subtitle:
     "Turning a vague idea into a specific problem a real person has, and learning to ask about it without leading them to the answer you want.",
   role: "Student Founder",
-  estMinutes: 60,
+  estMinutes: 45,
   startScene: act1.entry,
   acts: [
     { id: "act1", title: "Problem, Solution, Feature", entry: act1.entry },

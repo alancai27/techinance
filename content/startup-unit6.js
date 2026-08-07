@@ -114,7 +114,7 @@ export const episode = {
   subtitle:
     "Launching the thing, the distribution work that starts the morning after, and the single public URL that carries all six modules with you afterwards.",
   role: "Student Founder",
-  estMinutes: 60,
+  estMinutes: 45,
   startScene: act1.entry,
   acts: [
     { id: "act1", title: "Pick the Shape of the Moment", entry: act1.entry },
