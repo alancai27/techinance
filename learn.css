@@ -3926,20 +3926,28 @@ body.story-page .story-message__action:focus-visible {
    Course card artwork
 
    The four course cards carry the same flat illustration treatment as the
-   courses page: a solid accent band with layered white shapes on it. The card
-   goes edge to edge, so the padding moves off .learn-course and onto its parts.
+   courses page: a solid accent band with layered white shapes on it. Cover
+   SVGs are unchanged; wrappers are .learn-course__media / __body.
    -------------------------------------------------------------------------- */
 
 .learn-course {
   padding: 0;
   overflow: hidden;
+  gap: 0;
+}
+
+.learn-course__media {
+  display: block;
+  margin: 0;
+  padding: 18px 16px 12px;
+  background: var(--course-band);
 }
 
 .learn-course__art {
   display: block;
-  margin: 0 0 4px;
-  padding: 14px 16px;
-  background: var(--course-band);
+  margin: 0;
+  padding: 0;
+  background: transparent;
 }
 
 .learn-course__art .course-art {
@@ -3948,14 +3956,12 @@ body.story-page .story-message__action:focus-visible {
   height: auto;
 }
 
-/* Everything below the artwork keeps the original inset. */
-.learn-course > :not(.learn-course__art) {
-  margin-left: 22px;
-  margin-right: 22px;
-}
-
-.learn-course > :last-child {
-  margin-bottom: 22px;
+.learn-course__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 22px 24px;
 }
 
 .learn-course[data-course="cybersecurity"] {
@@ -3988,4 +3994,188 @@ body.story-page .story-message__action:focus-visible {
   --art-soft: #dce8f2;
   --art-accent: #6f9ec4;
   --art-line: #c4d8e8;
+}
+
+/* --------------------------------------------------------------------------
+   My Learning layout overhaul (Codology-soft hub)
+   -------------------------------------------------------------------------- */
+
+.learn-page {
+  gap: 36px;
+}
+
+.learn-page > .learn-hero {
+  width: min(1080px, 100%);
+  margin: 0 auto;
+  padding: 40px 24px 0;
+}
+
+.learn-hero__shell {
+  border-radius: var(--section-radius, 32px);
+  padding: clamp(28px, 4vw, 44px) clamp(24px, 4vw, 40px);
+  background: var(--soft-surface, #eef4fa);
+  border: 1px solid rgba(11, 36, 71, 0.06);
+  box-shadow: var(--learn-shadow);
+  text-align: center;
+}
+
+.learn-hero__inner {
+  width: min(640px, 100%);
+  margin: 0 auto;
+}
+
+.learn-hero__actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 22px;
+}
+
+.learn-gate {
+  width: min(1080px, 100%);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.learn-gate__inner {
+  align-items: stretch;
+  gap: 28px;
+  border-radius: var(--section-radius, 32px);
+  padding: clamp(24px, 3vw, 36px);
+  background: var(--white);
+  border: 1px solid rgba(11, 36, 71, 0.06);
+  box-shadow: var(--learn-shadow);
+}
+
+.learn-gate__point {
+  align-items: center;
+  gap: 14px;
+}
+
+.learn-gate__point-icon {
+  display: none;
+}
+
+.learn-signin {
+  align-content: start;
+  align-self: stretch;
+  border-radius: var(--card-radius, 24px);
+  padding: 28px 24px;
+  background: var(--soft-surface, #eef4fa);
+  box-shadow: none;
+}
+
+.learn-signin .eyebrow {
+  margin-bottom: 6px;
+}
+
+.learn-account {
+  width: min(1080px, 100%);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.learn-account__shell {
+  border-radius: var(--section-radius, 32px);
+  padding: clamp(24px, 3vw, 36px);
+  background: var(--soft-surface, #eef4fa);
+  border: 1px solid rgba(11, 36, 71, 0.06);
+  box-shadow: var(--learn-shadow);
+}
+
+.learn-account__heading {
+  margin: 0 0 18px;
+}
+
+.learn-account__inner {
+  background: var(--white);
+  border-radius: var(--card-radius, 24px);
+  border: 1px solid rgba(11, 36, 71, 0.06);
+  box-shadow: none;
+}
+
+.learn-stats {
+  gap: 14px;
+}
+
+.learn-stat {
+  border-radius: 18px;
+  padding: 18px;
+  background: var(--soft-surface, #eef4fa);
+  border: 1px solid rgba(11, 36, 71, 0.06);
+  box-shadow: none;
+}
+
+.learn-section__head {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 24px;
+  align-items: start;
+}
+
+.learn-section__head .eyebrow {
+  margin: 0;
+}
+
+.learn-section__lead {
+  margin: 0;
+  max-width: 42em;
+  color: var(--slate);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.learn-rail {
+  gap: 28px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.learn-episode {
+  border-radius: 20px;
+  padding: 20px 22px;
+  gap: 12px 22px;
+}
+
+.learn-episode-list {
+  gap: 16px;
+}
+
+.learn-lock {
+  display: inline-flex;
+  color: var(--slate);
+}
+
+@media (max-width: 860px) {
+  .learn-gate__inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .learn-page > .learn-hero {
+    padding: 28px 16px 0;
+  }
+
+  .learn-hero__shell,
+  .learn-gate__inner,
+  .learn-account__shell {
+    padding: 24px 18px;
+  }
+
+  .learn-gate,
+  .learn-account {
+    padding: 0 16px;
+  }
+
+  .learn-course__body {
+    padding: 18px 18px 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .learn-course:hover,
+  .learn-course:focus-within,
+  .learn-episode:hover,
+  .learn-episode:focus-within {
+    transform: none;
+  }
 }
